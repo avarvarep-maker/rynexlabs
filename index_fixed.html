@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rynex Labs | Agenție Web Design & Automatizări AI | Iași</title>
+    <meta name="description" content="Rynex Labs – agenție web design Iași. Website-uri premium, automatizări AI personalizate și optimizare SEO. Transformăm viziunile în experiențe digitale performante.">
+    <link rel="canonical" href="https://rynexlabs.ro/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rynexlabs.ro/">
+    <meta property="og:title" content="Rynex Labs | Agenție Web Design & Automatizări AI | Iași">
+    <meta property="og:description" content="Website-uri premium, automatizări AI și optimizare SEO pentru afacerea ta. Agenție web Iași cu experiență dovedită.">
+    <meta property="og:image" content="https://rynexlabs.ro/rynex-labs-logo.png">
+    <meta property="og:locale" content="ro_RO">
+    <meta property="og:site_name" content="Rynex Labs">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rynex Labs | Agenție Web Design & Automatizări AI | Iași">
+    <meta name="twitter:description" content="Website-uri premium, automatizări AI și optimizare SEO pentru afacerea ta.">
+    <meta name="twitter:image" content="https://rynexlabs.ro/rynex-labs-logo.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="rynex-icon.png">
+    <link rel="apple-touch-icon" href="rynex-icon.png">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://rynexlabs.ro/#organization",
+          "name": "Rynex Labs",
+          "url": "https://rynexlabs.ro",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rynexlabs.ro/rynex-labs-logo.png"
+          },
+          "description": "Agenție web design Iași. Website-uri premium, automatizări AI și optimizare SEO.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Iași",
+            "addressCountry": "RO"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "email": "rynexlabsbusiness@gmail.com",
+            "telephone": "+40747202811",
+            "availableLanguage": ["Romanian", "English"]
+          },
+          "sameAs": []
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://rynexlabs.ro/#website",
+          "url": "https://rynexlabs.ro",
+          "name": "Rynex Labs",
+          "publisher": {"@id": "https://rynexlabs.ro/#organization"}
+        },
+        {
+          "@type": "ItemList",
+          "name": "Servicii Rynex Labs",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Creare Website", "url": "https://rynexlabs.ro/#services"},
+            {"@type": "ListItem", "position": 2, "name": "Optimizare SEO", "url": "https://rynexlabs.ro/#services"},
+            {"@type": "ListItem", "position": 3, "name": "Landing Pages", "url": "https://rynexlabs.ro/#services"},
+            {"@type": "ListItem", "position": 4, "name": "Redesign Website", "url": "https://rynexlabs.ro/#services"},
+            {"@type": "ListItem", "position": 5, "name": "Automatizare AI", "url": "https://rynexlabs.ro/automatizare-ai.html"}
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-bg: #0a0a0a;
+            --color-surface: #141414;
+            --color-surface-light: #1a1a1a;
+            --color-accent: #ff3b26;
+            --color-accent-dark: #cc2e1d;
+            --color-text: #ffffff;
+            --color-text-muted: #888888;
+            --color-border: #2a2a2a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { border-radius: 0 !important; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: var(--color-accent); color: white; }
+
+        .angular-btn {
+            background: var(--color-accent);
+            color: white;
+            padding: 16px 40px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .angular-btn:hover { background: var(--color-accent-dark); transform: translateY(-2px); }
+
+        .angular-btn-outline {
+            background: transparent;
+            color: var(--color-text);
+            padding: 16px 40px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--color-border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .angular-btn-outline:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+        .section-label {
+            color: var(--color-accent);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover { border-color: var(--color-accent); transform: translateY(-4px); }
+
+        .red-accent-box {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: var(--color-accent);
+            opacity: 0.1;
+        }
+
+        .nav-link {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-link:hover { color: var(--color-text); }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after { width: 100%; }
+        .nav-link.nav-cta { color: var(--color-accent); }
+        .nav-link.nav-cta:hover { color: var(--color-text); }
+
+        .input-field {
+            width: 100%;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+            padding: 16px 20px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .input-field:focus { border-color: var(--color-accent); }
+        .input-field::placeholder { color: var(--color-text-muted); }
+        .input-field.error { border-color: var(--color-accent); }
+        textarea.input-field { min-height: 150px; resize: vertical; }
+        select.input-field { cursor: pointer; }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal-content {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            width: 100%;
+            max-width: 1200px;
+            height: 90vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .modal-close {
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .modal-close:hover { background: var(--color-accent-dark); }
+        .modal-iframe { flex: 1; width: 100%; border: none; background: white; }
+
+        .gdpr-modal { max-width: 800px; height: auto; max-height: 90vh; overflow-y: auto; }
+        .gdpr-content { padding: 40px; }
+
+        /* Portfolio Cards */
+        .portfolio-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .portfolio-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 59, 38, 0.1);
+        }
+
+        .portfolio-thumbnail {
+            width: 100%;
+            aspect-ratio: 16/10;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .portfolio-thumbnail-content {
+            width: 100%;
+            height: 100%;
+            transform: scale(0.85);
+            transform-origin: top center;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-card:hover .portfolio-thumbnail-content { transform: scale(0.9); }
+
+        /* DoctorVet Thumbnail */
+        .doctorvet-thumb {
+            background: linear-gradient(180deg, #1e3a5f 0%, #0d2137 100%);
+            padding: 8px 12px;
+        }
+        .doctorvet-thumb .thumb-header { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .doctorvet-thumb .thumb-logo { font-size: 10px; font-weight: 700; color: white; }
+        .doctorvet-thumb .thumb-logo span { color: #3b82f6; }
+        .doctorvet-thumb .thumb-nav { display: flex; gap: 8px; }
+        .doctorvet-thumb .thumb-nav span { font-size: 5px; color: rgba(255,255,255,0.6); }
+        .doctorvet-thumb .thumb-hero { padding: 16px 0; text-align: center; }
+        .doctorvet-thumb .thumb-hero h2 { font-size: 14px; color: white; font-weight: 700; margin-bottom: 6px; }
+        .doctorvet-thumb .thumb-hero p { font-size: 6px; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
+        .doctorvet-thumb .thumb-btn { display: inline-block; padding: 6px 12px; background: #3b82f6; color: white; font-size: 6px; font-weight: 600; }
+        .doctorvet-thumb .thumb-services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 12px; }
+        .doctorvet-thumb .thumb-service { background: rgba(255,255,255,0.05); padding: 8px 4px; text-align: center; }
+        .doctorvet-thumb .thumb-service-icon { font-size: 10px; margin-bottom: 4px; }
+        .doctorvet-thumb .thumb-service-title { font-size: 5px; color: white; font-weight: 600; }
+
+        /* Café Noir Thumbnail */
+        .cafenoir-thumb { background: linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 100%); padding: 8px 12px; }
+        .cafenoir-thumb .thumb-header { display: flex; justify-content: center; padding: 6px 0; border-bottom: 1px solid rgba(201,168,108,0.2); }
+        .cafenoir-thumb .thumb-logo { font-size: 10px; font-weight: 700; color: #c9a86c; letter-spacing: 1px; }
+        .cafenoir-thumb .thumb-hero { padding: 20px 0; text-align: center; }
+        .cafenoir-thumb .thumb-hero h2 { font-size: 16px; color: white; font-weight: 700; margin-bottom: 6px; letter-spacing: 2px; }
+        .cafenoir-thumb .thumb-hero p { font-size: 5px; color: rgba(255,255,255,0.6); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+        .cafenoir-thumb .thumb-btn { display: inline-block; padding: 6px 14px; background: #c9a86c; color: #0d0d0d; font-size: 5px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .cafenoir-thumb .thumb-menu { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 12px; }
+        .cafenoir-thumb .thumb-menu-item { background: rgba(255,255,255,0.03); padding: 6px 8px; display: flex; justify-content: space-between; align-items: center; }
+        .cafenoir-thumb .thumb-menu-name { font-size: 5px; color: white; }
+        .cafenoir-thumb .thumb-menu-price { font-size: 6px; color: #c9a86c; }
+
+        /* FitnessForge Thumbnail */
+        .fitnessforge-thumb { background: linear-gradient(180deg, #0a0a0f 0%, #1a1a2e 100%); padding: 8px 12px; }
+        .fitnessforge-thumb .thumb-header { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; }
+        .fitnessforge-thumb .thumb-logo { font-size: 8px; font-weight: 800; color: white; letter-spacing: -0.5px; }
+        .fitnessforge-thumb .thumb-logo span { color: #ff6b35; }
+        .fitnessforge-thumb .thumb-nav-btn { padding: 4px 8px; background: #ff6b35; color: white; font-size: 5px; font-weight: 600; }
+        .fitnessforge-thumb .thumb-hero { padding: 14px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: center; }
+        .fitnessforge-thumb .thumb-hero-text h2 { font-size: 11px; color: white; font-weight: 800; line-height: 1.2; margin-bottom: 6px; }
+        .fitnessforge-thumb .thumb-hero-text h2 span { color: #ff6b35; }
+        .fitnessforge-thumb .thumb-hero-text p { font-size: 5px; color: rgba(255,255,255,0.7); margin-bottom: 10px; line-height: 1.5; }
+        .fitnessforge-thumb .thumb-btn { display: inline-block; padding: 5px 10px; background: #ff6b35; color: white; font-size: 5px; font-weight: 700; }
+        .fitnessforge-thumb .thumb-stats { display: flex; gap: 8px; }
+        .fitnessforge-thumb .thumb-stat { text-align: center; }
+        .fitnessforge-thumb .thumb-stat-value { font-size: 10px; font-weight: 800; color: #ff6b35; }
+        .fitnessforge-thumb .thumb-stat-label { font-size: 4px; color: rgba(255,255,255,0.5); text-transform: uppercase; }
+
+        .portfolio-content { padding: 24px; }
+        .portfolio-content h3 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+        .portfolio-content p { color: var(--color-text-muted); font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+
+        /* Blog Cards */
+        .blog-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .blog-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 59, 38, 0.1);
+        }
+
+        .blog-card:hover .blog-image { transform: scale(1.05); }
+
+        .blog-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: var(--color-surface-light);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .blog-content { padding: 28px; }
+
+        .blog-meta { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+
+        .blog-category {
+            color: var(--color-accent);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .blog-date { color: var(--color-text-muted); font-size: 12px; }
+
+        .blog-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .blog-card:hover h3 { color: var(--color-accent); }
+        .blog-card p { color: var(--color-text-muted); font-size: 14px; line-height: 1.7; }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-accent);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 16px;
+            transition: gap 0.3s ease;
+        }
+
+        .blog-card:hover .read-more { gap: 12px; }
+
+        /* Process Steps */
+        .process-step {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            padding: 40px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover { border-color: var(--color-accent); }
+
+        .process-number {
+            font-size: 80px;
+            font-weight: 900;
+            color: var(--color-accent);
+            opacity: 0.12;
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            line-height: 1;
+            letter-spacing: -4px;
+        }
+
+        /* FAQ */
+        .faq-item {
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--color-text);
+            font-size: 18px;
+            font-weight: 600;
+            text-align: left;
+            padding: 28px 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            font-family: inherit;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover { color: var(--color-accent); }
+
+        .faq-icon {
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            color: var(--color-accent);
+        }
+
+        .faq-item.open .faq-icon { transform: rotate(45deg); border-color: var(--color-accent); }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+        }
+
+        .faq-answer-inner {
+            padding-bottom: 28px;
+            color: var(--color-text-muted);
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .faq-item.open .faq-answer { max-height: 400px; }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: var(--color-bg);
+            z-index: 999;
+            flex-direction: column;
+            padding: 100px 40px 40px;
+        }
+
+        .mobile-menu.active { display: flex; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .hamburger span { width: 28px; height: 2px; background: var(--color-text); transition: all 0.3s ease; display: block; }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .footer-link {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover { color: var(--color-accent); }
+
+        .service-price {
+            color: var(--color-accent);
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 16px;
+            display: inline-block;
+        }
+
+        .service-tag {
+            display: inline-block;
+            background: rgba(255, 59, 38, 0.1);
+            border: 1px solid rgba(255, 59, 38, 0.2);
+            color: var(--color-accent);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Stat Bar */
+        .stat-bar {
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+            border-right: 1px solid var(--color-border);
+        }
+
+        .stat-item:last-child { border-right: none; }
+
+        .stat-value {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--color-accent);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--color-text-muted);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .hamburger { display: flex; }
+            .desktop-nav { display: none; }
+
+            .hero-content { grid-template-columns: 1fr !important; text-align: center; gap: 40px !important; }
+            .hero h1 { font-size: 42px !important; }
+            .hero p { margin: 0 auto 30px !important; }
+
+            .services-grid,
+            .portfolio-grid,
+            .blog-grid,
+            .process-grid { grid-template-columns: 1fr !important; }
+
+            .about-content,
+            .contact-content { grid-template-columns: 1fr !important; gap: 40px !important; }
+
+            .stat-bar { grid-template-columns: repeat(2, 1fr); }
+            .stat-item:nth-child(2) { border-right: none; }
+            .stat-item:nth-child(3) { border-top: 1px solid var(--color-border); }
+            .stat-item:nth-child(4) { border-top: 1px solid var(--color-border); }
+        }
+
+        @media (max-width: 768px) {
+            header .header-inner { padding: 16px 20px !important; }
+
+            .hero-section { padding: 100px 20px 60px !important; min-height: auto !important; }
+            .hero h1 { font-size: 32px !important; line-height: 1.15 !important; }
+            .hero p { font-size: 16px !important; }
+            .hero-buttons { flex-direction: column !important; gap: 12px !important; }
+
+            .angular-btn, .angular-btn-outline {
+                width: 100% !important;
+                padding: 14px 24px !important;
+                font-size: 13px !important;
+                text-align: center;
+            }
+
+            section { padding: 60px 20px !important; }
+            .section-title { font-size: 28px !important; }
+            .section-label { font-size: 11px !important; letter-spacing: 2px !important; }
+
+            .card, .process-step { padding: 24px !important; }
+
+            .stat-bar { grid-template-columns: repeat(2, 1fr); padding: 20px !important; }
+            .stat-value { font-size: 36px !important; }
+            .stat-label { font-size: 11px !important; }
+
+            .portfolio-thumbnail { aspect-ratio: 16/9 !important; }
+            .portfolio-content { padding: 20px !important; }
+            .portfolio-content h3 { font-size: 20px !important; }
+            .portfolio-content p { font-size: 13px !important; margin-bottom: 16px !important; }
+
+            .blog-image { height: 180px !important; }
+            .blog-content { padding: 20px !important; }
+            .blog-card h3 { font-size: 18px !important; }
+            .blog-card p { font-size: 13px !important; }
+
+            .faq-question { font-size: 16px !important; padding: 20px 0 !important; }
+
+            footer { padding: 50px 20px 30px !important; }
+            .footer-grid { grid-template-columns: 1fr !important; gap: 30px !important; text-align: center !important; }
+
+            .modal-content { height: 100vh !important; max-width: 100% !important; }
+            .modal-header { padding: 16px 20px !important; }
+            .modal-header h3 { font-size: 16px !important; }
+
+            .mobile-menu { padding: 80px 24px 40px !important; }
+            .mobile-menu a { font-size: 20px !important; padding: 12px 0 !important; }
+
+            .gdpr-modal { max-width: 100% !important; margin: 0 10px !important; }
+            .gdpr-content { padding: 24px 20px !important; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 28px !important; }
+            .section-title { font-size: 24px !important; }
+            .portfolio-thumbnail { aspect-ratio: 4/3 !important; }
+            .blog-image { height: 160px !important; }
+            .stat-bar { grid-template-columns: 1fr !important; }
+            .stat-item { border-right: none !important; border-bottom: 1px solid var(--color-border); }
+            .stat-item:last-child { border-bottom: none; }
+        }
+
+        @media (pointer: coarse) {
+            .nav-link, .footer-link, .faq-question, .modal-close {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            .blog-card, .portfolio-card, .card, .process-step { cursor: pointer; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-border);">
+        <div class="header-inner" style="max-width: 1400px; margin: 0 auto; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;">
+            <a href="/" aria-label="Rynex Labs - Acasă" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="rynex-labs-logo.png" alt="Rynex Labs Logo" style="height: 36px; width: auto; display: block;"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display: none; font-size: 24px; font-weight: 800; color: white; letter-spacing: -1px;">
+                    RYNEX<span style="color: var(--color-accent);">.</span>LABS
+                </span>
+            </a>
+
+            <nav class="desktop-nav" style="display: flex; gap: 36px; align-items: center;" aria-label="Navigație principală">
+                <a href="#services" class="nav-link">Servicii</a>
+                <a href="#portfolio" class="nav-link">Portofoliu</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="automatizare-ai.html" class="nav-link nav-cta">Automatizare AI</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Deschide meniu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a href="#services" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Servicii</a>
+        <a href="#portfolio" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Portofoliu</a>
+        <a href="blog.html" class="nav-link" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Blog</a>
+        <a href="automatizare-ai.html" class="nav-link" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border); color: var(--color-accent);">Automatizare AI</a>
+        <a href="#contact" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 22px; padding: 14px 0;">Contact</a>
+        <a href="#contact" class="angular-btn" onclick="toggleMobileMenu()" style="margin-top: 32px; text-align: center;">Începe Proiectul</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" style="min-height: 100vh; display: flex; align-items: center; padding: 140px 40px 80px; position: relative; overflow: hidden;">
+        <div class="red-accent-box" style="top: 20%; right: 10%; width: 200px; height: 200px;"></div>
+        <div class="red-accent-box" style="bottom: 10%; left: 5%; width: 100px; height: 100px;"></div>
+
+        <div class="hero-content" style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; width: 100%;">
+            <div class="scroll-reveal">
+                <p class="section-label">Agenție Web Design & AI · Iași</p>
+                <h1 class="hero" style="font-size: clamp(40px, 6vw, 72px); font-weight: 900; line-height: 1.05; letter-spacing: -2px; margin-bottom: 30px;">
+                    CREĂM<br>
+                    <span style="color: var(--color-accent);">EXPERIENȚE</span><br>
+                    DIGITALE
+                </h1>
+                <p style="color: var(--color-text-muted); font-size: 18px; max-width: 500px; margin-bottom: 40px; line-height: 1.8;">
+                    Website-uri premium și automatizări AI care transformă vizitatorii în clienți. Lucrăm cu afaceri ambițioase din toată România.
+                </p>
+                <div class="hero-buttons" style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 60px;">
+                    <a href="#contact" class="angular-btn">Începe Proiectul</a>
+                    <a href="#portfolio" class="angular-btn-outline">Vezi Portofoliu</a>
+                </div>
+                <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+                    <div>
+                        <div style="font-size: 28px; font-weight: 900; color: var(--color-accent);">50+</div>
+                        <div style="font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px;">Proiecte livrate</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 28px; font-weight: 900; color: var(--color-accent);">3 ani</div>
+                        <div style="font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px;">Experiență</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 28px; font-weight: 900; color: var(--color-accent);">100%</div>
+                        <div style="font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px;">Satisfacție</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-reveal" style="position: relative;">
+                <div style="background: var(--color-surface); border: 1px solid var(--color-border); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                    <div style="position: absolute; inset: 20px; border: 1px solid var(--color-border);"></div>
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--color-accent);"></div>
+                    <div style="text-align: center; padding: 40px; position: relative; z-index: 1;">
+                        <img src="rynex-watermark.png" alt="Rynex Labs" style="max-width: 200px; width: 100%; opacity: 0.8;"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display: none;">
+                            <div style="font-size: 100px; font-weight: 900; color: var(--color-accent); line-height: 1;">R</div>
+                            <div style="font-size: 14px; color: var(--color-text-muted); letter-spacing: 10px; margin-top: 16px;">RYNEX LABS</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="position: absolute; bottom: -20px; right: -20px; width: 60px; height: 60px; background: var(--color-accent);"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" style="padding: 120px 40px; position: relative;">
+        <div class="red-accent-box" style="top: 100px; left: 0; width: 80px; height: 80px;"></div>
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div class="scroll-reveal" style="text-align: center; margin-bottom: 80px;">
+                <p class="section-label">Ce Oferim</p>
+                <h2 class="section-title">Serviciile Noastre</h2>
+                <p style="color: var(--color-text-muted); font-size: 18px; max-width: 600px; margin: 24px auto 0; line-height: 1.8;">
+                    De la website-ul tău de prezentare până la sisteme AI care lucrează non-stop — construim digital pentru afaceri care vor să crească.
+                </p>
+            </div>
+
+            <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <!-- Service 1: Website Creation -->
+                <div class="card scroll-reveal" style="position: relative;">
+                    <div style="width: 60px; height: 60px; background: var(--color-accent); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-size: 24px;" aria-hidden="true">🌐</div>
+                    <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">Creare Website</h3>
+                    <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">
+                        Website personalizat, rapid și optimizat — care arată profesional pe orice dispozitiv și convinge vizitatorii să ia acțiune. De la site de prezentare la magazin online complet.
+                    </p>
+                    <ul style="color: var(--color-text-muted); font-size: 13px; line-height: 2; padding-left: 0; list-style: none;">
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Design premium, responsive</li>
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Optimizat SEO din prima zi</li>
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Livrat în 7–14 zile</li>
+                    </ul>
+                    <span class="service-price">De la 79 euro</span>
+                </div>
+
+                <!-- Service 2: Optimization -->
+                <div class="card scroll-reveal" style="position: relative;">
+                    <div style="width: 60px; height: 60px; background: var(--color-accent); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-size: 24px;" aria-hidden="true">⚡</div>
+                    <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">Optimizare & SEO</h3>
+                    <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">
+                        Site-ul tău există, dar Google îl ignoră? Îmbunătățim viteza, structura și conținutul pentru ca potențialii clienți să te găsească înainte de concurență.
+                    </p>
+                    <ul style="color: var(--color-text-muted); font-size: 13px; line-height: 2; padding-left: 0; list-style: none;">
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Audit tehnic complet</li>
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Viteză sub 2 secunde</li>
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Vizibilitate crescută în Google</li>
+                    </ul>
+                    <span class="service-price">De la 79 euro</span>
+                </div>
+
+                <!-- Service 3: Landing Pages -->
+                <div class="card scroll-reveal" style="position: relative;">
+                    <div style="width: 60px; height: 60px; background: var(--color-accent); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-size: 24px;" aria-hidden="true">🎯</div>
+                    <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">Landing Pages</h3>
+                    <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">
+                        O singură pagină cu un singur scop: să convertească. Perfecte pentru campanii Google Ads, Facebook Ads sau lansări de produse. Fiecare element e construit să convingă.
+                    </p>
+                    <ul style="color: var(--color-text-muted); font-size: 13px; line-height: 2; padding-left: 0; list-style: none;">
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Copywriting persuasiv inclus</li>
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> A/B testing ready</li>
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Livrat în 3–5 zile</li>
+                    </ul>
+                    <span class="service-price">De la 79 euro</span>
+                </div>
+
+                <!-- Service 4: Redesign -->
+                <div class="card scroll-reveal" style="position: relative;">
+                    <div style="width: 60px; height: 60px; background: var(--color-accent); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-size: 24px;" aria-hidden="true">🔄</div>
+                    <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">Redesign Website</h3>
+                    <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">
+                        Ai un site vechi care te face să roșești? Îl transformăm complet — design modern, experiență de utilizator fluidă, performanță crescută. Păstrăm ce funcționează, reconstruim ce nu.
+                    </p>
+                    <ul style="color: var(--color-text-muted); font-size: 13px; line-height: 2; padding-left: 0; list-style: none;">
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Analiză a sitului existent</li>
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Design modern adaptat brandului</li>
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Migrare fără pierderi de SEO</li>
+                    </ul>
+                    <span class="service-price">De la 79 euro</span>
+                </div>
+
+                <!-- Service 5: AI Automation (Featured) -->
+                <div class="card scroll-reveal" style="position: relative; border-color: rgba(255, 59, 38, 0.3); grid-column: span 1;">
+                    <span class="service-tag">NOU</span>
+                    <div style="width: 60px; height: 60px; background: var(--color-accent); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-size: 24px;" aria-hidden="true">🤖</div>
+                    <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">Automatizare AI</h3>
+                    <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">
+                        Chatboți inteligenți, facturare automată, programări fără efort, CRM automatizat, notificări WhatsApp — sisteme AI care lucrează pentru tine 24/7, fără angajați suplimentari.
+                    </p>
+                    <ul style="color: var(--color-text-muted); font-size: 13px; line-height: 2; padding-left: 0; list-style: none;">
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Soluție personalizată afacerii tale</li>
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Integrare cu sistemele existente</li>
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> ROI măsurabil în 30 zile</li>
+                    </ul>
+                    <a href="automatizare-ai.html" class="angular-btn" style="margin-top: 24px; display: inline-block;">Solicită Consultație</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" style="padding: 120px 40px; background: var(--color-surface);">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div class="scroll-reveal" style="text-align: center; margin-bottom: 80px;">
+                <p class="section-label">Lucrările Noastre</p>
+                <h2 class="section-title">Portofoliu</h2>
+                <p style="color: var(--color-text-muted); font-size: 18px; max-width: 550px; margin: 24px auto 0; line-height: 1.8;">
+                    Fiecare proiect e o poveste de transformare. Apasă preview pentru a vedea rezultatele în direct.
+                </p>
+            </div>
+
+            <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+                <!-- DoctorVet -->
+                <article class="portfolio-card scroll-reveal">
+                    <div class="portfolio-thumbnail">
+                        <div class="portfolio-thumbnail-content doctorvet-thumb">
+                            <div class="thumb-header">
+                                <div class="thumb-logo">Doctor<span>Vet</span></div>
+                                <div class="thumb-nav">
+                                    <span>Acasă</span>
+                                    <span>Servicii</span>
+                                    <span>Contact</span>
+                                </div>
+                            </div>
+                            <div class="thumb-hero">
+                                <h2>Îngrijire Veterinară</h2>
+                                <p>Oferim servicii veterinare complete pentru prietenii tăi blănoși</p>
+                                <span class="thumb-btn">Programează o Vizită</span>
+                            </div>
+                            <div class="thumb-services">
+                                <div class="thumb-service">
+                                    <div class="thumb-service-icon">🏥</div>
+                                    <div class="thumb-service-title">Consultații</div>
+                                </div>
+                                <div class="thumb-service">
+                                    <div class="thumb-service-icon">💉</div>
+                                    <div class="thumb-service-title">Vaccinări</div>
+                                </div>
+                                <div class="thumb-service">
+                                    <div class="thumb-service-icon">🔬</div>
+                                    <div class="thumb-service-title">Laborator</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>DoctorVet</h3>
+                        <p>Clinică veterinară — platformă cu programări online, prezentare servicii și sistem de notificări pentru clienți.</p>
+                        <button class="angular-btn" onclick="openPreview('doctorvet.html')">LIVE PREVIEW</button>
+                    </div>
+                </article>
+
+                <!-- Café Noir -->
+                <article class="portfolio-card scroll-reveal">
+                    <div class="portfolio-thumbnail">
+                        <div class="portfolio-thumbnail-content cafenoir-thumb">
+                            <div class="thumb-header">
+                                <div class="thumb-logo">Café Noir</div>
+                            </div>
+                            <div class="thumb-hero">
+                                <h2>Café Noir</h2>
+                                <p>Arta cafelei perfecte</p>
+                                <span class="thumb-btn">Descoperă Meniul</span>
+                            </div>
+                            <div class="thumb-menu">
+                                <div class="thumb-menu-item">
+                                    <span class="thumb-menu-name">Espresso</span>
+                                    <span class="thumb-menu-price">8 lei</span>
+                                </div>
+                                <div class="thumb-menu-item">
+                                    <span class="thumb-menu-name">Cappuccino</span>
+                                    <span class="thumb-menu-price">14 lei</span>
+                                </div>
+                                <div class="thumb-menu-item">
+                                    <span class="thumb-menu-name">Latte</span>
+                                    <span class="thumb-menu-price">15 lei</span>
+                                </div>
+                                <div class="thumb-menu-item">
+                                    <span class="thumb-menu-name">Flat White</span>
+                                    <span class="thumb-menu-price">16 lei</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Café Noir</h3>
+                        <p>Cafenea premium — identitate vizuală distinctă, meniu digital interactiv și atmosferă transpusă în fiecare pixel.</p>
+                        <button class="angular-btn" onclick="openPreview('cafenoir.html')">LIVE PREVIEW</button>
+                    </div>
+                </article>
+
+                <!-- FitnessForge -->
+                <article class="portfolio-card scroll-reveal">
+                    <div class="portfolio-thumbnail">
+                        <div class="portfolio-thumbnail-content fitnessforge-thumb">
+                            <div class="thumb-header">
+                                <div class="thumb-logo">Fitness<span>Forge</span></div>
+                                <div class="thumb-nav-btn">Începe Acum</div>
+                            </div>
+                            <div class="thumb-hero">
+                                <div class="thumb-hero-text">
+                                    <h2>Forge Your <span>Best Self</span></h2>
+                                    <p>Antrenamente personalizate și nutriție avansată pentru transformarea ta.</p>
+                                    <span class="thumb-btn">Începe Transformarea</span>
+                                </div>
+                                <div class="thumb-stats">
+                                    <div class="thumb-stat">
+                                        <div class="thumb-stat-value">5k+</div>
+                                        <div class="thumb-stat-label">Membri</div>
+                                    </div>
+                                    <div class="thumb-stat">
+                                        <div class="thumb-stat-value">50+</div>
+                                        <div class="thumb-stat-label">Antrenori</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>FitnessForge</h3>
+                        <p>Platformă fitness — programe de antrenament, tracking progres și comunitate activă. Rata de retenție a crescut cu 25% după lansare.</p>
+                        <button class="angular-btn" onclick="openPreview('fitnessforge.html')">LIVE PREVIEW</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" style="padding: 120px 40px;">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div class="scroll-reveal" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 80px; flex-wrap: wrap; gap: 24px;">
+                <div>
+                    <p class="section-label">Cunoștințe Gratuite</p>
+                    <h2 class="section-title">Blog</h2>
+                </div>
+                <a href="blog.html" class="angular-btn-outline">Toate articolele →</a>
+            </div>
+
+            <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+                <a class="blog-card scroll-reveal" href="blog/design-responsiv-2026.html">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #1e3a5f 0%, #0d2137 100%);"></div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Design</span>
+                            <span class="blog-date">15 Ian 2026 · 8 min</span>
+                        </div>
+                        <h3>De ce design-ul responsive este esențial în 2026</h3>
+                        <p>Descoperă de ce website-ul tău trebuie să arate perfect pe orice dispozitiv, de la desktop la mobile.</p>
+                        <span class="read-more">Citește articolul →</span>
+                    </div>
+                </a>
+
+                <a class="blog-card scroll-reveal" href="blog/seo-ghid-complet.html">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #2d1b1b 0%, #1a0f0f 100%);"></div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">SEO</span>
+                            <span class="blog-date">10 Ian 2026 · 12 min</span>
+                        </div>
+                        <h3>SEO pentru începători: Ghid complet 2026</h3>
+                        <p>Învață bazele optimizării pentru motoarele de căutare și cum să crești vizibilitatea online a afacerii tale.</p>
+                        <span class="read-more">Citește articolul →</span>
+                    </div>
+                </a>
+
+                <a class="blog-card scroll-reveal" href="blog/viteza-website.html">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);"></div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-category">Performanță</span>
+                            <span class="blog-date">5 Ian 2026 · 10 min</span>
+                        </div>
+                        <h3>Cum să îmbunătățești viteza website-ului</h3>
+                        <p>Tehnici și strategii pentru a reduce timpul de încărcare și a îmbunătăți experiența utilizatorilor.</p>
+                        <span class="read-more">Citește articolul →</span>
+                    </div>
+                </a>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="blog.html" class="angular-btn-outline">Vezi toate cele 5 articole →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section (replacing fake testimonials) -->
+    <section id="process" style="padding: 120px 40px; background: var(--color-surface);">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div class="scroll-reveal" style="text-align: center; margin-bottom: 80px;">
+                <p class="section-label">Cum Lucrăm</p>
+                <h2 class="section-title">Procesul Nostru</h2>
+                <p style="color: var(--color-text-muted); font-size: 18px; max-width: 600px; margin: 24px auto 0; line-height: 1.8;">
+                    Patru etape clare, fără surprize. Știi mereu unde ești și ce urmează.
+                </p>
+            </div>
+
+            <div class="process-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; background: var(--color-border);">
+                <div class="process-step scroll-reveal" style="background: var(--color-bg);">
+                    <div class="process-number">01</div>
+                    <div style="width: 48px; height: 48px; background: var(--color-accent); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 20px;" aria-hidden="true">💬</div>
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">Consultație & Strategie</h3>
+                    <p style="color: var(--color-text-muted); line-height: 1.8; font-size: 15px;">
+                        Discutăm obiectivele tale, analizăm concurența și stabilim împreună ce are nevoie afacerea ta. Fără prezentări inutile — direct la subiect.
+                    </p>
+                </div>
+
+                <div class="process-step scroll-reveal" style="background: var(--color-bg);">
+                    <div class="process-number">02</div>
+                    <div style="width: 48px; height: 48px; background: var(--color-accent); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 20px;" aria-hidden="true">🎨</div>
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">Design & Prototip</h3>
+                    <p style="color: var(--color-text-muted); line-height: 1.8; font-size: 15px;">
+                        Creăm prototipul vizual al proiectului. Poți vedea și aproba designul înainte de a trece la dezvoltare. Revizuiri incluse.
+                    </p>
+                </div>
+
+                <div class="process-step scroll-reveal" style="background: var(--color-bg);">
+                    <div class="process-number">03</div>
+                    <div style="width: 48px; height: 48px; background: var(--color-accent); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 20px;" aria-hidden="true">⚙️</div>
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">Dezvoltare & Testare</h3>
+                    <p style="color: var(--color-text-muted); line-height: 1.8; font-size: 15px;">
+                        Construim proiectul cu cod curat, performant și SEO-ready. Testăm pe toate dispozitivele și browserele înainte de lansare.
+                    </p>
+                </div>
+
+                <div class="process-step scroll-reveal" style="background: var(--color-bg);">
+                    <div class="process-number">04</div>
+                    <div style="width: 48px; height: 48px; background: var(--color-accent); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 20px;" aria-hidden="true">🚀</div>
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">Lansare & Suport</h3>
+                    <p style="color: var(--color-text-muted); line-height: 1.8; font-size: 15px;">
+                        Lansăm proiectul și îți oferim suport post-lansare. Nu dispărem după livrare — rămânem disponibili pentru orice ajustare.
+                    </p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="#contact" class="angular-btn">Începe Procesul Acum</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" style="padding: 120px 40px;">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div class="scroll-reveal" style="text-align: center; margin-bottom: 80px;">
+                <p class="section-label">Întrebări Frecvente</p>
+                <h2 class="section-title">FAQ</h2>
+            </div>
+
+            <div class="scroll-reveal">
+                <div class="faq-item open">
+                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="true">
+                        Cât durează realizarea unui website?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Depinde de complexitate. Un site de prezentare simplu îl livrăm în <strong>7–10 zile lucrătoare</strong>. Un proiect mai complex (magazin online, platformă cu funcționalități specifice) poate dura 3–6 săptămâni. Stabilim un calendar clar la începutul colaborării, fără surprize.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                        Care sunt prețurile serviciilor?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Prețurile pornesc de la <strong>79 euro</strong> pentru un site de prezentare simplu. Prețul final depinde de numărul de pagini, funcționalitățile necesare și nivelul de personalizare. Oferim întotdeauna o ofertă detaliată și transparentă după consultație — fără costuri ascunse.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                        Oferiți suport și mentenanță după lansare?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Da. Oferim o perioadă de suport inclus după lansare pentru ajustări și corecții. Dacă ai nevoie de mentenanță continuă sau actualizări regulate, putem stabili un plan lunar adaptat nevoilor tale.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                        Lucrați cu clienți din toată România?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Absolut. Suntem bazați în Iași, dar colaborăm cu clienți din toată România și din diaspora. Întâlnirile se pot face online (Zoom, Meet) sau față în față dacă ești în Iași.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                        Ce este automatizarea AI și cum îmi poate ajuta afacerea?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Automatizarea AI înseamnă sisteme inteligente care preiau taskuri repetitive: răspuns automat la mesaje, emitere facturi, programări, notificări clienți, rapoarte. Practic, angajezi un "angajat digital" care lucrează 24/7, fără pauze și fără erori. <a href="automatizare-ai.html" style="color: var(--color-accent);">Află mai multe →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+                        Pot vedea exemple de lucrări anterioare?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Da! Secțiunea <a href="#portfolio" style="color: var(--color-accent);">Portofoliu</a> de mai sus conține proiecte reale cu preview live. Poți vedea DoctorVet, Café Noir și FitnessForge direct în browser.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="padding: 120px 40px; background: var(--color-surface);">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div class="scroll-reveal" style="text-align: center; margin-bottom: 80px;">
+                <p class="section-label">Hai să vorbim</p>
+                <h2 class="section-title">Contact</h2>
+            </div>
+
+            <div class="contact-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1200px; margin: 0 auto;">
+                <div class="scroll-reveal">
+                    <h3 style="font-size: 32px; font-weight: 700; margin-bottom: 20px; line-height: 1.2;">Să începem un proiect împreună</h3>
+                    <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 40px;">
+                        Completează formularul și te contactăm în cel mult 24 ore. Prima consultație este gratuită.
+                    </p>
+
+                    <div style="margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--color-border);">
+                        <div style="color: var(--color-text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Locație</div>
+                        <div style="font-size: 17px;">Iași, România</div>
+                    </div>
+
+                    <div style="margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--color-border);">
+                        <div style="color: var(--color-text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Email</div>
+                        <a href="mailto:rynexlabsbusiness@gmail.com" style="font-size: 17px; color: white; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='white'">rynexlabsbusiness@gmail.com</a>
+                    </div>
+
+                    <div style="margin-bottom: 28px;">
+                        <div style="color: var(--color-text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Telefon</div>
+                        <a href="tel:+40747202811" style="font-size: 17px; color: white; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='white'">+40 747 202 811</a>
+                    </div>
+
+                    <div style="background: rgba(255,59,38,0.06); border: 1px solid rgba(255,59,38,0.15); padding: 24px; margin-top: 40px;">
+                        <div style="font-size: 13px; font-weight: 600; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Timp de răspuns</div>
+                        <div style="color: var(--color-text-muted); font-size: 14px; line-height: 1.7;">Răspundem în maxim 24 ore în zilele lucrătoare. Urgențe? Scrie pe WhatsApp la numărul de mai sus.</div>
+                    </div>
+                </div>
+
+                <div class="scroll-reveal">
+                    <form id="contactForm" novalidate style="display: flex; flex-direction: column; gap: 16px;">
+                        <!-- Honeypot (spam protection) -->
+                        <div style="display: none;" aria-hidden="true">
+                            <input type="text" name="_honeypot" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                            <div>
+                                <label for="contact-name" style="display: block; font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Nume *</label>
+                                <input type="text" id="contact-name" name="name" class="input-field" placeholder="Numele tău" required autocomplete="name">
+                            </div>
+                            <div>
+                                <label for="contact-email" style="display: block; font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Email *</label>
+                                <input type="email" id="contact-email" name="email" class="input-field" placeholder="email@exemplu.ro" required autocomplete="email">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="contact-phone" style="display: block; font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Telefon</label>
+                            <input type="tel" id="contact-phone" name="phone" class="input-field" placeholder="+40 7XX XXX XXX" autocomplete="tel">
+                        </div>
+
+                        <div>
+                            <label for="contact-subject" style="display: block; font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Serviciu dorit *</label>
+                            <select id="contact-subject" name="subject" class="input-field" required>
+                                <option value="" disabled selected>Alege serviciul...</option>
+                                <option value="Creare Website">Creare Website</option>
+                                <option value="Optimizare &amp; SEO">Optimizare &amp; SEO</option>
+                                <option value="Landing Page">Landing Page</option>
+                                <option value="Redesign Website">Redesign Website</option>
+                                <option value="Automatizare AI">Automatizare AI</option>
+                                <option value="Altele">Altele / Nu știu încă</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="contact-message" style="display: block; font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Detalii proiect *</label>
+                            <textarea id="contact-message" name="message" class="input-field" placeholder="Descrie pe scurt ce ai nevoie..." required style="min-height: 130px;"></textarea>
+                        </div>
+
+                        <button type="submit" class="angular-btn" id="submitBtn" style="width: 100%; font-size: 15px; padding: 18px;">
+                            Trimite Mesajul
+                        </button>
+
+                        <p style="color: var(--color-text-muted); font-size: 12px; text-align: center; line-height: 1.6;">
+                            Datele tale sunt confidențiale. Nu le vom împărtăși cu terți.<br>
+                            Prin trimitere, accepți <a href="#" onclick="showPrivacyModal(); return false;" style="color: var(--color-accent);">Politica de Confidențialitate</a>.
+                        </p>
+                    </form>
+                    <div id="formStatus" style="margin-top: 16px; text-align: center;" role="status" aria-live="polite"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="padding: 80px 40px 40px; background: var(--color-bg); border-top: 1px solid var(--color-border);">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 60px; margin-bottom: 60px;">
+                <div>
+                    <a href="/" aria-label="Rynex Labs - Acasă" style="display: inline-flex; align-items: center; text-decoration: none; margin-bottom: 20px;">
+                        <img src="rynex-labs-logo.png" alt="Rynex Labs" style="height: 32px; width: auto;"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                        <span style="display: none; font-size: 22px; font-weight: 800; color: white; letter-spacing: -1px;">
+                            RYNEX<span style="color: var(--color-accent);">.</span>LABS
+                        </span>
+                    </a>
+                    <p style="color: var(--color-text-muted); line-height: 1.8; font-size: 14px;">
+                        Agenție web design Iași. Website-uri premium și automatizări AI pentru afaceri ambițioase din toată România.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Servicii</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="#services" class="footer-link">Creare Website</a>
+                        <a href="#services" class="footer-link">Optimizare &amp; SEO</a>
+                        <a href="#services" class="footer-link">Landing Pages</a>
+                        <a href="#services" class="footer-link">Redesign Website</a>
+                        <a href="automatizare-ai.html" class="footer-link" style="color: var(--color-accent);">Automatizare AI ↗</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Navigație</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="#portfolio" class="footer-link">Portofoliu</a>
+                        <a href="blog.html" class="footer-link">Blog</a>
+                        <a href="#process" class="footer-link">Procesul Nostru</a>
+                        <a href="#faq" class="footer-link">FAQ</a>
+                        <a href="#contact" class="footer-link">Contact</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Legal & Contact</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px; color: var(--color-text-muted);">
+                        <a href="mailto:rynexlabsbusiness@gmail.com" class="footer-link">rynexlabsbusiness@gmail.com</a>
+                        <a href="tel:+40747202811" class="footer-link">+40 747 202 811</a>
+                        <span style="font-size: 14px;">Iași, România</span>
+                        <a href="#" class="footer-link" onclick="showPrivacyModal(); return false;">Politica de Confidențialitate</a>
+                        <a href="#" class="footer-link" onclick="showTermsModal(); return false;">Termeni și Condiții</a>
+                        <a href="#" class="footer-link" onclick="showCookiesModal(); return false;">Politica Cookies</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding-top: 40px; border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; color: var(--color-text-muted); font-size: 13px;">
+                <span>© 2026 Rynex Labs. Toate drepturile rezervate.</span>
+                <div style="display: flex; gap: 20px;">
+                    <a href="sitemap.xml" class="footer-link" style="font-size: 13px;">Sitemap</a>
+                    <a href="blog.html" class="footer-link" style="font-size: 13px;">Blog</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Preview Modal -->
+    <div class="modal-overlay" id="previewModal" role="dialog" aria-modal="true" aria-label="Live Preview">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="previewTitle" style="font-size: 18px; font-weight: 700;">Live Preview</h3>
+                <button class="modal-close" onclick="closePreview()">Închide ✕</button>
+            </div>
+            <iframe class="modal-iframe" id="previewFrame" title="Preview proiect" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div class="modal-overlay" id="privacyModal" role="dialog" aria-modal="true">
+        <div class="modal-content gdpr-modal">
+            <div class="modal-header">
+                <h3 style="font-size: 18px; font-weight: 700;">Politica de Confidențialitate</h3>
+                <button class="modal-close" onclick="closeModals()">Închide ✕</button>
+            </div>
+            <div class="gdpr-content">
+                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">1. Informații Generale</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Rynex Labs respectă confidențialitatea datelor tale personale. Această politică explică cum colectăm, folosim și protejăm informațiile tale. Suntem conformi cu Regulamentul GDPR (UE) 2016/679.</p>
+                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">2. Date Colectate</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Colectăm numele, adresa de email, numărul de telefon și mesajul tău atunci când ne contactezi prin formularul de contact. Datele sunt folosite exclusiv pentru a te contacta în legătură cu solicitarea ta.</p>
+                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">3. Drepturile Tale</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Ai dreptul să accesezi, să modifici sau să ștergi datele tale personale. Pentru orice solicitare, contactează-ne la <a href="mailto:rynexlabsbusiness@gmail.com" style="color: var(--color-accent);">rynexlabsbusiness@gmail.com</a>.</p>
+                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">4. Securitate</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8;">Datele tale sunt transmise securizat prin HTTPS și nu sunt vândute sau ceddate terților.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div class="modal-overlay" id="termsModal" role="dialog" aria-modal="true">
+        <div class="modal-content gdpr-modal">
+            <div class="modal-header">
+                <h3 style="font-size: 18px; font-weight: 700;">Termeni și Condiții</h3>
+                <button class="modal-close" onclick="closeModals()">Închide ✕</button>
+            </div>
+            <div class="gdpr-content">
+                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">1. Acceptarea Termenilor</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Prin accesarea și utilizarea acestui website, acceptați acești termeni și condiții în integralitatea lor.</p>
+                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">2. Serviciile Oferite</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Rynex Labs oferă servicii de web design, dezvoltare website, optimizare SEO, automatizare AI și consultanță digitală. Detaliile fiecărui proiect se stabilesc prin contract separat.</p>
+                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">3. Proprietate Intelectuală</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Tot conținutul acestui website (texte, imagini, design) este proprietatea Rynex Labs și este protejat de legislația drepturilor de autor.</p>
+                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">4. Contact</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8;">Pentru orice întrebare legată de acești termeni, contactați-ne la <a href="mailto:rynexlabsbusiness@gmail.com" style="color: var(--color-accent);">rynexlabsbusiness@gmail.com</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookies Modal -->
+    <div class="modal-overlay" id="cookiesModal" role="dialog" aria-modal="true">
+        <div class="modal-content gdpr-modal">
+            <div class="modal-header">
+                <h3 style="font-size: 18px; font-weight: 700;">Politica Cookies</h3>
+                <button class="modal-close" onclick="closeModals()">Închide ✕</button>
+            </div>
+            <div class="gdpr-content">
+                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">1. Ce sunt Cookie-urile</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Cookie-urile sunt fișiere text mici stocate pe dispozitivul tău când vizitezi un website. Ne ajută să îmbunătățim experiența pe site.</p>
+                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">2. Ce Cookie-uri Folosim</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Folosim exclusiv cookie-uri funcționale, necesare pentru funcționarea corectă a website-ului. Nu folosim cookie-uri de tracking sau publicitate.</p>
+                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">3. Controlul Cookie-urilor</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8;">Poți controla și/sau șterge cookie-urile din setările browserului tău. Atenție: dezactivarea unor cookie-uri poate afecta funcționalitatea site-ului.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // EmailJS initialization
+        // SETUP: In EmailJS dashboard, ensure template_rynex sends to rynexlabsbusiness@gmail.com
+        (function() {
+            emailjs.init("5X1hGHh4d5i1hPKe7");
+        })();
+
+        // Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const hamburger = document.querySelector('.hamburger');
+            const isOpen = menu.classList.toggle('active');
+            menu.setAttribute('aria-hidden', !isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        }
+
+        // Portfolio Preview Modal
+        function openPreview(url) {
+            document.getElementById('previewFrame').src = url;
+            document.getElementById('previewModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePreview() {
+            document.getElementById('previewModal').classList.remove('active');
+            document.getElementById('previewFrame').src = '';
+            document.body.style.overflow = '';
+        }
+
+        // GDPR Modals
+        function showPrivacyModal() {
+            document.getElementById('privacyModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showTermsModal() {
+            document.getElementById('termsModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showCookiesModal() {
+            document.getElementById('cookiesModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModals() {
+            document.querySelectorAll('.modal-overlay').forEach(modal => modal.classList.remove('active'));
+            document.getElementById('previewFrame').src = '';
+            document.body.style.overflow = '';
+        }
+
+        // Close modals on backdrop click
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeModals();
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModals();
+        });
+
+        // FAQ Accordion
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            const isOpen = item.classList.contains('open');
+
+            document.querySelectorAll('.faq-item').forEach(i => {
+                i.classList.remove('open');
+                i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            });
+
+            if (!isOpen) {
+                item.classList.add('open');
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Honeypot check
+            if (this._honeypot && this._honeypot.value) return;
+
+            const formStatus = document.getElementById('formStatus');
+            const submitBtn = document.getElementById('submitBtn');
+
+            // Basic validation
+            const name = this.name.value.trim();
+            const email = this.email.value.trim();
+            const subject = this.subject.value;
+            const message = this.message.value.trim();
+
+            if (!name || !email || !subject || !message) {
+                formStatus.innerHTML = '<p style="color: var(--color-accent); font-size: 14px;">Te rugăm să completezi toate câmpurile obligatorii.</p>';
+                return;
+            }
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                formStatus.innerHTML = '<p style="color: var(--color-accent); font-size: 14px;">Adresa de email nu este validă.</p>';
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Se trimite...';
+            formStatus.innerHTML = '';
+
+            emailjs.sendForm('service_rynex', 'template_rynex', this)
+                .then(() => {
+                    formStatus.innerHTML = '<p style="color: #22c55e; font-size: 15px; font-weight: 600;">✓ Mesaj trimis cu succes! Te contactăm în 24 ore.</p>';
+                    this.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Trimite Mesajul';
+                })
+                .catch(() => {
+                    formStatus.innerHTML = '<p style="color: var(--color-accent); font-size: 14px;">Eroare la trimitere. Încearcă din nou sau scrie direct la <a href="mailto:rynexlabsbusiness@gmail.com" style="color: var(--color-accent);">rynexlabsbusiness@gmail.com</a></p>';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Trimite Mesajul';
+                });
+        });
+
+        // Scroll Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.style.background = window.scrollY > 100
+                ? 'rgba(10,10,10,0.98)'
+                : 'rgba(10,10,10,0.95)';
+        }, { passive: true });
+    </script>
+</body>
+</html>
