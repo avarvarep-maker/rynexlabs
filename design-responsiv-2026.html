@@ -99,8 +99,10 @@
         .mobile-menu.active { display: flex; }
         .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; z-index: 1001; background: none; border: none; padding: 4px; }
         .hamburger span { width: 28px; height: 2px; background: var(--color-text); display: block; }
+        .desktop-nav { display: flex; gap: 36px; align-items: center; }
+        .site-logo { height: 64px; width: auto; display: block; }
 
-        @media (max-width: 1024px) { .hamburger { display: flex; } .desktop-nav { display: none; } }
+        @media (max-width: 1024px) { .hamburger { display: flex; } .desktop-nav { display: none !important; } }
         @media (max-width: 768px) {
             header .header-inner { padding: 16px 20px !important; }
             .article-hero { padding: 100px 20px 60px !important; }
@@ -118,11 +120,11 @@
     <header style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-border);">
         <div class="header-inner" style="max-width: 1400px; margin: 0 auto; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;">
             <a href="../index.html" aria-label="Rynex Labs" style="display: flex; align-items: center; text-decoration: none;">
-                <img src="../rynex-labs-logo.png" alt="Rynex Labs Logo" style="height: 52px; width: auto;"
+                <img src="../rynex-labs-logo.png" alt="Rynex Labs Logo" class="site-logo"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <span style="display: none; font-size: 22px; font-weight: 800; color: white; letter-spacing: -1px;">RYNEX<span style="color: var(--color-accent);">.</span>LABS</span>
             </a>
-            <nav class="desktop-nav" style="display: flex; gap: 36px; align-items: center;">
+            <nav class="desktop-nav">
                 <a href="../index.html#services" class="nav-link">Servicii</a>
                 <a href="../index.html#templates" class="nav-link">Template-uri</a>
                 <a href="../blog.html" class="nav-link" style="color: var(--color-text);">Blog</a>
@@ -279,7 +281,7 @@
             <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 60px; margin-bottom: 60px;">
                 <div>
                     <a href="../index.html" style="display: inline-flex; align-items: center; text-decoration: none; margin-bottom: 20px;">
-                        <img src="../rynex-labs-logo.png" alt="Rynex Labs" style="height: 44px; width: auto;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                        <img src="../rynex-labs-logo.png" alt="Rynex Labs" class="site-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
                         <span style="display: none; font-size: 22px; font-weight: 800; color: white; letter-spacing: -1px;">RYNEX<span style="color: var(--color-accent);">.</span>LABS</span>
                     </a>
                     <p style="color: var(--color-text-muted); line-height: 1.8; font-size: 14px;">Agenție web design Iași. Website-uri premium și automatizări AI pentru afaceri ambițioase din toată România.</p>
