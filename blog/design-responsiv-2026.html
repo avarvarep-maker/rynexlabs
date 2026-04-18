@@ -53,7 +53,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        :root { --color-bg: #0a0a0a; --color-surface: #141414; --color-accent: #ff3b26; --color-accent-dark: #cc2e1d; --color-text: #ffffff; --color-text-muted: #888888; --color-border: #2a2a2a; }
+        :root { --color-bg: #0a0a0a; --color-surface: #141414; --color-accent: #ff3b26; --color-accent-dark: #cc2e1d; --color-text: #ffffff; --color-text-muted: #888888; --color-border: #2a2a2a;
+            --color-bg-alt: #0d0d0d; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         *, *::before, *::after { border-radius: 0 !important; }
         html { scroll-behavior: smooth; }
@@ -99,8 +100,10 @@
         .mobile-menu.active { display: flex; }
         .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; z-index: 1001; background: none; border: none; padding: 4px; }
         .hamburger span { width: 28px; height: 2px; background: var(--color-text); display: block; }
+        .desktop-nav { display: flex; gap: 36px; align-items: center; }
+        .site-logo { width: 210px; height: 80px; object-fit: cover; object-position: center; display: block; }
 
-        @media (max-width: 1024px) { .hamburger { display: flex; } .desktop-nav { display: none; } }
+        @media (max-width: 1024px) { .hamburger { display: flex; } .desktop-nav { display: none !important; } }
         @media (max-width: 768px) {
             header .header-inner { padding: 16px 20px !important; }
             .article-hero { padding: 100px 20px 60px !important; }
@@ -112,22 +115,54 @@
             .related-grid { grid-template-columns: 1fr !important; }
             .mobile-menu { padding: 80px 24px 40px !important; }
         }
-    </style>
+            /* Micro-contrast between sections */
+        .section-alt { background: var(--color-bg-alt) !important; }
+
+        /* Sophisticated card hover */
+        .card-hover { position: relative; overflow: hidden; }
+        .card-hover::before {
+            content: ''; position: absolute; left: 0; bottom: 0;
+            width: 3px; height: 0; background: var(--color-accent);
+            transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1;
+        }
+        .card-hover:hover::before { height: 100%; }
+
+        /* Editorial blockquote */
+        .quote-editorial {
+            border-left: 4px solid var(--color-accent); padding: 32px 40px;
+            margin: 40px 0; background: var(--color-surface); position: relative;
+        }
+        .quote-editorial::before {
+            content: '"'; position: absolute; top: 12px; left: 20px;
+            font-size: 72px; color: var(--color-accent); opacity: 0.12;
+            line-height: 1; font-family: Georgia, serif;
+        }
+        .quote-editorial blockquote {
+            font-size: clamp(18px, 2.5vw, 22px); font-weight: 400;
+            font-style: italic; line-height: 1.7; color: var(--color-text);
+            margin: 0; padding-left: 16px; position: relative; z-index: 1;
+        }
+        .quote-editorial cite {
+            display: block; margin-top: 20px; color: var(--color-text-muted);
+            font-size: 14px; font-style: normal; text-transform: uppercase; letter-spacing: 2px;
+        }
+
+        </style>
 </head>
 <body>
     <header style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-border);">
         <div class="header-inner" style="max-width: 1400px; margin: 0 auto; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;">
-            <a href="../index_fixed.html" aria-label="Rynex Labs" style="display: flex; align-items: center; text-decoration: none;">
-                <img src="../rynex-labs-logo.png" alt="Rynex Labs Logo" style="height: 36px; width: auto;"
+            <a href="../index.html" aria-label="Rynex Labs" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="../rynex-labs-logo.png" alt="Rynex Labs Logo" class="site-logo"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <span style="display: none; font-size: 22px; font-weight: 800; color: white; letter-spacing: -1px;">RYNEX<span style="color: var(--color-accent);">.</span>LABS</span>
             </a>
-            <nav class="desktop-nav" style="display: flex; gap: 36px; align-items: center;">
-                <a href="../index_fixed.html#services" class="nav-link">Servicii</a>
-                <a href="../index_fixed.html#portfolio" class="nav-link">Portofoliu</a>
-                <a href="../blog.html" class="nav-link" style="color: var(--color-text);">Blog</a>
+            <nav class="desktop-nav">
                 <a href="../automatizare-ai.html" class="nav-link nav-cta">Automatizare AI</a>
-                <a href="../index_fixed.html#contact" class="nav-link">Contact</a>
+                <a href="../servicii.html" class="nav-link">Servicii</a>
+                <a href="../site-ul-tau.html" class="nav-link">Site-ul Tău</a>
+                <a href="../blog.html" class="nav-link" style="color: var(--color-text);">Blog</a>
+                <a href="../contact.html" class="nav-link">Contact</a>
             </nav>
             <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('active')" aria-label="Meniu">
                 <span></span><span></span><span></span>
@@ -136,18 +171,19 @@
     </header>
 
     <div class="mobile-menu" id="mobileMenu">
-        <a href="../index_fixed.html#services" class="nav-link" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Servicii</a>
+        <a href="../automatizare-ai.html" class="nav-link" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border); color: var(--color-accent);">Automatizare AI</a>
+        <a href="../servicii.html" class="nav-link" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Servicii</a>
+        <a href="../site-ul-tau.html" class="nav-link" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Site-ul Tău</a>
         <a href="../blog.html" class="nav-link" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Blog</a>
-        <a href="../automatizare-ai.html" class="nav-link" style="font-size: 22px; padding: 14px 0; color: var(--color-accent);">Automatizare AI</a>
-        <a href="../index_fixed.html#contact" class="nav-link" style="font-size: 22px; padding: 14px 0;">Contact</a>
+        <a href="../contact.html" class="nav-link" style="font-size: 22px; padding: 14px 0;">Contact</a>
     </div>
 
     <!-- Article Hero -->
-    <section class="article-hero" style="padding: 140px 40px 80px; background: var(--color-surface); border-bottom: 1px solid var(--color-border);">
+    <section class="article-hero" style="padding: 140px 40px 80px; background: linear-gradient(to bottom, rgba(10,10,10,0.6), var(--color-surface)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80'); background-size: cover; background-position: center; border-bottom: 1px solid var(--color-border);">
         <div style="max-width: 900px; margin: 0 auto;">
             <nav aria-label="Breadcrumb" style="margin-bottom: 32px;">
                 <ol class="breadcrumb" style="list-style: none; padding: 0;">
-                    <li><a href="../index_fixed.html">Acasă</a></li>
+                    <li><a href="../index.html">Acasă</a></li>
                     <li><span style="color: var(--color-border);">›</span></li>
                     <li><a href="../blog.html">Blog</a></li>
                     <li><span style="color: var(--color-border);">›</span></li>
@@ -222,7 +258,7 @@
 
                 <div class="highlight-box">
                     <h4>Checklist Responsive Design</h4>
-                    <p>✓ Texte lizibile fără zoom pe mobil (min. 16px)<br>
+                    <p>&#10003; Texte lizibile fără zoom pe mobil (min. 16px)<br>
                     ✓ Butoane și linkuri ușor de apăsat cu degetul (min. 44px)<br>
                     ✓ Nicio derulare orizontală<br>
                     ✓ Imagini care nu depășesc lățimea ecranului<br>
@@ -235,27 +271,14 @@
                 <p>La Rynex Labs, fiecare proiect pe care îl construim pornește de la principiul mobile-first. Vrei să afli cum arată site-ul tău actual pe mobil și ce poți îmbunătăți?</p>
 
                 <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--color-border);">
-                    <a href="../index_fixed.html#contact" class="angular-btn">Solicită Audit Gratuit</a>
+                    <a href="../contact.html" class="angular-btn">Solicită Audit Gratuit</a>
                     <a href="../blog.html" class="angular-btn-outline">← Înapoi la Blog</a>
                 </div>
             </div>
 
             <!-- Sidebar -->
             <aside style="position: sticky; top: 100px;">
-                <div style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 32px; margin-bottom: 24px;">
-                    <h3 style="font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; color: var(--color-accent);">Ai nevoie de ajutor?</h3>
-                    <p style="color: var(--color-text-muted); font-size: 14px; line-height: 1.7; margin-bottom: 20px;">Evaluăm gratuit site-ul tău actual și îți spunem ce trebuie îmbunătățit.</p>
-                    <a href="../index_fixed.html#contact" class="angular-btn" style="width: 100%; text-align: center; display: block; padding: 14px 20px;">Consultație Gratuită</a>
-                </div>
-
-                <div style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 32px;">
-                    <h3 style="font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Articole Similare</h3>
-                    <div style="display: flex; flex-direction: column; gap: 16px;">
-                        <a href="viteza-website.html" style="color: var(--color-text-muted); text-decoration: none; font-size: 14px; line-height: 1.5; transition: color 0.3s ease;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='var(--color-text-muted)'">→ Cum să îmbunătățești viteza website-ului</a>
-                        <a href="seo-ghid-complet.html" style="color: var(--color-text-muted); text-decoration: none; font-size: 14px; line-height: 1.5; transition: color 0.3s ease;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='var(--color-text-muted)'">→ SEO pentru începători: Ghid complet 2026</a>
-                        <a href="tendinte-web-design-2026.html" style="color: var(--color-text-muted); text-decoration: none; font-size: 14px; line-height: 1.5; transition: color 0.3s ease;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='var(--color-text-muted)'">→ Tendințe web design în 2026</a>
-                    </div>
-                </div>
+                
             </aside>
         </div>
     </section>
@@ -274,15 +297,52 @@
         </div>
     </section>
 
-    <footer style="padding: 40px; background: var(--color-surface); border-top: 1px solid var(--color-border);">
-        <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-            <a href="../index_fixed.html" style="text-decoration: none; font-size: 20px; font-weight: 800; color: white; letter-spacing: -1px;">RYNEX<span style="color: var(--color-accent);">.</span>LABS</a>
-            <div style="display: flex; gap: 24px; flex-wrap: wrap;">
-                <a href="../blog.html" class="footer-link">Blog</a>
-                <a href="../index_fixed.html#services" class="footer-link">Servicii</a>
-                <a href="../index_fixed.html#contact" class="footer-link">Contact</a>
+    <footer style="padding: 80px 40px 40px; background: var(--color-bg); border-top: 1px solid var(--color-border);">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 60px; margin-bottom: 60px;">
+                <div>
+                    <a href="../index.html" style="display: inline-flex; align-items: center; text-decoration: none; margin-bottom: 20px;">
+                        <img src="../rynex-labs-logo.png" alt="Rynex Labs" class="site-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                        <span style="display: none; font-size: 22px; font-weight: 800; color: white; letter-spacing: -1px;">RYNEX<span style="color: var(--color-accent);">.</span>LABS</span>
+                    </a>
+                    <p style="color: var(--color-text-muted); line-height: 1.8; font-size: 14px;">Agenție web design Iași. Website-uri premium și automatizări AI pentru afaceri ambițioase din toată România.</p>
+                </div>
+                <div>
+                    <h4 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Servicii</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="../servicii.html" class="footer-link">Creare Website</a>
+                        <a href="../servicii.html" class="footer-link">Optimizare &amp; SEO</a>
+                        <a href="../servicii.html" class="footer-link">Landing Pages</a>
+                        <a href="../servicii.html" class="footer-link">Redesign Website</a>
+                        <a href="../automatizare-ai.html" class="footer-link" style="color: var(--color-accent);">Automatizare AI ↗</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Navigație</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="../site-ul-tau.html" class="footer-link">Site-ul Tău</a>
+                        <a href="../blog.html" class="footer-link">Blog</a>
+                        <a href="../index.html#process" class="footer-link">Procesul Nostru</a>
+                        
+                        <a href="../contact.html" class="footer-link">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Legal &amp; Contact</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="mailto:rynexlabsbusiness@gmail.com" class="footer-link">rynexlabsbusiness@gmail.com</a>
+                        <a href="tel:+40747202811" class="footer-link">+40 747 202 811</a>
+                        <span style="font-size: 14px; color: var(--color-text-muted);">Iași, România</span>
+                    </div>
+                </div>
             </div>
-            <p style="color: var(--color-text-muted); font-size: 13px;">© 2026 Rynex Labs</p>
+            <div style="padding-top: 40px; border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; color: var(--color-text-muted); font-size: 13px;">
+                <span>© 2026 Rynex Labs. Toate drepturile rezervate.</span>
+                <div style="display: flex; gap: 20px;">
+                    <a href="../sitemap.xml" class="footer-link" style="font-size: 13px;">Sitemap</a>
+                    <a href="../blog.html" class="footer-link" style="font-size: 13px;">Blog</a>
+                </div>
+            </div>
         </div>
     </footer>
 

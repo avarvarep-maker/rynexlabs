@@ -95,6 +95,7 @@
             --color-text: #ffffff;
             --color-text-muted: #888888;
             --color-border: #2a2a2a;
+            --color-bg-alt: #0d0d0d;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -636,6 +637,88 @@
             /* Mobile menu */
             .mobile-menu { padding: 80px 20px 36px !important; }
 
+
+            /* === MOBILE UPGRADES v2 === */
+
+            /* Stats grid: 2x2 instead of 4 columns for readability */
+            .stat-bar {
+                grid-template-columns: 1fr 1fr !important;
+                padding: 28px 16px !important;
+                gap: 20px 0;
+            }
+            .stat-item {
+                border-right: none !important;
+                border-bottom: 1px solid var(--color-border);
+                padding: 16px 8px;
+            }
+            .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom: none; }
+            .stat-item:nth-child(odd) { border-right: 1px solid var(--color-border) !important; }
+            .stat-value { font-size: 36px !important; }
+            .stat-label { font-size: 11px !important; letter-spacing: 1px; }
+
+            /* Blog images: larger for visual impact */
+            .blog-image { height: 180px !important; }
+
+            /* Cards: slightly more padding for breathing room */
+            .card, .process-step { padding: 28px !important; }
+
+            /* Section titles: slightly larger for hierarchy */
+            .section-title { font-size: 28px !important; line-height: 1.15 !important; }
+
+            /* Body text: improved line-height for readability */
+            .card p, .process-step p { line-height: 1.75 !important; }
+
+            /* Form select elements: same treatment as inputs */
+            select.input-field { font-size: 16px !important; height: 48px !important; }
+
+            /* Feature list items: better spacing */
+            .feature-list li {
+                padding: 16px 0 !important;
+                font-size: 14px !important;
+            }
+            .feature-icon {
+                width: 40px !important;
+                height: 40px !important;
+                font-size: 16px !important;
+            }
+
+            /* Trust bar: 2x2 grid on mobile */
+            .trust-bar {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 16px !important;
+                padding: 28px 16px !important;
+            }
+            .trust-item {
+                font-size: 12px !important;
+                padding: 10px !important;
+            }
+
+            /* Process step numbers: smaller on mobile */
+            .step-number {
+                font-size: 36px !important;
+            }
+
+            /* Mobile banner: reduce height */
+            section[style*="height: 220px"] { height: 140px !important; }
+            section[style*="height: 200px"] { height: 120px !important; }
+
+            /* CTA section: more padding */
+            section[style*="padding: 120px"] { padding: 72px 20px !important; }
+
+            /* Blockquote editorial: smaller padding */
+            .quote-editorial {
+                padding: 24px 20px !important;
+                margin: 28px 0 !important;
+            }
+            .quote-editorial::before {
+                font-size: 48px !important;
+                top: 8px !important;
+                left: 12px !important;
+            }
+            .quote-editorial blockquote {
+                font-size: 17px !important;
+                padding-left: 8px !important;
+            }
             /* Modals */
             .modal-content { height: 100vh !important; max-width: 100% !important; }
             .modal-header { padding: 14px 20px !important; }
@@ -658,7 +741,39 @@
             .blog-card, .portfolio-card, .card, .process-step { cursor: pointer; }
             .card:hover, .process-step:hover { transform: none; }
         }
-    </style>
+            /* Micro-contrast between sections */
+        .section-alt { background: var(--color-bg-alt) !important; }
+
+        /* Sophisticated card hover */
+        .card-hover { position: relative; overflow: hidden; }
+        .card-hover::before {
+            content: ''; position: absolute; left: 0; bottom: 0;
+            width: 3px; height: 0; background: var(--color-accent);
+            transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1;
+        }
+        .card-hover:hover::before { height: 100%; }
+
+        /* Editorial blockquote */
+        .quote-editorial {
+            border-left: 4px solid var(--color-accent); padding: 32px 40px;
+            margin: 40px 0; background: var(--color-surface); position: relative;
+        }
+        .quote-editorial::before {
+            content: '"'; position: absolute; top: 12px; left: 20px;
+            font-size: 72px; color: var(--color-accent); opacity: 0.12;
+            line-height: 1; font-family: Georgia, serif;
+        }
+        .quote-editorial blockquote {
+            font-size: clamp(18px, 2.5vw, 22px); font-weight: 400;
+            font-style: italic; line-height: 1.7; color: var(--color-text);
+            margin: 0; padding-left: 16px; position: relative; z-index: 1;
+        }
+        .quote-editorial cite {
+            display: block; margin-top: 20px; color: var(--color-text-muted);
+            font-size: 14px; font-style: normal; text-transform: uppercase; letter-spacing: 2px;
+        }
+
+        </style>
 </head>
 <body>
     <!-- Header -->
@@ -673,10 +788,10 @@
             </a>
 
             <nav class="desktop-nav" aria-label="Navigație principală">
+                <a href="automatizare-ai.html" class="nav-link nav-cta">Automatizare AI</a>
                 <a href="servicii.html" class="nav-link">Servicii</a>
                 <a href="site-ul-tau.html" class="nav-link">Site-ul Tău</a>
                 <a href="blog.html" class="nav-link">Blog</a>
-                <a href="automatizare-ai.html" class="nav-link nav-cta">Automatizare AI</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             </nav>
 
@@ -739,7 +854,7 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" style="padding: 120px 40px; position: relative;">
+    <section id="services" class="section-alt" style="padding: 120px 40px; position: relative;">
         <div class="red-accent-box" style="top: 100px; left: 0; width: 80px; height: 80px;"></div>
         <div style="max-width: 1400px; margin: 0 auto;">
             <div class="scroll-reveal" style="text-align: center; margin-bottom: 80px;">
@@ -751,8 +866,24 @@
             </div>
 
             <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div class="card scroll-reveal card-hover" style="position: relative; border-top: 3px solid var(--color-accent); display: flex; flex-direction: column;">
+                    <span class="service-tag">NOU</span>
+                    <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">Automatizare AI</h3>
+                    <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; flex-grow: 1;">
+                        Sisteme inteligente care lucrează 24/7 — chatboți, facturare, programări, CRM, WhatsApp.
+                    </p>
+                    <ul style="color: var(--color-text-muted); font-size: 13px; line-height: 2; padding-left: 0; list-style: none; margin-bottom: 24px;">
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Soluție personalizată</li>
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Integrare cu sistemele tale</li>
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> ROI în 30 de zile</li>
+                    </ul>
+                    <a href="automatizare-ai.html" class="angular-btn" style="text-align: center; width: 100%; background: var(--color-accent);">Solicită Consultație AI</a>
+                </div>
+                
+                
+                
                 <!-- Service 1: Website Creation -->
-                <div class="card scroll-reveal" style="position: relative; border-top: 3px solid var(--color-accent); display: flex; flex-direction: column;">
+                <div class="card scroll-reveal card-hover" style="position: relative; border-top: 3px solid var(--color-accent); display: flex; flex-direction: column;">
                     <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">Creare Website</h3>
                     <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; flex-grow: 1;">
                         Website personalizat, rapid și optimizat. Design responsive care convinge vizitatorii să acționeze.
@@ -766,7 +897,7 @@
                 </div>
 
                 <!-- Service 2: Optimization -->
-                <div class="card scroll-reveal" style="position: relative; border-top: 3px solid var(--color-accent); display: flex; flex-direction: column;">
+                <div class="card scroll-reveal card-hover" style="position: relative; border-top: 3px solid var(--color-accent); display: flex; flex-direction: column;">
                     <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">Optimizare & SEO</h3>
                     <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; flex-grow: 1;">
                         Îmbunătățim viteza, structura și conținutul pentru ca clienții să te găsească primul pe Google.
@@ -780,7 +911,7 @@
                 </div>
 
                 <!-- Service 3: Landing Pages -->
-                <div class="card scroll-reveal" style="position: relative; border-top: 3px solid var(--color-accent); display: flex; flex-direction: column;">
+                <div class="card scroll-reveal card-hover" style="position: relative; border-top: 3px solid var(--color-accent); display: flex; flex-direction: column;">
                     <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">Landing Pages</h3>
                     <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; flex-grow: 1;">
                         O singură pagină, un singur scop: conversie. Perfectă pentru campanii publicitare.
@@ -794,7 +925,7 @@
                 </div>
 
                 <!-- Service 4: Redesign -->
-                <div class="card scroll-reveal" style="position: relative; border-top: 3px solid var(--color-accent); display: flex; flex-direction: column;">
+                <div class="card scroll-reveal card-hover" style="position: relative; border-top: 3px solid var(--color-accent); display: flex; flex-direction: column;">
                     <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">Redesign Website</h3>
                     <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; flex-grow: 1;">
                         Transformăm complet site-ul vechi — design modern, UX fluid, performanță maximă.
@@ -808,19 +939,7 @@
                 </div>
 
                 <!-- Service 5: AI Automation (Featured) -->
-                <div class="card scroll-reveal" style="position: relative; border-top: 3px solid var(--color-accent); display: flex; flex-direction: column;">
-                    <span class="service-tag">NOU</span>
-                    <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">Automatizare AI</h3>
-                    <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; flex-grow: 1;">
-                        Sisteme inteligente care lucrează 24/7 — chatboți, facturare, programări, CRM, WhatsApp.
-                    </p>
-                    <ul style="color: var(--color-text-muted); font-size: 13px; line-height: 2; padding-left: 0; list-style: none; margin-bottom: 24px;">
-                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Soluție personalizată</li>
-                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Integrare cu sistemele tale</li>
-                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> ROI în 30 de zile</li>
-                    </ul>
-                    <a href="automatizare-ai.html" class="angular-btn" style="text-align: center; width: 100%; background: var(--color-accent);">Solicită Consultație AI</a>
-                </div>
+                
             </div>
         </div>
     </section>
@@ -838,7 +957,7 @@
 
             <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
                 <a class="blog-card scroll-reveal" href="blog/design-responsiv-2026.html">
-                    <div class="blog-image" style="background: linear-gradient(135deg, #1e3a5f 0%, #0d2137 100%);"></div>
+                    <div class="blog-image"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80" alt="Design responsive" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
                     <div class="blog-content">
                         <div class="blog-meta">
                             <span class="blog-category">Design</span>
@@ -851,7 +970,7 @@
                 </a>
 
                 <a class="blog-card scroll-reveal" href="blog/seo-ghid-complet.html">
-                    <div class="blog-image" style="background: linear-gradient(135deg, #2d1b1b 0%, #1a0f0f 100%);"></div>
+                    <div class="blog-image"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="SEO analytics" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
                     <div class="blog-content">
                         <div class="blog-meta">
                             <span class="blog-category">SEO</span>
@@ -864,7 +983,7 @@
                 </a>
 
                 <a class="blog-card scroll-reveal" href="blog/viteza-website.html">
-                    <div class="blog-image" style="background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);"></div>
+                    <div class="blog-image"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80" alt="Viteza website" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
                     <div class="blog-content">
                         <div class="blog-meta">
                             <span class="blog-category">Performanță</span>
@@ -881,6 +1000,13 @@
                 <a href="blog.html" class="angular-btn-outline">Vezi toate cele 5 articole →</a>
             </div>
         </div>
+    </section>
+
+    
+    <!-- Visual Break Banner -->
+    <section style="height: 220px; position: relative; overflow: hidden; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+        <div style="position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1678728245335-244ffd160d54?w=1600&q=80'); background-size: cover; background-position: center;"></div>
+        <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,10,10,0.25) 0%, rgba(10,10,10,1) 100%);"></div>
     </section>
 
     <!-- Process Section (replacing fake testimonials) -->
@@ -1091,7 +1217,114 @@
         </div>
     </footer>
 
-    
+    <!-- GDPR Modals -->
+    <div class="modal-overlay" id="privacyModal" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="font-size: 18px; font-weight: 700;">Politica de Confidențialitate</h3>
+                <button class="modal-close" onclick="closeModals()">Închide ✕</button>
+            </div>
+            <div class="modal-body" style="padding: 40px;">
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;"><strong>Operator de date:</strong> Rynex Labs, Iași, România. Email: <a href="mailto:rynexlabsbusiness@gmail.com" style="color: var(--color-accent);">rynexlabsbusiness@gmail.com</a>. Prezenta politică este conformă cu Regulamentul (UE) 2016/679 (GDPR).</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">1. Ce date colectăm și de ce</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">Prin formularele de contact colectăm: nume, email, telefon și mesaj. <strong>Baza legală:</strong> Art. 6(1)(b) GDPR — executarea unui contract sau demersuri precontractuale la cererea persoanei vizate. Datele sunt utilizate exclusiv pentru a răspunde solicitării tale și a stabili detaliile colaborării.</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">2. Temei legal și consimțământ</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">Prin trimiterea formularului, îți dai acordul explicit (Art. 6(1)(a) GDPR) pentru prelucrarea datelor în scopul comunicării. Poți retrage consimțământul în orice moment prin email.</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">3. Destinatari și transferuri</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">Datele tale sunt transmise prin <strong>EmailJS</strong> (procesator) către adresa noastră de email. EmailJS procesează datele conform propriei politici de confidențialitate. Nu transferăm date în afara UE și nu le vindem terților.</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">4. Perioada de stocare</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">Păstrăm datele tale pe o perioadă de <strong>12 luni</strong> de la ultima interacțiune, sau până la soluționarea solicitării, după care sunt șterse definitiv.</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">5. Drepturile tale (Art. 15-22 GDPR)</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">Ai dreptul de acces, rectificare, ștergere („dreptul de a fi uitat"), restricționarea prelucrării, portabilitatea datelor și opoziție. Pentru exercitarea acestor drepturi, contactează-ne la <a href="mailto:rynexlabsbusiness@gmail.com" style="color: var(--color-accent);">rynexlabsbusiness@gmail.com</a>. Răspundem în termen de <strong>30 de zile</strong>.</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">6. Măsuri de securitate</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">Aplicăm măsuri tehnice și organizatorice adecvate: transmisie criptată (HTTPS), acces limitat la date, stocare securizată și monitorizare periodică.</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">7. Autoritatea de supraveghere</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8;">Dacă consideri că drepturile tale nu sunt respectate, te poți adresa <strong>Autorității Naționale de Supraveghere a Prelucrării Datelor cu Caracter Personal</strong> din România: <a href="https://www.dataprotection.ro" target="_blank" style="color: var(--color-accent);">www.dataprotection.ro</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="termsModal" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="font-size: 18px; font-weight: 700;">Termeni și Condiții</h3>
+                <button class="modal-close" onclick="closeModals()">Închide ✕</button>
+            </div>
+            <div class="modal-body" style="padding: 40px;">
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;"><strong>Ultima actualizare:</strong> 19 aprilie 2026. Prin accesarea și utilizarea acestui website, acceptați acești termeni în integralitatea lor.</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">1. Definiții</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;"><strong>„Furnizor"</strong> — Rynex Labs, persoană fizică autorizată, cu sediul în Iași, România. <strong>„Client"</strong> — persoana fizică sau juridică care solicită serviciile Furnizorului. <strong>„Servicii"</strong> — web design, SEO, automatizare AI și servicii conexe.</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">2. Descrierea serviciilor</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">Oferim servicii de creare website-uri, optimizare SEO, design landing pages, redesign website-uri existente și implementare soluții de automatizare cu inteligență artificială. Fiecare proiect este personalizat conform nevoilor Clientului. Oferim consultanță gratuită inițială.</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">3. Ofertare și contract</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">După consultația inițială, Furnizorul transmite o ofertă scrisă care include: descrierea serviciilor, prețul, termenul de livrare și condițiile de plată. Contractul se consideră încheiat la acceptarea ofertei de către Client, prin confirmare scrisă (email sau semnătură electronică).</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">4. Prețuri și plată</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">Prețurile sunt exprimate în euro (EUR) și includ TVA conform legislației românești în vigoare. <strong>Termen de plată:</strong> 50% avans la semnarea contractului, 50% la livrare. Plata se efectuează prin transfer bancar. Pentru proiecte sub 500 EUR, plata integrală se face în avans.</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">5. Termen de livrare</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">Termenele de livrare sunt orientative și sunt comunicate în ofertă. Întârzierile cauzate de: (a) întârzierea Clientului în furnizarea materialelor necesare, (b) solicitări de modificare în afara domeniului de aplicare inițial, sau (c) cazuri de forță majoră, prelungesc termenul proporțional.</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">6. Proprietatea intelectuală</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">După achitarea integrală a sumei convenite, toate drepturile de autor asupra design-ului și codului sursă personalizat sunt transferate Clientului. Furnizorul păstrează dreptul de a include proiectul în portofoliul propriu, cu acordul prealabil al Clientului. Elementele third-party (fonturi, imagini stock, framework-uri) rămân sub licențele originale.</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">7. Limitarea răspunderii</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">Furnizorul nu este răspunzător pentru: (a) pierderi indirecte, consecutive sau accidentale, (b) funcționarea serviciilor third-party (găzduire, domenii, API-uri), (c) rezultatele SEO care depind de algoritmii motoarelor de căutare. Răspunderea totală a Furnizorului este limitată la valoarea contractului.</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">8. Reziliere</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">Orice parte poate rezilia contractul prin notificare scrisă cu 14 zile calendaristice. În caz de reziliere de către Client înainte de livrare, avansul nu se restituie, reprezentând compensație pentru munca efectuată până la acel moment.</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">9. Lege aplicabilă</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8;">Prezentul contract este guvernat de legea română. Orice litigiu se va soluționa pe cale amiabilă. În caz de eșec, litigiile vor fi înaintate instanțelor competente din România.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="cookiesModal" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="font-size: 18px; font-weight: 700;">Politica Cookies</h3>
+                <button class="modal-close" onclick="closeModals()">Închide ✕</button>
+            </div>
+            <div class="modal-body" style="padding: 40px;">
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;"><strong>Ultima actualizare:</strong> 19 aprilie 2026. Această politică explică modul în care utilizăm fișierele cookie pe website-ul nostru, conform Directivei 2002/58/CE (ePrivacy) și GDPR.</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">1. Ce sunt cookies</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">Cookies sunt fișiere text de mici dimensiuni stocate pe dispozitivul tău (computer, tabletă, telefon) de către browser atunci când accesezi un website. Acestea permit website-ului să-și amintească preferințele tale și să funcționeze corect.</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">2. Ce tipuri de cookies folosim</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;"><strong>Cookies esențiale (strict necesare):</strong> Acestea sunt necesare pentru funcționarea de bază a website-ului — navigare, securitate, acces la zone protejate. Nu pot fi dezactivate, deoarece site-ul nu ar funcționa fără ele. <strong>NU folosim cookies de urmărire, analiză (analytics) sau publicitate.</strong></p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">3. Cookies terțe (third-party)</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">Website-ul utilizează serviciul <strong>EmailJS</strong> pentru transmiterea formularului de contact. Când completezi și trimiți formularul, datele sunt procesate de EmailJS conform propriei politici de cookies și confidențialitate. Nu utilizăm Google Analytics, Facebook Pixel sau alte servicii de tracking.</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">4. Durata de stocare</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">Cookies esențiale sunt de tip „session" (șterse la închiderea browserului) sau persistente cu durată maximă de <strong>30 de zile</strong>. După expirare, sunt șterse automat.</p>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">5. Cum poți controla cookies</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">Poți șterge oricând cookies din setările browserului tău. Majoritatea browserelor permit setarea nivelului de acceptare a cookies:</p>
+                <ul style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; padding-left: 20px;">
+                    <li><strong>Chrome:</strong> Setări → Confidențialitate și securitate → Șterge datele de navigare</li>
+                    <li><strong>Firefox:</strong> Setări → Confidențialitate și securitate → Cookies și date ale site-urilor</li>
+                    <li><strong>Safari:</strong> Preferințe → Confidențialitate → Gestionează datele website-urilor</li>
+                    <li><strong>Edge:</strong> Setări → Cookies și permisiuni ale site-ului</li>
+                </ul>
+
+                <h4 style="font-size: 15px; font-weight: 700; margin: 0 0 10px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">6. Contact</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8;">Pentru orice întrebare privind politica de cookies, contactează-ne la <a href="mailto:rynexlabsbusiness@gmail.com" style="color: var(--color-accent);">rynexlabsbusiness@gmail.com</a>.</p>
+            </div>
+        </div>
+    </div>
     <script>
         // EmailJS initialization
         // SETUP: In EmailJS dashboard, ensure template_rynex sends to rynexlabsbusiness@gmail.com
@@ -1127,7 +1360,7 @@
 
         function closeModals() {
             document.querySelectorAll('.modal-overlay').forEach(modal => modal.classList.remove('active'));
-            document.getElementById('previewFrame').src = '';
+            var pf = document.getElementById('previewFrame'); if(pf) pf.src = '';
             document.body.style.overflow = '';
         }
 
