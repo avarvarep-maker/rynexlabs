@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site-ul Tău, Povestea Ta | Web Design Personalizat | Rynex Labs</title>
+    <meta name="description" content="La Rynex Labs nu folosim template-uri. Fiecare website este proiectat de la zero, personalizat pentru afacerea ta. Descoperă procesul nostru și poveștile din spatele proiectelor.">
+    <link rel="canonical" href="https://rynexlabs.ro/site-ul-tau.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rynexlabs.ro/site-ul-tau.html">
+    <meta property="og:title" content="Site-ul Tău, Povestea Ta | Web Design Personalizat | Rynex Labs">
+    <meta property="og:description" content="Nu folosim template-uri. Fiecare website este proiectat de la zero pentru afacerea ta. Descoperă procesul nostru.">
+    <meta property="og:image" content="https://rynexlabs.ro/rynex-labs-logo.png">
+    <meta property="og:locale" content="ro_RO">
+    <meta property="og:site_name" content="Rynex Labs">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Site-ul Tău, Povestea Ta | Rynex Labs">
+    <meta name="twitter:description" content="Web design 100% personalizat. Fără template-uri. Fiecare site are o poveste.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="rynex-icon.png">
+    <link rel="apple-touch-icon" href="rynex-icon.png">
+
+    <!-- Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Acasă", "item": "https://rynexlabs.ro/"},
+            {"@type": "ListItem", "position": 2, "name": "Site-ul Tău", "item": "https://rynexlabs.ro/site-ul-tau.html"}
+          ]
+        },
+        {
+          "@type": "Service",
+          "name": "Web Design Personalizat",
+          "description": "Website-uri proiectate de la zero, personalizate pentru fiecare afacere. Fără template-uri.",
+          "provider": {"@type": "Organization", "name": "Rynex Labs", "url": "https://rynexlabs.ro"},
+          "areaServed": "Romania",
+          "serviceType": "Custom Web Design"
+        }
+      ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-bg: #0a0a0a;
+            --color-surface: #141414;
+            --color-surface-light: #1a1a1a;
+            --color-accent: #ff3b26;
+            --color-accent-dark: #cc2e1d;
+            --color-accent-glow: rgba(255,59,38,0.15);
+            --color-text: #ffffff;
+            --color-text-muted: #888888;
+            --color-border: #2a2a2a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { border-radius: 0 !important; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        ::selection { background: var(--color-accent); color: white; }
+
+        .nav-link {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            padding: 8px 0;
+            position: relative;
+        }
+        .nav-link:hover { color: var(--color-text); }
+        .nav-link.active { color: var(--color-text); }
+        .nav-link.nav-cta { color: var(--color-accent); }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+        .angular-btn {
+            background: var(--color-accent);
+            color: white;
+            padding: 18px 44px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .angular-btn:hover { background: var(--color-accent-dark); transform: translateY(-2px); }
+        .angular-btn-outline {
+            background: transparent;
+            color: var(--color-text);
+            padding: 18px 44px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--color-border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .angular-btn-outline:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+        .section-label {
+            color: var(--color-accent);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 24px;
+            display: block;
+        }
+        .section-title {
+            font-size: clamp(28px, 5vw, 52px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .footer-link {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        .footer-link:hover { color: var(--color-accent); }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: var(--color-bg);
+            z-index: 999;
+            flex-direction: column;
+            padding: 90px 24px 40px;
+            overflow-y: auto;
+        }
+        .mobile-menu.active { display: flex; }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+        .hamburger span {
+            width: 28px; height: 2px;
+            background: var(--color-text);
+            display: block;
+            transition: all 0.3s ease;
+        }
+        .desktop-nav { display: flex; gap: 36px; align-items: center; }
+        .site-logo { width: 210px; height: 80px; object-fit: cover; object-position: center; display: block; }
+
+        /* Scroll reveal */
+        .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+        .scroll-reveal-delay-1 { transition-delay: 0.1s; }
+        .scroll-reveal-delay-2 { transition-delay: 0.2s; }
+        .scroll-reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* Breadcrumb */
+        .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--color-text-muted); }
+        .breadcrumb a { color: var(--color-text-muted); text-decoration: none; }
+        .breadcrumb a:hover { color: var(--color-accent); }
+
+        /* Story Cards */
+        .story-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .story-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 59, 38, 0.1);
+        }
+        .story-card-visual {
+            width: 100%;
+            aspect-ratio: 16/10;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .story-card-content { padding: 36px; }
+        .story-card-content h3 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+        .story-card-content .story-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 4px 12px;
+            margin-bottom: 16px;
+        }
+        .story-card-content p { color: var(--color-text-muted); font-size: 15px; line-height: 1.8; margin-bottom: 20px; }
+
+        /* Process Steps */
+        .process-step {
+            background: var(--color-surface);
+            padding: 48px 36px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .process-step:hover { background: var(--color-surface-light); }
+        .process-step:hover .step-number { transform: scale(1.1); }
+        .step-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--color-accent);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 16px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .step-title { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+        .step-desc { color: var(--color-text-muted); font-size: 14px; line-height: 1.7; }
+        .step-icon { font-size: 32px; margin-bottom: 16px; display: block; }
+
+        /* Benefits */
+        .benefit-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            padding: 24px;
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+            transition: all 0.3s ease;
+        }
+        .benefit-item:hover { border-color: var(--color-accent); }
+        .benefit-check {
+            width: 32px; height: 32px;
+            background: var(--color-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 16px;
+            color: white;
+            font-weight: 700;
+        }
+        .benefit-text h4 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+        .benefit-text p { color: var(--color-text-muted); font-size: 14px; line-height: 1.6; }
+
+        /* Quote Section */
+        .quote-section {
+            background: var(--color-surface);
+            border-left: 4px solid var(--color-accent);
+            padding: 48px;
+            margin: 40px 0;
+        }
+        .quote-section blockquote {
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 600;
+            font-style: italic;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .quote-section cite {
+            color: var(--color-text-muted);
+            font-size: 14px;
+            font-style: normal;
+        }
+
+        /* Stats */
+        .stat-number {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 900;
+            color: var(--color-accent);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .stat-label { color: var(--color-text-muted); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Modals */
+        .modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-content {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            background: var(--color-surface);
+            z-index: 10;
+        }
+        .modal-close {
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .modal-close:hover { background: var(--color-accent-dark); }
+        .gdpr-content { padding: 40px; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .desktop-nav { display: none !important; }
+            .hamburger { display: flex !important; }
+        }
+        @media (max-width: 768px) {
+            .site-logo { width: 160px; height: 60px; }
+            .process-step { padding: 36px 24px; }
+            .quote-section { padding: 32px 24px; }
+            .story-card-content { padding: 28px; }
+        }
+        @media (max-width: 480px) {
+            header .header-inner { padding: 12px 16px !important; }
+            .site-logo { width: 140px; height: 54px; }
+        }
+        @media (pointer: coarse) {
+            .nav-link, .footer-link { min-height: 44px; }
+            .story-card:hover, .benefit-item:hover, .process-step:hover { transform: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-border);">
+        <div style="max-width: 1400px; margin: 0 auto; padding: 18px 40px; display: flex; justify-content: space-between; align-items: center;">
+            <a href="/" aria-label="Rynex Labs - Acasă" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="rynex-labs-logo.png" alt="Rynex Labs Logo" class="site-logo"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display: none; font-size: 24px; font-weight: 800; color: white; letter-spacing: -1px;">
+                    RYNEX<span style="color: var(--color-accent);">.</span>LABS
+                </span>
+            </a>
+
+            <nav class="desktop-nav" aria-label="Navigație principală">
+                <a href="servicii.html" class="nav-link">Servicii</a>
+                <a href="site-ul-tau.html" class="nav-link active">Site-ul Tău</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="automatizare-ai.html" class="nav-link nav-cta">Automatizare AI</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Deschide meniu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="servicii.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border);">Servicii</a>
+        <a href="site-ul-tau.html" class="nav-link active" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border);">Site-ul Tău</a>
+        <a href="blog.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border);">Blog</a>
+        <a href="automatizare-ai.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border); color: var(--color-accent);">Automatizare AI</a>
+        <a href="index.html#contact" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0;">Contact</a>
+        <a href="index.html#contact" class="angular-btn" onclick="toggleMobileMenu()" style="margin-top: 28px; text-align: center; width: 100%;">Începe Proiectul</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section style="min-height: 100vh; display: flex; align-items: center; padding: 160px 40px 100px; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 15%; right: 8%; width: 200px; height: 200px; background: var(--color-accent); opacity: 0.08;"></div>
+        <div style="position: absolute; bottom: 10%; left: 5%; width: 120px; height: 120px; background: var(--color-accent); opacity: 0.05;"></div>
+
+        <div style="max-width: 1000px; margin: 0 auto; width: 100%;">
+            <nav aria-label="Breadcrumb" class="breadcrumb scroll-reveal" style="margin-bottom: 40px;">
+                <a href="/">Acasă</a>
+                <span>/</span>
+                <span style="color: var(--color-text);">Site-ul Tău</span>
+            </nav>
+
+            <p class="section-label scroll-reveal">Nu Facem Template-uri</p>
+            <h1 class="section-title scroll-reveal scroll-reveal-delay-1" style="margin-bottom: 32px; max-width: 900px;">
+                SITE-UL TĂU,<br>
+                <span style="color: var(--color-accent);">POVESTEA</span> TA
+            </h1>
+            <p class="scroll-reveal scroll-reveal-delay-2" style="color: var(--color-text-muted); font-size: clamp(16px, 2vw, 20px); max-width: 640px; line-height: 1.9; margin-bottom: 48px;">
+                Fiecare afacere are o identitate unică. Noi o traducem în experiențe digitale care captivează, 
+                conving și convertesc. Niciodată template-uri. Întotdeauna personalizat 100%.
+            </p>
+            <div class="scroll-reveal scroll-reveal-delay-3" style="display: flex; gap: 16px; flex-wrap: wrap;">
+                <a href="index.html#contact" class="angular-btn">Începe Proiectul Tău</a>
+                <a href="#proces" class="angular-btn-outline">Vezi Procesul</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Personalized Section -->
+    <section style="padding: 120px 40px; background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <div class="scroll-reveal" style="max-width: 800px;">
+                <p class="section-label">De ce Personalizat?</p>
+                <h2 class="section-title" style="margin-bottom: 40px;">
+                    TEMPLATE-URILE NU<br>SPUN <span style="color: var(--color-accent);">POVEȘTI</span>
+                </h2>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-bottom: 60px;">
+                <div class="scroll-reveal scroll-reveal-delay-1">
+                    <div style="width: 48px; height: 48px; background: var(--color-accent); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px;">✕</div>
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">Template = Generic</h3>
+                    <p style="color: var(--color-text-muted); font-size: 15px; line-height: 1.8;">
+                        Un template folosit de mii de alte site-uri nu poate transmite unicitatea brandului tău. 
+                        E ca și cum ai purta aceeași ținută la un eveniment cu alți 100 de oameni. Nu ieși în evidență.
+                    </p>
+                </div>
+                <div class="scroll-reveal scroll-reveal-delay-2">
+                    <div style="width: 48px; height: 48px; background: var(--color-accent); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px;">✕</div>
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">Template = Limitat</h3>
+                    <p style="color: var(--color-text-muted); font-size: 15px; line-height: 1.8;">
+                        Template-urile vin cu constrângeri. Vrei o funcționalitate specifică? Nu se poate. 
+                        Vrei un layout diferit? Nu se poate. Afacerea ta nu trebuie să se adapteze unui template — 
+                        website-ul trebuie să se adapteze afacerii tale.
+                    </p>
+                </div>
+                <div class="scroll-reveal scroll-reveal-delay-3">
+                    <div style="width: 48px; height: 48px; background: var(--color-accent); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px;">✕</div>
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">Template = Incredibil</h3>
+                    <p style="color: var(--color-text-muted); font-size: 15px; line-height: 1.8;">
+                        Clienții simt când un site e făcut cu template. Lipsesc detaliile care contează — 
+                        fluxul natural de navigare, mesajul clar, emoția care îi face să acționeze. 
+                        Și asta se traduce în conversii pierdute.
+                    </p>
+                </div>
+            </div>
+
+            <div class="quote-section scroll-reveal">
+                <blockquote>
+                    "Un website nu este doar o pagină web. Este ambasadorul tău digital care vorbește 
+                    non-stop despre cine ești și ce oferi. Merită să fie unic."
+                </blockquote>
+                <cite>— Echipa Rynex Labs</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="proces" style="padding: 120px 40px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="scroll-reveal" style="text-align: center; max-width: 700px; margin: 0 auto 80px;">
+                <p class="section-label">Cum Lucrăm</p>
+                <h2 class="section-title">
+                    PROCESUL NOSTRU ÎN<br><span style="color: var(--color-accent);">4 PAȘI</span>
+                </h2>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2px; background: var(--color-border);">
+                <div class="process-step scroll-reveal">
+                    <span class="step-icon">🔍</span>
+                    <span class="step-number">01</span>
+                    <h3 class="step-title">Descoperire</h3>
+                    <p class="step-desc">
+                        Ne așezăm la o discuție și învățăm totul despre afacerea ta — publicul, 
+                        obiectivele, valorile, concurența. Fiecare detaliu contează pentru a construi 
+                        o fundație solidă.
+                    </p>
+                </div>
+                <div class="process-step scroll-reveal scroll-reveal-delay-1">
+                    <span class="step-icon">🎨</span>
+                    <span class="step-number">02</span>
+                    <h3 class="step-title">Design</h3>
+                    <p class="step-desc">
+                        Creăm un concept vizual unic, de la zero. Paleta de culori, tipografia, 
+                        imaginile, layout-ul — totul este proiectat să reflecte personalitatea 
+                        brandului tău.
+                    </p>
+                </div>
+                <div class="process-step scroll-reveal scroll-reveal-delay-2">
+                    <span class="step-icon">⚡</span>
+                    <span class="step-number">03</span>
+                    <h3 class="step-title">Dezvoltare</h3>
+                    <p class="step-desc">
+                        Transformăm design-ul în cod curat, optimizat și rapid. Fiecare linie de cod 
+                        este scrisă manual — fără generatoare, fără framework-uri inutile. 
+                        Doar performanță pură.
+                    </p>
+                </div>
+                <div class="process-step scroll-reveal scroll-reveal-delay-3">
+                    <span class="step-icon">🚀</span>
+                    <span class="step-number">04</span>
+                    <h3 class="step-title">Lansare</h3>
+                    <p class="step-desc">
+                        Testăm totul — viteză, responsive, SEO, funcționalități. După aprobarea ta, 
+                        lansăm și monitorizăm primele rezultate. Suport continuu post-lansare.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Get Section -->
+    <section style="padding: 120px 40px; background: var(--color-surface); border-top: 1px solid var(--color-border);">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <div class="scroll-reveal" style="max-width: 700px; margin-bottom: 60px;">
+                <p class="section-label">Ce Primești</p>
+                <h2 class="section-title" style="margin-bottom: 20px;">
+                    NU DOAR UN SITE.<br>UN <span style="color: var(--color-accent);">AVANTAJ</span> COMPETIȚIONAL.
+                </h2>
+                <p style="color: var(--color-text-muted); font-size: 16px; line-height: 1.8;">
+                    Fiecare proiect include aceste beneficii premium, fără costuri ascunse:
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-check">✓</div>
+                    <div class="benefit-text">
+                        <h4>Design 100% Personalizat</h4>
+                        <p>Nici o linie de cod copiată. Nici un element reciclat. Totul creat de la zero pentru tine.</p>
+                    </div>
+                </div>
+                <div class="benefit-item scroll-reveal scroll-reveal-delay-1">
+                    <div class="benefit-check">✓</div>
+                    <div class="benefit-text">
+                        <h4>Cod Curat și Optimizat</h4>
+                        <p>Fiecare element este scris manual pentru performanță maximă. Zero bloat, zero framework-uri inutile.</p>
+                    </div>
+                </div>
+                <div class="benefit-item scroll-reveal scroll-reveal-delay-2">
+                    <div class="benefit-check">✓</div>
+                    <div class="benefit-text">
+                        <h4>Responsive pe Toate Dispozitivele</h4>
+                        <p>De la iPhone SE până la monitoare ultrawide — site-ul tău arată impecabil peste tot.</p>
+                    </div>
+                </div>
+                <div class="benefit-item scroll-reveal scroll-reveal-delay-3">
+                    <div class="benefit-check">✓</div>
+                    <div class="benefit-text">
+                        <h4>Optimizare SEO Inclusă</h4>
+                        <p>Structură semantică, meta tag-uri, schema markup și viteză de încărcare optimizată pentru Google.</p>
+                    </div>
+                </div>
+                <div class="benefit-item scroll-reveal">
+                    <div class="benefit-check">✓</div>
+                    <div class="benefit-text">
+                        <h4>Viteză de Încărcare Sub 2s</h4>
+                        <p>Optimizare agresivă a imaginilor, codului și resurselor. Fiecare milisecundă contează.</p>
+                    </div>
+                </div>
+                <div class="benefit-item scroll-reveal scroll-reveal-delay-1">
+                    <div class="benefit-check">✓</div>
+                    <div class="benefit-text">
+                        <h4>Suport Post-Lansare</h4>
+                        <p>30 de zile de suport gratuit după lansare. Corecții, ajustări și mentoring inclus.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Every Site Has a Story Section -->
+    <section style="padding: 120px 40px; border-top: 1px solid var(--color-border);">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="scroll-reveal" style="text-align: center; max-width: 800px; margin: 0 auto 80px;">
+                <p class="section-label">Studii de Caz</p>
+                <h2 class="section-title" style="margin-bottom: 24px;">
+                    FIECARE SITE ARE O<br><span style="color: var(--color-accent);">POVESTE</span>
+                </h2>
+                <p style="color: var(--color-text-muted); font-size: 18px; line-height: 1.8;">
+                    În spatele fiecărui proiect stă o viziune, o pasiune, un vis. 
+                    Noi nu construim doar website-uri — dăm viață poveștilor tale.
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+                <!-- DoctorVet Story -->
+                <article class="story-card scroll-reveal">
+                    <div class="story-card-visual" style="background: linear-gradient(180deg, #1e3a5f 0%, #0d2137 100%); display: flex; align-items: center; justify-content: center;">
+                        <div style="text-align: center; padding: 40px;">
+                            <div style="font-size: 48px; margin-bottom: 16px;">🐾</div>
+                            <h3 style="font-size: 28px; color: white; font-weight: 700;">DOCTOR<span style="color: #3b82f6;">VET</span></h3>
+                            <p style="font-size: 12px; color: rgba(255,255,255,0.6); letter-spacing: 3px; text-transform: uppercase;">Clinică Veterinară</p>
+                        </div>
+                    </div>
+                    <div class="story-card-content">
+                        <span class="story-tag" style="background: rgba(59,130,246,0.15); color: #3b82f6;">Sănătate Animală</span>
+                        <h3>DoctorVet — Grija care se vede online</h3>
+                        <p>
+                            O clinică veterinară din Iași care a vrut să transmită profesionalism și empatie 
+                            în același timp. Design-ul cu albastru profilactic a fost ales pentru a transmite 
+                            încredere, iar secțiunea de programări online a redus cu 40% timpul petrecut 
+                            la telefon. Fiecare element — de la iconițe la tipografie — reflectă grija 
+                            pe care echipa o oferă fiecărui pacient cu blană.
+                        </p>
+                        <div style="display: flex; gap: 24px; padding-top: 20px; border-top: 1px solid var(--color-border);">
+                            <div>
+                                <div style="font-size: 24px; font-weight: 800; color: var(--color-accent);">40%</div>
+                                <div style="font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px;">Timp salvat</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 24px; font-weight: 800; color: var(--color-accent);">3x</div>
+                                <div style="font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px;">Programări online</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Café Noir Story -->
+                <article class="story-card scroll-reveal scroll-reveal-delay-1">
+                    <div class="story-card-visual" style="background: linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 100%); display: flex; align-items: center; justify-content: center;">
+                        <div style="text-align: center; padding: 40px;">
+                            <div style="font-size: 48px; margin-bottom: 16px;">☕</div>
+                            <h3 style="font-size: 28px; color: #c9a86c; font-weight: 700; letter-spacing: 2px;">CAFÉ NOIR</h3>
+                            <p style="font-size: 12px; color: rgba(255,255,255,0.6); letter-spacing: 3px; text-transform: uppercase;">Cafenea Premium</p>
+                        </div>
+                    </div>
+                    <div class="story-card-content">
+                        <span class="story-tag" style="background: rgba(201,168,108,0.15); color: #c9a86c;">HoReCa</span>
+                        <h3>Café Noir — Eleganța care se simte înainte să intri</h3>
+                        <p>
+                            Visul unui antreprenor care a vrut să aducă atmosfera cafenelelor pariziene 
+                            în inima Iașului. Auriul șampanie pe fundal negru mat creează o experiență 
+                            senzorială digitală — vizitatorul simte aroma de cafea înainte să treacă pragul. 
+                            Meniul digital interactiv a crescut vânzările cu 25% în primele 3 luni.
+                        </p>
+                        <div style="display: flex; gap: 24px; padding-top: 20px; border-top: 1px solid var(--color-border);">
+                            <div>
+                                <div style="font-size: 24px; font-weight: 800; color: var(--color-accent);">25%</div>
+                                <div style="font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px;">Creștere vânzări</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 24px; font-weight: 800; color: var(--color-accent);">4.9★</div>
+                                <div style="font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px;">Rating clienți</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- FitnessForge Story -->
+                <article class="story-card scroll-reveal scroll-reveal-delay-2">
+                    <div class="story-card-visual" style="background: linear-gradient(180deg, #0a0a0f 0%, #1a1a2e 100%); display: flex; align-items: center; justify-content: center;">
+                        <div style="text-align: center; padding: 40px;">
+                            <div style="font-size: 48px; margin-bottom: 16px;">💪</div>
+                            <h3 style="font-size: 28px; color: white; font-weight: 800;">FITNESS<span style="color: #ff6b35;">FORGE</span></h3>
+                            <p style="font-size: 12px; color: rgba(255,255,255,0.6); letter-spacing: 3px; text-transform: uppercase;">Sală de Fitness</p>
+                        </div>
+                    </div>
+                    <div class="story-card-content">
+                        <span class="story-tag" style="background: rgba(255,107,53,0.15); color: #ff6b35;">Fitness & Sport</span>
+                        <h3>FitnessForge — Puterea care inspiră acțiune</h3>
+                        <p>
+                            Născut din pasiunea pentru sport și tehnologie, FitnessForge a fost creat 
+                            pentru o sală de fitness care vrea mai mult decât membri — vrea o comunitate. 
+                            Design-ul energic cu portocaliu puternic transmite motivație și dinamism. 
+                            Sistemul de programe personalizate și statistici de progres a dus la o 
+                            retenție de 85% a membrilor în primul an.
+                        </p>
+                        <div style="display: flex; gap: 24px; padding-top: 20px; border-top: 1px solid var(--color-border);">
+                            <div>
+                                <div style="font-size: 24px; font-weight: 800; color: var(--color-accent);">85%</div>
+                                <div style="font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px;">Retenție membri</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 24px; font-weight: 800; color: var(--color-accent);">+120</div>
+                                <div style="font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px;">Membri noi / lună</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section style="padding: 100px 40px; background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 60px; text-align: center;">
+                <div class="scroll-reveal">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Personalizat</div>
+                </div>
+                <div class="scroll-reveal scroll-reveal-delay-1">
+                    <div class="stat-number">&lt;2s</div>
+                    <div class="stat-label">Încărcare</div>
+                </div>
+                <div class="scroll-reveal scroll-reveal-delay-2">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Template-uri</div>
+                </div>
+                <div class="scroll-reveal scroll-reveal-delay-3">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Posibilități</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="padding: 160px 40px; text-align: center; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; background: var(--color-accent); opacity: 0.05;"></div>
+        <div class="scroll-reveal" style="max-width: 700px; margin: 0 auto; position: relative; z-index: 1;">
+            <p class="section-label">Hai Să Începem</p>
+            <h2 class="section-title" style="margin-bottom: 32px;">
+                GATA SĂ ÎȚI SCRII<br><span style="color: var(--color-accent);">POVESTEA</span>?
+            </h2>
+            <p style="color: var(--color-text-muted); font-size: 18px; line-height: 1.8; margin-bottom: 48px;">
+                Fiecare brand mare a început cu o decizie. Fă alegerea de a investi 
+                într-un website care reflectă adevărata valoare a afacerii tale.
+            </p>
+            <a href="index.html#contact" class="angular-btn" style="font-size: 16px; padding: 20px 56px;">Începe Proiectul Tău →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="padding: 80px 40px 40px; background: var(--color-bg); border-top: 1px solid var(--color-border);">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div class="footer-grid">
+                <div>
+                    <a href="/" aria-label="Rynex Labs - Acasă" style="display: inline-flex; align-items: center; text-decoration: none; margin-bottom: 20px;">
+                        <img src="rynex-labs-logo.png" alt="Rynex Labs" class="site-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                        <span style="display: none; font-size: 22px; font-weight: 800; color: white; letter-spacing: -1px;">
+                            RYNEX<span style="color: var(--color-accent);">.</span>LABS
+                        </span>
+                    </a>
+                    <p style="color: var(--color-text-muted); line-height: 1.8; font-size: 14px;">
+                        Agenție web design Iași. Website-uri premium și automatizări AI pentru afaceri ambițioase din toată România.
+                    </p>
+                </div>
+                <div>
+                    <h4 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Servicii</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="servicii.html" class="footer-link">Creare Website</a>
+                        <a href="servicii.html" class="footer-link">Optimizare SEO</a>
+                        <a href="servicii.html" class="footer-link">Landing Pages</a>
+                        <a href="automatizare-ai.html" class="footer-link" style="color: var(--color-accent);">Automatizare AI ↗</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Navigație</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="site-ul-tau.html" class="footer-link">Site-ul Tău</a>
+                        <a href="blog.html" class="footer-link">Blog</a>
+                        <a href="index.html#process" class="footer-link">Procesul Nostru</a>
+                        <a href="index.html#contact" class="footer-link">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Legal & Contact</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px; color: var(--color-text-muted);">
+                        <a href="mailto:rynexlabsbusiness@gmail.com" class="footer-link">rynexlabsbusiness@gmail.com</a>
+                        <a href="tel:+40747202811" class="footer-link">+40 747 202 811</a>
+                        <span style="font-size: 14px;">Iași, România</span>
+                        <a href="#" class="footer-link" onclick="showPrivacyModal(); return false;">Politica de Confidențialitate</a>
+                        <a href="#" class="footer-link" onclick="showTermsModal(); return false;">Termeni și Condiții</a>
+                    </div>
+                </div>
+            </div>
+            <div style="padding-top: 40px; border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; color: var(--color-text-muted); font-size: 13px;">
+                <span>© 2026 Rynex Labs. Toate drepturile rezervate.</span>
+                <div style="display: flex; gap: 20px;">
+                    <a href="sitemap.xml" class="footer-link" style="font-size: 13px;">Sitemap</a>
+                    <a href="blog.html" class="footer-link" style="font-size: 13px;">Blog</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Privacy Modal -->
+    <div class="modal-overlay" id="privacyModal" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="font-size: 18px; font-weight: 700;">Politica de Confidențialitate</h3>
+                <button class="modal-close" onclick="closeModals()">Închide ✕</button>
+            </div>
+            <div class="gdpr-content">
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Rynex Labs respectă confidențialitatea datelor tale personale. Această politică explică cum colectăm, folosim și protejăm informațiile tale.</p>
+                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">1. Date Colectate</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Colectăm numele, adresa de email, numărul de telefon și mesajul tău atunci când ne contactezi prin formularul de contact.</p>
+                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">2. Drepturile Tale</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8;">Ai dreptul să accesezi, să modifici sau să ștergi datele tale personale. Contactează-ne la <a href="mailto:rynexlabsbusiness@gmail.com" style="color: var(--color-accent);">rynexlabsbusiness@gmail.com</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div class="modal-overlay" id="termsModal" role="dialog" aria-modal="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="font-size: 18px; font-weight: 700;">Termeni și Condiții</h3>
+                <button class="modal-close" onclick="closeModals()">Închide ✕</button>
+            </div>
+            <div class="gdpr-content">
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Prin accesarea acestui website, acceptați acești termeni și condiții.</p>
+                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">1. Serviciile Oferite</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Rynex Labs oferă servicii de web design, SEO și automatizare AI.</p>
+                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">2. Proprietate Intelectuală</h4>
+                <p style="color: var(--color-text-muted); line-height: 1.8;">Conținutul acestui website este proprietatea Rynex Labs.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+        // GDPR Modals
+        function showPrivacyModal() {
+            document.getElementById('privacyModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function showTermsModal() {
+            document.getElementById('termsModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModals() {
+            document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
+            document.body.style.overflow = '';
+        }
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', (e) => { if (e.target === modal) closeModals(); });
+        });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModals(); });
+    </script>
+</body>
+</html>
