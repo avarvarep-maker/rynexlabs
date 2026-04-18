@@ -452,61 +452,6 @@
             letter-spacing: -4px;
         }
 
-        /* FAQ */
-        .faq-item {
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .faq-question {
-            width: 100%;
-            background: transparent;
-            border: none;
-            color: var(--color-text);
-            font-size: 18px;
-            font-weight: 600;
-            text-align: left;
-            padding: 28px 0;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            font-family: inherit;
-            transition: color 0.3s ease;
-        }
-
-        .faq-question:hover { color: var(--color-accent); }
-
-        .faq-icon {
-            width: 32px;
-            height: 32px;
-            border: 1px solid var(--color-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            color: var(--color-accent);
-        }
-
-        .faq-item.open .faq-icon { transform: rotate(45deg); border-color: var(--color-accent); }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.3s ease;
-        }
-
-        .faq-answer-inner {
-            padding-bottom: 28px;
-            color: var(--color-text-muted);
-            line-height: 1.8;
-            font-size: 16px;
-        }
-
-        .faq-item.open .faq-answer { max-height: 400px; }
-
         /* Mobile Menu */
         .mobile-menu {
             display: none;
@@ -677,9 +622,7 @@
             .blog-card h3 { font-size: 17px !important; line-height: 1.4 !important; }
             .blog-card p { font-size: 13px !important; }
 
-            /* FAQ */
-            .faq-question { font-size: 15px !important; padding: 18px 0 !important; }
-            .faq-answer-inner { font-size: 14px !important; }
+
 
             /* Forms — prevent iOS zoom, proper sizing */
             .input-field { font-size: 16px !important; padding: 14px 16px !important; }
@@ -711,7 +654,7 @@
         }
 
         @media (pointer: coarse) {
-            .nav-link, .footer-link, .faq-question, .modal-close { min-height: 44px; }
+            .nav-link, .footer-link, .modal-close { min-height: 44px; }
             .blog-card, .portfolio-card, .card, .process-step { cursor: pointer; }
             .card:hover, .process-step:hover { transform: none; }
         }
@@ -953,7 +896,7 @@
 
             <div class="process-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2px; background: var(--color-border);">
                 <div class="process-step scroll-reveal" style="background: var(--color-bg); text-align: center; padding: 48px 36px;">
-                    <span style="font-size: 32px; margin-bottom: 16px; display: block;">🔍</span>
+                    <span style="font-size: 32px; color: var(--color-accent); opacity: 0.5; margin-bottom: 16px; display: block;">&#9670;</span>
                     <div style="font-size: 48px; font-weight: 900; color: var(--color-accent); opacity: 0.3; line-height: 1; margin-bottom: 16px;">01</div>
                     <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 12px;">Descoperire</h3>
                     <p style="color: var(--color-text-muted); font-size: 14px; line-height: 1.7;">
@@ -962,7 +905,7 @@
                 </div>
 
                 <div class="process-step scroll-reveal" style="background: var(--color-bg); text-align: center; padding: 48px 36px;">
-                    <span style="font-size: 32px; margin-bottom: 16px; display: block;">🎨</span>
+                    <span style="font-size: 32px; color: var(--color-accent); opacity: 0.5; margin-bottom: 16px; display: block;">&#9632;</span>
                     <div style="font-size: 48px; font-weight: 900; color: var(--color-accent); opacity: 0.3; line-height: 1; margin-bottom: 16px;">02</div>
                     <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 12px;">Design</h3>
                     <p style="color: var(--color-text-muted); font-size: 14px; line-height: 1.7;">
@@ -971,7 +914,7 @@
                 </div>
 
                 <div class="process-step scroll-reveal" style="background: var(--color-bg); text-align: center; padding: 48px 36px;">
-                    <span style="font-size: 32px; margin-bottom: 16px; display: block;">⚡</span>
+                    <span style="font-size: 32px; color: var(--color-accent); opacity: 0.5; margin-bottom: 16px; display: block;">&#9650;</span>
                     <div style="font-size: 48px; font-weight: 900; color: var(--color-accent); opacity: 0.3; line-height: 1; margin-bottom: 16px;">03</div>
                     <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 12px;">Dezvoltare</h3>
                     <p style="color: var(--color-text-muted); font-size: 14px; line-height: 1.7;">
@@ -980,7 +923,7 @@
                 </div>
 
                 <div class="process-step scroll-reveal" style="background: var(--color-bg); text-align: center; padding: 48px 36px;">
-                    <span style="font-size: 32px; margin-bottom: 16px; display: block;">🚀</span>
+                    <span style="font-size: 32px; color: var(--color-accent); opacity: 0.5; margin-bottom: 16px; display: block;">&#9671;</span>
                     <div style="font-size: 48px; font-weight: 900; color: var(--color-accent); opacity: 0.3; line-height: 1; margin-bottom: 16px;">04</div>
                     <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 12px;">Lansare</h3>
                     <p style="color: var(--color-text-muted); font-size: 14px; line-height: 1.7;">
@@ -991,90 +934,6 @@
 
             <div style="text-align: center; margin-top: 60px;">
                 <a href="contact.html" class="angular-btn">Începe Procesul Acum</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" style="padding: 120px 40px;">
-        <div style="max-width: 900px; margin: 0 auto;">
-            <div class="scroll-reveal" style="text-align: center; margin-bottom: 80px;">
-                <p class="section-label">Întrebări Frecvente</p>
-                <h2 class="section-title">FAQ</h2>
-            </div>
-
-            <div class="scroll-reveal">
-                <div class="faq-item open">
-                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="true">
-                        Cât durează realizarea unui website?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">
-                            Depinde de complexitate. Un site de prezentare simplu îl livrăm în <strong>7–10 zile lucrătoare</strong>. Un proiect mai complex (magazin online, platformă cu funcționalități specifice) poate dura 3–6 săptămâni. Stabilim un calendar clar la începutul colaborării, fără surprize.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-                        Care sunt prețurile serviciilor?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">
-                            Nu lucrăm cu tarife fixe afișate — fiecare proiect e unic. Prețul final depinde de complexitate, numărul de pagini și funcționalitățile necesare. Trimitem întotdeauna o ofertă clară și transparentă după o consultație gratuită, fără costuri ascunse.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-                        Oferiți suport și mentenanță după lansare?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">
-                            Da. Oferim o perioadă de suport inclus după lansare pentru ajustări și corecții. Dacă ai nevoie de mentenanță continuă sau actualizări regulate, putem stabili un plan lunar adaptat nevoilor tale.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-                        Lucrați cu clienți din toată România?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">
-                            Absolut. Suntem bazați în Iași, dar colaborăm cu clienți din toată România și din diaspora. Întâlnirile se pot face online (Zoom, Meet) sau față în față dacă ești în Iași.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-                        Ce este automatizarea AI și cum îmi poate ajuta afacerea?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">
-                            Automatizarea AI înseamnă sisteme inteligente care preiau taskuri repetitive: răspuns automat la mesaje, emitere facturi, programări, notificări clienți, rapoarte. Practic, angajezi un "angajat digital" care lucrează 24/7, fără pauze și fără erori. <a href="automatizare-ai.html" style="color: var(--color-accent);">Află mai multe →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
-                        Pot vedea exemple de lucrări anterioare?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">
-                            Da! Pagina noastră de <a href="site-ul-tau.html" style="color: var(--color-accent);">Site-ul Tău</a> conține exemple de design pe care le putem adapta pentru afacerea ta. Apasă "Demo Live" pentru a le vedea în acțiune.
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1205,8 +1064,7 @@
                         <a href="site-ul-tau.html" class="footer-link">Site-ul Tău</a>
                         <a href="blog.html" class="footer-link">Blog</a>
                         <a href="index.html#process" class="footer-link">Procesul Nostru</a>
-                        <a href="index.html#faq" class="footer-link">FAQ</a>
-                        <a href="contact.html" class="footer-link">Contact</a>
+                                                <a href="contact.html" class="footer-link">Contact</a>
                     </div>
                 </div>
 
@@ -1284,22 +1142,6 @@
             if (e.key === 'Escape') closeModals();
         });
 
-        // FAQ Accordion
-        function toggleFaq(btn) {
-            const item = btn.parentElement;
-            const isOpen = item.classList.contains('open');
-
-            document.querySelectorAll('.faq-item').forEach(i => {
-                i.classList.remove('open');
-                i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-            });
-
-            if (!isOpen) {
-                item.classList.add('open');
-                btn.setAttribute('aria-expanded', 'true');
-            }
-        }
-
         // Contact Form
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -1332,7 +1174,7 @@
 
             emailjs.sendForm('service_rynex', 'template_rynex', this)
                 .then(() => {
-                    formStatus.innerHTML = '<p style="color: #22c55e; font-size: 15px; font-weight: 600;">✓ Mesaj trimis cu succes! Te contactăm în 24 ore.</p>';
+                    formStatus.innerHTML = '<p style="color: #22c55e; font-size: 15px; font-weight: 600;">Mesaj trimis cu succes! Te contactăm în 24 ore.</p>';
                     this.reset();
                     submitBtn.disabled = false;
                     submitBtn.textContent = 'Trimite Mesajul';
