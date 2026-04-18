@@ -90,6 +90,8 @@
             --color-surface-light: #1a1a1a;
             --color-accent: #ff3b26;
             --color-accent-dark: #cc2e1d;
+            --color-secondary: #f5a623;
+            --color-secondary-dark: #d4891c;
             --color-text: #ffffff;
             --color-text-muted: #888888;
             --color-border: #2a2a2a;
@@ -558,16 +560,32 @@
 
         .service-tag {
             display: inline-block;
-            background: rgba(255, 59, 38, 0.1);
-            border: 1px solid rgba(255, 59, 38, 0.2);
-            color: var(--color-accent);
+            background: rgba(245, 166, 35, 0.12);
+            border: 1px solid rgba(245, 166, 35, 0.3);
+            color: var(--color-secondary);
             font-size: 11px;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             padding: 4px 10px;
             margin-bottom: 20px;
         }
+
+        .angular-btn-secondary {
+            background: var(--color-secondary);
+            color: #0a0a0a;
+            padding: 14px 28px;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .angular-btn-secondary:hover { background: var(--color-secondary-dark); transform: translateY(-2px); }
 
         /* Stat Bar */
         .stat-bar {
@@ -699,7 +717,7 @@
     <header style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-border);">
         <div class="header-inner" style="max-width: 1400px; margin: 0 auto; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;">
             <a href="/" aria-label="Rynex Labs - Acasă" style="display: flex; align-items: center; text-decoration: none;">
-                <img src="rynex-labs-logo.png" alt="Rynex Labs Logo" style="height: 36px; width: auto; display: block;"
+                <img src="rynex-labs-logo.png" alt="Rynex Labs Logo" style="height: 52px; width: auto; display: block;"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <span style="display: none; font-size: 24px; font-weight: 800; color: white; letter-spacing: -1px;">
                     RYNEX<span style="color: var(--color-accent);">.</span>LABS
@@ -708,7 +726,7 @@
 
             <nav class="desktop-nav" style="display: flex; gap: 36px; align-items: center;" aria-label="Navigație principală">
                 <a href="#services" class="nav-link">Servicii</a>
-                <a href="#portfolio" class="nav-link">Portofoliu</a>
+                <a href="#templates" class="nav-link">Template-uri</a>
                 <a href="blog.html" class="nav-link">Blog</a>
                 <a href="automatizare-ai.html" class="nav-link nav-cta">Automatizare AI</a>
                 <a href="#contact" class="nav-link">Contact</a>
@@ -725,7 +743,7 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
         <a href="#services" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Servicii</a>
-        <a href="#portfolio" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Portofoliu</a>
+        <a href="#templates" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Template-uri</a>
         <a href="blog.html" class="nav-link" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Blog</a>
         <a href="automatizare-ai.html" class="nav-link" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border); color: var(--color-accent);">Automatizare AI</a>
         <a href="#contact" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 22px; padding: 14px 0;">Contact</a>
@@ -750,7 +768,7 @@
                 </p>
                 <div class="hero-buttons" style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 60px;">
                     <a href="#contact" class="angular-btn">Începe Proiectul</a>
-                    <a href="#portfolio" class="angular-btn-outline">Vezi Portofoliu</a>
+                    <a href="#templates" class="angular-btn-outline">Vezi Template-uri</a>
                 </div>
                 <div style="display: flex; gap: 40px; flex-wrap: wrap;">
                     <div>
@@ -878,14 +896,14 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" style="padding: 120px 40px; background: var(--color-surface);">
+    <!-- Templates Section -->
+    <section id="templates" style="padding: 120px 40px; background: var(--color-surface);">
         <div style="max-width: 1400px; margin: 0 auto;">
             <div class="scroll-reveal" style="text-align: center; margin-bottom: 80px;">
-                <p class="section-label">Lucrările Noastre</p>
-                <h2 class="section-title">Portofoliu</h2>
-                <p style="color: var(--color-text-muted); font-size: 18px; max-width: 550px; margin: 24px auto 0; line-height: 1.8;">
-                    Fiecare proiect e o poveste de transformare. Apasă preview pentru a vedea rezultatele în direct.
+                <p class="section-label" style="color: var(--color-secondary);">Exemple de Design</p>
+                <h2 class="section-title">Template-uri Disponibile</h2>
+                <p style="color: var(--color-text-muted); font-size: 18px; max-width: 600px; margin: 24px auto 0; line-height: 1.8;">
+                    Iată câteva template-uri pe care le putem adapta pentru afacerea ta — sau construim ceva complet personalizat de la zero.
                 </p>
             </div>
 
@@ -925,8 +943,8 @@
                     </div>
                     <div class="portfolio-content">
                         <h3>DoctorVet</h3>
-                        <p>Clinică veterinară — platformă cu programări online, prezentare servicii și sistem de notificări pentru clienți.</p>
-                        <button class="angular-btn" onclick="openPreview('doctorvet.html')">LIVE PREVIEW</button>
+                        <p>Template pentru clinică / cabinet medical. Design profesional, secțiune servicii, programări online și date de contact.</p>
+                        <button class="angular-btn-secondary" onclick="openPreview('doctorvet.html')">Demo Live</button>
                     </div>
                 </article>
 
@@ -964,8 +982,8 @@
                     </div>
                     <div class="portfolio-content">
                         <h3>Café Noir</h3>
-                        <p>Cafenea premium — identitate vizuală distinctă, meniu digital interactiv și atmosferă transpusă în fiecare pixel.</p>
-                        <button class="angular-btn" onclick="openPreview('cafenoir.html')">LIVE PREVIEW</button>
+                        <p>Template pentru cafenea / restaurant. Identitate vizuală premium, meniu digital interactiv și atmosferă distinctă.</p>
+                        <button class="angular-btn-secondary" onclick="openPreview('cafenoir.html')">Demo Live</button>
                     </div>
                 </article>
 
@@ -998,8 +1016,8 @@
                     </div>
                     <div class="portfolio-content">
                         <h3>FitnessForge</h3>
-                        <p>Platformă fitness — programe de antrenament, tracking progres și comunitate activă. Rata de retenție a crescut cu 25% după lansare.</p>
-                        <button class="angular-btn" onclick="openPreview('fitnessforge.html')">LIVE PREVIEW</button>
+                        <p>Template pentru sală de fitness / antrenor personal. Programe de antrenament, statistici impact și formular de înscriere.</p>
+                        <button class="angular-btn-secondary" onclick="openPreview('fitnessforge.html')">Demo Live</button>
                     </div>
                 </article>
             </div>
@@ -1195,7 +1213,7 @@
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            Da! Secțiunea <a href="#portfolio" style="color: var(--color-accent);">Portofoliu</a> de mai sus conține proiecte reale cu preview live. Poți vedea DoctorVet, Café Noir și FitnessForge direct în browser.
+                            Da! Secțiunea <a href="#templates" style="color: var(--color-accent);">Template-uri</a> de mai sus conține exemple de design pe care le putem adapta pentru afacerea ta. Apasă "Demo Live" pentru a le vedea în acțiune.
                         </div>
                     </div>
                 </div>
@@ -1301,7 +1319,7 @@
             <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 60px; margin-bottom: 60px;">
                 <div>
                     <a href="/" aria-label="Rynex Labs - Acasă" style="display: inline-flex; align-items: center; text-decoration: none; margin-bottom: 20px;">
-                        <img src="rynex-labs-logo.png" alt="Rynex Labs" style="height: 32px; width: auto;"
+                        <img src="rynex-labs-logo.png" alt="Rynex Labs" style="height: 44px; width: auto;"
                              onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
                         <span style="display: none; font-size: 22px; font-weight: 800; color: white; letter-spacing: -1px;">
                             RYNEX<span style="color: var(--color-accent);">.</span>LABS
@@ -1326,7 +1344,7 @@
                 <div>
                     <h4 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Navigație</h4>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <a href="#portfolio" class="footer-link">Portofoliu</a>
+                        <a href="#templates" class="footer-link">Template-uri</a>
                         <a href="blog.html" class="footer-link">Blog</a>
                         <a href="#process" class="footer-link">Procesul Nostru</a>
                         <a href="#faq" class="footer-link">FAQ</a>

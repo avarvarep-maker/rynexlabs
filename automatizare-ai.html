@@ -193,17 +193,17 @@
     <!-- Header -->
     <header style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-border);">
         <div class="header-inner" style="max-width: 1400px; margin: 0 auto; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;">
-            <a href="index_fixed.html" aria-label="Rynex Labs" style="display: flex; align-items: center; text-decoration: none;">
-                <img src="rynex-labs-logo.png" alt="Rynex Labs Logo" style="height: 36px; width: auto;"
+            <a href="index.html" aria-label="Rynex Labs" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="rynex-labs-logo.png" alt="Rynex Labs Logo" style="height: 52px; width: auto;"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <span style="display: none; font-size: 22px; font-weight: 800; color: white; letter-spacing: -1px;">RYNEX<span style="color: var(--color-accent);">.</span>LABS</span>
             </a>
             <nav class="desktop-nav" style="display: flex; gap: 36px; align-items: center;">
-                <a href="index_fixed.html#services" class="nav-link">Servicii</a>
-                <a href="index_fixed.html#portfolio" class="nav-link">Portofoliu</a>
+                <a href="index.html#services" class="nav-link">Servicii</a>
+                <a href="index.html#templates" class="nav-link">Template-uri</a>
                 <a href="blog.html" class="nav-link">Blog</a>
                 <a href="automatizare-ai.html" class="nav-link active">Automatizare AI</a>
-                <a href="index_fixed.html#contact" class="nav-link">Contact</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
             </nav>
             <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Deschide meniu">
                 <span></span><span></span><span></span>
@@ -213,11 +213,11 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
-        <a href="index_fixed.html#services" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Servicii</a>
-        <a href="index_fixed.html#portfolio" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Portofoliu</a>
+        <a href="index.html#services" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Servicii</a>
+        <a href="index.html#templates" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Template-uri</a>
         <a href="blog.html" class="nav-link" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Blog</a>
         <a href="automatizare-ai.html" class="nav-link" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border); color: var(--color-accent);">Automatizare AI</a>
-        <a href="index_fixed.html#contact" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 22px; padding: 14px 0;">Contact</a>
+        <a href="index.html#contact" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 22px; padding: 14px 0;">Contact</a>
     </div>
 
     <!-- Hero -->
@@ -229,7 +229,7 @@
             <div class="scroll-reveal">
                 <nav aria-label="Breadcrumb" style="margin-bottom: 32px;">
                     <ol class="breadcrumb" style="list-style: none; padding: 0;">
-                        <li><a href="index_fixed.html">Acasă</a></li>
+                        <li><a href="index.html">Acasă</a></li>
                         <li><span style="color: var(--color-border);">›</span></li>
                         <li style="color: var(--color-text);">Automatizare AI</li>
                     </ol>
@@ -546,20 +546,53 @@
     </section>
 
     <!-- Footer -->
-    <footer style="padding: 60px 40px 30px; background: var(--color-bg); border-top: 1px solid var(--color-border);">
-        <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-            <a href="index_fixed.html" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
-                <img src="rynex-labs-logo.png" alt="Rynex Labs" style="height: 28px;"
-                     onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
-                <span style="display: none; font-size: 20px; font-weight: 800; color: white; letter-spacing: -1px;">RYNEX<span style="color: var(--color-accent);">.</span>LABS</span>
-            </a>
-            <div style="display: flex; gap: 24px; flex-wrap: wrap;">
-                <a href="index_fixed.html" class="footer-link">Acasă</a>
-                <a href="index_fixed.html#services" class="footer-link">Servicii Web</a>
-                <a href="blog.html" class="footer-link">Blog</a>
-                <a href="index_fixed.html#contact" class="footer-link">Contact General</a>
+    <footer style="padding: 80px 40px 40px; background: var(--color-bg); border-top: 1px solid var(--color-border);">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 60px; margin-bottom: 60px;">
+                <div>
+                    <a href="index.html" style="display: inline-flex; align-items: center; text-decoration: none; margin-bottom: 20px;">
+                        <img src="rynex-labs-logo.png" alt="Rynex Labs" style="height: 44px; width: auto;"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                        <span style="display: none; font-size: 22px; font-weight: 800; color: white; letter-spacing: -1px;">RYNEX<span style="color: var(--color-accent);">.</span>LABS</span>
+                    </a>
+                    <p style="color: var(--color-text-muted); line-height: 1.8; font-size: 14px;">Agenție web design Iași. Website-uri premium și automatizări AI pentru afaceri ambițioase din toată România.</p>
+                </div>
+                <div>
+                    <h4 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Servicii</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="index.html#services" class="footer-link">Creare Website</a>
+                        <a href="index.html#services" class="footer-link">Optimizare &amp; SEO</a>
+                        <a href="index.html#services" class="footer-link">Landing Pages</a>
+                        <a href="index.html#services" class="footer-link">Redesign Website</a>
+                        <a href="automatizare-ai.html" class="footer-link" style="color: var(--color-accent);">Automatizare AI ↗</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Navigație</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="index.html#templates" class="footer-link">Template-uri</a>
+                        <a href="blog.html" class="footer-link">Blog</a>
+                        <a href="index.html#process" class="footer-link">Procesul Nostru</a>
+                        <a href="index.html#faq" class="footer-link">FAQ</a>
+                        <a href="index.html#contact" class="footer-link">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Legal &amp; Contact</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="mailto:rynexlabsbusiness@gmail.com" class="footer-link">rynexlabsbusiness@gmail.com</a>
+                        <a href="tel:+40747202811" class="footer-link">+40 747 202 811</a>
+                        <span style="font-size: 14px; color: var(--color-text-muted);">Iași, România</span>
+                    </div>
+                </div>
             </div>
-            <p style="color: var(--color-text-muted); font-size: 13px;">© 2026 Rynex Labs. Toate drepturile rezervate.</p>
+            <div style="padding-top: 40px; border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; color: var(--color-text-muted); font-size: 13px;">
+                <span>© 2026 Rynex Labs. Toate drepturile rezervate.</span>
+                <div style="display: flex; gap: 20px;">
+                    <a href="sitemap.xml" class="footer-link" style="font-size: 13px;">Sitemap</a>
+                    <a href="blog.html" class="footer-link" style="font-size: 13px;">Blog</a>
+                </div>
+            </div>
         </div>
     </footer>
 
