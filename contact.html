@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Rynex Labs Iași — Web Design & AI</title>
+    <meta name="description" content="Contactează Rynex Labs Iași pentru web design premium și automatizări AI. Răspuns în 24 ore. Consultație gratuită.">
+    <link rel="canonical" href="https://rynexlabs.ro/contact.html">
+    <meta property="og:title" content="Contact | Rynex Labs">
+    <meta property="og:description" content="Să începem un proiect împreună. Consultație gratuită.">
+    <link rel="icon" type="image/png" href="rynex-icon.png">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #0a0a0a;
+            --color-surface: #141414;
+            --color-surface-light: #1a1a1a;
+            --color-accent: #ff3b26;
+            --color-accent-dark: #cc2e1d;
+            --color-text: #ffffff;
+            --color-text-muted: #888888;
+            --color-border: #2a2a2a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { border-radius: 0 !important; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--color-bg); color: var(--color-text); line-height: 1.6; overflow-x: hidden; }
+        ::selection { background: var(--color-accent); color: white; }
+
+        .angular-btn {
+            background: var(--color-accent);
+            color: white;
+            padding: 18px 44px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .angular-btn:hover { background: var(--color-accent-dark); transform: translateY(-2px); }
+
+        .nav-link { color: var(--color-text-muted); text-decoration: none; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease; padding: 8px 0; position: relative; }
+        .nav-link:hover { color: var(--color-text); }
+        .nav-link.active { color: var(--color-text); }
+        .nav-link.nav-cta { color: var(--color-accent); }
+        .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--color-accent); transition: width 0.3s ease; }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+        .section-label { color: var(--color-accent); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px; }
+        .section-title { font-size: clamp(32px, 5vw, 56px); font-weight: 800; line-height: 1.1; letter-spacing: -1px; }
+
+        .input-field {
+            width: 100%;
+            background: var(--color-surface-light);
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+            padding: 16px 20px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+            outline: none;
+            font-family: inherit;
+        }
+        .input-field:focus { border-color: var(--color-accent); }
+        .input-field::placeholder { color: var(--color-text-muted); }
+        textarea.input-field { min-height: 130px; resize: vertical; }
+        select.input-field { cursor: pointer; }
+
+        .footer-link { color: var(--color-text-muted); text-decoration: none; font-size: 14px; transition: color 0.3s ease; }
+        .footer-link:hover { color: var(--color-accent); }
+
+        .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--color-text-muted); }
+        .breadcrumb a { color: var(--color-text-muted); text-decoration: none; }
+        .breadcrumb a:hover { color: var(--color-accent); }
+
+        .mobile-menu { display: none; position: fixed; inset: 0; background: var(--color-bg); z-index: 999; flex-direction: column; padding: 100px 40px 40px; }
+        .mobile-menu.active { display: flex; }
+        .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; z-index: 1001; background: none; border: none; padding: 4px; }
+        .hamburger span { width: 28px; height: 2px; background: var(--color-text); display: block; }
+        .desktop-nav { display: flex; gap: 36px; align-items: center; }
+        .site-logo { width: 210px; height: 80px; object-fit: cover; object-position: center; display: block; }
+
+        .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .modal-overlay.active { display: flex; }
+        .modal-content { background: var(--color-surface); border: 1px solid var(--color-border); width: 100%; max-width: 800px; max-height: 90vh; overflow-y: auto; position: relative; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 30px; border-bottom: 1px solid var(--color-border); position: sticky; top: 0; background: var(--color-surface); z-index: 10; }
+        .modal-close { background: var(--color-accent); color: white; border: none; padding: 12px 24px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
+        .modal-close:hover { background: var(--color-accent-dark); }
+        .gdpr-content { padding: 40px; }
+
+        @media (max-width: 1024px) {
+            .hamburger { display: flex; }
+            .desktop-nav { display: none !important; }
+        }
+        @media (max-width: 768px) {
+            .site-logo { width: 145px !important; height: 56px !important; }
+            .contact-content { grid-template-columns: 1fr !important; gap: 50px !important; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-border);">
+        <div class="header-inner" style="max-width: 1400px; margin: 0 auto; padding: 18px 40px; display: flex; justify-content: space-between; align-items: center;">
+            <a href="/" aria-label="Rynex Labs - Acasă" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="rynex-labs-logo.png" alt="Rynex Labs Logo" class="site-logo"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display: none; font-size: 24px; font-weight: 800; color: white; letter-spacing: -1px;">
+                    RYNEX<span style="color: var(--color-accent);">.</span>LABS
+                </span>
+            </a>
+
+            <nav class="desktop-nav" aria-label="Navigație principală">
+                <a href="servicii.html" class="nav-link">Servicii</a>
+                <a href="site-ul-tau.html" class="nav-link">Site-ul Tău</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="automatizare-ai.html" class="nav-link nav-cta">Automatizare AI</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Deschide meniu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a href="automatizare-ai.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border); color: var(--color-accent);">Automatizare AI</a>
+        <a href="servicii.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border);">Servicii</a>
+        <a href="site-ul-tau.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border);">Site-ul Tău</a>
+        <a href="blog.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border);">Blog</a>
+        <a href="contact.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0;">Contact</a>
+        <a href="#contact" class="angular-btn" onclick="toggleMobileMenu()" style="margin-top: 28px; text-align: center; width: 100%;">Începe Proiectul</a>
+    </div>
+
+    
+
+    <!-- Page Hero -->
+    <section style="min-height: 50vh; display: flex; align-items: center; padding: 160px 40px 80px; background: var(--color-surface); border-bottom: 1px solid var(--color-border);">
+        <div style="max-width: 1100px; margin: 0 auto; width: 100%;">
+            <nav aria-label="Breadcrumb" class="breadcrumb scroll-reveal" style="margin-bottom: 40px;">
+                <a href="index.html">Acasă</a>
+                <span>/</span>
+                <span style="color: var(--color-text);">Contact</span>
+            </nav>
+            <p class="section-label scroll-reveal">Hai să vorbim</p>
+            <h1 class="section-title scroll-reveal" style="margin-bottom: 24px;">
+                CONTACT
+            </h1>
+            <p class="scroll-reveal" style="color: var(--color-text-muted); font-size: 18px; max-width: 600px; line-height: 1.8;">
+                Completează formularul și te contactăm în cel mult 24 ore. Prima consultație este gratuită.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="padding: 120px 40px; background: var(--color-surface);">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div class="scroll-reveal" style="text-align: center; margin-bottom: 80px;">
+                <p class="section-label">Hai să vorbim</p>
+                <h2 class="section-title">Contact</h2>
+            </div>
+
+            <div class="contact-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1200px; margin: 0 auto;">
+                <div class="scroll-reveal">
+                    <h3 style="font-size: 32px; font-weight: 700; margin-bottom: 20px; line-height: 1.2;">Să începem un proiect împreună</h3>
+                    <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 40px;">
+                        Completează formularul și te contactăm în cel mult 24 ore. Prima consultație este gratuită.
+                    </p>
+
+                    <div style="margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--color-border);">
+                        <div style="color: var(--color-text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Locație</div>
+                        <div style="font-size: 17px;">Iași, România</div>
+                    </div>
+
+                    <div style="margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--color-border);">
+                        <div style="color: var(--color-text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Email</div>
+                        <a href="mailto:rynexlabsbusiness@gmail.com" style="font-size: 17px; color: white; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='white'">rynexlabsbusiness@gmail.com</a>
+                    </div>
+
+                    <div style="margin-bottom: 28px;">
+                        <div style="color: var(--color-text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Telefon</div>
+                        <a href="tel:+40747202811" style="font-size: 17px; color: white; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='white'">+40 747 202 811</a>
+                    </div>
+
+                    <div style="background: rgba(255,59,38,0.06); border: 1px solid rgba(255,59,38,0.15); padding: 24px; margin-top: 40px;">
+                        <div style="font-size: 13px; font-weight: 600; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Timp de răspuns</div>
+                        <div style="color: var(--color-text-muted); font-size: 14px; line-height: 1.7;">Răspundem în maxim 24 ore în zilele lucrătoare. Urgențe? Scrie pe WhatsApp la numărul de mai sus.</div>
+                    </div>
+                </div>
+
+                <div class="scroll-reveal">
+                    <form id="contactForm" novalidate style="display: flex; flex-direction: column; gap: 16px;">
+                        <!-- Honeypot (spam protection) -->
+                        <div style="display: none;" aria-hidden="true">
+                            <input type="text" name="_honeypot" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                            <div>
+                                <label for="contact-name" style="display: block; font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Nume *</label>
+                                <input type="text" id="contact-name" name="name" class="input-field" placeholder="Numele tău" required autocomplete="name">
+                            </div>
+                            <div>
+                                <label for="contact-email" style="display: block; font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Email *</label>
+                                <input type="email" id="contact-email" name="email" class="input-field" placeholder="email@exemplu.ro" required autocomplete="email">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="contact-phone" style="display: block; font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Telefon</label>
+                            <input type="tel" id="contact-phone" name="phone" class="input-field" placeholder="+40 7XX XXX XXX" autocomplete="tel">
+                        </div>
+
+                        <div>
+                            <label for="contact-subject" style="display: block; font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Serviciu dorit *</label>
+                            <select id="contact-subject" name="subject" class="input-field" required>
+                                <option value="" disabled selected>Alege serviciul...</option>
+                                <option value="Creare Website">Creare Website</option>
+                                <option value="Optimizare &amp; SEO">Optimizare &amp; SEO</option>
+                                <option value="Landing Page">Landing Page</option>
+                                <option value="Redesign Website">Redesign Website</option>
+                                <option value="Automatizare AI">Automatizare AI</option>
+                                <option value="Altele">Altele / Nu știu încă</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="contact-message" style="display: block; font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Detalii proiect *</label>
+                            <textarea id="contact-message" name="message" class="input-field" placeholder="Descrie pe scurt ce ai nevoie..." required style="min-height: 130px;"></textarea>
+                        </div>
+
+                        <button type="submit" class="angular-btn" id="submitBtn" style="width: 100%; font-size: 15px; padding: 18px;">
+                            Trimite Mesajul
+                        </button>
+
+                        <p style="color: var(--color-text-muted); font-size: 12px; text-align: center; line-height: 1.6;">
+                            Datele tale sunt confidențiale. Nu le vom împărtăși cu terți.<br>
+                            Prin trimitere, accepți <a href="#" onclick="showPrivacyModal(); return false;" style="color: var(--color-accent);">Politica de Confidențialitate</a>.
+                        </p>
+                    </form>
+                    <div id="formStatus" style="margin-top: 16px; text-align: center;" role="status" aria-live="polite"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Footer -->
+    <footer style="padding: 80px 40px 40px; background: var(--color-bg); border-top: 1px solid var(--color-border);">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 60px; margin-bottom: 60px;">
+                <div>
+                    <a href="/" aria-label="Rynex Labs - Acasă" style="display: inline-flex; align-items: center; text-decoration: none; margin-bottom: 20px;">
+                        <img src="rynex-labs-logo.png" alt="Rynex Labs" class="site-logo"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                        <span style="display: none; font-size: 22px; font-weight: 800; color: white; letter-spacing: -1px;">
+                            RYNEX<span style="color: var(--color-accent);">.</span>LABS
+                        </span>
+                    </a>
+                    <p style="color: var(--color-text-muted); line-height: 1.8; font-size: 14px;">
+                        Agenție web design Iași. Website-uri premium și automatizări AI pentru afaceri ambițioase din toată România.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Servicii</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="#services" class="footer-link">Creare Website</a>
+                        <a href="#services" class="footer-link">Optimizare &amp; SEO</a>
+                        <a href="#services" class="footer-link">Landing Pages</a>
+                        <a href="#services" class="footer-link">Redesign Website</a>
+                        <a href="automatizare-ai.html" class="footer-link" style="color: var(--color-accent);">Automatizare AI ↗</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Navigație</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="site-ul-tau.html" class="footer-link">Site-ul Tău</a>
+                        <a href="blog.html" class="footer-link">Blog</a>
+                        <a href="#process" class="footer-link">Procesul Nostru</a>
+                        <a href="#faq" class="footer-link">FAQ</a>
+                        <a href="#contact" class="footer-link">Contact</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Legal & Contact</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px; color: var(--color-text-muted);">
+                        <a href="mailto:rynexlabsbusiness@gmail.com" class="footer-link">rynexlabsbusiness@gmail.com</a>
+                        <a href="tel:+40747202811" class="footer-link">+40 747 202 811</a>
+                        <span style="font-size: 14px;">Iași, România</span>
+                        <a href="#" class="footer-link" onclick="showPrivacyModal(); return false;">Politica de Confidențialitate</a>
+                        <a href="#" class="footer-link" onclick="showTermsModal(); return false;">Termeni și Condiții</a>
+                        <a href="#" class="footer-link" onclick="showCookiesModal(); return false;">Politica Cookies</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding-top: 40px; border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; color: var(--color-text-muted); font-size: 13px;">
+                <span>© 2026 Rynex Labs. Toate drepturile rezervate.</span>
+                <div style="display: flex; gap: 20px;">
+                    <a href="sitemap.xml" class="footer-link" style="font-size: 13px;">Sitemap</a>
+                    <a href="blog.html" class="footer-link" style="font-size: 13px;">Blog</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script>
+        // EmailJS initialization
+        // SETUP: In EmailJS dashboard, ensure template_rynex sends to rynexlabsbusiness@gmail.com
+        (function() {
+            emailjs.init("5X1hGHh4d5i1hPKe7");
+        })();
+
+        // Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const hamburger = document.querySelector('.hamburger');
+            const isOpen = menu.classList.toggle('active');
+            menu.setAttribute('aria-hidden', !isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        }
+
+        // GDPR Modals
+        function showPrivacyModal() {
+            document.getElementById('privacyModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showTermsModal() {
+            document.getElementById('termsModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showCookiesModal() {
+            document.getElementById('cookiesModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModals() {
+            document.querySelectorAll('.modal-overlay').forEach(modal => modal.classList.remove('active'));
+            document.getElementById('previewFrame').src = '';
+            document.body.style.overflow = '';
+        }
+
+        // Close modals on backdrop click
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeModals();
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModals();
+        });
+
+        // FAQ Accordion
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            const isOpen = item.classList.contains('open');
+
+            document.querySelectorAll('.faq-item').forEach(i => {
+                i.classList.remove('open');
+                i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            });
+
+            if (!isOpen) {
+                item.classList.add('open');
+                btn.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Honeypot check
+            if (this._honeypot && this._honeypot.value) return;
+
+            const formStatus = document.getElementById('formStatus');
+            const submitBtn = document.getElementById('submitBtn');
+
+            // Basic validation
+            const name = this.name.value.trim();
+            const email = this.email.value.trim();
+            const subject = this.subject.value;
+            const message = this.message.value.trim();
+
+            if (!name || !email || !subject || !message) {
+                formStatus.innerHTML = '<p style="color: var(--color-accent); font-size: 14px;">Te rugăm să completezi toate câmpurile obligatorii.</p>';
+                return;
+            }
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                formStatus.innerHTML = '<p style="color: var(--color-accent); font-size: 14px;">Adresa de email nu este validă.</p>';
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Se trimite...';
+            formStatus.innerHTML = '';
+
+            emailjs.sendForm('service_rynex', 'template_rynex', this)
+                .then(() => {
+                    formStatus.innerHTML = '<p style="color: #22c55e; font-size: 15px; font-weight: 600;">✓ Mesaj trimis cu succes! Te contactăm în 24 ore.</p>';
+                    this.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Trimite Mesajul';
+                })
+                .catch(() => {
+                    formStatus.innerHTML = '<p style="color: var(--color-accent); font-size: 14px;">Eroare la trimitere. Încearcă din nou sau scrie direct la <a href="mailto:rynexlabsbusiness@gmail.com" style="color: var(--color-accent);">rynexlabsbusiness@gmail.com</a></p>';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Trimite Mesajul';
+                });
+        });
+
+        // Scroll Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.style.background = window.scrollY > 100
+                ? 'rgba(10,10,10,0.98)'
+                : 'rgba(10,10,10,0.95)';
+        }, { passive: true });
+    </script>
+
+
+    <script>
+        // EmailJS
+        (function() {
+            emailjs.init("5X1hGHh4d5i1hPKe7");
+        })();
+
+        // Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const hamburger = document.querySelector('.hamburger');
+            const isOpen = menu.classList.toggle('active');
+            menu.setAttribute('aria-hidden', !isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        }
+
+        // GDPR Modals
+        function showPrivacyModal() {
+            document.getElementById('privacyModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function showTermsModal() {
+            document.getElementById('termsModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function showCookiesModal() {
+            document.getElementById('cookiesModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModals() {
+            document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
+            document.body.style.overflow = '';
+        }
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModals(); });
+        });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModals(); });
+
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (this._honeypot && this._honeypot.value) return;
+
+            const formStatus = document.getElementById('formStatus');
+            const submitBtn = document.getElementById('submitBtn');
+
+            const name = this.name.value.trim();
+            const email = this.email.value.trim();
+            const subject = this.subject.value;
+            const message = this.message.value.trim();
+
+            if (!name || !email || !subject || !message) {
+                formStatus.innerHTML = '<p style="color: var(--color-accent); font-size: 14px;">Te rugăm să completezi toate câmpurile obligatorii.</p>';
+                return;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                formStatus.innerHTML = '<p style="color: var(--color-accent); font-size: 14px;">Adresa de email nu este validă.</p>';
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Se trimite...';
+            formStatus.innerHTML = '';
+
+            emailjs.sendForm('service_rynex', 'template_rynex', this)
+                .then(() => {
+                    formStatus.innerHTML = '<p style="color: #22c55e; font-size: 15px; font-weight: 600;">✓ Mesaj trimis cu succes! Te contactăm în 24 ore.</p>';
+                    this.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Trimite Mesajul';
+                })
+                .catch(() => {
+                    formStatus.innerHTML = '<p style="color: var(--color-accent); font-size: 14px;">Eroare la trimitere. Încearcă din nou sau scrie direct la <a href="mailto:rynexlabsbusiness@gmail.com" style="color: var(--color-accent);">rynexlabsbusiness@gmail.com</a></p>';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Trimite Mesajul';
+                });
+        });
+
+        // Scroll Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+        // Header scroll
+        window.addEventListener('scroll', () => {
+            document.querySelector('header').style.background = window.scrollY > 100 ? 'rgba(10,10,10,0.98)' : 'rgba(10,10,10,0.95)';
+        }, { passive: true });
+    </script>
+</body>
+</html>

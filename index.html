@@ -734,7 +734,7 @@
                 <a href="site-ul-tau.html" class="nav-link">Site-ul Tău</a>
                 <a href="blog.html" class="nav-link">Blog</a>
                 <a href="automatizare-ai.html" class="nav-link nav-cta">Automatizare AI</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="contact.html" class="nav-link">Contact</a>
             </nav>
 
             <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Deschide meniu" aria-expanded="false">
@@ -747,12 +747,12 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a href="automatizare-ai.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border); color: var(--color-accent);">Automatizare AI</a>
         <a href="servicii.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border);">Servicii</a>
         <a href="site-ul-tau.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border);">Site-ul Tău</a>
         <a href="blog.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border);">Blog</a>
-        <a href="automatizare-ai.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border); color: var(--color-accent);">Automatizare AI</a>
-        <a href="#contact" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0;">Contact</a>
-        <a href="#contact" class="angular-btn" onclick="toggleMobileMenu()" style="margin-top: 28px; text-align: center; width: 100%;">Începe Proiectul</a>
+        <a href="contact.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0;">Contact</a>
+        <a href="contact.html" class="angular-btn" onclick="toggleMobileMenu()" style="margin-top: 28px; text-align: center; width: 100%;">Începe Proiectul</a>
     </div>
 
     <!-- Hero Section -->
@@ -772,7 +772,7 @@
                     Website-uri premium și automatizări AI care transformă vizitatorii în clienți. Lucrăm cu afaceri ambițioase din toată România.
                 </p>
                 <div class="hero-buttons" style="display: flex; gap: 16px; flex-wrap: wrap;">
-                    <a href="#contact" class="angular-btn">Începe Proiectul</a>
+                    <a href="contact.html" class="angular-btn">Începe Proiectul</a>
                     <a href="site-ul-tau.html" class="angular-btn-outline">Vezi Proiectele Noastre</a>
                 </div>
             </div>
@@ -809,203 +809,75 @@
 
             <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
                 <!-- Service 1: Website Creation -->
-                <div class="card scroll-reveal" style="position: relative; border-top: 3px solid var(--color-accent);">
+                <div class="card scroll-reveal" style="position: relative; border-top: 3px solid var(--color-accent); display: flex; flex-direction: column;">
                     <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">Creare Website</h3>
-                    <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">
-                        Website personalizat, rapid și optimizat — care arată profesional pe orice dispozitiv și convinge vizitatorii să ia acțiune. De la site de prezentare la magazin online complet.
+                    <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; flex-grow: 1;">
+                        Website personalizat, rapid și optimizat. Design responsive care convinge vizitatorii să acționeze.
                     </p>
-                    <ul style="color: var(--color-text-muted); font-size: 13px; line-height: 2; padding-left: 0; list-style: none;">
-                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Design premium, responsive</li>
+                    <ul style="color: var(--color-text-muted); font-size: 13px; line-height: 2; padding-left: 0; list-style: none; margin-bottom: 24px;">
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Design 100% personalizat</li>
                         <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Optimizat SEO din prima zi</li>
-                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Livrat în 7–14 zile</li>
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Livrare în 7–14 zile</li>
                     </ul>
-                    <span class="service-price">Ofertă personalizată gratuită →</span>
+                    <a href="contact.html" class="angular-btn" style="text-align: center; width: 100%;">Cere Ofertă Personalizată</a>
                 </div>
 
                 <!-- Service 2: Optimization -->
-                <div class="card scroll-reveal" style="position: relative; border-top: 3px solid var(--color-accent);">
+                <div class="card scroll-reveal" style="position: relative; border-top: 3px solid var(--color-accent); display: flex; flex-direction: column;">
                     <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">Optimizare & SEO</h3>
-                    <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">
-                        Site-ul tău există, dar Google îl ignoră? Îmbunătățim viteza, structura și conținutul pentru ca potențialii clienți să te găsească înainte de concurență.
+                    <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; flex-grow: 1;">
+                        Îmbunătățim viteza, structura și conținutul pentru ca clienții să te găsească primul pe Google.
                     </p>
-                    <ul style="color: var(--color-text-muted); font-size: 13px; line-height: 2; padding-left: 0; list-style: none;">
+                    <ul style="color: var(--color-text-muted); font-size: 13px; line-height: 2; padding-left: 0; list-style: none; margin-bottom: 24px;">
                         <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Audit tehnic complet</li>
                         <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Viteză sub 2 secunde</li>
-                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Vizibilitate crescută în Google</li>
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Vizibilitate crescută</li>
                     </ul>
-                    <span class="service-price">Ofertă personalizată gratuită →</span>
+                    <a href="contact.html" class="angular-btn" style="text-align: center; width: 100%;">Cere Ofertă Personalizată</a>
                 </div>
 
                 <!-- Service 3: Landing Pages -->
-                <div class="card scroll-reveal" style="position: relative; border-top: 3px solid var(--color-accent);">
+                <div class="card scroll-reveal" style="position: relative; border-top: 3px solid var(--color-accent); display: flex; flex-direction: column;">
                     <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">Landing Pages</h3>
-                    <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">
-                        O singură pagină cu un singur scop: să convertească. Perfecte pentru campanii Google Ads, Facebook Ads sau lansări de produse. Fiecare element e construit să convingă.
+                    <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; flex-grow: 1;">
+                        O singură pagină, un singur scop: conversie. Perfectă pentru campanii publicitare.
                     </p>
-                    <ul style="color: var(--color-text-muted); font-size: 13px; line-height: 2; padding-left: 0; list-style: none;">
+                    <ul style="color: var(--color-text-muted); font-size: 13px; line-height: 2; padding-left: 0; list-style: none; margin-bottom: 24px;">
                         <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Copywriting persuasiv inclus</li>
                         <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> A/B testing ready</li>
-                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Livrat în 3–5 zile</li>
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Livrare în 3–5 zile</li>
                     </ul>
-                    <span class="service-price">Ofertă personalizată gratuită →</span>
+                    <a href="contact.html" class="angular-btn" style="text-align: center; width: 100%;">Cere Ofertă Personalizată</a>
                 </div>
 
                 <!-- Service 4: Redesign -->
-                <div class="card scroll-reveal" style="position: relative; border-top: 3px solid var(--color-accent);">
+                <div class="card scroll-reveal" style="position: relative; border-top: 3px solid var(--color-accent); display: flex; flex-direction: column;">
                     <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">Redesign Website</h3>
-                    <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">
-                        Ai un site vechi care te face să roșești? Îl transformăm complet — design modern, experiență de utilizator fluidă, performanță crescută. Păstrăm ce funcționează, reconstruim ce nu.
+                    <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; flex-grow: 1;">
+                        Transformăm complet site-ul vechi — design modern, UX fluid, performanță maximă.
                     </p>
-                    <ul style="color: var(--color-text-muted); font-size: 13px; line-height: 2; padding-left: 0; list-style: none;">
-                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Analiză a site-ului existent</li>
-                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Design modern adaptat brandului</li>
-                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Migrare fără pierderi de SEO</li>
+                    <ul style="color: var(--color-text-muted); font-size: 13px; line-height: 2; padding-left: 0; list-style: none; margin-bottom: 24px;">
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Analiză site existent</li>
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Design modern adaptat brand</li>
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Migrare fără pierderi SEO</li>
                     </ul>
-                    <span class="service-price">Ofertă personalizată gratuită →</span>
+                    <a href="contact.html" class="angular-btn" style="text-align: center; width: 100%;">Cere Ofertă Personalizată</a>
                 </div>
 
                 <!-- Service 5: AI Automation (Featured) -->
-                <div class="card scroll-reveal" style="position: relative; border-top: 3px solid var(--color-secondary); grid-column: span 1;">
+                <div class="card scroll-reveal" style="position: relative; border-top: 3px solid var(--color-accent); display: flex; flex-direction: column;">
                     <span class="service-tag">NOU</span>
                     <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">Automatizare AI</h3>
-                    <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px;">
-                        Chatboți inteligenți, facturare automată, programări fără efort, CRM automatizat, notificări WhatsApp — sisteme AI care lucrează pentru tine 24/7, fără angajați suplimentari.
+                    <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; flex-grow: 1;">
+                        Sisteme inteligente care lucrează 24/7 — chatboți, facturare, programări, CRM, WhatsApp.
                     </p>
-                    <ul style="color: var(--color-text-muted); font-size: 13px; line-height: 2; padding-left: 0; list-style: none;">
-                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Soluție personalizată afacerii tale</li>
-                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Integrare cu sistemele existente</li>
-                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> ROI măsurabil în 30 zile</li>
+                    <ul style="color: var(--color-text-muted); font-size: 13px; line-height: 2; padding-left: 0; list-style: none; margin-bottom: 24px;">
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Soluție personalizată</li>
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Integrare cu sistemele tale</li>
+                        <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> ROI în 30 de zile</li>
                     </ul>
-                    <a href="automatizare-ai.html" class="angular-btn" style="margin-top: 24px; display: inline-block;">Solicită Consultație</a>
+                    <a href="automatizare-ai.html" class="angular-btn" style="text-align: center; width: 100%; background: var(--color-accent);">Solicită Consultație AI</a>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Templates Section -->
-    <section id="templates" style="padding: 120px 40px; background: var(--color-surface);">
-        <div style="max-width: 1400px; margin: 0 auto;">
-            <div class="scroll-reveal" style="text-align: center; margin-bottom: 80px;">
-                <p class="section-label" style="color: var(--color-secondary);">Exemple de Design</p>
-                <h2 class="section-title">Template-uri Disponibile</h2>
-                <p style="color: var(--color-text-muted); font-size: 18px; max-width: 600px; margin: 24px auto 0; line-height: 1.8;">
-                    Iată câteva template-uri pe care le putem adapta pentru afacerea ta — sau construim ceva complet personalizat de la zero.
-                </p>
-            </div>
-
-            <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
-                <!-- DoctorVet -->
-                <article class="portfolio-card scroll-reveal">
-                    <div class="portfolio-thumbnail">
-                        <div class="portfolio-thumbnail-content doctorvet-thumb">
-                            <div class="thumb-header">
-                                <div class="thumb-logo">Doctor<span>Vet</span></div>
-                                <div class="thumb-nav">
-                                    <span>Acasă</span>
-                                    <span>Servicii</span>
-                                    <span>Contact</span>
-                                </div>
-                            </div>
-                            <div class="thumb-hero">
-                                <h2>Îngrijire Veterinară</h2>
-                                <p>Oferim servicii veterinare complete pentru prietenii tăi blănoși</p>
-                                <span class="thumb-btn">Programează o Vizită</span>
-                            </div>
-                            <div class="thumb-services">
-                                <div class="thumb-service">
-                                    <div class="thumb-service-icon">🏥</div>
-                                    <div class="thumb-service-title">Consultații</div>
-                                </div>
-                                <div class="thumb-service">
-                                    <div class="thumb-service-icon">💉</div>
-                                    <div class="thumb-service-title">Vaccinări</div>
-                                </div>
-                                <div class="thumb-service">
-                                    <div class="thumb-service-icon">🔬</div>
-                                    <div class="thumb-service-title">Laborator</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>DoctorVet</h3>
-                        <p>Template pentru clinică / cabinet medical. Design profesional, secțiune servicii, programări online și date de contact.</p>
-                        <button class="angular-btn-secondary" onclick="openPreview('doctorvet.html')">Demo Live</button>
-                    </div>
-                </article>
-
-                <!-- Café Noir -->
-                <article class="portfolio-card scroll-reveal">
-                    <div class="portfolio-thumbnail">
-                        <div class="portfolio-thumbnail-content cafenoir-thumb">
-                            <div class="thumb-header">
-                                <div class="thumb-logo">Café Noir</div>
-                            </div>
-                            <div class="thumb-hero">
-                                <h2>Café Noir</h2>
-                                <p>Arta cafelei perfecte</p>
-                                <span class="thumb-btn">Descoperă Meniul</span>
-                            </div>
-                            <div class="thumb-menu">
-                                <div class="thumb-menu-item">
-                                    <span class="thumb-menu-name">Espresso</span>
-                                    <span class="thumb-menu-price">8 lei</span>
-                                </div>
-                                <div class="thumb-menu-item">
-                                    <span class="thumb-menu-name">Cappuccino</span>
-                                    <span class="thumb-menu-price">14 lei</span>
-                                </div>
-                                <div class="thumb-menu-item">
-                                    <span class="thumb-menu-name">Latte</span>
-                                    <span class="thumb-menu-price">15 lei</span>
-                                </div>
-                                <div class="thumb-menu-item">
-                                    <span class="thumb-menu-name">Flat White</span>
-                                    <span class="thumb-menu-price">16 lei</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Café Noir</h3>
-                        <p>Template pentru cafenea / restaurant. Identitate vizuală premium, meniu digital interactiv și atmosferă distinctă.</p>
-                        <button class="angular-btn-secondary" onclick="openPreview('cafenoir.html')">Demo Live</button>
-                    </div>
-                </article>
-
-                <!-- FitnessForge -->
-                <article class="portfolio-card scroll-reveal">
-                    <div class="portfolio-thumbnail">
-                        <div class="portfolio-thumbnail-content fitnessforge-thumb">
-                            <div class="thumb-header">
-                                <div class="thumb-logo">Fitness<span>Forge</span></div>
-                                <div class="thumb-nav-btn">Începe Acum</div>
-                            </div>
-                            <div class="thumb-hero">
-                                <div class="thumb-hero-text">
-                                    <h2>Forge Your <span>Best Self</span></h2>
-                                    <p>Antrenamente personalizate și nutriție avansată pentru transformarea ta.</p>
-                                    <span class="thumb-btn">Începe Transformarea</span>
-                                </div>
-                                <div class="thumb-stats">
-                                    <div class="thumb-stat">
-                                        <div class="thumb-stat-value">5k+</div>
-                                        <div class="thumb-stat-label">Membri</div>
-                                    </div>
-                                    <div class="thumb-stat">
-                                        <div class="thumb-stat-value">50+</div>
-                                        <div class="thumb-stat-label">Antrenori</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>FitnessForge</h3>
-                        <p>Template pentru sală de fitness / antrenor personal. Programe de antrenament, statistici impact și formular de înscriere.</p>
-                        <button class="angular-btn-secondary" onclick="openPreview('fitnessforge.html')">Demo Live</button>
-                    </div>
-                </article>
             </div>
         </div>
     </section>
@@ -1079,42 +951,46 @@
                 </p>
             </div>
 
-            <div class="process-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; background: var(--color-border);">
-                <div class="process-step scroll-reveal" style="background: var(--color-bg);">
-                    <div class="process-number">01</div>
-                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">Consultație & Strategie</h3>
-                    <p style="color: var(--color-text-muted); line-height: 1.8; font-size: 15px;">
-                        Discutăm obiectivele tale, analizăm concurența și stabilim împreună ce are nevoie afacerea ta. Fără prezentări inutile — direct la subiect.
+            <div class="process-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2px; background: var(--color-border);">
+                <div class="process-step scroll-reveal" style="background: var(--color-bg); text-align: center; padding: 48px 36px;">
+                    <span style="font-size: 32px; margin-bottom: 16px; display: block;">🔍</span>
+                    <div style="font-size: 48px; font-weight: 900; color: var(--color-accent); opacity: 0.3; line-height: 1; margin-bottom: 16px;">01</div>
+                    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 12px;">Descoperire</h3>
+                    <p style="color: var(--color-text-muted); font-size: 14px; line-height: 1.7;">
+                        Ne așezăm la o discuție și învățăm totul despre afacerea ta — publicul, obiectivele, valorile, concurența. Fiecare detaliu contează.
                     </p>
                 </div>
 
-                <div class="process-step scroll-reveal" style="background: var(--color-bg);">
-                    <div class="process-number">02</div>
-                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">Design & Prototip</h3>
-                    <p style="color: var(--color-text-muted); line-height: 1.8; font-size: 15px;">
-                        Creăm prototipul vizual al proiectului. Poți vedea și aproba designul înainte de a trece la dezvoltare. Revizuiri incluse.
+                <div class="process-step scroll-reveal" style="background: var(--color-bg); text-align: center; padding: 48px 36px;">
+                    <span style="font-size: 32px; margin-bottom: 16px; display: block;">🎨</span>
+                    <div style="font-size: 48px; font-weight: 900; color: var(--color-accent); opacity: 0.3; line-height: 1; margin-bottom: 16px;">02</div>
+                    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 12px;">Design</h3>
+                    <p style="color: var(--color-text-muted); font-size: 14px; line-height: 1.7;">
+                        Creăm un concept vizual unic, de la zero. Paleta de culori, tipografia, imaginile, layout-ul — totul reflectă personalitatea brandului tău.
                     </p>
                 </div>
 
-                <div class="process-step scroll-reveal" style="background: var(--color-bg);">
-                    <div class="process-number">03</div>
-                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">Dezvoltare & Testare</h3>
-                    <p style="color: var(--color-text-muted); line-height: 1.8; font-size: 15px;">
-                        Construim proiectul cu cod curat, performant și SEO-ready. Testăm pe toate dispozitivele și browserele înainte de lansare.
+                <div class="process-step scroll-reveal" style="background: var(--color-bg); text-align: center; padding: 48px 36px;">
+                    <span style="font-size: 32px; margin-bottom: 16px; display: block;">⚡</span>
+                    <div style="font-size: 48px; font-weight: 900; color: var(--color-accent); opacity: 0.3; line-height: 1; margin-bottom: 16px;">03</div>
+                    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 12px;">Dezvoltare</h3>
+                    <p style="color: var(--color-text-muted); font-size: 14px; line-height: 1.7;">
+                        Transformăm design-ul în cod curat, optimizat și rapid. Fiecare linie de cod este scrisă manual — fără framework-uri inutile.
                     </p>
                 </div>
 
-                <div class="process-step scroll-reveal" style="background: var(--color-bg);">
-                    <div class="process-number">04</div>
-                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px;">Lansare & Suport</h3>
-                    <p style="color: var(--color-text-muted); line-height: 1.8; font-size: 15px;">
-                        Lansăm proiectul și îți oferim suport post-lansare. Nu dispărem după livrare — rămânem disponibili pentru orice ajustare.
+                <div class="process-step scroll-reveal" style="background: var(--color-bg); text-align: center; padding: 48px 36px;">
+                    <span style="font-size: 32px; margin-bottom: 16px; display: block;">🚀</span>
+                    <div style="font-size: 48px; font-weight: 900; color: var(--color-accent); opacity: 0.3; line-height: 1; margin-bottom: 16px;">04</div>
+                    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 12px;">Lansare</h3>
+                    <p style="color: var(--color-text-muted); font-size: 14px; line-height: 1.7;">
+                        Testăm totul — viteză, responsive, SEO, funcționalități. După aprobare, lansăm și monitorizăm primele rezultate.
                     </p>
                 </div>
             </div>
 
             <div style="text-align: center; margin-top: 60px;">
-                <a href="#contact" class="angular-btn">Începe Procesul Acum</a>
+                <a href="contact.html" class="angular-btn">Începe Procesul Acum</a>
             </div>
         </div>
     </section>
@@ -1315,10 +1191,10 @@
                 <div>
                     <h4 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Servicii</h4>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <a href="#services" class="footer-link">Creare Website</a>
+                        <a href="servicii.html" class="footer-link">Creare Website</a>
                         <a href="#services" class="footer-link">Optimizare &amp; SEO</a>
-                        <a href="#services" class="footer-link">Landing Pages</a>
-                        <a href="#services" class="footer-link">Redesign Website</a>
+                        <a href="servicii.html" class="footer-link">Landing Pages</a>
+                        <a href="servicii.html" class="footer-link">Redesign Website</a>
                         <a href="automatizare-ai.html" class="footer-link" style="color: var(--color-accent);">Automatizare AI ↗</a>
                     </div>
                 </div>
@@ -1328,9 +1204,9 @@
                     <div style="display: flex; flex-direction: column; gap: 10px;">
                         <a href="site-ul-tau.html" class="footer-link">Site-ul Tău</a>
                         <a href="blog.html" class="footer-link">Blog</a>
-                        <a href="#process" class="footer-link">Procesul Nostru</a>
-                        <a href="#faq" class="footer-link">FAQ</a>
-                        <a href="#contact" class="footer-link">Contact</a>
+                        <a href="index.html#process" class="footer-link">Procesul Nostru</a>
+                        <a href="index.html#faq" class="footer-link">FAQ</a>
+                        <a href="contact.html" class="footer-link">Contact</a>
                     </div>
                 </div>
 
@@ -1357,75 +1233,7 @@
         </div>
     </footer>
 
-    <!-- Preview Modal -->
-    <div class="modal-overlay" id="previewModal" role="dialog" aria-modal="true" aria-label="Live Preview">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="previewTitle" style="font-size: 18px; font-weight: 700;">Live Preview</h3>
-                <button class="modal-close" onclick="closePreview()">Închide ✕</button>
-            </div>
-            <iframe class="modal-iframe" id="previewFrame" title="Preview proiect" loading="lazy"></iframe>
-        </div>
-    </div>
-
-    <!-- Privacy Modal -->
-    <div class="modal-overlay" id="privacyModal" role="dialog" aria-modal="true">
-        <div class="modal-content gdpr-modal">
-            <div class="modal-header">
-                <h3 style="font-size: 18px; font-weight: 700;">Politica de Confidențialitate</h3>
-                <button class="modal-close" onclick="closeModals()">Închide ✕</button>
-            </div>
-            <div class="gdpr-content">
-                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">1. Informații Generale</h4>
-                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Rynex Labs respectă confidențialitatea datelor tale personale. Această politică explică cum colectăm, folosim și protejăm informațiile tale. Suntem conformi cu Regulamentul GDPR (UE) 2016/679.</p>
-                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">2. Date Colectate</h4>
-                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Colectăm numele, adresa de email, numărul de telefon și mesajul tău atunci când ne contactezi prin formularul de contact. Datele sunt folosite exclusiv pentru a te contacta în legătură cu solicitarea ta.</p>
-                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">3. Drepturile Tale</h4>
-                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Ai dreptul să accesezi, să modifici sau să ștergi datele tale personale. Pentru orice solicitare, contactează-ne la <a href="mailto:rynexlabsbusiness@gmail.com" style="color: var(--color-accent);">rynexlabsbusiness@gmail.com</a>.</p>
-                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">4. Securitate</h4>
-                <p style="color: var(--color-text-muted); line-height: 1.8;">Datele tale sunt transmise securizat prin HTTPS și nu sunt vândute sau ceddate terților.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Terms Modal -->
-    <div class="modal-overlay" id="termsModal" role="dialog" aria-modal="true">
-        <div class="modal-content gdpr-modal">
-            <div class="modal-header">
-                <h3 style="font-size: 18px; font-weight: 700;">Termeni și Condiții</h3>
-                <button class="modal-close" onclick="closeModals()">Închide ✕</button>
-            </div>
-            <div class="gdpr-content">
-                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">1. Acceptarea Termenilor</h4>
-                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Prin accesarea și utilizarea acestui website, acceptați acești termeni și condiții în integralitatea lor.</p>
-                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">2. Serviciile Oferite</h4>
-                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Rynex Labs oferă servicii de web design, dezvoltare website, optimizare SEO, automatizare AI și consultanță digitală. Detaliile fiecărui proiect se stabilesc prin contract separat.</p>
-                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">3. Proprietate Intelectuală</h4>
-                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Tot conținutul acestui website (texte, imagini, design) este proprietatea Rynex Labs și este protejat de legislația drepturilor de autor.</p>
-                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">4. Contact</h4>
-                <p style="color: var(--color-text-muted); line-height: 1.8;">Pentru orice întrebare legată de acești termeni, contactați-ne la <a href="mailto:rynexlabsbusiness@gmail.com" style="color: var(--color-accent);">rynexlabsbusiness@gmail.com</a>.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Cookies Modal -->
-    <div class="modal-overlay" id="cookiesModal" role="dialog" aria-modal="true">
-        <div class="modal-content gdpr-modal">
-            <div class="modal-header">
-                <h3 style="font-size: 18px; font-weight: 700;">Politica Cookies</h3>
-                <button class="modal-close" onclick="closeModals()">Închide ✕</button>
-            </div>
-            <div class="gdpr-content">
-                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">1. Ce sunt Cookie-urile</h4>
-                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Cookie-urile sunt fișiere text mici stocate pe dispozitivul tău când vizitezi un website. Ne ajută să îmbunătățim experiența pe site.</p>
-                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">2. Ce Cookie-uri Folosim</h4>
-                <p style="color: var(--color-text-muted); line-height: 1.8; margin-bottom: 20px;">Folosim exclusiv cookie-uri funcționale, necesare pentru funcționarea corectă a website-ului. Nu folosim cookie-uri de tracking sau publicitate.</p>
-                <h4 style="font-size: 17px; font-weight: 700; margin: 0 0 12px;">3. Controlul Cookie-urilor</h4>
-                <p style="color: var(--color-text-muted); line-height: 1.8;">Poți controla și/sau șterge cookie-urile din setările browserului tău. Atenție: dezactivarea unor cookie-uri poate afecta funcționalitatea site-ului.</p>
-            </div>
-        </div>
-    </div>
-
+    
     <script>
         // EmailJS initialization
         // SETUP: In EmailJS dashboard, ensure template_rynex sends to rynexlabsbusiness@gmail.com
@@ -1441,19 +1249,6 @@
             menu.setAttribute('aria-hidden', !isOpen);
             hamburger.setAttribute('aria-expanded', isOpen);
             document.body.style.overflow = isOpen ? 'hidden' : '';
-        }
-
-        // Portfolio Preview Modal
-        function openPreview(url) {
-            document.getElementById('previewFrame').src = url;
-            document.getElementById('previewModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closePreview() {
-            document.getElementById('previewModal').classList.remove('active');
-            document.getElementById('previewFrame').src = '';
-            document.body.style.overflow = '';
         }
 
         // GDPR Modals
