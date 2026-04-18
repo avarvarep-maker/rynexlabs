@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cum să Îmbunătățești Viteza Website-ului în 2026 | Rynex Labs Blog</title>
+    <meta name="description" content="Tehnici practice pentru a reduce timpul de încărcare al site-ului tău. Core Web Vitals, optimizare imagini, CDN și alte metode testate care îmbunătățesc atât UX, cât și SEO.">
+    <link rel="canonical" href="https://rynexlabs.ro/blog/viteza-website.html">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rynexlabs.ro/blog/viteza-website.html">
+    <meta property="og:title" content="Cum să Îmbunătățești Viteza Website-ului în 2026">
+    <meta property="og:description" content="Tehnici practice pentru reducerea timpului de încărcare și îmbunătățirea Core Web Vitals.">
+    <meta property="og:image" content="https://rynexlabs.ro/rynex-labs-logo.png">
+    <meta property="article:published_time" content="2026-01-05">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="../rynex-icon.png">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Acasă","item":"https://rynexlabs.ro/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://rynexlabs.ro/blog.html"},{"@type":"ListItem","position":3,"name":"Viteza Website","item":"https://rynexlabs.ro/blog/viteza-website.html"}]},{"@type":"Article","headline":"Cum să Îmbunătățești Viteza Website-ului în 2026","datePublished":"2026-01-05","author":{"@type":"Organization","name":"Rynex Labs"},"publisher":{"@type":"Organization","name":"Rynex Labs","logo":{"@type":"ImageObject","url":"https://rynexlabs.ro/rynex-labs-logo.png"}}}]}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --color-bg: #0a0a0a; --color-surface: #141414; --color-accent: #ff3b26; --color-accent-dark: #cc2e1d; --color-text: #ffffff; --color-text-muted: #888888; --color-border: #2a2a2a; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { border-radius: 0 !important; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--color-bg); color: var(--color-text); line-height: 1.6; overflow-x: hidden; }
+        ::selection { background: var(--color-accent); color: white; }
+        .nav-link { color: var(--color-text-muted); text-decoration: none; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease; }
+        .nav-link:hover { color: var(--color-text); }
+        .nav-link.nav-cta { color: var(--color-accent); }
+        .angular-btn { background: var(--color-accent); color: white; padding: 14px 32px; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; border: none; cursor: pointer; transition: all 0.3s ease; display: inline-block; text-decoration: none; }
+        .angular-btn:hover { background: var(--color-accent-dark); transform: translateY(-2px); }
+        .angular-btn-outline { background: transparent; color: var(--color-text); padding: 14px 32px; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; border: 2px solid var(--color-border); transition: all 0.3s ease; display: inline-block; text-decoration: none; }
+        .angular-btn-outline:hover { border-color: var(--color-accent); color: var(--color-accent); }
+        .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--color-text-muted); flex-wrap: wrap; }
+        .breadcrumb a { color: var(--color-text-muted); text-decoration: none; transition: color 0.3s ease; }
+        .breadcrumb a:hover { color: var(--color-accent); }
+        .article-body { font-size: 18px; line-height: 1.9; color: rgba(255,255,255,0.85); }
+        .article-body p { margin-bottom: 28px; }
+        .article-body h2 { font-size: 30px; font-weight: 800; color: var(--color-text); margin: 52px 0 24px; letter-spacing: -1px; line-height: 1.2; }
+        .article-body h3 { font-size: 22px; font-weight: 700; color: var(--color-text); margin: 36px 0 18px; }
+        .article-body ul { margin: 24px 0; padding-left: 0; list-style: none; }
+        .article-body li { margin-bottom: 14px; display: flex; gap: 12px; align-items: flex-start; }
+        .article-body li::before { content: '→'; color: var(--color-accent); flex-shrink: 0; margin-top: 2px; font-size: 16px; }
+        .article-body strong { color: var(--color-text); font-weight: 600; }
+        .article-body blockquote { border-left: 4px solid var(--color-accent); padding: 24px 32px; margin: 36px 0; background: var(--color-surface); font-style: italic; font-size: 20px; color: var(--color-text); line-height: 1.6; }
+        .highlight-box { background: linear-gradient(135deg, rgba(255,59,38,0.08), rgba(255,59,38,0.04)); border: 1px solid rgba(255,59,38,0.2); padding: 32px; margin: 36px 0; }
+        .highlight-box h4 { color: var(--color-accent); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+        .highlight-box p { margin-bottom: 0; font-size: 16px; }
+        .metric-box { background: var(--color-surface); border: 1px solid var(--color-border); padding: 20px 24px; margin: 8px 0; display: flex; justify-content: space-between; align-items: center; }
+        .metric-name { font-size: 15px; color: var(--color-text-muted); }
+        .metric-value { font-size: 18px; font-weight: 700; color: var(--color-accent); }
+        .footer-link { color: var(--color-text-muted); text-decoration: none; font-size: 14px; transition: color 0.3s ease; }
+        .footer-link:hover { color: var(--color-accent); }
+        .related-card { background: var(--color-surface); border: 1px solid var(--color-border); padding: 24px; text-decoration: none; color: inherit; display: block; transition: all 0.3s ease; }
+        .related-card:hover { border-color: var(--color-accent); transform: translateY(-4px); }
+        .mobile-menu { display: none; position: fixed; inset: 0; background: var(--color-bg); z-index: 999; flex-direction: column; padding: 100px 40px 40px; }
+        .mobile-menu.active { display: flex; }
+        .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; z-index: 1001; background: none; border: none; padding: 4px; }
+        .hamburger span { width: 28px; height: 2px; background: var(--color-text); display: block; }
+        @media (max-width: 1024px) { .hamburger { display: flex; } .desktop-nav { display: none; } .article-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 768px) { header .header-inner { padding: 16px 20px !important; } .article-hero { padding: 100px 20px 60px !important; } .article-content { padding: 40px 20px 80px !important; } .article-body { font-size: 16px !important; } .article-body h2 { font-size: 24px !important; } .related-grid { grid-template-columns: 1fr !important; } }
+    </style>
+</head>
+<body>
+    <header style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-border);">
+        <div class="header-inner" style="max-width: 1400px; margin: 0 auto; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;">
+            <a href="../index_fixed.html" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="../rynex-labs-logo.png" alt="Rynex Labs" style="height: 36px; width: auto;"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display: none; font-size: 22px; font-weight: 800; color: white; letter-spacing: -1px;">RYNEX<span style="color: var(--color-accent);">.</span>LABS</span>
+            </a>
+            <nav class="desktop-nav" style="display: flex; gap: 36px; align-items: center;">
+                <a href="../index_fixed.html#services" class="nav-link">Servicii</a>
+                <a href="../blog.html" class="nav-link" style="color: var(--color-text);">Blog</a>
+                <a href="../automatizare-ai.html" class="nav-link nav-cta">Automatizare AI</a>
+                <a href="../index_fixed.html#contact" class="nav-link">Contact</a>
+            </nav>
+            <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('active')" aria-label="Meniu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="../index_fixed.html#services" class="nav-link" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Servicii</a>
+        <a href="../blog.html" class="nav-link" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Blog</a>
+        <a href="../automatizare-ai.html" class="nav-link" style="font-size: 22px; padding: 14px 0; color: var(--color-accent);">Automatizare AI</a>
+        <a href="../index_fixed.html#contact" class="nav-link" style="font-size: 22px; padding: 14px 0;">Contact</a>
+    </div>
+
+    <section class="article-hero" style="padding: 140px 40px 80px; background: var(--color-surface); border-bottom: 1px solid var(--color-border);">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <nav aria-label="Breadcrumb" style="margin-bottom: 32px;">
+                <ol class="breadcrumb" style="list-style: none; padding: 0;">
+                    <li><a href="../index_fixed.html">Acasă</a></li>
+                    <li><span style="color: var(--color-border);">›</span></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><span style="color: var(--color-border);">›</span></li>
+                    <li style="color: var(--color-text);">Viteza Website</li>
+                </ol>
+            </nav>
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px; flex-wrap: wrap;">
+                <span style="color: var(--color-accent); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; background: rgba(255,59,38,0.1); padding: 4px 12px; border: 1px solid rgba(255,59,38,0.2);">Performanță</span>
+                <span style="color: var(--color-text-muted); font-size: 13px;">5 Ianuarie 2026</span>
+                <span style="color: var(--color-text-muted); font-size: 13px;">10 minute de citit</span>
+            </div>
+            <h1 style="font-size: clamp(32px, 5vw, 52px); font-weight: 900; line-height: 1.1; letter-spacing: -2px; margin-bottom: 24px;">Cum să Îmbunătățești Viteza Website-ului Tău</h1>
+            <p style="font-size: 20px; color: var(--color-text-muted); line-height: 1.7; max-width: 700px;">Core Web Vitals, tehnici de optimizare și instrumente gratuite care fac diferența dintre un site rapid și unul care pierde clienți.</p>
+        </div>
+    </section>
+
+    <section class="article-content" style="padding: 80px 40px 120px;">
+        <div class="article-grid" style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 320px; gap: 80px; align-items: start;">
+            <div class="article-body">
+                <p>Viteza de încărcare a unui website influențează direct trei lucruri critice pentru afacerea ta: experiența utilizatorilor, ranking-ul în Google și rata de conversie. Un site lent pierde bani în fiecare secundă — literalmente.</p>
+                <p>Vestea bună: cele mai mari câștiguri de viteză vin din câțiva pași relativ simpli, pe care îi poți face chiar acum.</p>
+
+                <blockquote>"Fiecare secundă de întârziere în timpul de încărcare reduce conversiile cu 7%. Pe un site cu 1.000 vizitatori/zi, asta înseamnă o diferență uriașă."</blockquote>
+
+                <h2>De ce viteza contează atât de mult?</h2>
+                <p>Datele Google sunt clare: <strong>53% din vizitatorii mobile abandon un site care durează mai mult de 3 secunde să se încarce</strong>. Pe desktop, pragul de toleranță este puțin mai mare, dar tendința e aceeași.</p>
+                <p>Din perspectiva SEO, Google a integrat Core Web Vitals în algoritmul de ranking. Un site lent va fi penalizat în rezultatele de căutare, indiferent cât de bun e conținutul.</p>
+
+                <h2>Core Web Vitals — Standardele Google</h2>
+                <p>Google măsoară performanța prin trei metrici principale:</p>
+
+                <div class="metric-box">
+                    <span class="metric-name">LCP — Largest Contentful Paint (cel mai mare element se încarcă)</span>
+                    <span class="metric-value">sub 2.5s ✓</span>
+                </div>
+                <div class="metric-box">
+                    <span class="metric-name">INP — Interaction to Next Paint (reactivitate)</span>
+                    <span class="metric-value">sub 200ms ✓</span>
+                </div>
+                <div class="metric-box">
+                    <span class="metric-name">CLS — Cumulative Layout Shift (stabilitate vizuală)</span>
+                    <span class="metric-value">sub 0.1 ✓</span>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Cum îți verifici viteza acum</h4>
+                    <p><strong>PageSpeed Insights</strong> — pagespeed.web.dev (gratuit, oficial Google)<br>
+                    <strong>GTmetrix</strong> — gtmetrix.com (raport detaliat)<br>
+                    <strong>WebPageTest</strong> — webpagetest.org (teste de pe diverse locații)<br>
+                    <strong>Chrome DevTools</strong> — F12 → Lighthouse tab</p>
+                </div>
+
+                <h2>Tehnici concrete de optimizare</h2>
+
+                <h3>1. Optimizarea imaginilor (cel mai mare impact)</h3>
+                <p>Imaginile reprezintă 50–80% din greutatea unei pagini web. Câteva acțiuni imediate:</p>
+                <ul>
+                    <li><strong>Convertește în WebP</strong> — Format modern, 30% mai mic decât JPEG cu aceeași calitate. Squoosh.app te ajută gratuit.</li>
+                    <li><strong>Compresie inteligentă</strong> — O imagine de prezentare nu trebuie să fie mai mare de 200KB.</li>
+                    <li><strong>Dimensiuni corecte</strong> — Nu folosi o imagine de 3000px pentru un thumbnail de 300px.</li>
+                    <li><strong>Lazy loading</strong> — Atribut <code style="color: var(--color-accent); font-size: 15px;">loading="lazy"</code> pe imagini — se încarcă doar când ajungi la ele.</li>
+                    <li><strong>Dimensiuni declarate</strong> — Specifică width/height pentru a preveni layout shift (CLS).</li>
+                </ul>
+
+                <h3>2. Minificarea fișierelor CSS și JS</h3>
+                <p>Elimină spațiile goale, comentariile și codul neutilizat. Unelte: PurgeCSS, UglifyJS, sau build tools moderne (Vite, Webpack). Pe WordPress, plugin-uri ca LiteSpeed Cache sau WP Rocket fac asta automat.</p>
+
+                <h3>3. Browser Caching</h3>
+                <p>Configurează serverul să stocheze fișierele statice (CSS, JS, imagini) în cache-ul browserului. Vizitatorii care revin nu mai descarcă aceleași fișiere — pagina apare instant pentru ei.</p>
+
+                <h3>4. CDN (Content Delivery Network)</h3>
+                <p>Un CDN servește fișierele statice de pe serverele cele mai aproape de utilizator. Cloudflare oferă un plan gratuit excelent. Reduce dramatic timpii de încărcare pentru vizitatorii din afara orașului tău.</p>
+
+                <h3>5. Hosting de calitate</h3>
+                <p>Hosting-ul ieftin de 10 lei/lună este adesea rădăcina problemelor de viteză. Un hosting bun cu server TTFB (Time to First Byte) sub 200ms este investiția cea mai eficientă în performanță. Recomandăm Hetzner, DigitalOcean sau Cloudways pentru proiecte serioase.</p>
+
+                <h3>6. Reducerea requesturilor HTTP</h3>
+                <p>Fiecare fișier (CSS, JS, imagine, font) e un request separat. Combină fișierele unde posibil, folosește font display: swap pentru fonturi Google și elimină plugin-urile inutile (mai ales pe WordPress).</p>
+
+                <div class="highlight-box">
+                    <h4>Quick Win: Cele mai rapide îmbunătățiri</h4>
+                    <p>1. Optimizează imaginile (30–60% reducere greutate pagină)<br>
+                    2. Activează caching browser<br>
+                    3. Activează Cloudflare CDN gratuit<br>
+                    4. Elimină plugin-urile WordPress nefolosite<br>
+                    5. Schimbă hosting-ul dacă TTFB e peste 500ms</p>
+                </div>
+
+                <h2>Concluzie</h2>
+                <p>Optimizarea vitezei nu este un proiect de o singură dată — este un proces continuu. Dar câțiva pași inițiali pot reduce dramatic timpul de încărcare și pot face o diferență imediată în conversii și SEO.</p>
+                <p>Dacă ai nevoie de un audit tehnic complet sau de ajutor cu implementarea, echipa Rynex Labs este la dispoziția ta.</p>
+
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--color-border);">
+                    <a href="../index_fixed.html#contact" class="angular-btn">Audit Performanță Gratuit</a>
+                    <a href="../blog.html" class="angular-btn-outline">← Înapoi la Blog</a>
+                </div>
+            </div>
+
+            <aside style="position: sticky; top: 100px;">
+                <div style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 32px; margin-bottom: 24px;">
+                    <h3 style="font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; color: var(--color-accent);">Site lent?</h3>
+                    <p style="color: var(--color-text-muted); font-size: 14px; line-height: 1.7; margin-bottom: 20px;">Îl optimizăm. Audit gratuit — fără obligații.</p>
+                    <a href="../index_fixed.html#contact" class="angular-btn" style="width: 100%; text-align: center; display: block; padding: 14px 20px;">Solicită Auditul</a>
+                </div>
+                <div style="background: var(--color-surface); border: 1px solid var(--color-border); padding: 32px;">
+                    <h3 style="font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Articole Similare</h3>
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <a href="seo-ghid-complet.html" style="color: var(--color-text-muted); text-decoration: none; font-size: 14px; transition: color 0.3s ease;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='var(--color-text-muted)'">→ SEO pentru începători: Ghid complet</a>
+                        <a href="design-responsiv-2026.html" style="color: var(--color-text-muted); text-decoration: none; font-size: 14px; transition: color 0.3s ease;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='var(--color-text-muted)'">→ Design responsive esențial</a>
+                        <a href="landing-pages-conversie.html" style="color: var(--color-text-muted); text-decoration: none; font-size: 14px; transition: color 0.3s ease;" onmouseover="this.style.color='var(--color-accent)'" onmouseout="this.style.color='var(--color-text-muted)'">→ Landing pages care convertesc</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <section style="padding: 0 40px 80px; max-width: 1200px; margin: 0 auto;">
+        <div class="related-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+            <a href="seo-ghid-complet.html" class="related-card">
+                <div style="font-size: 11px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">← Articolul anterior</div>
+                <div style="font-size: 16px; font-weight: 600;">SEO pentru Începători: Ghid Complet 2026</div>
+            </a>
+            <a href="landing-pages-conversie.html" class="related-card">
+                <div style="font-size: 11px; color: var(--color-accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Articolul următor →</div>
+                <div style="font-size: 16px; font-weight: 600;">Landing Pages care Convertesc</div>
+            </a>
+        </div>
+    </section>
+
+    <footer style="padding: 40px; background: var(--color-surface); border-top: 1px solid var(--color-border);">
+        <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+            <a href="../index_fixed.html" style="text-decoration: none; font-size: 20px; font-weight: 800; color: white; letter-spacing: -1px;">RYNEX<span style="color: var(--color-accent);">.</span>LABS</a>
+            <div style="display: flex; gap: 24px;"><a href="../blog.html" class="footer-link">Blog</a><a href="../index_fixed.html#services" class="footer-link">Servicii</a><a href="../index_fixed.html#contact" class="footer-link">Contact</a></div>
+            <p style="color: var(--color-text-muted); font-size: 13px;">© 2026 Rynex Labs</p>
+        </div>
+    </footer>
+    <script>window.addEventListener('scroll', () => { document.querySelector('header').style.background = window.scrollY > 100 ? 'rgba(10,10,10,0.98)' : 'rgba(10,10,10,0.95)'; }, { passive: true });</script>
+</body>
+</html>

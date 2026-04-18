@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitnessForge - Transformă-ți Corpul</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #ffffff; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        
+        header { background: rgba(10,10,15,0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 100; border-bottom: 1px solid rgba(255,107,53,0.2); }
+        .header-content { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+        .logo { font-size: 28px; font-weight: 900; letter-spacing: -1px; }
+        .logo span { color: #ff6b35; }
+        nav { display: flex; gap: 32px; align-items: center; }
+        nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-weight: 500; font-size: 14px; transition: color 0.3s; }
+        nav a:hover { color: #ff6b35; }
+        .btn-nav { padding: 12px 24px; background: #ff6b35; color: white; text-decoration: none; font-weight: 600; font-size: 14px; border-radius: 6px; transition: all 0.3s; }
+        .btn-nav:hover { background: #e55a2b; }
+        
+        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%); position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 800px; height: 800px; background: radial-gradient(circle, rgba(255,107,53,0.15) 0%, transparent 70%); }
+        .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+        .hero h1 { font-size: 64px; font-weight: 900; line-height: 1.1; margin-bottom: 24px; }
+        .hero h1 span { color: #ff6b35; }
+        .hero p { font-size: 18px; color: rgba(255,255,255,0.7); margin-bottom: 32px; max-width: 500px; }
+        .btn { display: inline-block; padding: 18px 40px; background: #ff6b35; color: white; text-decoration: none; font-weight: 700; font-size: 16px; border-radius: 8px; transition: all 0.3s; }
+        .btn:hover { background: #e55a2b; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,107,53,0.3); }
+        .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.2); margin-left: 16px; }
+        .btn-outline:hover { border-color: #ff6b35; background: rgba(255,107,53,0.1); }
+        
+        .hero-stats { display: flex; gap: 40px; margin-top: 48px; }
+        .hero-stat h4 { font-size: 36px; font-weight: 800; color: #ff6b35; }
+        .hero-stat p { color: rgba(255,255,255,0.5); font-size: 14px; margin: 0; }
+        
+        .hero-visual { position: relative; }
+        .hero-card { background: linear-gradient(135deg, #1a1a2e 0%, #252538 100%); border-radius: 20px; padding: 40px; border: 1px solid rgba(255,107,53,0.2); }
+        .hero-card h3 { font-size: 24px; margin-bottom: 20px; }
+        .workout-item { display: flex; align-items: center; gap: 16px; padding: 16px; background: rgba(0,0,0,0.3); border-radius: 12px; margin-bottom: 12px; }
+        .workout-icon { width: 48px; height: 48px; background: #ff6b35; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+        .workout-info h5 { font-size: 16px; font-weight: 600; }
+        .workout-info p { font-size: 13px; color: rgba(255,255,255,0.5); margin: 0; }
+        
+        .features { padding: 120px 0; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 48px; font-weight: 800; margin-bottom: 16px; }
+        .section-header p { color: rgba(255,255,255,0.6); font-size: 18px; }
+        
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .feature-card { background: linear-gradient(135deg, #1a1a2e 0%, #141420 100%); padding: 40px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s; }
+        .feature-card:hover { border-color: rgba(255,107,53,0.3); transform: translateY(-8px); }
+        .feature-icon { width: 64px; height: 64px; background: rgba(255,107,53,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 24px; }
+        .feature-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+        .feature-card p { color: rgba(255,255,255,0.6); font-size: 15px; }
+        
+        .programs { padding: 120px 0; background: linear-gradient(180deg, #0a0a0f 0%, #111118 50%, #0a0a0f 100%); }
+        .programs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .program-card { background: linear-gradient(135deg, #1a1a2e 0%, #141420 100%); border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s; }
+        .program-card:hover { border-color: rgba(255,107,53,0.3); transform: scale(1.02); }
+        .program-image { height: 200px; background: linear-gradient(135deg, #252538 0%, #1a1a2e 100%); display: flex; align-items: center; justify-content: center; font-size: 60px; }
+        .program-content { padding: 30px; }
+        .program-content h3 { font-size: 24px; font-weight: 700; margin-bottom: 12px; }
+        .program-content p { color: rgba(255,255,255,0.6); margin-bottom: 20px; }
+        .program-meta { display: flex; gap: 20px; }
+        .program-meta span { font-size: 13px; color: rgba(255,255,255,0.5); }
+        .program-meta span strong { color: #ff6b35; }
+        
+        .trainers { padding: 120px 0; }
+        .trainers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        .trainer-card { text-align: center; }
+        .trainer-avatar { width: 160px; height: 160px; background: linear-gradient(135deg, #252538 0%, #1a1a2e 100%); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 70px; border: 3px solid rgba(255,107,53,0.3); }
+        .trainer-card h4 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+        .trainer-card p { color: rgba(255,255,255,0.5); font-size: 14px; margin-bottom: 16px; }
+        .trainer-social { display: flex; gap: 12px; justify-content: center; }
+        .trainer-social a { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; font-size: 14px; transition: all 0.3s; }
+        .trainer-social a:hover { background: #ff6b35; }
+        
+        .cta { padding: 120px 0; background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%); text-align: center; }
+        .cta h2 { font-size: 48px; font-weight: 800; margin-bottom: 20px; }
+        .cta p { font-size: 20px; color: rgba(255,255,255,0.9); margin-bottom: 40px; }
+        .cta .btn { background: white; color: #ff6b35; }
+        .cta .btn:hover { background: #f5f5f5; }
+        
+        footer { background: #07070a; padding: 60px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-content { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
+        .footer-col p, .footer-col a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; line-height: 1.8; }
+        .footer-col a:hover { color: #ff6b35; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05); }
+        .footer-bottom p { color: rgba(255,255,255,0.3); font-size: 14px; }
+        
+        @media (max-width: 1024px) {
+            .hero-content { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .programs-grid { grid-template-columns: 1fr; }
+            .trainers-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .hero h1 { font-size: 42px; }
+            .features-grid, .trainers-grid, .footer-content { grid-template-columns: 1fr; }
+            .hero-stats { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Fitness<span>Forge</span></div>
+                <nav>
+                    <a href="#acasa">Acasă</a>
+                    <a href="#features">Facilități</a>
+                    <a href="#programe">Programe</a>
+                    <a href="#antrenori">Antrenori</a>
+                    <a href="#contact" class="btn-nav">Începe Acum</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="acasa">
+        <div class="container">
+            <div class="hero-content">
+                <div>
+                    <h1>Forge Your <span>Best Self</span></h1>
+                    <p>Antrenamente personalizate, nutriție avansată și o comunitate care te susține. Transformă-ți corpul și mintea cu FitnessForge.</p>
+                    <a href="#contact" class="btn">Începe Transformarea</a>
+                    <a href="#programe" class="btn btn-outline">Vezi Programele</a>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <h4>5k+</h4>
+                            <p>Membri Activi</p>
+                        </div>
+                        <div class="hero-stat">
+                            <h4>50+</h4>
+                            <p>Antrenori</p>
+                        </div>
+                        <div class="hero-stat">
+                            <h4>98%</h4>
+                            <p>Rezultate</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <h3>Antrenamentul Zilei</h3>
+                        <div class="workout-item">
+                            <div class="workout-icon">💪</div>
+                            <div class="workout-info">
+                                <h5>HIIT Cardio</h5>
+                                <p>30 min • 350 cal</p>
+                            </div>
+                        </div>
+                        <div class="workout-item">
+                            <div class="workout-icon">🏋️</div>
+                            <div class="workout-info">
+                                <h5>Strength Training</h5>
+                                <p>45 min • Full Body</p>
+                            </div>
+                        </div>
+                        <div class="workout-item">
+                            <div class="workout-icon">🧘</div>
+                            <div class="workout-info">
+                                <h5>Yoga Flow</h5>
+                                <p>20 min • Relaxare</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>De Ce FitnessForge?</h2>
+                <p>Tot ce ai nevoie pentru a-ți atinge obiectivele</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Progres Trackuit</h3>
+                    <p>Urmărește-ți evoluția cu statistici detaliate și rapoarte personalizate.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🍎</div>
+                    <h3>Planuri Nutriționale</h3>
+                    <p>Diete personalizate create de nutriționiști certificați pentru obiectivele tale.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Antrenori Personali</h3>
+                    <p>Acces la antrenori profesioniști pentru ghidare și motivație constantă.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>App Mobile</h3>
+                    <p>Antrenează-te oriunde cu aplicația noastră mobilă intuitivă.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Provocări & Recompense</h3>
+                    <p>Participă la provocări săptămânale și câștigă badge-uri și premii.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Comunitate</h3>
+                    <p>Alătură-te unei comunități active de oameni cu aceleași obiective.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="programs" id="programe">
+        <div class="container">
+            <div class="section-header">
+                <h2>Programe de Antrenament</h2>
+                <p>Alege programul potrivit pentru obiectivele tale</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-image">💪</div>
+                    <div class="program-content">
+                        <h3>Strength Builder</h3>
+                        <p>Construiește masă musculară și forță cu antrenamente structurate de resistance training.</p>
+                        <div class="program-meta">
+                            <span><strong>12</strong> săptămâni</span>
+                            <span><strong>4</strong> antrenamente/săpt</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-image">🔥</div>
+                    <div class="program-content">
+                        <h3>Fat Burner</h3>
+                        <p>Arde grăsime și definește-ți corpul cu antrenamente HIIT intense.</p>
+                        <div class="program-meta">
+                            <span><strong>8</strong> săptămâni</span>
+                            <span><strong>5</strong> antrenamente/săpt</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-image">🏃</div>
+                    <div class="program-content">
+                        <h3>Endurance Pro</h3>
+                        <p>Îmbunătățește-ți rezistența cardiovasculară și capacitatea pulmonară.</p>
+                        <div class="program-meta">
+                            <span><strong>16</strong> săptămâni</span>
+                            <span><strong>6</strong> antrenamente/săpt</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-image">🧘</div>
+                    <div class="program-content">
+                        <h3>Flexibility & Recovery</h3>
+                        <p>Îmbunătățește mobilitatea și previne accidentările cu yoga și stretching.</p>
+                        <div class="program-meta">
+                            <span><strong>Ongoing</strong></span>
+                            <span><strong>3</strong> sesiuni/săpt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trainers" id="antrenori">
+        <div class="container">
+            <div class="section-header">
+                <h2>Echipa de Antrenori</h2>
+                <p>Profesioniști dedicați succesului tău</p>
+            </div>
+            <div class="trainers-grid">
+                <div class="trainer-card">
+                    <div class="trainer-avatar">👨</div>
+                    <h4>Sergiu Dumitrescu</h4>
+                    <p>Strength Coach</p>
+                    <div class="trainer-social">
+                        <a href="#">IG</a>
+                        <a href="#">FB</a>
+                    </div>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-avatar">👩</div>
+                    <h4>Ana Bălan</h4>
+                    <p>HIIT Specialist</p>
+                    <div class="trainer-social">
+                        <a href="#">IG</a>
+                        <a href="#">FB</a>
+                    </div>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-avatar">👨</div>
+                    <h4>Cristian Munteanu</h4>
+                    <p>Nutritionist</p>
+                    <div class="trainer-social">
+                        <a href="#">IG</a>
+                        <a href="#">FB</a>
+                    </div>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-avatar">👩</div>
+                    <h4>Ioana Radu</h4>
+                    <p>Yoga Instructor</p>
+                    <div class="trainer-social">
+                        <a href="#">IG</a>
+                        <a href="#">FB</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>Gata să Începi?</h2>
+            <p>Alătură-te acum și primești 7 zile gratuite + o consultație gratuită cu un antrenor.</p>
+            <a href="#" class="btn">Înscrie-te Acum</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>FitnessForge</h4>
+                    <p>Transformă-ți corpul și mintea cu programe de fitness personalizate.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Linkuri Rapide</h4>
+                    <p><a href="#acasa">Acasă</a><br><a href="#features">Facilități</a><br><a href="#programe">Programe</a><br><a href="#antrenori">Antrenori</a></p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p>contact@fitnessforge.ro<br>+40 700 123 456</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Urmărește-ne</h4>
+                    <p><a href="#">Instagram</a><br><a href="#">Facebook</a><br><a href="#">YouTube</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FitnessForge. Toate drepturile rezervate.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

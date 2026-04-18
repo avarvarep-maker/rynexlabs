@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Web Design, SEO & Automatizare AI | Rynex Labs</title>
+    <meta name="description" content="Articole despre web design, SEO, performanță și automatizare AI. Resurse gratuite de la Rynex Labs pentru afaceri care vor să crească online.">
+    <link rel="canonical" href="https://rynexlabs.ro/blog.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rynexlabs.ro/blog.html">
+    <meta property="og:title" content="Blog Rynex Labs | Web Design, SEO & AI">
+    <meta property="og:description" content="Articole practice despre web design, SEO și automatizare AI. Cunoștințe gratuite de la experții Rynex Labs.">
+    <meta property="og:image" content="https://rynexlabs.ro/rynex-labs-logo.png">
+    <meta property="og:site_name" content="Rynex Labs">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog Rynex Labs | Web Design, SEO & AI">
+    <meta name="twitter:description" content="Articole practice despre web design, SEO și automatizare AI.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="rynex-icon.png">
+
+    <!-- Schema: Blog + BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Acasă", "item": "https://rynexlabs.ro/"},
+            {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://rynexlabs.ro/blog.html"}
+          ]
+        },
+        {
+          "@type": "Blog",
+          "@id": "https://rynexlabs.ro/blog.html",
+          "name": "Blog Rynex Labs",
+          "description": "Articole despre web design, SEO și automatizare AI",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Rynex Labs",
+            "url": "https://rynexlabs.ro"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-bg: #0a0a0a;
+            --color-surface: #141414;
+            --color-surface-light: #1a1a1a;
+            --color-accent: #ff3b26;
+            --color-accent-dark: #cc2e1d;
+            --color-text: #ffffff;
+            --color-text-muted: #888888;
+            --color-border: #2a2a2a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { border-radius: 0 !important; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: var(--color-accent); color: white; }
+
+        .angular-btn {
+            background: var(--color-accent);
+            color: white;
+            padding: 14px 32px;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .angular-btn:hover { background: var(--color-accent-dark); transform: translateY(-2px); }
+
+        .angular-btn-outline {
+            background: transparent;
+            color: var(--color-text);
+            padding: 14px 32px;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--color-border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .angular-btn-outline:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+        .nav-link {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            padding: 8px 0;
+            position: relative;
+        }
+        .nav-link:hover { color: var(--color-text); }
+        .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--color-accent); transition: width 0.3s ease; }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link.active { color: var(--color-text); }
+        .nav-link.active::after { width: 100%; }
+        .nav-link.nav-cta { color: var(--color-accent); }
+
+        .blog-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .blog-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 59, 38, 0.1);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            transition: transform 0.6s ease;
+        }
+        .blog-card:hover .blog-image > div { transform: scale(1.05); }
+        .blog-image > div { width: 100%; height: 100%; transition: transform 0.6s ease; }
+
+        .blog-content { padding: 32px; }
+        .blog-meta { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+        .blog-category { color: var(--color-accent); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+        .blog-date { color: var(--color-text-muted); font-size: 12px; }
+        .blog-card h2 { font-size: 22px; font-weight: 700; line-height: 1.4; margin-bottom: 12px; transition: color 0.3s ease; }
+        .blog-card:hover h2 { color: var(--color-accent); }
+        .blog-card p { color: var(--color-text-muted); font-size: 15px; line-height: 1.7; margin-bottom: 20px; }
+        .read-more { display: inline-flex; align-items: center; gap: 8px; color: var(--color-accent); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: gap 0.3s ease; }
+        .blog-card:hover .read-more { gap: 14px; }
+
+        .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--color-text-muted); flex-wrap: wrap; }
+        .breadcrumb a { color: var(--color-text-muted); text-decoration: none; transition: color 0.3s ease; }
+        .breadcrumb a:hover { color: var(--color-accent); }
+        .breadcrumb span { color: var(--color-border); }
+
+        .category-filter { display: flex; gap: 12px; flex-wrap: wrap; }
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--color-border);
+            color: var(--color-text-muted);
+            padding: 8px 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: inherit;
+        }
+        .filter-btn:hover, .filter-btn.active { background: var(--color-accent); border-color: var(--color-accent); color: white; }
+
+        .footer-link { color: var(--color-text-muted); text-decoration: none; font-size: 14px; transition: color 0.3s ease; }
+        .footer-link:hover { color: var(--color-accent); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: var(--color-bg);
+            z-index: 999;
+            flex-direction: column;
+            padding: 100px 40px 40px;
+        }
+        .mobile-menu.active { display: flex; }
+        .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; z-index: 1001; background: none; border: none; padding: 4px; }
+        .hamburger span { width: 28px; height: 2px; background: var(--color-text); display: block; }
+
+        @media (max-width: 1024px) {
+            .hamburger { display: flex; }
+            .desktop-nav { display: none; }
+            .blog-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 768px) {
+            header .header-inner { padding: 16px 20px !important; }
+            .page-header { padding: 100px 20px 60px !important; }
+            section { padding: 60px 20px !important; }
+            .blog-image { height: 200px !important; }
+            .blog-content { padding: 20px !important; }
+            .blog-card h2 { font-size: 20px !important; }
+            .mobile-menu { padding: 80px 24px 40px !important; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-border);">
+        <div class="header-inner" style="max-width: 1400px; margin: 0 auto; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;">
+            <a href="index_fixed.html" aria-label="Rynex Labs - Acasă" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="rynex-labs-logo.png" alt="Rynex Labs Logo" style="height: 36px; width: auto;"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display: none; font-size: 22px; font-weight: 800; color: white; letter-spacing: -1px;">
+                    RYNEX<span style="color: var(--color-accent);">.</span>LABS
+                </span>
+            </a>
+
+            <nav class="desktop-nav" style="display: flex; gap: 36px; align-items: center;" aria-label="Navigație principală">
+                <a href="index_fixed.html#services" class="nav-link">Servicii</a>
+                <a href="index_fixed.html#portfolio" class="nav-link">Portofoliu</a>
+                <a href="blog.html" class="nav-link active">Blog</a>
+                <a href="automatizare-ai.html" class="nav-link nav-cta">Automatizare AI</a>
+                <a href="index_fixed.html#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Deschide meniu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index_fixed.html#services" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Servicii</a>
+        <a href="index_fixed.html#portfolio" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Portofoliu</a>
+        <a href="blog.html" class="nav-link" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Blog</a>
+        <a href="automatizare-ai.html" class="nav-link" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border); color: var(--color-accent);">Automatizare AI</a>
+        <a href="index_fixed.html#contact" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 22px; padding: 14px 0;">Contact</a>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header" style="padding: 140px 40px 80px; background: var(--color-surface); border-bottom: 1px solid var(--color-border);">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <nav aria-label="Breadcrumb" style="margin-bottom: 32px;">
+                <ol class="breadcrumb" style="list-style: none; padding: 0;">
+                    <li><a href="index_fixed.html">Acasă</a></li>
+                    <li><span>›</span></li>
+                    <li style="color: var(--color-text);">Blog</li>
+                </ol>
+            </nav>
+            <p style="color: var(--color-accent); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px;">Cunoștințe Gratuite</p>
+            <h1 style="font-size: clamp(36px, 6vw, 64px); font-weight: 900; line-height: 1.05; letter-spacing: -2px; margin-bottom: 20px;">Blog</h1>
+            <p style="color: var(--color-text-muted); font-size: 18px; max-width: 600px; line-height: 1.8;">
+                Articole practice despre web design, SEO și automatizare AI. Tot ce trebuie să știi pentru a crește online.
+            </p>
+        </div>
+    </section>
+
+    <!-- Blog Articles -->
+    <section style="padding: 80px 40px 120px;">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <!-- Category filters -->
+            <div style="margin-bottom: 60px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+                <span style="font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 2px;">Filtrează:</span>
+                <div class="category-filter">
+                    <button class="filter-btn active" onclick="filterArticles('all', this)">Toate</button>
+                    <button class="filter-btn" onclick="filterArticles('Design', this)">Design</button>
+                    <button class="filter-btn" onclick="filterArticles('SEO', this)">SEO</button>
+                    <button class="filter-btn" onclick="filterArticles('Performanță', this)">Performanță</button>
+                    <button class="filter-btn" onclick="filterArticles('Conversie', this)">Conversie</button>
+                    <button class="filter-btn" onclick="filterArticles('Trenduri', this)">Trenduri</button>
+                </div>
+            </div>
+
+            <!-- Articles Grid -->
+            <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 30px;" id="articlesGrid">
+                <!-- Article 1 -->
+                <article class="blog-card" data-category="Design" style="display: block;">
+                    <a href="blog/design-responsiv-2026.html" style="text-decoration: none; color: inherit; display: block;">
+                        <div class="blog-image">
+                            <div style="background: linear-gradient(135deg, #1e3a5f 0%, #0d2137 100%); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                <span style="font-size: 64px;" aria-hidden="true">📱</span>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-category">Design</span>
+                                <span class="blog-date">15 Ianuarie 2026 · 8 min citit</span>
+                            </div>
+                            <h2>De ce design-ul responsive este esențial în 2026</h2>
+                            <p>Descoperă de ce website-ul tău trebuie să arate perfect pe orice dispozitiv, de la desktop la mobile. Statistici actualizate și strategii practice.</p>
+                            <span class="read-more">Citește articolul →</span>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="blog-card" data-category="SEO">
+                    <a href="blog/seo-ghid-complet.html" style="text-decoration: none; color: inherit; display: block;">
+                        <div class="blog-image">
+                            <div style="background: linear-gradient(135deg, #2d1b1b 0%, #1a0f0f 100%); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                <span style="font-size: 64px;" aria-hidden="true">🔍</span>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-category">SEO</span>
+                                <span class="blog-date">10 Ianuarie 2026 · 12 min citit</span>
+                            </div>
+                            <h2>SEO pentru începători: Ghid complet 2026</h2>
+                            <p>Învață bazele optimizării pentru motoarele de căutare și cum să crești vizibilitatea online a afacerii tale fără bugete uriașe de publicitate.</p>
+                            <span class="read-more">Citește articolul →</span>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="blog-card" data-category="Performanță">
+                    <a href="blog/viteza-website.html" style="text-decoration: none; color: inherit; display: block;">
+                        <div class="blog-image">
+                            <div style="background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                <span style="font-size: 64px;" aria-hidden="true">⚡</span>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-category">Performanță</span>
+                                <span class="blog-date">5 Ianuarie 2026 · 10 min citit</span>
+                            </div>
+                            <h2>Cum să îmbunătățești viteza website-ului tău</h2>
+                            <p>Tehnici și strategii pentru a reduce timpul de încărcare și a îmbunătăți experiența utilizatorilor. Core Web Vitals explicate simplu.</p>
+                            <span class="read-more">Citește articolul →</span>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="blog-card" data-category="Conversie">
+                    <a href="blog/landing-pages-conversie.html" style="text-decoration: none; color: inherit; display: block;">
+                        <div class="blog-image">
+                            <div style="background: linear-gradient(135deg, #0d2137 0%, #051020 100%); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                <span style="font-size: 64px;" aria-hidden="true">🎯</span>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-category">Conversie</span>
+                                <span class="blog-date">20 Ianuarie 2026 · 7 min citit</span>
+                            </div>
+                            <h2>Landing pages care convertesc: anatomia unei pagini câștigătoare</h2>
+                            <p>Elementele cheie care transformă vizitatorii în clienți și cum să le implementezi corect. CTA-uri, copywriting și psihologia conversiei.</p>
+                            <span class="read-more">Citește articolul →</span>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="blog-card" data-category="Trenduri">
+                    <a href="blog/tendinte-web-design-2026.html" style="text-decoration: none; color: inherit; display: block;">
+                        <div class="blog-image">
+                            <div style="background: linear-gradient(135deg, #1a0f0f 0%, #0d0707 100%); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                <span style="font-size: 64px;" aria-hidden="true">🚀</span>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta">
+                                <span class="blog-category">Trenduri</span>
+                                <span class="blog-date">25 Ianuarie 2026 · 9 min citit</span>
+                            </div>
+                            <h2>Tendințe web design în 2026: ce domină industria</h2>
+                            <p>Ce este în tendințe în designul web și cum să rămâi relevant în peisajul digital. AI, minimalism evoluat și experiențe imersive.</p>
+                            <span class="read-more">Citește articolul →</span>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="padding: 80px 40px; background: var(--color-surface); border-top: 1px solid var(--color-border); text-align: center;">
+        <div style="max-width: 700px; margin: 0 auto;">
+            <p style="color: var(--color-accent); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px;">Ai citit destul?</p>
+            <h2 style="font-size: clamp(28px, 4vw, 44px); font-weight: 800; letter-spacing: -1px; margin-bottom: 20px; line-height: 1.15;">Acum e momentul să acționezi</h2>
+            <p style="color: var(--color-text-muted); font-size: 17px; line-height: 1.8; margin-bottom: 40px;">
+                Cunoașterea e primul pas. Hai să aplicăm împreună ce ai citit la afacerea ta.
+            </p>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                <a href="index_fixed.html#contact" class="angular-btn">Începe Proiectul</a>
+                <a href="automatizare-ai.html" class="angular-btn-outline">Explorează AI Automation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="padding: 60px 40px 30px; background: var(--color-bg); border-top: 1px solid var(--color-border);">
+        <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <a href="index_fixed.html" style="text-decoration: none;">
+                <img src="rynex-labs-logo.png" alt="Rynex Labs" style="height: 28px;"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                <span style="display: none; font-size: 20px; font-weight: 800; color: white; letter-spacing: -1px;">
+                    RYNEX<span style="color: var(--color-accent);">.</span>LABS
+                </span>
+            </a>
+            <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                <a href="index_fixed.html" class="footer-link">Acasă</a>
+                <a href="index_fixed.html#services" class="footer-link">Servicii</a>
+                <a href="index_fixed.html#portfolio" class="footer-link">Portofoliu</a>
+                <a href="automatizare-ai.html" class="footer-link">Automatizare AI</a>
+                <a href="index_fixed.html#contact" class="footer-link">Contact</a>
+            </div>
+            <p style="color: var(--color-text-muted); font-size: 13px;">© 2026 Rynex Labs. Toate drepturile rezervate.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+
+        function filterArticles(category, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            document.querySelectorAll('#articlesGrid .blog-card').forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.style.background = window.scrollY > 100
+                ? 'rgba(10,10,10,0.98)'
+                : 'rgba(10,10,10,0.95)';
+        }, { passive: true });
+    </script>
+</body>
+</html>

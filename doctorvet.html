@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoctorVet - Clinică Veterinară</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        
+        header { background: linear-gradient(135deg, #1e3a5f 0%, #0d2137 100%); color: white; padding: 20px 0; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 28px; font-weight: 800; letter-spacing: -1px; }
+        .logo span { color: #3b82f6; }
+        nav { display: flex; gap: 32px; }
+        nav a { color: rgba(255,255,255,0.8); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: white; }
+        
+        .hero { background: linear-gradient(135deg, #1e3a5f 0%, #0d2137 100%); color: white; padding: 100px 0; }
+        .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .hero h1 { font-size: 52px; font-weight: 800; line-height: 1.1; margin-bottom: 24px; }
+        .hero p { font-size: 18px; color: rgba(255,255,255,0.8); margin-bottom: 32px; }
+        .btn { display: inline-block; padding: 16px 32px; background: #3b82f6; color: white; text-decoration: none; font-weight: 600; border-radius: 8px; transition: all 0.3s; }
+        .btn:hover { background: #2563eb; transform: translateY(-2px); }
+        .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.3); margin-left: 16px; }
+        .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: white; }
+        
+        .hero-image { background: rgba(255,255,255,0.1); border-radius: 16px; height: 400px; display: flex; align-items: center; justify-content: center; font-size: 120px; }
+        
+        .services { padding: 100px 0; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 40px; font-weight: 700; margin-bottom: 16px; }
+        .section-header p { color: #64748b; font-size: 18px; }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .service-card { background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: all 0.3s; }
+        .service-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+        .service-icon { width: 64px; height: 64px; background: linear-gradient(135deg, #3b82f6 0%, #1e3a5f 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 24px; }
+        .service-card h3 { font-size: 22px; font-weight: 600; margin-bottom: 12px; }
+        .service-card p { color: #64748b; }
+        
+        .about { padding: 100px 0; background: white; }
+        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .about-image { background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%); border-radius: 16px; height: 450px; display: flex; align-items: center; justify-content: center; font-size: 100px; }
+        .about h2 { font-size: 40px; font-weight: 700; margin-bottom: 24px; }
+        .about p { color: #64748b; margin-bottom: 20px; font-size: 16px; }
+        .stats { display: flex; gap: 40px; margin-top: 40px; }
+        .stat h4 { font-size: 36px; font-weight: 700; color: #3b82f6; }
+        .stat p { color: #64748b; font-size: 14px; margin: 0; }
+        
+        .team { padding: 100px 0; }
+        .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        .team-card { text-align: center; }
+        .team-avatar { width: 150px; height: 150px; background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 60px; }
+        .team-card h4 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+        .team-card p { color: #64748b; font-size: 14px; }
+        
+        .contact { padding: 100px 0; background: linear-gradient(135deg, #1e3a5f 0%, #0d2137 100%); color: white; }
+        .contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+        .contact h2 { font-size: 40px; font-weight: 700; margin-bottom: 24px; }
+        .contact p { color: rgba(255,255,255,0.8); margin-bottom: 32px; }
+        .contact-info { display: flex; flex-direction: column; gap: 20px; }
+        .contact-item { display: flex; align-items: center; gap: 16px; }
+        .contact-icon { width: 48px; height: 48px; background: rgba(255,255,255,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 16px; border: none; border-radius: 8px; background: rgba(255,255,255,0.1); color: white; font-size: 16px; }
+        .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.5); }
+        .form-group textarea { min-height: 120px; resize: vertical; }
+        
+        footer { background: #0d2137; color: white; padding: 40px 0; text-align: center; }
+        footer p { color: rgba(255,255,255,0.6); }
+        
+        @media (max-width: 1024px) {
+            .hero-content, .about-content, .contact-content { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .hero h1 { font-size: 36px; }
+            .services-grid, .team-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Doctor<span>Vet</span></div>
+                <nav>
+                    <a href="#acasa">Acasă</a>
+                    <a href="#servicii">Servicii</a>
+                    <a href="#despre">Despre</a>
+                    <a href="#echipa">Echipă</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="acasa">
+        <div class="container">
+            <div class="hero-content">
+                <div>
+                    <h1>Îngrijire Veterinară de Excelență</h1>
+                    <p>Oferim servicii veterinare complete pentru prietenii tăi blănoși. Echipa noastră de specialiști este dedicată sănătății și bunăstării animalelor tale.</p>
+                    <a href="#contact" class="btn">Programează o Vizită</a>
+                    <a href="#servicii" class="btn btn-outline">Serviciile Noastre</a>
+                </div>
+                <div class="hero-image">🐕</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="servicii">
+        <div class="container">
+            <div class="section-header">
+                <h2>Serviciile Noastre</h2>
+                <p>O gamă completă de servicii veterinare pentru toate nevoile animalelor tale</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏥</div>
+                    <h3>Consultații</h3>
+                    <p>Consultații generale și specializate pentru toate speciile de animale de companie.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💉</div>
+                    <h3>Vaccinări</h3>
+                    <p>Program complet de vaccinări și imunizări pentru protecția animalelor tale.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔬</div>
+                    <h3>Laborator</h3>
+                    <p>Analize de sânge, urină și alte teste diagnostice cu rezultate rapide.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✂️</div>
+                    <h3>Chirurgie</h3>
+                    <p>Intervenții chirurgicale în condiții de siguranță maximă.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🦷</div>
+                    <h3>Dentisterie</h3>
+                    <p>Îngrijire dentară completă pentru sănătatea orală a animalelor.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚑</div>
+                    <h3>Urgente 24/7</h3>
+                    <p>Servicii de urgență disponibile non-stop pentru situații critice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="despre">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">🏥</div>
+                <div>
+                    <h2>De Ce DoctorVet?</h2>
+                    <p>Suntem o clinică veterinară modernă, echipată cu aparatură de ultimă generație și o echipă de medici veterinari pasionați și experimentați.</p>
+                    <p>Ne dedicăm fiecărui pacient cu atenție și grijă, oferind tratamente personalizate și soluții optime pentru fiecare situație.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <h4>15+</h4>
+                            <p>Ani Experiență</p>
+                        </div>
+                        <div class="stat">
+                            <h4>10k+</h4>
+                            <p>Pacienți Tratați</p>
+                        </div>
+                        <div class="stat">
+                            <h4>8</h4>
+                            <p>Medici Specialiști</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team" id="echipa">
+        <div class="container">
+            <div class="section-header">
+                <h2>Echipa Noastră</h2>
+                <p>Medici veterinari dedicați și pasionați de bunăstarea animalelor</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">👨‍⚕️</div>
+                    <h4>Dr. Andrei Marinescu</h4>
+                    <p>Medic Veterinar Șef</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👩‍⚕️</div>
+                    <h4>Dr. Diana Ionescu</h4>
+                    <p>Chirurg Veterinar</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👨‍⚕️</div>
+                    <h4>Dr. Mihai Popescu</h4>
+                    <p>Medic Internist</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👩‍⚕️</div>
+                    <h4>Dr. Elena Stan</h4>
+                    <p>Dermatologie Veterinară</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div>
+                    <h2>Contactează-ne</h2>
+                    <p>Suntem aici pentru tine și animalul tău de companie. Contactează-ne pentru programări sau întrebări.</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <strong>Adresă</strong>
+                                <p style="margin:0;color:rgba(255,255,255,0.7);">Str. Veterinarilor 45, Iași</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <strong>Telefon</strong>
+                                <p style="margin:0;color:rgba(255,255,255,0.7);">+40 232 123 456</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">✉️</div>
+                            <div>
+                                <strong>Email</strong>
+                                <p style="margin:0;color:rgba(255,255,255,0.7);">contact@doctorvet.ro</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Numele tău">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Telefon">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Mesajul tău"></textarea>
+                    </div>
+                    <button class="btn" style="width:100%;border:none;cursor:pointer;">Trimite Mesaj</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 DoctorVet. Toate drepturile rezervate.</p>
+        </div>
+    </footer>
+</body>
+</html>
