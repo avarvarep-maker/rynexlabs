@@ -100,7 +100,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         *, *::before, *::after { border-radius: 0 !important; }
 
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -623,92 +623,94 @@
         @media (max-width: 1024px) {
             .hamburger { display: flex; }
             .desktop-nav { display: none; }
-
             .hero-content { grid-template-columns: 1fr !important; text-align: center; gap: 40px !important; }
-            .hero h1 { font-size: 42px !important; }
             .hero p { margin: 0 auto 30px !important; }
-
-            .services-grid,
-            .portfolio-grid,
-            .blog-grid,
-            .process-grid { grid-template-columns: 1fr !important; }
-
-            .about-content,
-            .contact-content { grid-template-columns: 1fr !important; gap: 40px !important; }
-
-            .stat-bar { grid-template-columns: repeat(2, 1fr); }
-            .stat-item:nth-child(2) { border-right: none; }
-            .stat-item:nth-child(3) { border-top: 1px solid var(--color-border); }
-            .stat-item:nth-child(4) { border-top: 1px solid var(--color-border); }
+            .services-grid, .portfolio-grid, .blog-grid, .process-grid { grid-template-columns: 1fr !important; }
+            .about-content, .contact-content { grid-template-columns: 1fr !important; gap: 40px !important; }
         }
 
         @media (max-width: 768px) {
-            header .header-inner { padding: 16px 20px !important; }
+            /* Prevent horizontal overflow */
+            body { overflow-x: hidden; max-width: 100vw; }
 
-            .hero-section { padding: 100px 20px 60px !important; min-height: auto !important; }
-            .hero h1 { font-size: 32px !important; line-height: 1.15 !important; }
-            .hero p { font-size: 16px !important; }
-            .hero-buttons { flex-direction: column !important; gap: 12px !important; }
+            /* Compact header */
+            header .header-inner { padding: 14px 20px !important; }
+            img[alt="Rynex Labs Logo"] { height: 40px !important; }
 
-            .angular-btn, .angular-btn-outline {
-                width: 100% !important;
-                padding: 14px 24px !important;
-                font-size: 13px !important;
-                text-align: center;
+            /* Hero — hide right column, focus on text + CTA */
+            .hero-visual { display: none !important; }
+            .hero-section { padding: 108px 20px 56px !important; min-height: auto !important; }
+            .hero-content { grid-template-columns: 1fr !important; gap: 0 !important; text-align: left !important; }
+            .hero h1 { font-size: clamp(30px, 8vw, 40px) !important; letter-spacing: -1px !important; line-height: 1.1 !important; margin-bottom: 20px !important; }
+            .hero p { font-size: 16px !important; line-height: 1.7 !important; margin-bottom: 28px !important; max-width: 100% !important; }
+            .hero-buttons { flex-direction: column !important; gap: 12px !important; width: 100%; margin-bottom: 0 !important; }
+
+            /* Buttons — full width, proper touch size */
+            .angular-btn, .angular-btn-outline, .angular-btn-secondary {
+                width: 100% !important; padding: 16px 20px !important;
+                font-size: 14px !important; text-align: center !important;
+                min-height: 52px !important; display: flex !important;
+                align-items: center !important; justify-content: center !important;
             }
 
-            section { padding: 60px 20px !important; }
-            .section-title { font-size: 28px !important; }
+            /* Sections — tighter vertical rhythm */
+            section { padding: 56px 20px !important; }
+            .section-title { font-size: 26px !important; letter-spacing: -0.5px !important; }
             .section-label { font-size: 11px !important; letter-spacing: 2px !important; }
 
+            /* Cards */
             .card, .process-step { padding: 24px !important; }
+            .card ul li { font-size: 14px !important; line-height: 1.9 !important; }
 
-            .stat-bar { grid-template-columns: repeat(2, 1fr); padding: 20px !important; }
-            .stat-value { font-size: 36px !important; }
-            .stat-label { font-size: 11px !important; }
-
+            /* Portfolio */
             .portfolio-thumbnail { aspect-ratio: 16/9 !important; }
             .portfolio-content { padding: 20px !important; }
-            .portfolio-content h3 { font-size: 20px !important; }
-            .portfolio-content p { font-size: 13px !important; margin-bottom: 16px !important; }
+            .portfolio-content h3 { font-size: 18px !important; }
+            .portfolio-content p { font-size: 13px !important; margin-bottom: 14px !important; }
 
-            .blog-image { height: 180px !important; }
+            /* Blog */
+            .blog-image { height: 160px !important; }
             .blog-content { padding: 20px !important; }
-            .blog-card h3 { font-size: 18px !important; }
+            .blog-card h3 { font-size: 17px !important; line-height: 1.4 !important; }
             .blog-card p { font-size: 13px !important; }
 
-            .faq-question { font-size: 16px !important; padding: 20px 0 !important; }
+            /* FAQ */
+            .faq-question { font-size: 15px !important; padding: 18px 0 !important; }
+            .faq-answer-inner { font-size: 14px !important; }
 
-            footer { padding: 50px 20px 30px !important; }
-            .footer-grid { grid-template-columns: 1fr !important; gap: 30px !important; text-align: center !important; }
+            /* Forms — prevent iOS zoom, proper sizing */
+            .input-field { font-size: 16px !important; padding: 14px 16px !important; }
+            textarea.input-field { min-height: 120px !important; }
+            .contact-content { gap: 32px !important; }
 
+            /* Footer */
+            footer { padding: 48px 20px 32px !important; }
+            .footer-grid { grid-template-columns: 1fr !important; gap: 28px !important; text-align: left !important; }
+
+            /* Mobile menu */
+            .mobile-menu { padding: 80px 20px 36px !important; }
+
+            /* Modals */
             .modal-content { height: 100vh !important; max-width: 100% !important; }
-            .modal-header { padding: 16px 20px !important; }
-            .modal-header h3 { font-size: 16px !important; }
-
-            .mobile-menu { padding: 80px 24px 40px !important; }
-            .mobile-menu a { font-size: 20px !important; padding: 12px 0 !important; }
-
-            .gdpr-modal { max-width: 100% !important; margin: 0 10px !important; }
-            .gdpr-content { padding: 24px 20px !important; }
+            .modal-header { padding: 14px 20px !important; }
+            .gdpr-modal { max-width: 100% !important; margin: 0 !important; }
+            .gdpr-content { padding: 20px !important; }
         }
 
         @media (max-width: 480px) {
+            header .header-inner { padding: 12px 16px !important; }
+            .hero-section { padding: 96px 16px 48px !important; }
             .hero h1 { font-size: 28px !important; }
-            .section-title { font-size: 24px !important; }
+            section { padding: 48px 16px !important; }
+            .section-title { font-size: 22px !important; }
             .portfolio-thumbnail { aspect-ratio: 4/3 !important; }
-            .blog-image { height: 160px !important; }
-            .stat-bar { grid-template-columns: 1fr !important; }
-            .stat-item { border-right: none !important; border-bottom: 1px solid var(--color-border); }
-            .stat-item:last-child { border-bottom: none; }
+            .process-grid { gap: 1px !important; }
         }
 
         @media (pointer: coarse) {
-            .nav-link, .footer-link, .faq-question, .modal-close {
-                min-height: 44px;
-                min-width: 44px;
-            }
+            .nav-link, .footer-link, .faq-question, .modal-close { min-height: 44px; }
             .blog-card, .portfolio-card, .card, .process-step { cursor: pointer; }
+            .card:hover, .process-step:hover { transform: none; }
         }
     </style>
 </head>
@@ -725,8 +727,8 @@
             </a>
 
             <nav class="desktop-nav" style="display: flex; gap: 36px; align-items: center;" aria-label="Navigație principală">
-                <a href="#services" class="nav-link">Servicii</a>
-                <a href="#templates" class="nav-link">Template-uri</a>
+                <a href="servicii.html" class="nav-link">Servicii</a>
+                <a href="portofoliu.html" class="nav-link">Template-uri</a>
                 <a href="blog.html" class="nav-link">Blog</a>
                 <a href="automatizare-ai.html" class="nav-link nav-cta">Automatizare AI</a>
                 <a href="#contact" class="nav-link">Contact</a>
@@ -742,12 +744,12 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-        <a href="#services" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Servicii</a>
-        <a href="#templates" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Template-uri</a>
-        <a href="blog.html" class="nav-link" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border);">Blog</a>
-        <a href="automatizare-ai.html" class="nav-link" style="font-size: 22px; padding: 14px 0; border-bottom: 1px solid var(--color-border); color: var(--color-accent);">Automatizare AI</a>
-        <a href="#contact" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 22px; padding: 14px 0;">Contact</a>
-        <a href="#contact" class="angular-btn" onclick="toggleMobileMenu()" style="margin-top: 32px; text-align: center;">Începe Proiectul</a>
+        <a href="servicii.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border);">Servicii</a>
+        <a href="portofoliu.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border);">Template-uri</a>
+        <a href="blog.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border);">Blog</a>
+        <a href="automatizare-ai.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border); color: var(--color-accent);">Automatizare AI</a>
+        <a href="#contact" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0;">Contact</a>
+        <a href="#contact" class="angular-btn" onclick="toggleMobileMenu()" style="margin-top: 28px; text-align: center; width: 100%;">Începe Proiectul</a>
     </div>
 
     <!-- Hero Section -->
@@ -766,27 +768,13 @@
                 <p style="color: var(--color-text-muted); font-size: 18px; max-width: 500px; margin-bottom: 40px; line-height: 1.8;">
                     Website-uri premium și automatizări AI care transformă vizitatorii în clienți. Lucrăm cu afaceri ambițioase din toată România.
                 </p>
-                <div class="hero-buttons" style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 60px;">
+                <div class="hero-buttons" style="display: flex; gap: 16px; flex-wrap: wrap;">
                     <a href="#contact" class="angular-btn">Începe Proiectul</a>
-                    <a href="#templates" class="angular-btn-outline">Vezi Template-uri</a>
-                </div>
-                <div style="display: flex; gap: 40px; flex-wrap: wrap;">
-                    <div>
-                        <div style="font-size: 28px; font-weight: 900; color: var(--color-accent);">50+</div>
-                        <div style="font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px;">Proiecte livrate</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 28px; font-weight: 900; color: var(--color-accent);">3 ani</div>
-                        <div style="font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px;">Experiență</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 28px; font-weight: 900; color: var(--color-accent);">100%</div>
-                        <div style="font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1px;">Satisfacție</div>
-                    </div>
+                    <a href="portofoliu.html" class="angular-btn-outline">Vezi Template-uri</a>
                 </div>
             </div>
 
-            <div class="scroll-reveal" style="position: relative;">
+            <div class="scroll-reveal hero-visual" style="position: relative;">
                 <div style="background: var(--color-surface); border: 1px solid var(--color-border); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
                     <div style="position: absolute; inset: 20px; border: 1px solid var(--color-border);"></div>
                     <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--color-accent);"></div>
@@ -829,7 +817,7 @@
                         <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Optimizat SEO din prima zi</li>
                         <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Livrat în 7–14 zile</li>
                     </ul>
-                    <span class="service-price">De la 79 euro</span>
+                    <span class="service-price">Ofertă personalizată gratuită →</span>
                 </div>
 
                 <!-- Service 2: Optimization -->
@@ -844,7 +832,7 @@
                         <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Viteză sub 2 secunde</li>
                         <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Vizibilitate crescută în Google</li>
                     </ul>
-                    <span class="service-price">De la 79 euro</span>
+                    <span class="service-price">Ofertă personalizată gratuită →</span>
                 </div>
 
                 <!-- Service 3: Landing Pages -->
@@ -859,7 +847,7 @@
                         <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> A/B testing ready</li>
                         <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Livrat în 3–5 zile</li>
                     </ul>
-                    <span class="service-price">De la 79 euro</span>
+                    <span class="service-price">Ofertă personalizată gratuită →</span>
                 </div>
 
                 <!-- Service 4: Redesign -->
@@ -874,7 +862,7 @@
                         <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Design modern adaptat brandului</li>
                         <li style="display: flex; align-items: center; gap: 8px;"><span style="color: var(--color-accent);">→</span> Migrare fără pierderi de SEO</li>
                     </ul>
-                    <span class="service-price">De la 79 euro</span>
+                    <span class="service-price">Ofertă personalizată gratuită →</span>
                 </div>
 
                 <!-- Service 5: AI Automation (Featured) -->
@@ -1165,7 +1153,7 @@
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            Prețurile pornesc de la <strong>79 euro</strong> pentru un site de prezentare simplu. Prețul final depinde de numărul de pagini, funcționalitățile necesare și nivelul de personalizare. Oferim întotdeauna o ofertă detaliată și transparentă după consultație — fără costuri ascunse.
+                            Nu lucrăm cu tarife fixe afișate — fiecare proiect e unic. Prețul final depinde de complexitate, numărul de pagini și funcționalitățile necesare. Trimitem întotdeauna o ofertă clară și transparentă după o consultație gratuită, fără costuri ascunse.
                         </div>
                     </div>
                 </div>
@@ -1213,7 +1201,7 @@
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            Da! Secțiunea <a href="#templates" style="color: var(--color-accent);">Template-uri</a> de mai sus conține exemple de design pe care le putem adapta pentru afacerea ta. Apasă "Demo Live" pentru a le vedea în acțiune.
+                            Da! Pagina noastră de <a href="portofoliu.html" style="color: var(--color-accent);">Template-uri</a> conține exemple de design pe care le putem adapta pentru afacerea ta. Apasă "Demo Live" pentru a le vedea în acțiune.
                         </div>
                     </div>
                 </div>
@@ -1344,7 +1332,7 @@
                 <div>
                     <h4 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Navigație</h4>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <a href="#templates" class="footer-link">Template-uri</a>
+                        <a href="portofoliu.html" class="footer-link">Template-uri</a>
                         <a href="blog.html" class="footer-link">Blog</a>
                         <a href="#process" class="footer-link">Procesul Nostru</a>
                         <a href="#faq" class="footer-link">FAQ</a>

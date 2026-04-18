@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template-uri Web Design | Exemple de Proiecte | Rynex Labs</title>
+    <meta name="description" content="Exemple de design-uri și template-uri web create de Rynex Labs. Clinică veterinară, cafenea, sală fitness — personalizăm orice template pentru afacerea ta.">
+    <link rel="canonical" href="https://rynexlabs.ro/portofoliu.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rynexlabs.ro/portofoliu.html">
+    <meta property="og:title" content="Template-uri & Exemple de Design | Rynex Labs">
+    <meta property="og:description" content="Explorează exemple de design-uri web și descoperă cum putem adapta un template pentru afacerea ta.">
+    <meta property="og:image" content="https://rynexlabs.ro/rynex-labs-logo.png">
+    <meta property="og:site_name" content="Rynex Labs">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Template-uri & Exemple de Design | Rynex Labs">
+    <meta name="twitter:description" content="Exemple de design-uri web — clinică, cafenea, fitness — personalizate pentru afacerea ta.">
+
+    <link rel="icon" type="image/png" href="rynex-icon.png">
+    <link rel="apple-touch-icon" href="rynex-icon.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Acasă", "item": "https://rynexlabs.ro/"},
+        {"@type": "ListItem", "position": 2, "name": "Template-uri", "item": "https://rynexlabs.ro/portofoliu.html"}
+      ],
+      "@type": "BreadcrumbList"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-bg: #0a0a0a;
+            --color-surface: #141414;
+            --color-accent: #ff3b26;
+            --color-accent-dark: #cc2e1d;
+            --color-secondary: #f5a623;
+            --color-secondary-dark: #d4891c;
+            --color-text: #ffffff;
+            --color-text-muted: #888888;
+            --color-border: #2a2a2a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { border-radius: 0 !important; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--color-bg); color: var(--color-text); line-height: 1.6; overflow-x: hidden; }
+        ::selection { background: var(--color-accent); color: white; }
+
+        .nav-link { color: var(--color-text-muted); text-decoration: none; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s ease; padding: 8px 0; position: relative; }
+        .nav-link:hover { color: var(--color-text); }
+        .nav-link.active { color: var(--color-text); }
+        .nav-link.nav-cta { color: var(--color-accent); }
+        .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--color-accent); transition: width 0.3s ease; }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+        .angular-btn { background: var(--color-accent); color: white; padding: 16px 40px; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; border: none; cursor: pointer; transition: all 0.3s ease; display: inline-block; text-decoration: none; }
+        .angular-btn:hover { background: var(--color-accent-dark); transform: translateY(-2px); }
+        .angular-btn-outline { background: transparent; color: var(--color-text); padding: 16px 40px; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; border: 2px solid var(--color-border); cursor: pointer; transition: all 0.3s ease; display: inline-block; text-decoration: none; }
+        .angular-btn-outline:hover { border-color: var(--color-accent); color: var(--color-accent); }
+        .angular-btn-secondary { background: var(--color-secondary); color: #0a0a0a; padding: 14px 28px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; border: none; cursor: pointer; transition: all 0.3s ease; display: inline-block; text-decoration: none; }
+        .angular-btn-secondary:hover { background: var(--color-secondary-dark); }
+
+        .section-label { color: var(--color-accent); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 24px; display: block; }
+        .section-title { font-size: clamp(28px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -1px; }
+
+        .footer-link { color: var(--color-text-muted); text-decoration: none; font-size: 14px; transition: color 0.3s ease; }
+        .footer-link:hover { color: var(--color-accent); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 60px; margin-bottom: 60px; }
+
+        .mobile-menu { display: none; position: fixed; inset: 0; background: var(--color-bg); z-index: 999; flex-direction: column; padding: 90px 24px 40px; overflow-y: auto; }
+        .mobile-menu.active { display: flex; }
+        .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; z-index: 1001; background: none; border: none; padding: 4px; }
+        .hamburger span { width: 28px; height: 2px; background: var(--color-text); display: block; transition: all 0.3s ease; }
+
+        .scroll-reveal { opacity: 0; transform: translateY(24px); transition: all 0.6s ease; }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--color-text-muted); }
+        .breadcrumb a { color: var(--color-text-muted); text-decoration: none; }
+        .breadcrumb a:hover { color: var(--color-accent); }
+
+        /* Portfolio cards */
+        .portfolio-card { background: var(--color-surface); border: 1px solid var(--color-border); overflow: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .portfolio-card:hover { border-color: var(--color-accent); transform: translateY(-6px); box-shadow: 0 16px 40px rgba(255,59,38,0.1); }
+        .portfolio-thumbnail { width: 100%; aspect-ratio: 16/10; overflow: hidden; border-bottom: 1px solid var(--color-border); position: relative; }
+        .portfolio-thumbnail-content { width: 100%; height: 100%; transform: scale(0.85); transform-origin: top center; transition: transform 0.5s ease; }
+        .portfolio-card:hover .portfolio-thumbnail-content { transform: scale(0.9); }
+        .portfolio-content { padding: 28px; }
+        .portfolio-content h2 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+        .portfolio-content p { color: var(--color-text-muted); font-size: 14px; line-height: 1.7; margin-bottom: 20px; }
+
+        /* Modal */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .modal-overlay.active { display: flex; }
+        .modal-content { background: var(--color-surface); border: 1px solid var(--color-border); width: 100%; max-width: 1200px; height: 90vh; display: flex; flex-direction: column; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 28px; border-bottom: 1px solid var(--color-border); }
+        .modal-close { background: var(--color-accent); color: white; border: none; padding: 10px 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
+        .modal-iframe { flex: 1; width: 100%; border: none; background: white; }
+
+        /* Thumbnails */
+        .doctorvet-thumb { background: linear-gradient(180deg, #1e3a5f 0%, #0d2137 100%); padding: 8px 12px; }
+        .doctorvet-thumb .thumb-header { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .doctorvet-thumb .thumb-logo { font-size: 10px; font-weight: 700; color: white; }
+        .doctorvet-thumb .thumb-logo span { color: #3b82f6; }
+        .doctorvet-thumb .thumb-nav { display: flex; gap: 8px; }
+        .doctorvet-thumb .thumb-nav span { font-size: 5px; color: rgba(255,255,255,0.6); }
+        .doctorvet-thumb .thumb-hero { padding: 16px 0; text-align: center; }
+        .doctorvet-thumb .thumb-hero h3 { font-size: 14px; color: white; font-weight: 700; margin-bottom: 6px; }
+        .doctorvet-thumb .thumb-hero p { font-size: 6px; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
+        .doctorvet-thumb .thumb-btn { display: inline-block; padding: 6px 12px; background: #3b82f6; color: white; font-size: 6px; font-weight: 600; }
+        .doctorvet-thumb .thumb-services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 12px; }
+        .doctorvet-thumb .thumb-service { background: rgba(255,255,255,0.05); padding: 8px 4px; text-align: center; }
+        .doctorvet-thumb .thumb-service-icon { font-size: 10px; margin-bottom: 4px; }
+        .doctorvet-thumb .thumb-service-title { font-size: 5px; color: white; }
+        .cafenoir-thumb { background: linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 100%); padding: 8px 12px; }
+        .cafenoir-thumb .thumb-header { display: flex; justify-content: center; padding: 6px 0; border-bottom: 1px solid rgba(201,168,108,0.2); }
+        .cafenoir-thumb .thumb-logo { font-size: 10px; font-weight: 700; color: #c9a86c; letter-spacing: 1px; }
+        .cafenoir-thumb .thumb-hero { padding: 20px 0; text-align: center; }
+        .cafenoir-thumb .thumb-hero h3 { font-size: 16px; color: white; font-weight: 700; margin-bottom: 6px; letter-spacing: 2px; }
+        .cafenoir-thumb .thumb-hero p { font-size: 5px; color: rgba(255,255,255,0.6); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+        .cafenoir-thumb .thumb-btn { display: inline-block; padding: 6px 14px; background: #c9a86c; color: #0d0d0d; font-size: 5px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .cafenoir-thumb .thumb-menu { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 12px; }
+        .cafenoir-thumb .thumb-menu-item { background: rgba(255,255,255,0.03); padding: 6px 8px; display: flex; justify-content: space-between; align-items: center; }
+        .cafenoir-thumb .thumb-menu-name { font-size: 5px; color: white; }
+        .cafenoir-thumb .thumb-menu-price { font-size: 6px; color: #c9a86c; }
+        .fitnessforge-thumb { background: linear-gradient(180deg, #0a0a0f 0%, #1a1a2e 100%); padding: 8px 12px; }
+        .fitnessforge-thumb .thumb-header { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; }
+        .fitnessforge-thumb .thumb-logo { font-size: 8px; font-weight: 800; color: white; letter-spacing: -0.5px; }
+        .fitnessforge-thumb .thumb-logo span { color: #ff6b35; }
+        .fitnessforge-thumb .thumb-nav-btn { padding: 4px 8px; background: #ff6b35; color: white; font-size: 5px; font-weight: 600; }
+        .fitnessforge-thumb .thumb-hero { padding: 14px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: center; }
+        .fitnessforge-thumb .thumb-hero-text h3 { font-size: 11px; color: white; font-weight: 800; line-height: 1.2; margin-bottom: 6px; }
+        .fitnessforge-thumb .thumb-hero-text h3 span { color: #ff6b35; }
+        .fitnessforge-thumb .thumb-hero-text p { font-size: 5px; color: rgba(255,255,255,0.7); margin-bottom: 10px; line-height: 1.5; }
+        .fitnessforge-thumb .thumb-btn { display: inline-block; padding: 5px 10px; background: #ff6b35; color: white; font-size: 5px; font-weight: 700; }
+        .fitnessforge-thumb .thumb-stats { display: flex; gap: 8px; }
+        .fitnessforge-thumb .thumb-stat { text-align: center; }
+        .fitnessforge-thumb .thumb-stat-value { font-size: 10px; font-weight: 800; color: #ff6b35; }
+        .fitnessforge-thumb .thumb-stat-label { font-size: 4px; color: rgba(255,255,255,0.5); text-transform: uppercase; }
+
+        @media (max-width: 1024px) {
+            .hamburger { display: flex; }
+            .desktop-nav { display: none; }
+            .portfolio-grid { grid-template-columns: 1fr !important; }
+        }
+
+        @media (max-width: 768px) {
+            body { overflow-x: hidden; }
+            header .header-inner { padding: 14px 20px !important; }
+            img[alt="Rynex Labs Logo"] { height: 40px !important; }
+            .page-hero { padding: 108px 20px 56px !important; }
+            section { padding: 56px 20px !important; }
+            .section-title { font-size: 24px !important; }
+            .angular-btn, .angular-btn-outline, .angular-btn-secondary { width: 100% !important; padding: 16px 20px !important; font-size: 14px !important; text-align: center !important; min-height: 52px !important; display: flex !important; align-items: center !important; justify-content: center !important; }
+            .portfolio-thumbnail { aspect-ratio: 16/9 !important; }
+            .portfolio-content { padding: 20px !important; }
+            .modal-content { height: 100vh !important; max-width: 100% !important; }
+            footer { padding: 48px 20px 32px !important; }
+            .footer-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+        }
+
+        @media (max-width: 480px) {
+            .page-hero { padding: 96px 16px 48px !important; }
+            section { padding: 48px 16px !important; }
+            header .header-inner { padding: 12px 16px !important; }
+            .portfolio-thumbnail { aspect-ratio: 4/3 !important; }
+        }
+
+        @media (pointer: coarse) {
+            .nav-link, .footer-link { min-height: 44px; }
+            .portfolio-card:hover { transform: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-border);">
+        <div class="header-inner" style="max-width: 1400px; margin: 0 auto; padding: 18px 40px; display: flex; justify-content: space-between; align-items: center;">
+            <a href="index.html" aria-label="Rynex Labs — Acasă" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="rynex-labs-logo.png" alt="Rynex Labs Logo" style="height: 52px; width: auto; display: block;"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display: none; font-size: 24px; font-weight: 800; color: white; letter-spacing: -1px;">RYNEX<span style="color: var(--color-accent);">.</span>LABS</span>
+            </a>
+            <nav class="desktop-nav" style="display: flex; gap: 36px; align-items: center;" aria-label="Navigație principală">
+                <a href="servicii.html" class="nav-link">Servicii</a>
+                <a href="portofoliu.html" class="nav-link active">Template-uri</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="automatizare-ai.html" class="nav-link nav-cta">Automatizare AI</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </nav>
+            <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Deschide meniu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+        <a href="servicii.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border);">Servicii</a>
+        <a href="portofoliu.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border); color: white;">Template-uri</a>
+        <a href="blog.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border);">Blog</a>
+        <a href="automatizare-ai.html" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0; border-bottom: 1px solid var(--color-border); color: var(--color-accent);">Automatizare AI</a>
+        <a href="index.html#contact" class="nav-link" onclick="toggleMobileMenu()" style="font-size: 20px; padding: 16px 0;">Contact</a>
+        <a href="index.html#contact" class="angular-btn" onclick="toggleMobileMenu()" style="margin-top: 28px; text-align: center; width: 100%;">Începe Proiectul</a>
+    </div>
+
+    <!-- Page Hero -->
+    <section class="page-hero" style="padding: 140px 40px 80px; border-bottom: 1px solid var(--color-border);">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom: 32px;">
+                <a href="index.html">Acasă</a>
+                <span style="color: var(--color-border);">›</span>
+                <span style="color: var(--color-text);">Template-uri</span>
+            </nav>
+            <div style="max-width: 800px;">
+                <span class="section-label" style="color: var(--color-secondary);">Exemple de Design</span>
+                <h1 class="section-title" style="margin-bottom: 24px;">Template-uri<br><span style="color: var(--color-accent);">Disponibile</span></h1>
+                <p style="color: var(--color-text-muted); font-size: 18px; line-height: 1.8; max-width: 620px;">
+                    Iată câteva exemple de design-uri pe care le putem adapta pentru afacerea ta. Fiecare template e un punct de pornire — îl personalizăm complet cu brandul, culorile și conținutul tău.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Template Grid -->
+    <section style="padding: 100px 40px;">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div class="portfolio-grid scroll-reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 30px;">
+
+                <!-- DoctorVet -->
+                <article class="portfolio-card">
+                    <div class="portfolio-thumbnail">
+                        <div class="portfolio-thumbnail-content doctorvet-thumb">
+                            <div class="thumb-header">
+                                <div class="thumb-logo">Doctor<span>Vet</span></div>
+                                <div class="thumb-nav">
+                                    <span>Acasă</span><span>Servicii</span><span>Contact</span>
+                                </div>
+                            </div>
+                            <div class="thumb-hero">
+                                <h3>Îngrijire Veterinară</h3>
+                                <p>Oferim servicii veterinare complete pentru prietenii tăi blănoși</p>
+                                <span class="thumb-btn">Programează o Vizită</span>
+                            </div>
+                            <div class="thumb-services">
+                                <div class="thumb-service"><div class="thumb-service-icon">🏥</div><div class="thumb-service-title">Consultații</div></div>
+                                <div class="thumb-service"><div class="thumb-service-icon">💉</div><div class="thumb-service-title">Vaccinări</div></div>
+                                <div class="thumb-service"><div class="thumb-service-icon">🔬</div><div class="thumb-service-title">Laborator</div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div style="display: inline-block; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); color: #3b82f6; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 3px 8px; margin-bottom: 14px;">Clinică / Cabinet</div>
+                        <h2>DoctorVet</h2>
+                        <p>Design profesional pentru clinici medicale sau veterinare. Prezentare servicii, sistem de programări online și date de contact vizibile.</p>
+                        <button class="angular-btn-secondary" onclick="openPreview('doctorvet.html')" style="width: 100%; justify-content: center; display: flex; align-items: center;">Demo Live</button>
+                    </div>
+                </article>
+
+                <!-- Café Noir -->
+                <article class="portfolio-card">
+                    <div class="portfolio-thumbnail">
+                        <div class="portfolio-thumbnail-content cafenoir-thumb">
+                            <div class="thumb-header"><div class="thumb-logo">Café Noir</div></div>
+                            <div class="thumb-hero">
+                                <h3>Café Noir</h3>
+                                <p>Arta cafelei perfecte</p>
+                                <span class="thumb-btn">Descoperă Meniul</span>
+                            </div>
+                            <div class="thumb-menu">
+                                <div class="thumb-menu-item"><span class="thumb-menu-name">Espresso</span><span class="thumb-menu-price">8 lei</span></div>
+                                <div class="thumb-menu-item"><span class="thumb-menu-name">Cappuccino</span><span class="thumb-menu-price">14 lei</span></div>
+                                <div class="thumb-menu-item"><span class="thumb-menu-name">Latte</span><span class="thumb-menu-price">15 lei</span></div>
+                                <div class="thumb-menu-item"><span class="thumb-menu-name">Flat White</span><span class="thumb-menu-price">16 lei</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div style="display: inline-block; background: rgba(201,168,108,0.1); border: 1px solid rgba(201,168,108,0.2); color: #c9a86c; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 3px 8px; margin-bottom: 14px;">Cafenea / Restaurant</div>
+                        <h2>Café Noir</h2>
+                        <p>Identitate vizuală premium pentru cafenele și restaurante. Meniu digital interactiv, atmosferă distinctă și rezervări online.</p>
+                        <button class="angular-btn-secondary" onclick="openPreview('cafenoir.html')" style="width: 100%; justify-content: center; display: flex; align-items: center;">Demo Live</button>
+                    </div>
+                </article>
+
+                <!-- FitnessForge -->
+                <article class="portfolio-card">
+                    <div class="portfolio-thumbnail">
+                        <div class="portfolio-thumbnail-content fitnessforge-thumb">
+                            <div class="thumb-header">
+                                <div class="thumb-logo">Fitness<span>Forge</span></div>
+                                <div class="thumb-nav-btn">Începe Acum</div>
+                            </div>
+                            <div class="thumb-hero">
+                                <div class="thumb-hero-text">
+                                    <h3>Forge Your <span>Best Self</span></h3>
+                                    <p>Antrenamente personalizate și nutriție avansată.</p>
+                                    <span class="thumb-btn">Începe Transformarea</span>
+                                </div>
+                                <div class="thumb-stats">
+                                    <div class="thumb-stat"><div class="thumb-stat-value">5k+</div><div class="thumb-stat-label">Membri</div></div>
+                                    <div class="thumb-stat"><div class="thumb-stat-value">50+</div><div class="thumb-stat-label">Antrenori</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div style="display: inline-block; background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.2); color: #ff6b35; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 3px 8px; margin-bottom: 14px;">Sală Fitness / Sport</div>
+                        <h2>FitnessForge</h2>
+                        <p>Platformă energică pentru săli de fitness și antrenori personali. Programe de antrenament, statistici și formular de înscriere.</p>
+                        <button class="angular-btn-secondary" onclick="openPreview('fitnessforge.html')" style="width: 100%; justify-content: center; display: flex; align-items: center;">Demo Live</button>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom project CTA -->
+    <section style="padding: 100px 40px; background: var(--color-surface); border-top: 1px solid var(--color-border);">
+        <div style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+            <div class="scroll-reveal">
+                <span class="section-label">Sau de la Zero</span>
+                <h2 class="section-title" style="margin-bottom: 24px;">Vrei ceva<br><span style="color: var(--color-accent);">complet unic?</span></h2>
+                <p style="color: var(--color-text-muted); font-size: 17px; line-height: 1.8; margin-bottom: 36px;">
+                    Dacă niciun template nu se potrivește perfect, construim de la zero — un design creat exclusiv pentru brandul tău, cu fiecare detaliu gândit strategic.
+                </p>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                    <a href="index.html#contact" class="angular-btn">Solicită Proiect Personalizat</a>
+                    <a href="servicii.html" class="angular-btn-outline">Vezi Serviciile</a>
+                </div>
+            </div>
+            <div class="scroll-reveal" style="display: flex; flex-direction: column; gap: 20px;">
+                <div style="background: var(--color-bg); border: 1px solid var(--color-border); padding: 28px; display: flex; gap: 20px; align-items: flex-start;">
+                    <div style="width: 44px; height: 44px; background: var(--color-accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px;">🎨</div>
+                    <div>
+                        <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">Design de la Zero</h3>
+                        <p style="color: var(--color-text-muted); font-size: 14px; line-height: 1.7;">Identitate vizuală unică, adaptată 100% brandului și publicului tău.</p>
+                    </div>
+                </div>
+                <div style="background: var(--color-bg); border: 1px solid var(--color-border); padding: 28px; display: flex; gap: 20px; align-items: flex-start;">
+                    <div style="width: 44px; height: 44px; background: var(--color-accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px;">⚡</div>
+                    <div>
+                        <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">Template Personalizat</h3>
+                        <p style="color: var(--color-text-muted); font-size: 14px; line-height: 1.7;">Pornim de la un template și îl transformăm complet — mai rapid și mai economic.</p>
+                    </div>
+                </div>
+                <div style="background: var(--color-bg); border: 1px solid var(--color-border); padding: 28px; display: flex; gap: 20px; align-items: flex-start;">
+                    <div style="width: 44px; height: 44px; background: var(--color-accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px;">📱</div>
+                    <div>
+                        <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">Mobile-First Garantat</h3>
+                        <p style="color: var(--color-text-muted); font-size: 14px; line-height: 1.7;">Toate proiectele arată perfect pe telefon, tabletă și desktop.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preview Modal -->
+    <div class="modal-overlay" id="previewModal" role="dialog" aria-modal="true" aria-label="Demo Live">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="previewTitle" style="font-size: 17px; font-weight: 700;">Demo Live</h2>
+                <button class="modal-close" onclick="closePreview()">Închide ✕</button>
+            </div>
+            <iframe class="modal-iframe" id="previewFrame" title="Preview template" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="padding: 80px 40px 40px; background: var(--color-bg); border-top: 1px solid var(--color-border);">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" style="display: inline-flex; align-items: center; text-decoration: none; margin-bottom: 20px;">
+                        <img src="rynex-labs-logo.png" alt="Rynex Labs" style="height: 44px; width: auto;"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                        <span style="display: none; font-size: 22px; font-weight: 800; color: white; letter-spacing: -1px;">RYNEX<span style="color: var(--color-accent);">.</span>LABS</span>
+                    </a>
+                    <p style="color: var(--color-text-muted); line-height: 1.8; font-size: 14px;">Agenție web design Iași. Website-uri premium și automatizări AI pentru afaceri ambițioase din toată România.</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Servicii</h3>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="servicii.html" class="footer-link">Creare Website</a>
+                        <a href="servicii.html" class="footer-link">Optimizare &amp; SEO</a>
+                        <a href="servicii.html" class="footer-link">Landing Pages</a>
+                        <a href="servicii.html" class="footer-link">Redesign Website</a>
+                        <a href="automatizare-ai.html" class="footer-link" style="color: var(--color-accent);">Automatizare AI ↗</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Navigație</h3>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="portofoliu.html" class="footer-link">Template-uri</a>
+                        <a href="blog.html" class="footer-link">Blog</a>
+                        <a href="index.html#process" class="footer-link">Procesul Nostru</a>
+                        <a href="index.html#faq" class="footer-link">FAQ</a>
+                        <a href="index.html#contact" class="footer-link">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">Legal &amp; Contact</h3>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="mailto:rynexlabsbusiness@gmail.com" class="footer-link">rynexlabsbusiness@gmail.com</a>
+                        <a href="tel:+40747202811" class="footer-link">+40 747 202 811</a>
+                        <span style="font-size: 14px; color: var(--color-text-muted);">Iași, România</span>
+                    </div>
+                </div>
+            </div>
+            <div style="padding-top: 40px; border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; color: var(--color-text-muted); font-size: 13px;">
+                <span>© 2026 Rynex Labs. Toate drepturile rezervate.</span>
+                <div style="display: flex; gap: 20px;">
+                    <a href="sitemap.xml" class="footer-link" style="font-size: 13px;">Sitemap</a>
+                    <a href="blog.html" class="footer-link" style="font-size: 13px;">Blog</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const btn = document.querySelector('.hamburger');
+            const isOpen = menu.classList.toggle('active');
+            menu.setAttribute('aria-hidden', !isOpen);
+            btn.setAttribute('aria-expanded', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        }
+
+        function openPreview(url) {
+            document.getElementById('previewFrame').src = url;
+            document.getElementById('previewModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePreview() {
+            document.getElementById('previewModal').classList.remove('active');
+            document.getElementById('previewFrame').src = '';
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('previewModal').addEventListener('click', e => {
+            if (e.target === e.currentTarget) closePreview();
+        });
+
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closePreview(); });
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+        window.addEventListener('scroll', () => {
+            document.querySelector('header').style.background = window.scrollY > 80 ? 'rgba(10,10,10,0.98)' : 'rgba(10,10,10,0.95)';
+        }, { passive: true });
+    </script>
+</body>
+</html>
