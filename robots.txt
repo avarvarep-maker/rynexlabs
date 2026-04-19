@@ -1,6 +1,17 @@
 User-agent: *
 Allow: /
 
-Disallow: /404.html
+# Disallow admin and system paths
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /admin/
+Disallow: /private/
 
+# Crawl-delay for performance
+Crawl-delay: 1
+
+# Sitemap location
 Sitemap: https://rynexlabs.ro/sitemap.xml
+
+# Host preference
+Host: https://rynexlabs.ro
