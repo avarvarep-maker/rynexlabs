@@ -1,0 +1,21 @@
+{
+  "name": "RynexLabs",
+  "type": "landing-page",
+  "business": "Web development, design, and AI automation company",
+  "audience": "Businesses without online presence and businesses needing AI automation",
+  "goal": "Get leads and signups",
+  "features": ["contact-form", "blog", "booking", "newsletter"],
+  "design": "organic-warm",
+  "colorScheme": "warm",
+  "contact": {
+    "phone": "0747202811",
+    "email": "avarvarep@gmail.com",
+    "address": "Iași, Iași, Romania",
+    "mapsUrl": "https://www.google.com/maps/place/Mall+Moldova/@47.1671638,27.4743176,13z/data=!4m6!3m5!1s0x40cae4c97b7a29e1:0xaf41cbbbb78d6201!8m2!3d47.1671739!4d27.5155323!16s%2Fg%2F11ykkmb_z3?entry=ttu&g_ep=EgoyMDI2MDQyMS4wIKXMDSoASAFQAw%3D%3D",
+    "hours": "Monday–Sunday, 8:00–20:00"
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/ionvtpaul/"
+  },
+  "pages": ["home", "services", "blog", "contact", "book"]
+}
