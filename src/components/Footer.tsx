@@ -1,199 +1,151 @@
 import Link from "next/link";
-import {
-  Phone,
-  EnvelopeSimple,
-  MapPinLine,
-  Clock,
-  InstagramLogo,
-  ArrowRight,
-} from "@phosphor-icons/react/dist/ssr";
 
-const navLinks = [
-  { label: "Services", href: "/services" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
-  { label: "Book a Call", href: "/book" },
+const GithubIcon = ({ size = 16 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+  </svg>
+);
+
+const XIcon = ({ size = 16 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
+
+const PRODUCT = [
+  { label: "Features", href: "/#features" },
+  { label: "How it works", href: "/#how-it-works" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Changelog", href: "#" },
+  { label: "Roadmap", href: "#" },
 ];
 
-const services = [
-  { label: "Web Design", href: "/services#design" },
-  { label: "Web Development", href: "/services#development" },
-  { label: "AI Automation", href: "/services#automation" },
-  { label: "SEO & Performance", href: "/services#seo" },
+const INTEGRATIONS = [
+  { label: "GitHub", href: "#" },
+  { label: "GitLab", href: "#" },
+  { label: "Bitbucket", href: "#" },
+  { label: "VS Code", href: "#" },
+  { label: "Jira", href: "#" },
+];
+
+const COMPANY = [
+  { label: "Blog", href: "/blog" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Service", href: "/terms" },
+  { label: "Security", href: "#" },
 ];
 
 export default function Footer() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "RynexLabs",
-    description: "Web design, development, and AI automation company based in Iași, Romania.",
-    url: "https://rynexlabs.com",
-    telephone: "+40747202811",
-    email: "avarvarep@gmail.com",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Iași",
-      addressRegion: "Iași",
-      addressCountry: "RO",
-    },
-    openingHours: "Mo-Su 08:00-20:00",
-    sameAs: ["https://www.instagram.com/ionvtpaul/"],
-  };
-
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <footer className="bg-[var(--brand-espresso)] text-[var(--brand-cream)]">
-        {/* CTA band */}
-        <div className="border-b border-white/10">
-          <div className="container-wide px-4 md:px-8 py-12 md:py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <div>
-              <p className="font-body text-xs uppercase tracking-widest text-[var(--brand-amber)] mb-2">
-                Ready to start?
-              </p>
-              <h2 className="font-display text-2xl md:text-3xl font-semibold leading-tight">
-                Your business deserves<br className="hidden sm:block" /> a proper online presence.
-              </h2>
-            </div>
-            <Link
-              href="/book"
-              className="inline-flex items-center gap-2 bg-[var(--brand-amber)] text-[var(--brand-cream)] font-body font-semibold px-7 py-4 rounded-full transition-all duration-200 hover:bg-opacity-90 shrink-0 group min-w-[44px] min-h-[44px]"
-            >
-              Book a free call
-              <ArrowRight size={18} weight="bold" className="transition-transform group-hover:translate-x-0.5" />
-            </Link>
-          </div>
-        </div>
-
-        {/* Main footer grid */}
-        <div className="container-wide px-4 md:px-8 py-12 md:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer style={{ background: "var(--bg2)", borderTop: "1px solid var(--border)" }}>
+      <div className="max-w-6xl mx-auto px-5 py-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
           {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="inline-block mb-4">
-              <span className="font-display text-2xl font-bold tracking-tight">
-                Rynex<span className="text-[var(--brand-amber)]">Labs</span>
+          <div className="col-span-2 md:col-span-1">
+            <Link href="/" className="flex items-center gap-2.5 mb-4">
+              <div
+                className="w-7 h-7 rounded-md flex items-center justify-center text-xs font-bold"
+                style={{
+                  background: "linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)",
+                  fontFamily: "var(--font-syne), sans-serif",
+                  color: "#fff",
+                }}
+              >
+                R
+              </div>
+              <span
+                className="font-semibold text-sm"
+                style={{ color: "var(--text)", fontFamily: "var(--font-syne), sans-serif" }}
+              >
+                Rynex Labs
               </span>
             </Link>
-            <p className="font-body text-sm text-white/60 leading-relaxed max-w-xs">
-              We build websites and AI systems that put your business to work — even while you sleep.
+            <p className="text-sm mb-5" style={{ color: "var(--text-dim)", lineHeight: 1.7, maxWidth: "200px" }}>
+              AI code review that catches what humans miss. Every PR, automatically.
             </p>
-            <div className="flex items-center gap-4 mt-6">
+            <div className="flex items-center gap-2">
               <a
-                href="https://www.instagram.com/ionvtpaul/"
+                href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-10 h-10 rounded-full border border-white/15 text-white/60 hover:text-[var(--brand-amber)] hover:border-[var(--brand-amber)] transition-colors"
-                aria-label="Instagram"
+                className="btn-ghost p-2"
+                aria-label="GitHub"
               >
-                <InstagramLogo size={18} weight="regular" />
+                <GithubIcon size={16} />
+              </a>
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost p-2"
+                aria-label="Twitter / X"
+              >
+                <XIcon size={16} />
               </a>
             </div>
           </div>
 
-          {/* Nav */}
+          {/* Product */}
           <div>
-            <p className="font-body text-xs uppercase tracking-widest text-[var(--brand-amber)] mb-4">
-              Navigation
+            <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--muted)" }}>
+              Product
             </p>
             <ul className="space-y-3">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="font-body text-sm text-white/60 hover:text-white transition-colors"
-                  >
-                    {link.label}
+              {PRODUCT.map((l) => (
+                <li key={l.label}>
+                  <Link href={l.href} className="footer-link">
+                    {l.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Integrations */}
           <div>
-            <p className="font-body text-xs uppercase tracking-widest text-[var(--brand-amber)] mb-4">
-              Services
+            <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--muted)" }}>
+              Integrations
             </p>
             <ul className="space-y-3">
-              {services.map((s) => (
-                <li key={s.href}>
-                  <Link
-                    href={s.href}
-                    className="font-body text-sm text-white/60 hover:text-white transition-colors"
-                  >
-                    {s.label}
+              {INTEGRATIONS.map((l) => (
+                <li key={l.label}>
+                  <Link href={l.href} className="footer-link">
+                    {l.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Company */}
           <div>
-            <p className="font-body text-xs uppercase tracking-widest text-[var(--brand-amber)] mb-4">
-              Contact
+            <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--muted)" }}>
+              Company
             </p>
             <ul className="space-y-3">
-              <li>
-                <a
-                  href="tel:0747202811"
-                  className="flex items-center gap-2.5 font-body text-sm text-white/60 hover:text-white transition-colors group"
-                >
-                  <Phone size={16} weight="light" className="text-[var(--brand-amber)] shrink-0" />
-                  0747 202 811
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:avarvarep@gmail.com"
-                  className="flex items-center gap-2.5 font-body text-sm text-white/60 hover:text-white transition-colors"
-                >
-                  <EnvelopeSimple size={16} weight="light" className="text-[var(--brand-amber)] shrink-0" />
-                  avarvarep@gmail.com
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.google.com/maps/place/Mall+Moldova/@47.1671638,27.4743176,13z"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-2.5 font-body text-sm text-white/60 hover:text-white transition-colors"
-                >
-                  <MapPinLine size={16} weight="light" className="text-[var(--brand-amber)] shrink-0 mt-0.5" />
-                  Iași, Romania
-                </a>
-              </li>
-              <li>
-                <span className="flex items-center gap-2.5 font-body text-sm text-white/60">
-                  <Clock size={16} weight="light" className="text-[var(--brand-amber)] shrink-0" />
-                  Mon–Sun, 8:00–20:00
-                </span>
-              </li>
+              {COMPANY.map((l) => (
+                <li key={l.label}>
+                  <Link href={l.href} className="footer-link">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-white/10">
-          <div className="container-wide px-4 md:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p className="font-body text-xs text-white/40">
-              © {new Date().getFullYear()} RynexLabs. All rights reserved.
-            </p>
-            <div className="flex items-center gap-5">
-              <Link href="/privacy" className="font-body text-xs text-white/40 hover:text-white/70 transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="font-body text-xs text-white/40 hover:text-white/70 transition-colors">
-                Terms
-              </Link>
-            </div>
-          </div>
+        <div
+          className="mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3"
+          style={{ borderTop: "1px solid var(--border)" }}
+        >
+          <p className="text-xs" style={{ color: "var(--muted)" }}>
+            © {new Date().getFullYear()} Rynex Labs, Inc. All rights reserved.
+          </p>
+          <p className="text-xs" style={{ color: "var(--muted)" }}>
+            Built for teams who ship fast
+          </p>
         </div>
-      </footer>
-    </>
+      </div>
+    </footer>
   );
 }

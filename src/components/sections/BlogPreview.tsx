@@ -13,7 +13,7 @@ const posts = [
       "A Facebook page is not a website. A Google listing is not a website. A website is something you own, control, and that works for you 24/7.",
     category: "Business",
     readTime: "4 min read",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop&q=90",
   },
   {
     slug: "3-repetitive-tasks-ai-can-handle-today",
@@ -22,7 +22,7 @@ const posts = [
       "Most AI automation talk is abstract. Here are three concrete things — with specific tools — that most small businesses can automate this week.",
     category: "AI Automation",
     readTime: "6 min read",
-    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&auto=format&fit=crop&q=90",
   },
   {
     slug: "how-much-should-a-website-cost",
@@ -31,7 +31,7 @@ const posts = [
       "The honest breakdown — why prices vary so much, what you get at each level, and when it makes sense to spend more.",
     category: "Pricing",
     readTime: "5 min read",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&auto=format&fit=crop&q=90",
   },
 ];
 

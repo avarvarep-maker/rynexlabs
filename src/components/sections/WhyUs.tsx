@@ -51,7 +51,7 @@ export default function WhyUs() {
           >
             <div className="relative aspect-[3/4] rounded-2xl overflow-hidden max-w-md mx-auto lg:mx-0">
               <Image
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&auto=format&fit=crop&q=80"
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&auto=format&fit=crop&q=90"
                 alt="Team working together"
                 fill
                 className="object-cover"

@@ -19,7 +19,7 @@ const posts: Record<string, {
     category: "Business",
     readTime: "4 min read",
     date: "April 2025",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&auto=format&fit=crop&q=90",
     content: `
 A lot of business owners tell us they have "an online presence." They have a Facebook page. Maybe a Google Business profile. Sometimes a page on a directory site from 2018.
 
@@ -58,7 +58,7 @@ If you have a website that is not working: it might be a design problem, a speed
     category: "AI Automation",
     readTime: "6 min read",
     date: "March 2025",
-    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1600&auto=format&fit=crop&q=90",
     content: `
 AI automation sounds complicated. And most articles about it are full of buzzwords and hypothetical scenarios that have nothing to do with running an actual business.
 
@@ -107,7 +107,7 @@ If you want help setting any of these up — or want us to identify what else in
     category: "Pricing",
     readTime: "5 min read",
     date: "March 2025",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&auto=format&fit=crop&q=90",
     content: `
 Website pricing in Romania is all over the place. You can get a website for €100 or €10,000. The difference is real — but it is not always obvious what you are actually paying for.
 

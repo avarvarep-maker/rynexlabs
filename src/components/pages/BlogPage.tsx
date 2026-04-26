@@ -14,7 +14,7 @@ const posts = [
     category: "Business",
     readTime: "4 min read",
     date: "April 2025",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&auto=format&fit=crop&q=90",
     featured: true,
   },
   {
@@ -25,7 +25,7 @@ const posts = [
     category: "AI Automation",
     readTime: "6 min read",
     date: "March 2025",
-    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1600&auto=format&fit=crop&q=90",
     featured: false,
   },
   {
@@ -36,7 +36,7 @@ const posts = [
     category: "Pricing",
     readTime: "5 min read",
     date: "March 2025",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&auto=format&fit=crop&q=90",
     featured: false,
   },
   {
@@ -47,7 +47,7 @@ const posts = [
     category: "SEO",
     readTime: "7 min read",
     date: "February 2025",
-    image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=1600&auto=format&fit=crop&q=90",
     featured: false,
   },
   {
@@ -58,7 +58,7 @@ const posts = [
     category: "Technology",
     readTime: "5 min read",
     date: "February 2025",
-    image: "https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4?w=800&auto=format&fit=crop&q=80",
+    image: "https://images.unsplash.com/photo-1593720219276-0b1eacd0aef4?w=1600&auto=format&fit=crop&q=90",
     featured: false,
   },
 ];

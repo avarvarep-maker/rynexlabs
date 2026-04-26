@@ -1,87 +1,99 @@
 import type { Metadata } from "next";
-import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
+import { Syne, Inter } from "next/font/google";
 import "./globals.css";
-import Navigation from "@/components/Navigation";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Toaster } from "sonner";
+import MobileCTA from "@/components/MobileCTA";
 
-const display = Fraunces({
+const syne = Syne({
   subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["300", "400", "500", "600", "700", "900"],
-  style: ["normal", "italic"],
+  variable: "--font-syne",
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const body = Plus_Jakarta_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-body",
-  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://rynexlabs.com"),
   title: {
-    default: "RynexLabs — Web Design, Development & AI Automation",
-    template: "%s | RynexLabs",
+    default: "Rynex Labs — AI Code Review for Development Teams",
+    template: "%s | Rynex Labs",
   },
   description:
-    "RynexLabs builds high-quality websites and AI automation systems for businesses in Iași and beyond. Get online. Work less. Grow faster.",
+    "AI-powered code review that catches bugs, security vulnerabilities, and bad patterns before they reach production. Integrates with GitHub, GitLab, Bitbucket in 2 minutes.",
   keywords: [
-    "web design",
-    "web development",
-    "AI automation",
-    "Iași",
-    "Romania",
-    "landing page",
-    "business website",
+    "AI code review",
+    "automated code review",
+    "pull request review",
+    "security vulnerability scanner",
+    "GitHub code review",
+    "developer tools",
+    "code quality",
   ],
+  authors: [{ name: "Rynex Labs" }],
+  creator: "Rynex Labs",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://rynexlabs.com",
-    siteName: "RynexLabs",
-    title: "RynexLabs — Web Design, Development & AI Automation",
+    siteName: "Rynex Labs",
+    title: "Rynex Labs — AI Code Review for Development Teams",
     description:
-      "We build websites and AI tools that make your business run better.",
+      "AI reviews every pull request automatically. Catches what humans miss. Install in 2 minutes.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Rynex Labs" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "RynexLabs — Web Design & AI Automation",
-    description: "Websites and AI automation for businesses that mean business.",
+    title: "Rynex Labs — AI Code Review",
+    description: "Catches security vulnerabilities your team misses. Every PR, automatically.",
+    images: ["/og-image.png"],
   },
-  robots: {
-    index: true,
-    follow: true,
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Rynex Labs",
+  applicationCategory: "DeveloperApplication",
+  operatingSystem: "Web",
+  url: "https://rynexlabs.com",
+  description:
+    "AI-powered code review tool that catches bugs, security vulnerabilities, and bad patterns before production.",
+  offers: [
+    { "@type": "Offer", price: "0", priceCurrency: "USD", name: "Starter" },
+    { "@type": "Offer", price: "49", priceCurrency: "USD", name: "Pro", billingPeriod: "P1M" },
+  ],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    ratingCount: "2400",
+    bestRating: "5",
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${display.variable} ${body.variable} h-full`}
-      suppressHydrationWarning
-    >
-      <body className="min-h-full flex flex-col grain-overlay">
-        <Navigation />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <Toaster
-          position="bottom-right"
-          toastOptions={{
-            style: {
-              background: "var(--brand-espresso)",
-              color: "var(--brand-cream)",
-              border: "1px solid rgba(255,255,255,0.1)",
-            },
-          }}
+    <html lang="en" className={`${syne.variable} ${inter.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
+      <body style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+        <MobileCTA />
       </body>
     </html>
   );
