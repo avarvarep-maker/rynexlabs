@@ -1,57 +1,51 @@
 import type { Metadata } from "next";
-import { Syne, Inter } from "next/font/google";
+import { DM_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import MobileCTA from "@/components/MobileCTA";
+import CustomCursor from "@/components/CustomCursor";
+import { Toaster } from "sonner";
 
-const syne = Syne({
+const dmMono = DM_Mono({
   subsets: ["latin"],
-  variable: "--font-syne",
-  weight: ["400", "500", "600", "700", "800"],
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["300", "400", "500", "600"],
+  variable: "--font-dm-mono",
+  weight: ["300", "400", "500"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://rynexlabs.com"),
   title: {
-    default: "Rynex Labs — AI Code Review for Development Teams",
+    default: "Rynex Labs — Websites & AI Automation",
     template: "%s | Rynex Labs",
   },
   description:
-    "AI-powered code review that catches bugs, security vulnerabilities, and bad patterns before they reach production. Integrates with GitHub, GitLab, Bitbucket in 2 minutes.",
+    "We build websites that bring in clients and AI systems that handle the work you hate doing. Based in Iași, working worldwide.",
   keywords: [
-    "AI code review",
-    "automated code review",
-    "pull request review",
-    "security vulnerability scanner",
-    "GitHub code review",
-    "developer tools",
-    "code quality",
+    "web design Iași",
+    "AI automation Romania",
+    "website development Iași",
+    "digital agency Romania",
+    "web development",
+    "AI automation",
+    "SEO Romania",
   ],
   authors: [{ name: "Rynex Labs" }],
   creator: "Rynex Labs",
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "ro_RO",
     url: "https://rynexlabs.com",
     siteName: "Rynex Labs",
-    title: "Rynex Labs — AI Code Review for Development Teams",
+    title: "Rynex Labs — Websites & AI Automation",
     description:
-      "AI reviews every pull request automatically. Catches what humans miss. Install in 2 minutes.",
+      "We build websites that bring in clients and AI systems that handle the work you hate doing.",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Rynex Labs" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rynex Labs — AI Code Review",
-    description: "Catches security vulnerabilities your team misses. Every PR, automatically.",
+    title: "Rynex Labs — Websites & AI Automation",
+    description: "Websites that work. AI that saves time. Based in Iași.",
     images: ["/og-image.png"],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
@@ -59,41 +53,38 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
+  "@type": "ProfessionalService",
   name: "Rynex Labs",
-  applicationCategory: "DeveloperApplication",
-  operatingSystem: "Web",
   url: "https://rynexlabs.com",
-  description:
-    "AI-powered code review tool that catches bugs, security vulnerabilities, and bad patterns before production.",
-  offers: [
-    { "@type": "Offer", price: "0", priceCurrency: "USD", name: "Starter" },
-    { "@type": "Offer", price: "49", priceCurrency: "USD", name: "Pro", billingPeriod: "P1M" },
-  ],
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    ratingCount: "2400",
-    bestRating: "5",
+  description: "Web design, AI automation, and SEO agency based in Iași, Romania.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Iași",
+    addressRegion: "Iași",
+    addressCountry: "RO",
   },
+  telephone: "0747202811",
+  email: "avarvarep@gmail.com",
+  openingHours: "Mo-Su 08:00-20:00",
+  areaServed: { "@type": "Country", name: "Romania" },
+  serviceType: ["Web Design", "AI Automation", "SEO"],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${syne.variable} ${inter.variable}`}>
+    <html lang="ro" className={dmMono.variable}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}>
+      <body>
+        <CustomCursor />
         <Navbar />
         <main>{children}</main>
         <Footer />
-        <MobileCTA />
+        <Toaster theme="dark" position="bottom-right" />
       </body>
     </html>
   );

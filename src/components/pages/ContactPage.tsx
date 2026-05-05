@@ -1,47 +1,56 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useLayoutEffect, useRef, useState } from "react";
+import gsap from "gsap";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import { useState } from "react";
-import {
-  Phone,
-  EnvelopeSimple,
-  MapPinLine,
-  Clock,
-  InstagramLogo,
-  ArrowRight,
-  PaperPlaneRight,
-} from "@phosphor-icons/react";
 
 const schema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email"),
+  name: z.string().min(2, "At least 2 characters"),
+  email: z.string().email("Valid email required"),
   phone: z.string().optional(),
-  service: z.string().min(1, "Please select a service"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  service: z.string().min(1, "Select a service"),
+  message: z.string().min(10, "At least 10 characters"),
 });
 
 type FormData = z.infer<typeof schema>;
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
+const mono: React.CSSProperties = {
+  fontFamily: "var(--font-dm-mono, 'DM Mono', monospace)",
+};
+
+const inputBase: React.CSSProperties = {
+  ...mono,
+  background: "transparent",
+  border: "none",
+  borderBottom: "1px solid rgba(255,255,255,0.2)",
+  color: "#fff",
+  fontSize: "0.875rem",
+  width: "100%",
+  paddingBottom: "0.75rem",
+  outline: "none",
+  transition: "border-color 0.2s",
 };
 
 export default function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const formRef    = useRef<HTMLFormElement>(null);
+  const infoRef    = useRef<HTMLDivElement>(null);
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<FormData>({
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
+
+  useLayoutEffect(() => {
+    const tl = gsap.timeline();
+    if (headingRef.current) tl.from(headingRef.current, { y: 40, opacity: 0, duration: 1.2, ease: "expo.out" });
+    if (formRef.current) tl.from(formRef.current, { y: 20, opacity: 0, duration: 0.8, ease: "expo.out" }, "-=0.8");
+    if (infoRef.current) tl.from(infoRef.current, { y: 20, opacity: 0, duration: 0.8, ease: "expo.out" }, "-=0.7");
+    return () => { tl.kill(); };
+  }, []);
 
   const onSubmit = async (data: FormData) => {
     setSubmitting(true);
@@ -52,7 +61,7 @@ export default function ContactPage() {
         body: JSON.stringify(data),
       });
       if (!res.ok) throw new Error();
-      toast.success("Message sent! We'll reply within 24 hours.");
+      toast.success("Message sent. We'll reply within 24h.");
       reset();
     } catch {
       toast.error("Something went wrong. Try calling us directly.");
@@ -61,238 +70,129 @@ export default function ContactPage() {
     }
   };
 
+  const focusBorder = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    e.target.style.borderBottomColor = "var(--accent)";
+  };
+  const blurBorder = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    e.target.style.borderBottomColor = "rgba(255,255,255,0.2)";
+  };
+
   return (
-    <>
-      {/* Header */}
-      <section className="pt-32 pb-12 md:pt-40 md:pb-16">
-        <div className="container-wide px-4 md:px-8">
-          <motion.div
-            variants={{ hidden: {}, show: { transition: { staggerChildren: 0.09 } } }}
-            initial="hidden"
-            animate="show"
-          >
-            <motion.p variants={fadeUp} className="font-body text-xs uppercase tracking-widest text-[var(--brand-amber)] mb-4">
-              Get in touch
-            </motion.p>
-            <motion.h1 variants={fadeUp} className="font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold text-[var(--brand-espresso)] mb-4">
-              Contact
-            </motion.h1>
-            <motion.p variants={fadeUp} className="font-body text-base text-[var(--brand-warm-brown)] max-w-lg">
-              We reply within 24 hours on business days. Usually faster.
-            </motion.p>
-          </motion.div>
+    <main className="min-h-screen bg-black text-white pt-20">
+      <div className="max-w-7xl mx-auto px-4 lg:px-10 py-16 lg:py-24">
+        {/* Header */}
+        <div className="mb-16 lg:mb-24">
+          <p className="text-xs opacity-50 mb-4 uppercase" style={{ ...mono, letterSpacing: "var(--tracking-sm)" }}>
+            CONTACT
+          </p>
+          <h1 ref={headingRef} className="text-5xl lg:text-7xl font-light leading-none" style={mono}>
+            Start a project.
+          </h1>
         </div>
-      </section>
 
-      {/* Content grid */}
-      <section className="pb-20 md:pb-32">
-        <div className="container-wide px-4 md:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16">
-            {/* Form */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="lg:col-span-3"
-            >
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="font-body text-xs font-semibold text-[var(--brand-espresso)] mb-1.5 block uppercase tracking-wide">
-                      Name *
-                    </label>
-                    <input
-                      {...register("name")}
-                      placeholder="Your name"
-                      className="w-full font-body text-sm bg-[var(--brand-surface)] border border-[var(--border)] rounded-xl px-4 py-4 text-[var(--brand-espresso)] placeholder:text-[var(--brand-warm-brown)]/50 focus:outline-none focus:border-[var(--brand-amber)] transition-colors min-h-[52px]"
-                    />
-                    {errors.name && (
-                      <p className="font-body text-xs text-red-500 mt-1">{errors.name.message}</p>
-                    )}
-                  </div>
-                  <div>
-                    <label className="font-body text-xs font-semibold text-[var(--brand-espresso)] mb-1.5 block uppercase tracking-wide">
-                      Email *
-                    </label>
-                    <input
-                      {...register("email")}
-                      type="email"
-                      placeholder="your@email.com"
-                      className="w-full font-body text-sm bg-[var(--brand-surface)] border border-[var(--border)] rounded-xl px-4 py-4 text-[var(--brand-espresso)] placeholder:text-[var(--brand-warm-brown)]/50 focus:outline-none focus:border-[var(--brand-amber)] transition-colors min-h-[52px]"
-                    />
-                    {errors.email && (
-                      <p className="font-body text-xs text-red-500 mt-1">{errors.email.message}</p>
-                    )}
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="font-body text-xs font-semibold text-[var(--brand-espresso)] mb-1.5 block uppercase tracking-wide">
-                      Phone
-                    </label>
-                    <input
-                      {...register("phone")}
-                      type="tel"
-                      placeholder="Optional"
-                      className="w-full font-body text-sm bg-[var(--brand-surface)] border border-[var(--border)] rounded-xl px-4 py-4 text-[var(--brand-espresso)] placeholder:text-[var(--brand-warm-brown)]/50 focus:outline-none focus:border-[var(--brand-amber)] transition-colors min-h-[52px]"
-                    />
-                  </div>
-                  <div>
-                    <label className="font-body text-xs font-semibold text-[var(--brand-espresso)] mb-1.5 block uppercase tracking-wide">
-                      Service *
-                    </label>
-                    <select
-                      {...register("service")}
-                      className="w-full font-body text-sm bg-[var(--brand-surface)] border border-[var(--border)] rounded-xl px-4 py-4 text-[var(--brand-espresso)] focus:outline-none focus:border-[var(--brand-amber)] transition-colors min-h-[52px] appearance-none"
-                    >
-                      <option value="">Select a service</option>
-                      <option value="web">Web Design & Development</option>
-                      <option value="automation">AI Automation</option>
-                      <option value="seo">SEO & Growth</option>
-                      <option value="other">Not sure yet</option>
-                    </select>
-                    {errors.service && (
-                      <p className="font-body text-xs text-red-500 mt-1">{errors.service.message}</p>
-                    )}
-                  </div>
-                </div>
-
-                <div>
-                  <label className="font-body text-xs font-semibold text-[var(--brand-espresso)] mb-1.5 block uppercase tracking-wide">
-                    Message *
-                  </label>
-                  <textarea
-                    {...register("message")}
-                    rows={5}
-                    placeholder="Tell us a bit about your project or what you need..."
-                    className="w-full font-body text-sm bg-[var(--brand-surface)] border border-[var(--border)] rounded-xl px-4 py-4 text-[var(--brand-espresso)] placeholder:text-[var(--brand-warm-brown)]/50 focus:outline-none focus:border-[var(--brand-amber)] transition-colors resize-none"
-                  />
-                  {errors.message && (
-                    <p className="font-body text-xs text-red-500 mt-1">{errors.message.message}</p>
-                  )}
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={submitting}
-                  className="inline-flex items-center justify-center gap-2 bg-[var(--brand-espresso)] text-[var(--brand-cream)] font-body font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:bg-[var(--brand-amber)] disabled:opacity-60 disabled:cursor-not-allowed w-full sm:w-auto min-h-[52px] group"
-                >
-                  {submitting ? "Sending..." : "Send message"}
-                  <PaperPlaneRight size={18} weight="bold" className="transition-transform group-hover:translate-x-0.5" />
-                </button>
-              </form>
-            </motion.div>
-
-            {/* Info */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="lg:col-span-2 space-y-8"
-            >
-              {/* Contact details */}
-              <div className="bg-[var(--brand-surface)] border border-[var(--border)] rounded-2xl p-6 md:p-8 space-y-5">
-                <p className="font-body text-xs uppercase tracking-widest text-[var(--brand-amber)]">
-                  Direct contact
-                </p>
-                <a
-                  href="tel:0747202811"
-                  className="flex items-center gap-3 group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-[var(--brand-amber)]/10 flex items-center justify-center shrink-0">
-                    <Phone size={18} weight="light" className="text-[var(--brand-amber)]" />
-                  </div>
-                  <div>
-                    <p className="font-body text-xs text-[var(--brand-warm-brown)]">Phone</p>
-                    <p className="font-body text-sm font-semibold text-[var(--brand-espresso)] group-hover:text-[var(--brand-amber)] transition-colors">
-                      0747 202 811
-                    </p>
-                  </div>
-                </a>
-                <a
-                  href="mailto:avarvarep@gmail.com"
-                  className="flex items-center gap-3 group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-[var(--brand-amber)]/10 flex items-center justify-center shrink-0">
-                    <EnvelopeSimple size={18} weight="light" className="text-[var(--brand-amber)]" />
-                  </div>
-                  <div>
-                    <p className="font-body text-xs text-[var(--brand-warm-brown)]">Email</p>
-                    <p className="font-body text-sm font-semibold text-[var(--brand-espresso)] group-hover:text-[var(--brand-amber)] transition-colors">
-                      avarvarep@gmail.com
-                    </p>
-                  </div>
-                </a>
-                <a
-                  href="https://www.google.com/maps/place/Mall+Moldova/@47.1671638,27.4743176,13z"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-3 group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-[var(--brand-amber)]/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <MapPinLine size={18} weight="light" className="text-[var(--brand-amber)]" />
-                  </div>
-                  <div>
-                    <p className="font-body text-xs text-[var(--brand-warm-brown)]">Location</p>
-                    <p className="font-body text-sm font-semibold text-[var(--brand-espresso)] group-hover:text-[var(--brand-amber)] transition-colors">
-                      Iași, Romania
-                    </p>
-                  </div>
-                </a>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[var(--brand-amber)]/10 flex items-center justify-center shrink-0">
-                    <Clock size={18} weight="light" className="text-[var(--brand-amber)]" />
-                  </div>
-                  <div>
-                    <p className="font-body text-xs text-[var(--brand-warm-brown)]">Hours</p>
-                    <p className="font-body text-sm font-semibold text-[var(--brand-espresso)]">
-                      Mon–Sun, 8:00–20:00
-                    </p>
-                  </div>
-                </div>
+        <div className="grid lg:grid-cols-[1fr_220px] gap-16 lg:gap-24">
+          {/* Form */}
+          <form ref={formRef} onSubmit={handleSubmit(onSubmit)} className="space-y-10">
+            <div className="grid sm:grid-cols-2 gap-10">
+              <div>
+                <label className="block text-xs mb-3 uppercase opacity-50" style={{ ...mono, letterSpacing: "var(--tracking-sm)" }}>
+                  Name *
+                </label>
+                <input {...register("name")} placeholder="Your name"
+                  style={inputBase} onFocus={focusBorder} onBlur={blurBorder}
+                />
+                {errors.name && <p className="mt-1 text-xs" style={{ ...mono, color: "var(--accent)" }}>{errors.name.message}</p>}
               </div>
-
-              {/* Social */}
-              <div className="bg-[var(--brand-surface)] border border-[var(--border)] rounded-2xl p-6">
-                <p className="font-body text-xs uppercase tracking-widest text-[var(--brand-amber)] mb-4">
-                  Follow us
-                </p>
-                <a
-                  href="https://www.instagram.com/ionvtpaul/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 group"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-[var(--brand-amber)]/10 flex items-center justify-center">
-                    <InstagramLogo size={20} weight="regular" className="text-[var(--brand-amber)]" />
-                  </div>
-                  <div>
-                    <p className="font-body text-sm font-semibold text-[var(--brand-espresso)] group-hover:text-[var(--brand-amber)] transition-colors">
-                      @ionvtpaul
-                    </p>
-                    <p className="font-body text-xs text-[var(--brand-warm-brown)]">Instagram</p>
-                  </div>
-                </a>
+              <div>
+                <label className="block text-xs mb-3 uppercase opacity-50" style={{ ...mono, letterSpacing: "var(--tracking-sm)" }}>
+                  Email *
+                </label>
+                <input {...register("email")} type="email" placeholder="your@email.com"
+                  style={inputBase} onFocus={focusBorder} onBlur={blurBorder}
+                />
+                {errors.email && <p className="mt-1 text-xs" style={{ ...mono, color: "var(--accent)" }}>{errors.email.message}</p>}
               </div>
+            </div>
 
-              {/* Maps embed */}
-              <div className="rounded-2xl overflow-hidden border border-[var(--border)] aspect-video">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44456.6!2d27.474318!3d47.167164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40cae4c97b7a29e1%3A0xaf41cbbbb78d6201!2sMall%20Moldova!5e0!3m2!1sen!2sro!4v1"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="RynexLabs location"
+            <div className="grid sm:grid-cols-2 gap-10">
+              <div>
+                <label className="block text-xs mb-3 uppercase opacity-50" style={{ ...mono, letterSpacing: "var(--tracking-sm)" }}>
+                  Phone
+                </label>
+                <input {...register("phone")} type="tel" placeholder="Optional"
+                  style={inputBase} onFocus={focusBorder} onBlur={blurBorder}
                 />
               </div>
-            </motion.div>
+              <div>
+                <label className="block text-xs mb-3 uppercase opacity-50" style={{ ...mono, letterSpacing: "var(--tracking-sm)" }}>
+                  Service *
+                </label>
+                <select {...register("service")}
+                  style={{ ...inputBase, cursor: "pointer", appearance: "none" as const }}
+                  onFocus={focusBorder} onBlur={blurBorder}
+                >
+                  <option value="" style={{ background: "#000" }}>Select a service</option>
+                  <option value="web" style={{ background: "#000" }}>Web Design & Development</option>
+                  <option value="automation" style={{ background: "#000" }}>AI Automation</option>
+                  <option value="seo" style={{ background: "#000" }}>SEO & Growth</option>
+                  <option value="strategy" style={{ background: "#000" }}>Strategy & Consulting</option>
+                  <option value="other" style={{ background: "#000" }}>Not sure yet</option>
+                </select>
+                {errors.service && <p className="mt-1 text-xs" style={{ ...mono, color: "var(--accent)" }}>{errors.service.message}</p>}
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-xs mb-3 uppercase opacity-50" style={{ ...mono, letterSpacing: "var(--tracking-sm)" }}>
+                Message *
+              </label>
+              <textarea {...register("message")} rows={4} placeholder="Tell us about your project..."
+                style={{ ...inputBase, resize: "none" }} onFocus={focusBorder} onBlur={blurBorder}
+              />
+              {errors.message && <p className="mt-1 text-xs" style={{ ...mono, color: "var(--accent)" }}>{errors.message.message}</p>}
+            </div>
+
+            <button
+              type="submit"
+              disabled={submitting}
+              className="pill-btn pill-btn-accent"
+              style={{ height: "44px", paddingLeft: "1.5rem", paddingRight: "1.5rem" }}
+            >
+              {submitting ? "Sending..." : "Send message →"}
+            </button>
+          </form>
+
+          {/* Contact info */}
+          <div ref={infoRef} className="space-y-8">
+            {[
+              { label: "Email", value: "avarvarep@gmail.com", href: "mailto:avarvarep@gmail.com" },
+              { label: "Phone", value: "0747 202 811", href: "tel:0747202811" },
+              { label: "Location", value: "Iași, Romania", href: undefined },
+              { label: "Hours", value: "Mon–Sun, 08:00–20:00", href: undefined },
+              { label: "Instagram", value: "@ionvtpaul", href: "https://www.instagram.com/ionvtpaul/" },
+            ].map(({ label, value, href }) => (
+              <div key={label}>
+                <p className="text-xs opacity-50 mb-2 uppercase" style={{ ...mono, letterSpacing: "var(--tracking-sm)" }}>
+                  {label}
+                </p>
+                {href ? (
+                  <a
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="text-sm hover:opacity-70 transition-opacity duration-200"
+                    style={mono}
+                  >
+                    {value}
+                  </a>
+                ) : (
+                  <p className="text-sm opacity-80" style={mono}>{value}</p>
+                )}
+              </div>
+            ))}
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </main>
   );
 }

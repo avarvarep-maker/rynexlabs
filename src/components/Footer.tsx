@@ -1,149 +1,57 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const GithubIcon = ({ size = 16 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-  </svg>
-);
-
-const XIcon = ({ size = 16 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-  </svg>
-);
-
-const PRODUCT = [
-  { label: "Features", href: "/#features" },
-  { label: "How it works", href: "/#how-it-works" },
-  { label: "Pricing", href: "/#pricing" },
-  { label: "Changelog", href: "#" },
-  { label: "Roadmap", href: "#" },
-];
-
-const INTEGRATIONS = [
-  { label: "GitHub", href: "#" },
-  { label: "GitLab", href: "#" },
-  { label: "Bitbucket", href: "#" },
-  { label: "VS Code", href: "#" },
-  { label: "Jira", href: "#" },
-];
-
-const COMPANY = [
-  { label: "Blog", href: "/blog" },
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms of Service", href: "/terms" },
-  { label: "Security", href: "#" },
-];
+const mono: React.CSSProperties = {
+  fontFamily: "var(--font-dm-mono, 'DM Mono', monospace)",
+};
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname === "/") return null;
+
   return (
-    <footer style={{ background: "var(--bg2)", borderTop: "1px solid var(--border)" }}>
-      <div className="max-w-6xl mx-auto px-5 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
-          {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5 mb-4">
-              <div
-                className="w-7 h-7 rounded-md flex items-center justify-center text-xs font-bold"
-                style={{
-                  background: "linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)",
-                  fontFamily: "var(--font-syne), sans-serif",
-                  color: "#fff",
-                }}
-              >
-                R
-              </div>
-              <span
-                className="font-semibold text-sm"
-                style={{ color: "var(--text)", fontFamily: "var(--font-syne), sans-serif" }}
-              >
-                Rynex Labs
-              </span>
-            </Link>
-            <p className="text-sm mb-5" style={{ color: "var(--text-dim)", lineHeight: 1.7, maxWidth: "200px" }}>
-              AI code review that catches what humans miss. Every PR, automatically.
-            </p>
-            <div className="flex items-center gap-2">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-ghost p-2"
-                aria-label="GitHub"
-              >
-                <GithubIcon size={16} />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-ghost p-2"
-                aria-label="Twitter / X"
-              >
-                <XIcon size={16} />
-              </a>
-            </div>
-          </div>
+    <footer className="bg-black" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+      <div className="max-w-7xl mx-auto px-4 lg:px-10 py-10">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <Link href="/" className="flex gap-2 items-center hover:opacity-70 transition-opacity duration-300">
+            <span className="text-xs font-black text-white" style={{ ...mono, letterSpacing: "var(--tracking-xs)" }}>RYNEX</span>
+            <span className="text-xs font-medium" style={{ ...mono, letterSpacing: "var(--tracking-xs)", color: "rgba(255,255,255,0.5)" }}>LABS</span>
+          </Link>
 
-          {/* Product */}
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--muted)" }}>
-              Product
-            </p>
-            <ul className="space-y-3">
-              {PRODUCT.map((l) => (
-                <li key={l.label}>
-                  <Link href={l.href} className="footer-link">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <nav className="flex flex-wrap gap-6">
+            {[["Services", "/services"], ["Contact", "/contact"], ["Blog", "/blog"]].map(([label, href]) => (
+              <Link
+                key={href}
+                href={href}
+                className="text-xs transition-colors duration-200 hover:text-white"
+                style={{ ...mono, letterSpacing: "var(--tracking-xs)", color: "rgba(255,255,255,0.5)" }}
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
 
-          {/* Integrations */}
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--muted)" }}>
-              Integrations
-            </p>
-            <ul className="space-y-3">
-              {INTEGRATIONS.map((l) => (
-                <li key={l.label}>
-                  <Link href={l.href} className="footer-link">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: "var(--muted)" }}>
-              Company
-            </p>
-            <ul className="space-y-3">
-              {COMPANY.map((l) => (
-                <li key={l.label}>
-                  <Link href={l.href} className="footer-link">
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <p className="text-xs" style={{ ...mono, letterSpacing: "var(--tracking-xs)", color: "rgba(255,255,255,0.3)" }}>
+            IAȘI, ROMANIA
+          </p>
         </div>
 
         <div
-          className="mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3"
-          style={{ borderTop: "1px solid var(--border)" }}
+          className="mt-8 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2"
+          style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
         >
-          <p className="text-xs" style={{ color: "var(--muted)" }}>
-            © {new Date().getFullYear()} Rynex Labs, Inc. All rights reserved.
+          <p className="text-xs" style={{ ...mono, letterSpacing: "var(--tracking-xs)", color: "rgba(255,255,255,0.25)" }}>
+            © {new Date().getFullYear()} RYNEX LABS
           </p>
-          <p className="text-xs" style={{ color: "var(--muted)" }}>
-            Built for teams who ship fast
-          </p>
+          <a
+            href="mailto:avarvarep@gmail.com"
+            className="text-xs transition-colors duration-200 hover:text-white/50"
+            style={{ ...mono, letterSpacing: "var(--tracking-xs)", color: "rgba(255,255,255,0.25)" }}
+          >
+            avarvarep@gmail.com
+          </a>
         </div>
       </div>
     </footer>
