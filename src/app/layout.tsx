@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import { Toaster } from "sonner";
+import ClientBackground from "@/components/ClientBackground";
 
 const dmMono = DM_Mono({
   subsets: ["latin"],
@@ -80,9 +81,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <ClientBackground />
         <CustomCursor />
         <Navbar />
-        <main>{children}</main>
+        <main className="page-layer">{children}</main>
         <Footer />
         <Toaster theme="dark" position="bottom-right" />
       </body>

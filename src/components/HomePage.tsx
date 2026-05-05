@@ -261,12 +261,12 @@ export default function HomePage() {
             height: "700px",
             borderRadius: "50%",
             background: isLastPillar
-              ? "radial-gradient(circle, rgba(0,0,0,0.06) 0%, transparent 70%)"
-              : "radial-gradient(circle, rgba(0,255,135,0.07) 0%, transparent 70%)",
+              ? "radial-gradient(circle, rgba(0,0,0,0.05) 0%, transparent 70%)"
+              : "radial-gradient(circle, rgba(0,255,135,0.075) 0%, transparent 70%)",
             transform: "translate(-50%, -50%)",
             left: "50%",
             top: "50%",
-            transition: "left 0.5s cubic-bezier(0,0,.2,1), top 0.5s cubic-bezier(0,0,.2,1), background 0.8s",
+            transition: "left 0.38s cubic-bezier(0,0,.2,1), top 0.38s cubic-bezier(0,0,.2,1), background 0.8s",
             willChange: "left, top",
           }}
         />
@@ -277,15 +277,15 @@ export default function HomePage() {
             position: "absolute",
             bottom: "-100px",
             right: "-60px",
-            opacity: isLastPillar ? 0 : 0.45,
+            opacity: isLastPillar ? 0 : 0.48,
             transition: "opacity 0.8s",
           }}
         >
-          <div className="blobs-wrap" style={{ width: "300px", height: "300px" }}>
-            <div className="blob blob-left"  style={{ width: "70px",  height: "70px" }} />
-            <div className="blob blob-right" style={{ width: "70px",  height: "70px" }} />
-            <div className="blob-accent blob-up"   style={{ width: "55px",  height: "55px" }} />
-            <div className="blob blob-down"  style={{ width: "60px",  height: "60px" }} />
+          <div className="blobs-wrap" style={{ width: "320px", height: "320px" }}>
+            <div className="blob blob-left"       style={{ width: "72px", height: "72px" }} />
+            <div className="blob blob-right"      style={{ width: "72px", height: "72px" }} />
+            <div className="blob-accent blob-up"  style={{ width: "58px", height: "58px" }} />
+            <div className="blob blob-down"       style={{ width: "62px", height: "62px" }} />
           </div>
         </div>
 
@@ -295,24 +295,70 @@ export default function HomePage() {
             position: "absolute",
             top: "-70px",
             left: "-50px",
-            opacity: isLastPillar ? 0 : 0.22,
+            opacity: isLastPillar ? 0 : 0.24,
             transition: "opacity 0.8s",
           }}
         >
-          <div className="blobs-wrap" style={{ width: "220px", height: "220px", animationDuration: "32s" }}>
-            <div className="blob blob-right" style={{ width: "45px", height: "45px" }} />
-            <div className="blob-accent blob-down"  style={{ width: "38px", height: "38px" }} />
+          <div className="blobs-wrap" style={{ width: "230px", height: "230px", animationDuration: "32s" }}>
+            <div className="blob blob-right"       style={{ width: "46px", height: "46px" }} />
+            <div className="blob-accent blob-down" style={{ width: "40px", height: "40px" }} />
           </div>
         </div>
 
-        {/* Subtle dot grid */}
+        {/* Top-right blob cluster */}
+        <div
+          style={{
+            position: "absolute",
+            top: "-50px",
+            right: "-40px",
+            opacity: isLastPillar ? 0 : 0.18,
+            transition: "opacity 0.8s",
+          }}
+        >
+          <div className="blobs-wrap" style={{ width: "190px", height: "190px", animationDuration: "27s" }}>
+            <div className="blob-accent blob-left" style={{ width: "38px", height: "38px" }} />
+            <div className="blob blob-up"          style={{ width: "32px", height: "32px" }} />
+          </div>
+        </div>
+
+        {/* Dot grid */}
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
+            backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px)",
+            backgroundSize: "42px 42px",
             opacity: isLastPillar ? 0 : 1,
             transition: "opacity 0.8s",
+          }}
+        />
+
+        {/* Slow-rotating accent ring */}
+        <div
+          className="absolute pointer-events-none"
+          style={{
+            width: "480px",
+            height: "480px",
+            borderRadius: "50%",
+            border: isLastPillar ? "1px solid rgba(0,0,0,0.04)" : "1px solid rgba(0,255,135,0.04)",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%,-50%)",
+            animation: "rotate-blobs 60s linear infinite",
+            transition: "border-color 0.8s",
+          }}
+        />
+        <div
+          className="absolute pointer-events-none"
+          style={{
+            width: "780px",
+            height: "780px",
+            borderRadius: "50%",
+            border: isLastPillar ? "1px solid rgba(0,0,0,0.03)" : "1px solid rgba(255,255,255,0.03)",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%,-50%)",
+            animation: "rotate-blobs 90s linear infinite reverse",
+            transition: "border-color 0.8s",
           }}
         />
       </div>

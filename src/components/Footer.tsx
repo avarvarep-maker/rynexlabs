@@ -12,7 +12,7 @@ export default function Footer() {
   if (pathname === "/") return null;
 
   return (
-    <footer className="bg-black" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+    <footer className="bg-black page-layer" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
       <div className="max-w-7xl mx-auto px-4 lg:px-10 py-10">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <Link href="/" className="flex gap-2 items-center hover:opacity-70 transition-opacity duration-300">
