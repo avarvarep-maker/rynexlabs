@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const CODE_LINES = [
   `<span class="com">// rynex-labs — boot sequence</span>`,
@@ -49,7 +49,10 @@ function tokenize(html: string): Token[] {
   return out;
 }
 
+const SESSION_KEY = "rynex-intro-seen";
+
 export default function Intro() {
+  const [skip, setSkip] = useState(false);
   const introRef    = useRef<HTMLDivElement>(null);
   const codeRef     = useRef<HTMLDivElement>(null);
   const gutterRef   = useRef<HTMLDivElement>(null);
@@ -58,7 +61,13 @@ export default function Intro() {
   const progressRef = useRef<HTMLElement>(null);
   const pctRef      = useRef<HTMLSpanElement>(null);
 
+  useLayoutEffect(() => {
+    if (sessionStorage.getItem(SESSION_KEY)) setSkip(true);
+    else sessionStorage.setItem(SESSION_KEY, "1");
+  }, []);
+
   useEffect(() => {
+    if (skip) return;
     const intro    = introRef.current;
     const code     = codeRef.current;
     const gutter   = gutterRef.current;
@@ -177,7 +186,9 @@ export default function Intro() {
       document.removeEventListener("keydown", onKey);
       document.body.classList.remove("intro-active");
     };
-  }, []);
+  }, [skip]);
+
+  if (skip) return null;
 
   return (
     <div className="intro" id="intro" ref={introRef}>

@@ -76,6 +76,14 @@ const PROCESS = [
   },
 ];
 
+function W({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="word-hover" data-cursor="hover" data-cursor-label="coding">
+      {children}
+    </span>
+  );
+}
+
 const MARQUEE_1 =
   "★ Build &nbsp;·&nbsp; Automate &nbsp;·&nbsp; Get found &nbsp;·&nbsp; Available Q2 2026 &nbsp;·&nbsp; Based in Iași &nbsp;·&nbsp; Working globally &nbsp;·&nbsp;";
 const MARQUEE_2 =
@@ -105,21 +113,25 @@ export default function HomePage() {
 
         <h1 className="hero-headline">
           <span className="line line-reveal d1">
-            <span>We build</span>
+            <span>
+              <W>We</W> <W>build</W>
+            </span>
           </span>
           <span className="line line-reveal d2 indent">
             <span>
-              <em className="accent">websites</em>, automate
+              <W><em className="accent">websites</em></W>, <W>automate</W>
             </span>
           </span>
           <span className="line line-reveal d3">
-            <span>workflows &amp; make</span>
+            <span>
+              <W>workflows</W> &amp; <W>make</W>
+            </span>
           </span>
           <span className="line line-reveal d4 indent">
             <span>
-              brands{" "}
-              <span className="strike">invisible</span>{" "}
-              <em className="accent">found</em>.
+              <W>brands</W>{" "}
+              <W><span className="strike">invisible</span></W>{" "}
+              <W><em className="accent">found</em></W>.
             </span>
           </span>
         </h1>
