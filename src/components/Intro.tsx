@@ -123,13 +123,13 @@ export default function Intro() {
           const t3 = setTimeout(() => {
             introRef.current?.classList.add("fade-out");
             document.body.classList.remove("intro-active");
-            const t4 = setTimeout(() => introRef.current?.remove(), 500);
+            const t4 = setTimeout(() => introRef.current?.remove(), 300);
             timers.push(t4);
-          }, 900);
+          }, 500);
           timers.push(t3);
-        }, 450);
+        }, 250);
         timers.push(t2);
-      }, 150);
+      }, 80);
       timers.push(t1);
     }
 
@@ -145,7 +145,7 @@ export default function Intro() {
         tIdx = 0;
         updateGutter();
         render();
-        const t = setTimeout(typeStep, 25);
+        const t = setTimeout(typeStep, 10);
         timers.push(t);
         return;
       }
@@ -157,7 +157,7 @@ export default function Intro() {
       render();
       updateProgress();
 
-      const delay = tok.type === "tag" ? 1 : Math.random() * 6 + 3;
+      const delay = tok.type === "tag" ? 0 : Math.random() * 3 + 1;
       const t = setTimeout(typeStep, delay);
       timers.push(t);
     }
@@ -178,7 +178,7 @@ export default function Intro() {
     document.addEventListener("keydown", onKey);
 
     updateGutter();
-    const initTimer = setTimeout(typeStep, 150);
+    const initTimer = setTimeout(typeStep, 50);
     timers.push(initTimer);
 
     return () => {
