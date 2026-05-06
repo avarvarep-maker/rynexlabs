@@ -99,7 +99,7 @@ export default function GeometricShapes({ isLastPillar }: { isLastPillar: boolea
     <>
       {CONFIGS.map((cfg, i) => {
         const color = cfg.accent
-          ? `rgba(0,255,135,${isLastPillar ? 0 : cfg.opacity})`
+          ? `rgba(255,107,43,${isLastPillar ? 0 : cfg.opacity})`
           : `rgba(255,255,255,${isLastPillar ? 0 : cfg.opacity})`;
 
         return (

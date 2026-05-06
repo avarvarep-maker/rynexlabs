@@ -17,7 +17,7 @@ const CONNECT_DIST   = 140;
 const REPEL_DIST     = 120;
 const REPEL_FORCE    = 0.55;
 const ACCENT_RATIO   = 0.14;
-const ACCENT_RGB     = "0,255,135";
+const ACCENT_RGB     = "255,107,43";
 const WHITE_RGB      = "255,255,255";
 
 function initParticles(w: number, h: number): Particle[] {
@@ -165,12 +165,12 @@ export default function AnimatedBackground() {
       {/* Canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ opacity: 0.8 }} />
 
-      {/* Drifting orb 1 — green, top-left quadrant */}
+      {/* Drifting orb 1 — orange, top-left quadrant */}
       <div
         className="absolute rounded-full pointer-events-none"
         style={{
           width: "580px", height: "580px",
-          background: "radial-gradient(circle, rgba(0,255,135,0.052) 0%, transparent 68%)",
+          background: "radial-gradient(circle, rgba(255,107,43,0.052) 0%, transparent 68%)",
           animation: "orb-drift-1 23s ease-in-out infinite",
           top: "18%", left: "22%",
           transform: "translate(-50%,-50%)",
@@ -189,12 +189,12 @@ export default function AnimatedBackground() {
         }}
       />
 
-      {/* Drifting orb 3 — green, bottom center */}
+      {/* Drifting orb 3 — orange, bottom center */}
       <div
         className="absolute rounded-full pointer-events-none"
         style={{
           width: "680px", height: "680px",
-          background: "radial-gradient(circle, rgba(0,255,135,0.030) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(255,107,43,0.030) 0%, transparent 70%)",
           animation: "orb-drift-3 40s ease-in-out infinite",
           bottom: "0%", left: "55%",
           transform: "translate(-50%,40%)",
@@ -207,7 +207,7 @@ export default function AnimatedBackground() {
         className="absolute rounded-full pointer-events-none"
         style={{
           width: "640px", height: "640px",
-          background: "radial-gradient(circle, rgba(0,255,135,0.062) 0%, transparent 68%)",
+          background: "radial-gradient(circle, rgba(255,107,43,0.062) 0%, transparent 68%)",
           transform: "translate(-50%,-50%)",
           left: "50%", top: "50%",
           transition: "left 0.42s cubic-bezier(0,0,.2,1), top 0.42s cubic-bezier(0,0,.2,1)",

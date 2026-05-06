@@ -5,12 +5,13 @@ import Link from "next/link";
 import Image from "next/image";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
+import { InstagramLogo, MapPin, Phone } from "@phosphor-icons/react";
 import { PILLARS, SERVICES } from "@/lib/services";
 import GeometricShapes from "@/components/GeometricShapes";
 
 gsap.registerPlugin(SplitText);
 
-const ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
+const ROMAN = ["I", "II", "III", "IV", "V"];
 
 const LAYOUT_ORDERS = [
   ["title", "image", "badge", "description"],
@@ -23,6 +24,50 @@ const mono: React.CSSProperties = {
   fontFamily: "var(--font-dm-mono, 'DM Mono', monospace)",
 };
 
+// Per-pillar base background color
+const BG_COLORS = ["#000000", "#010408", "#050302", "#030303", "#ffffff"];
+
+// Glass orb scenes per pillar
+function GlassScene({ index, active }: { index: number; active: boolean }) {
+  const opacity = active ? 1 : 0;
+  const transition = "opacity 1.3s cubic-bezier(0.4,0,0.2,1)";
+
+  if (index === 0) return (
+    <div style={{ position: "absolute", inset: 0, opacity, transition, pointerEvents: "none" }}>
+      <div style={{ position: "absolute", width: 700, height: 700, borderRadius: "50%", background: "radial-gradient(circle, rgba(255,107,43,0.16) 0%, transparent 68%)", filter: "blur(90px)", top: "-15%", right: "-10%", animation: "orb-drift-2 26s ease-in-out infinite" }} />
+      <div style={{ position: "absolute", width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(255,107,43,0.10) 0%, transparent 70%)", filter: "blur(70px)", bottom: "-10%", left: "-8%", animation: "orb-drift-3 34s ease-in-out infinite" }} />
+      <div style={{ position: "absolute", width: 350, height: 350, borderRadius: "50%", background: "radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)", filter: "blur(50px)", top: "40%", left: "35%", animation: "orb-drift-1 20s ease-in-out infinite" }} />
+    </div>
+  );
+
+  if (index === 1) return (
+    <div style={{ position: "absolute", inset: 0, opacity, transition, pointerEvents: "none" }}>
+      <div style={{ position: "absolute", width: 750, height: 750, borderRadius: "50%", background: "radial-gradient(circle, rgba(30,80,255,0.18) 0%, transparent 68%)", filter: "blur(100px)", top: "-20%", left: "-5%", animation: "orb-drift-1 28s ease-in-out infinite" }} />
+      <div style={{ position: "absolute", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(0,140,255,0.12) 0%, transparent 70%)", filter: "blur(80px)", top: "10%", right: "-10%", animation: "orb-drift-2 22s ease-in-out infinite reverse" }} />
+      <div style={{ position: "absolute", width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(255,107,43,0.13) 0%, transparent 70%)", filter: "blur(70px)", bottom: "-5%", right: "20%", animation: "orb-drift-3 36s ease-in-out infinite" }} />
+      <div style={{ position: "absolute", width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(100,200,255,0.08) 0%, transparent 70%)", filter: "blur(50px)", bottom: "20%", left: "30%", animation: "orb-drift-1 18s ease-in-out infinite reverse" }} />
+    </div>
+  );
+
+  if (index === 2) return (
+    <div style={{ position: "absolute", inset: 0, opacity, transition, pointerEvents: "none" }}>
+      <div style={{ position: "absolute", width: 800, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(255,107,43,0.22) 0%, transparent 65%)", filter: "blur(90px)", top: "-15%", left: "50%", transform: "translateX(-50%)", animation: "orb-drift-1 22s ease-in-out infinite" }} />
+      <div style={{ position: "absolute", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(255,60,0,0.12) 0%, transparent 70%)", filter: "blur(80px)", top: "20%", right: "-12%", animation: "orb-drift-2 30s ease-in-out infinite" }} />
+      <div style={{ position: "absolute", width: 450, height: 450, borderRadius: "50%", background: "radial-gradient(circle, rgba(255,180,50,0.10) 0%, transparent 70%)", filter: "blur(60px)", bottom: "0%", left: "10%", animation: "orb-drift-3 26s ease-in-out infinite reverse" }} />
+    </div>
+  );
+
+  if (index === 3) return (
+    <div style={{ position: "absolute", inset: 0, opacity, transition, pointerEvents: "none" }}>
+      <div style={{ position: "absolute", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(255,140,50,0.15) 0%, transparent 65%)", filter: "blur(100px)", top: "30%", left: "50%", transform: "translateX(-50%)", animation: "orb-drift-1 32s ease-in-out infinite" }} />
+      <div style={{ position: "absolute", width: 350, height: 350, borderRadius: "50%", background: "radial-gradient(circle, rgba(255,107,43,0.10) 0%, transparent 70%)", filter: "blur(60px)", bottom: "5%", right: "10%", animation: "orb-drift-2 24s ease-in-out infinite reverse" }} />
+      <div style={{ position: "absolute", width: 280, height: 280, borderRadius: "50%", background: "radial-gradient(circle, rgba(200,80,20,0.08) 0%, transparent 70%)", filter: "blur(50px)", top: "10%", left: "15%", animation: "orb-drift-3 20s ease-in-out infinite" }} />
+    </div>
+  );
+
+  return null; // scene 4 = white, handled by root bg
+}
+
 export default function HomePage() {
   const [pillarIndex, setPillarIndex]         = useState(0);
   const [hoveredService, setHoveredService]   = useState<number | null>(null);
@@ -30,6 +75,7 @@ export default function HomePage() {
   const [overlayOpen, setOverlayOpen]         = useState(false);
   const [circleVisible, setCircleVisible]     = useState(false);
   const [mounted, setMounted]                 = useState(false);
+  const [hoveredNav, setHoveredNav]           = useState<number | null>(null);
 
   const isLastPillar = pillarIndex === PILLARS.length - 1;
 
@@ -66,10 +112,10 @@ export default function HomePage() {
   useLayoutEffect(() => {
     setMounted(true);
     const tl = gsap.timeline();
-    if (headerRef.current)     tl.to(headerRef.current,     { y: 0, duration: 1, ease: "expo.out", delay: 0.2 });
-    if (bottomLeftRef.current) tl.to(bottomLeftRef.current, { y: 0, duration: 1, ease: "expo.out" }, "<");
-    if (bottomRightRef.current)tl.to(bottomRightRef.current,{ y: 0, duration: 1, ease: "expo.out" }, "<");
-    if (romanBadgeRef.current) tl.to(romanBadgeRef.current, { autoAlpha: 1, y: 0, duration: 0.8, ease: "power4.out" }, "<0.2");
+    if (headerRef.current)      tl.to(headerRef.current,      { y: 0, duration: 1, ease: "expo.out", delay: 0.2 });
+    if (bottomLeftRef.current)  tl.to(bottomLeftRef.current,  { y: 0, duration: 1, ease: "expo.out" }, "<");
+    if (bottomRightRef.current) tl.to(bottomRightRef.current, { y: 0, duration: 1, ease: "expo.out" }, "<");
+    if (romanBadgeRef.current)  tl.to(romanBadgeRef.current,  { autoAlpha: 1, y: 0, duration: 0.8, ease: "power4.out" }, "<0.2");
     return () => { tl.kill(); };
   }, []);
 
@@ -229,160 +275,144 @@ export default function HomePage() {
 
   const activeService = SERVICES.find(s => s.slug === selectedService);
 
+  // Nav links — Contact (index 2) never blurs
+  const NAV = [
+    { label: "Services", href: "/services" },
+    { label: "Work",     href: "/services" },
+    { label: "Contact",  href: "/contact" },
+  ];
+
   return (
     <div
       id="home-root"
       className={`home-page ${isLastPillar ? "cursor-invert" : "cursor-force-white"}`}
       style={{
-        background: isLastPillar ? "#fff" : "#000",
+        background: BG_COLORS[pillarIndex],
         color: isLastPillar ? "#000" : "#fff",
-        transition: "background 0.8s, color 0.8s",
+        transition: "background 1.2s cubic-bezier(0.4,0,0.2,1), color 0.8s",
       }}
     >
-      {/* ── Background layer ─────────────────────────────────────── */}
+      {/* ── Background layer ──────────────────────────────────── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
+
+        {/* Per-pillar glass scenes */}
+        {[0, 1, 2, 3].map(i => (
+          <GlassScene key={i} index={i} active={pillarIndex === i} />
+        ))}
+
         {/* Mouse-tracking glow */}
         <div
           ref={glowRef}
           className="absolute pointer-events-none"
           style={{
-            width: "700px",
-            height: "700px",
-            borderRadius: "50%",
+            width: 700, height: 700, borderRadius: "50%",
             background: isLastPillar
-              ? "radial-gradient(circle, rgba(0,0,0,0.05) 0%, transparent 70%)"
-              : "radial-gradient(circle, rgba(0,255,135,0.075) 0%, transparent 70%)",
+              ? "radial-gradient(circle, rgba(0,0,0,0.04) 0%, transparent 70%)"
+              : "radial-gradient(circle, rgba(255,107,43,0.07) 0%, transparent 70%)",
             transform: "translate(-50%, -50%)",
-            left: "50%",
-            top: "50%",
+            left: "50%", top: "50%",
             transition: "left 0.38s cubic-bezier(0,0,.2,1), top 0.38s cubic-bezier(0,0,.2,1), background 0.8s",
             willChange: "left, top",
           }}
         />
 
-        {/* Bottom-right blob cluster */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: "-100px",
-            right: "-60px",
-            opacity: isLastPillar ? 0 : 0.48,
-            transition: "opacity 0.8s",
-          }}
-        >
-          <div className="blobs-wrap" style={{ width: "320px", height: "320px" }}>
-            <div className="blob blob-left"       style={{ width: "72px", height: "72px" }} />
-            <div className="blob blob-right"      style={{ width: "72px", height: "72px" }} />
-            <div className="blob-accent blob-up"  style={{ width: "58px", height: "58px" }} />
-            <div className="blob blob-down"       style={{ width: "62px", height: "62px" }} />
+        {/* Blob clusters */}
+        <div style={{ position: "absolute", bottom: -100, right: -60, opacity: isLastPillar ? 0 : 0.44, transition: "opacity 0.8s" }}>
+          <div className="blobs-wrap" style={{ width: 320, height: 320 }}>
+            <div className="blob blob-left"       style={{ width: 72, height: 72 }} />
+            <div className="blob blob-right"      style={{ width: 72, height: 72 }} />
+            <div className="blob-accent blob-up"  style={{ width: 58, height: 58 }} />
+            <div className="blob blob-down"       style={{ width: 62, height: 62 }} />
           </div>
         </div>
-
-        {/* Top-left blob cluster */}
-        <div
-          style={{
-            position: "absolute",
-            top: "-70px",
-            left: "-50px",
-            opacity: isLastPillar ? 0 : 0.24,
-            transition: "opacity 0.8s",
-          }}
-        >
-          <div className="blobs-wrap" style={{ width: "230px", height: "230px", animationDuration: "32s" }}>
-            <div className="blob blob-right"       style={{ width: "46px", height: "46px" }} />
-            <div className="blob-accent blob-down" style={{ width: "40px", height: "40px" }} />
+        <div style={{ position: "absolute", top: -70, left: -50, opacity: isLastPillar ? 0 : 0.22, transition: "opacity 0.8s" }}>
+          <div className="blobs-wrap" style={{ width: 230, height: 230, animationDuration: "32s" }}>
+            <div className="blob blob-right"       style={{ width: 46, height: 46 }} />
+            <div className="blob-accent blob-down" style={{ width: 40, height: 40 }} />
           </div>
         </div>
-
-        {/* Top-right blob cluster */}
-        <div
-          style={{
-            position: "absolute",
-            top: "-50px",
-            right: "-40px",
-            opacity: isLastPillar ? 0 : 0.18,
-            transition: "opacity 0.8s",
-          }}
-        >
-          <div className="blobs-wrap" style={{ width: "190px", height: "190px", animationDuration: "27s" }}>
-            <div className="blob-accent blob-left" style={{ width: "38px", height: "38px" }} />
-            <div className="blob blob-up"          style={{ width: "32px", height: "32px" }} />
+        <div style={{ position: "absolute", top: -50, right: -40, opacity: isLastPillar ? 0 : 0.16, transition: "opacity 0.8s" }}>
+          <div className="blobs-wrap" style={{ width: 190, height: 190, animationDuration: "27s" }}>
+            <div className="blob-accent blob-left" style={{ width: 38, height: 38 }} />
+            <div className="blob blob-up"          style={{ width: 32, height: 32 }} />
           </div>
         </div>
 
         {/* Dot grid */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px)",
-            backgroundSize: "42px 42px",
-            opacity: isLastPillar ? 0 : 1,
-            transition: "opacity 0.8s",
-          }}
-        />
+        <div className="absolute inset-0" style={{
+          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.048) 1px, transparent 1px)",
+          backgroundSize: "42px 42px",
+          opacity: isLastPillar ? 0 : 1,
+          transition: "opacity 0.8s",
+        }} />
 
-        {/* Slow-rotating accent ring */}
-        <div
-          className="absolute pointer-events-none"
-          style={{
-            width: "480px",
-            height: "480px",
-            borderRadius: "50%",
-            border: isLastPillar ? "1px solid rgba(0,0,0,0.04)" : "1px solid rgba(0,255,135,0.04)",
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%,-50%)",
-            animation: "rotate-blobs 60s linear infinite",
-            transition: "border-color 0.8s",
-          }}
-        />
-        <div
-          className="absolute pointer-events-none"
-          style={{
-            width: "780px",
-            height: "780px",
-            borderRadius: "50%",
-            border: isLastPillar ? "1px solid rgba(0,0,0,0.03)" : "1px solid rgba(255,255,255,0.03)",
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%,-50%)",
-            animation: "rotate-blobs 90s linear infinite reverse",
-            transition: "border-color 0.8s",
-          }}
-        />
+        {/* Rotating rings */}
+        <div className="absolute pointer-events-none" style={{
+          width: 480, height: 480, borderRadius: "50%",
+          border: isLastPillar ? "1px solid rgba(0,0,0,0.04)" : "1px solid rgba(255,107,43,0.06)",
+          left: "50%", top: "50%", transform: "translate(-50%,-50%)",
+          animation: "rotate-blobs 60s linear infinite", transition: "border-color 1.2s",
+        }} />
+        <div className="absolute pointer-events-none" style={{
+          width: 780, height: 780, borderRadius: "50%",
+          border: isLastPillar ? "1px solid rgba(0,0,0,0.03)" : "1px solid rgba(255,255,255,0.025)",
+          left: "50%", top: "50%", transform: "translate(-50%,-50%)",
+          animation: "rotate-blobs 90s linear infinite reverse", transition: "border-color 1.2s",
+        }} />
 
         {/* Geometric shapes — cursor parallax */}
         <GeometricShapes isLastPillar={isLastPillar} />
       </div>
 
-      {/* ── Header ─────────────────────────────────────────────────── */}
+      {/* ── Header ───────────────────────────────────────────── */}
       <div
         ref={headerRef}
         style={{ transform: "translateY(-100px)", ...mono, zIndex: 1003 }}
         className="absolute top-0 left-0 w-full px-4 lg:px-10 flex justify-between items-center py-6 lg:h-20"
+        onMouseLeave={() => setHoveredNav(null)}
       >
         <Link href="/" className="flex gap-2 items-center hover:opacity-70 transition-opacity duration-300">
-          <span className="text-xs font-black" style={{ letterSpacing: "var(--tracking-xs)" }}>RYNEX</span>
-          <span className="text-xs font-medium opacity-50" style={{ letterSpacing: "var(--tracking-xs)" }}>LABS</span>
+          <span className="text-xs font-black" style={{ letterSpacing: "var(--tracking-xs)", color: isLastPillar ? "#000" : "#fff" }}>RYNEX</span>
+          <span className="text-xs font-medium" style={{ letterSpacing: "var(--tracking-xs)", color: isLastPillar ? "rgba(0,0,0,0.4)" : "rgba(255,255,255,0.4)" }}>LABS</span>
         </Link>
 
         <nav className="hidden lg:flex gap-8">
-          {["Services", "Work", "Blog", "Contact"].map((l, i) => (
-            <Link key={l} href={["/services", "/#work", "/blog", "/contact"][i]}
-              className="text-xs font-medium opacity-60 hover:opacity-100 transition-opacity duration-200"
-              style={{ letterSpacing: "var(--tracking-xs)" }}
-            >
-              {l}
-            </Link>
-          ))}
+          {NAV.map((l, i) => {
+            const isContact = i === 2;
+            const dimmed = hoveredNav !== null && hoveredNav !== i && !isContact;
+            return (
+              <Link
+                key={l.href + i}
+                href={l.href}
+                onMouseEnter={() => setHoveredNav(i)}
+                className="text-xs font-medium transition-all duration-200"
+                style={{
+                  letterSpacing: "var(--tracking-xs)",
+                  color: isLastPillar ? "rgba(0,0,0,0.7)" : "rgba(255,255,255,0.65)",
+                  opacity: dimmed ? 0.2 : 1,
+                  filter: dimmed ? "blur(1.5px)" : "none",
+                  transition: "opacity 0.25s, filter 0.25s, color 0.4s",
+                }}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
         </nav>
 
-        <Link href="/contact" className="pill-btn hidden lg:inline-flex">
+        <Link
+          href="/contact"
+          className="pill-btn hidden lg:inline-flex"
+          style={{
+            borderColor: isLastPillar ? "rgba(0,0,0,0.4)" : "rgba(255,255,255,0.6)",
+            color: isLastPillar ? "#000" : "#fff",
+          }}
+        >
           Start a project <span className="opacity-50">→</span>
         </Link>
       </div>
 
-      {/* ── Center: Roman badge + pillar text ──────────────────────── */}
+      {/* ── Center: badge + text + per-pillar CTA ────────────── */}
       <div
         className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-4 pointer-events-none"
         style={{ zIndex: 10 }}
@@ -392,14 +422,15 @@ export default function HomePage() {
           className="roman-counter"
           style={{
             opacity: 0,
-            background: isLastPillar ? "rgba(0,0,0,0.12)" : "rgba(255,255,255,0.12)",
+            background: isLastPillar ? "rgba(0,0,0,0.10)" : "rgba(255,255,255,0.10)",
+            color: isLastPillar ? "#000" : "#fff",
           }}
         >
           <div className="flex gap-1 items-center">
             <span>{ROMAN[pillarIndex]}</span>
             <span>•</span>
             <span className="opacity-50">{ROMAN[PILLARS.length - 1]}</span>
-            <span style={{ letterSpacing: "var(--tracking-sm)", fontSize: "10px", marginLeft: "4px" }}>PILLARS</span>
+            <span style={{ letterSpacing: "var(--tracking-sm)", fontSize: 10, marginLeft: 4 }}>PILLARS</span>
           </div>
         </div>
 
@@ -410,16 +441,106 @@ export default function HomePage() {
         >
           {PILLARS[0]}
         </p>
+
+        {/* ── Per-pillar CTA slot ───── */}
+        <div className="relative h-14 flex items-center justify-center" style={{ marginTop: "0.75rem", minWidth: 260 }}>
+
+          {/* Pillar 1: sub-hook label */}
+          <div className="absolute" style={{
+            opacity: pillarIndex === 0 ? 1 : 0,
+            transition: "opacity 0.5s 0.5s",
+            pointerEvents: pillarIndex === 0 ? "auto" : "none",
+          }}>
+            <span className="text-xs opacity-30" style={{ ...mono, letterSpacing: "var(--tracking-sm)" }}>
+              — SCROLL TO EXPLORE —
+            </span>
+          </div>
+
+          {/* Pillar 2: "Press me" → services */}
+          <div className="absolute pointer-events-auto" style={{
+            opacity: pillarIndex === 1 ? 1 : 0,
+            transform: pillarIndex === 1 ? "translateY(0)" : "translateY(8px)",
+            transition: "opacity 0.6s 0.5s, transform 0.6s 0.5s",
+            pointerEvents: pillarIndex === 1 ? "auto" : "none",
+          }}>
+            <Link href="/services" className="btn-p2 pill-btn pill-btn-accent" style={{ height: 40, paddingLeft: "1.5rem", paddingRight: "1.5rem", fontSize: 11 }}>
+              Press me →
+            </Link>
+          </div>
+
+          {/* Pillar 3: "See the work" → services */}
+          <div className="absolute pointer-events-auto" style={{
+            opacity: pillarIndex === 2 ? 1 : 0,
+            transform: pillarIndex === 2 ? "translateY(0)" : "translateY(8px)",
+            transition: "opacity 0.6s 0.5s, transform 0.6s 0.5s",
+            pointerEvents: pillarIndex === 2 ? "auto" : "none",
+          }}>
+            <Link href="/services" className="btn-p3 pill-btn" style={{ height: 40, paddingLeft: "1.5rem", paddingRight: "1.5rem", fontSize: 11, borderColor: "rgba(255,107,43,0.5)", color: "rgba(255,107,43,0.9)" }}>
+              See the work →
+            </Link>
+          </div>
+
+          {/* Pillar 4: "C'mon, talk to us" → contact */}
+          <div className="absolute pointer-events-auto" style={{
+            opacity: pillarIndex === 3 ? 1 : 0,
+            transform: pillarIndex === 3 ? "translateY(0)" : "translateY(8px)",
+            transition: "opacity 0.6s 0.5s, transform 0.6s 0.5s",
+            pointerEvents: pillarIndex === 3 ? "auto" : "none",
+          }}>
+            <Link href="/contact" className="btn-p4 pill-btn pill-btn-accent" style={{ height: 40, paddingLeft: "1.5rem", paddingRight: "1.5rem", fontSize: 11 }}>
+              C&apos;mon, talk to us →
+            </Link>
+          </div>
+
+          {/* Pillar 5 (last / white): map + socials */}
+          <div className="absolute pointer-events-auto flex flex-col items-center gap-4" style={{
+            opacity: pillarIndex === 4 ? 1 : 0,
+            transform: pillarIndex === 4 ? "translateY(0)" : "translateY(8px)",
+            transition: "opacity 0.6s 0.5s, transform 0.6s 0.5s",
+            pointerEvents: pillarIndex === 4 ? "auto" : "none",
+          }}>
+            <a
+              href="https://maps.google.com/?q=Iași,Romania"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pill-btn"
+              style={{ height: 40, paddingLeft: "1.5rem", paddingRight: "1.5rem", fontSize: 11, borderColor: "rgba(0,0,0,0.35)", color: "#000" }}
+            >
+              <MapPin size={14} weight="bold" />
+              Find us on the map
+            </a>
+            <div className="flex items-center gap-5" style={{ ...mono, fontSize: 10, letterSpacing: "var(--tracking-sm)" }}>
+              <a
+                href="https://www.instagram.com/ionvtpaul/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 opacity-50 hover:opacity-100 transition-opacity duration-200"
+                style={{ color: "#000" }}
+              >
+                <InstagramLogo size={14} weight="bold" />
+                @ionvtpaul
+              </a>
+              <span className="opacity-20">·</span>
+              <a
+                href="tel:0747202811"
+                className="flex items-center gap-1.5 opacity-50 hover:opacity-100 transition-opacity duration-200"
+                style={{ color: "#000" }}
+              >
+                <Phone size={14} weight="bold" />
+                0747 202 811
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* ── Bottom bar ───────────────────────────────────────────────── */}
+      {/* ── Bottom bar ───────────────────────────────────────── */}
       <div
         className="absolute bottom-0 left-0 w-full pb-10 px-4 lg:px-10 flex flex-row justify-between items-end pointer-events-none"
         style={{ zIndex: 50 }}
       >
         {/* Bottom-left: service list */}
         <div ref={bottomLeftRef} style={{ transform: "translateY(100px)" }} className="pointer-events-auto">
-          {/* Mobile */}
           <div className="lg:hidden">
             <button
               ref={overlayBtnRef}
@@ -432,7 +553,6 @@ export default function HomePage() {
             </button>
           </div>
 
-          {/* Desktop */}
           <div className="hidden lg:flex flex-col items-start">
             {SERVICES.map((s, i) => (
               <button
@@ -445,7 +565,8 @@ export default function HomePage() {
                   ...mono,
                   fontSize: "0.625rem",
                   letterSpacing: "var(--tracking-sm)",
-                  opacity: hoveredService !== null && hoveredService !== i ? 0.3 : 1,
+                  color: isLastPillar ? "#000" : "#fff",
+                  opacity: hoveredService !== null && hoveredService !== i ? 0.25 : isLastPillar ? 0.7 : 1,
                   filter: hoveredService !== null && hoveredService !== i ? "blur(2px)" : "none",
                 }}
               >
@@ -500,7 +621,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ── Desktop service hover panels ─────────────────────────────── */}
+      {/* ── Desktop service hover panels ─────────────────────── */}
       {SERVICES.map((service, i) => {
         const order = LAYOUT_ORDERS[i % LAYOUT_ORDERS.length];
         return (
@@ -533,19 +654,13 @@ export default function HomePage() {
                       </div>
                     )}
                     {section === "title" && (
-                      <h2 className="text-4xl xl:text-5xl text-left max-w-[500px] xl:leading-18" style={mono}>
-                        {service.name}
-                      </h2>
+                      <h2 className="text-4xl xl:text-5xl text-left max-w-[500px] xl:leading-18" style={mono}>{service.name}</h2>
                     )}
                     {section === "badge" && (
-                      <p className="tracking-widest max-w-sm text-sm text-left opacity-60" style={mono}>
-                        {service.areas.join(", ")}
-                      </p>
+                      <p className="tracking-widest max-w-sm text-sm text-left opacity-60" style={mono}>{service.areas.join(", ")}</p>
                     )}
                     {section === "description" && (
-                      <p className="max-w-sm text-sm text-left pl-3 text-white/70 leading-relaxed">
-                        {service.description}
-                      </p>
+                      <p className="max-w-sm text-sm text-left pl-3 text-white/70 leading-relaxed">{service.description}</p>
                     )}
                   </div>
                 ))}
@@ -555,12 +670,12 @@ export default function HomePage() {
         );
       })}
 
-      {/* ── Mobile service overlay ─────────────────────────────────── */}
+      {/* ── Mobile service overlay ────────────────────────────── */}
       <div ref={overlayRef} className="service-overlay">
         <div ref={rippleRef} className="fixed w-16 h-16 rounded-full bg-white/30 pointer-events-none" style={{ transform: "translate(-50%,-50%)", visibility: "hidden" }} />
         <button onClick={closeOverlay} className="absolute top-6 right-4 w-11 h-11 flex flex-col justify-center items-center gap-[5px]" aria-label="Close">
-          <span className="block w-4 bg-white rotate-45 translate-y-[5px]"  style={{ height: "1px" }} />
-          <span className="block w-4 bg-white -rotate-45"                   style={{ height: "1px" }} />
+          <span className="block w-4 bg-white rotate-45 translate-y-[5px]"  style={{ height: 1 }} />
+          <span className="block w-4 bg-white -rotate-45"                   style={{ height: 1 }} />
         </button>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
           {SERVICES.map((s) => (
@@ -574,7 +689,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ── Mobile service detail ─────────────────────────────────── */}
+      {/* ── Mobile service detail ─────────────────────────────── */}
       <div ref={detailRef} className="service-detail pt-20 pb-6 flex flex-col gap-10 justify-between items-start" style={{ visibility: "hidden" }}>
         {activeService && (
           <>

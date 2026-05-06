@@ -1,9 +1,10 @@
 export const PILLARS = [
   "Your business, finally online. And working.",
-  "Websites that bring clients. AI that saves time.",
-  "Not another agency that disappears after the invoice.",
+  "Websites that earn. AI that saves. Growth that lasts.",
+  "Proof over promises. See what we've built.",
+  "We don't take your money and run.",
   "Based in Iași. Working worldwide.",
-];
+] as const;
 
 export const SERVICES = [
   {
