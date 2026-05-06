@@ -1,29 +1,25 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Check, Clock, Phone, VideoCamera } from "@phosphor-icons/react";
+import gsap from "gsap";
 
 const schema = z.object({
-  name: z.string().min(2, "Name required"),
-  email: z.string().email("Valid email required"),
+  name:  z.string().min(2, "Minimum 2 characters"),
+  email: z.string().email("Enter a valid email"),
   phone: z.string().optional(),
-  topic: z.string().min(1, "Please select a topic"),
+  topic: z.string().min(1, "Select a topic"),
   notes: z.string().optional(),
 });
 
 type FormData = z.infer<typeof schema>;
 
-const timeSlots = [
-  "09:00", "10:00", "11:00", "12:00",
-  "14:00", "15:00", "16:00", "17:00", "18:00",
-];
+const timeSlots = ["09:00", "10:00", "11:00", "12:00", "14:00", "15:00", "16:00", "17:00", "18:00"];
 
 const topics = [
   "I need a website",
@@ -33,30 +29,56 @@ const topics = [
   "Not sure yet — just exploring",
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
+const mono: React.CSSProperties = {
+  fontFamily: "var(--font-dm-mono, 'DM Mono', monospace)",
 };
 
+const inputCls =
+  "w-full bg-transparent text-white text-sm pb-3 focus:outline-none placeholder:text-white/20 border-b border-white/15 focus:border-[var(--accent)] transition-colors duration-200";
+
+function Field({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <label
+        className="block text-xs uppercase mb-3"
+        style={{ ...mono, letterSpacing: "var(--tracking-sm)", color: "rgba(255,255,255,0.45)" }}
+      >
+        {label}
+      </label>
+      {children}
+      {error && <p className="mt-1.5 text-xs" style={{ ...mono, color: "var(--accent)" }}>{error}</p>}
+    </div>
+  );
+}
+
 export default function BookPage() {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
   const [selectedTime, setSelectedTime] = useState<string>("");
-  const [step, setStep] = useState<1 | 2 | 3>(1);
+  const [done, setDone] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
 
+  useLayoutEffect(() => {
+    const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+    if (headingRef.current) tl.from(headingRef.current, { y: 40, opacity: 0, duration: 1.2 });
+    if (contentRef.current) tl.from(contentRef.current, { y: 20, opacity: 0, duration: 0.8 }, "-=0.8");
+    return () => { tl.kill(); };
+  }, []);
+
   const today = new Date();
   const disabledDays = [
     { before: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1) },
-    { dayOfWeek: [0] }, // Sundays — closed (optional)
   ];
 
   const onSubmit = async (data: FormData) => {
     if (!selectedDate || !selectedTime) {
-      toast.error("Please select a date and time.");
+      toast.error("Select a date and time first.");
       return;
     }
     setSubmitting(true);
@@ -67,228 +89,227 @@ export default function BookPage() {
         body: JSON.stringify({
           ...data,
           service: "booking",
-          message: `Booking request — Date: ${selectedDate.toLocaleDateString("en-GB")}, Time: ${selectedTime}\n\nTopic: ${data.topic}\n\nNotes: ${data.notes || "None"}`,
+          message: `Booking — ${selectedDate.toLocaleDateString("en-GB")} at ${selectedTime}\n\nTopic: ${data.topic}\n\nNotes: ${data.notes || "None"}`,
         }),
       });
-      setStep(3);
+      setDone(true);
     } catch {
-      toast.error("Something went wrong. Call us directly: 0747 202 811");
+      toast.error("Something went wrong. Call us: 0747 202 811");
     } finally {
       setSubmitting(false);
     }
   };
 
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-32">
-      <div className="container-tight px-4 md:px-8">
+    <main className="min-h-screen text-white pt-20">
+      <div className="max-w-7xl mx-auto px-4 lg:px-10 py-16 lg:py-24">
+
         {/* Header */}
-        <motion.div
-          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
-          initial="hidden"
-          animate="show"
-          className="mb-12"
-        >
-          <motion.p variants={fadeUp} className="font-body text-xs uppercase tracking-widest text-[var(--brand-amber)] mb-4">
-            Free consultation
-          </motion.p>
-          <motion.h1 variants={fadeUp} className="font-display text-[clamp(2.5rem,5vw,4rem)] font-bold text-[var(--brand-espresso)] mb-4">
-            Book a free call
-          </motion.h1>
-          <motion.p variants={fadeUp} className="font-body text-base text-[var(--brand-warm-brown)] max-w-xl">
-            30 minutes. No pitch. No pressure. We listen, ask some questions, and tell you honestly whether and how we can help.
-          </motion.p>
-
-          {/* What to expect */}
-          <motion.div variants={fadeUp} className="flex flex-wrap gap-4 mt-6">
-            {[
-              { icon: Clock, text: "30 minutes" },
-              { icon: VideoCamera, text: "Google Meet or phone" },
-              { icon: Phone, text: "Or call: 0747 202 811" },
-            ].map(({ icon: Icon, text }) => (
-              <div key={text} className="flex items-center gap-2 bg-[var(--brand-surface)] border border-[var(--border)] rounded-full px-4 py-2">
-                <Icon size={16} weight="light" className="text-[var(--brand-amber)]" />
-                <span className="font-body text-sm text-[var(--brand-warm-brown)]">{text}</span>
-              </div>
-            ))}
-          </motion.div>
-        </motion.div>
-
-        {step === 3 ? (
-          /* Confirmation */
-          <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="bg-[var(--brand-surface)] border border-[var(--border)] rounded-2xl p-8 md:p-12 text-center max-w-lg mx-auto"
+        <div className="mb-16 lg:mb-20">
+          <p className="text-xs opacity-50 mb-4 uppercase" style={{ ...mono, letterSpacing: "var(--tracking-sm)" }}>
+            FREE CONSULTATION
+          </p>
+          <h1
+            ref={headingRef}
+            className="text-5xl lg:text-7xl font-light leading-none"
+            style={mono}
           >
-            <div className="w-16 h-16 rounded-full bg-[var(--brand-amber)]/15 flex items-center justify-center mx-auto mb-6">
-              <Check size={32} weight="bold" className="text-[var(--brand-amber)]" />
-            </div>
-            <h2 className="font-display text-2xl font-bold text-[var(--brand-espresso)] mb-3">
-              We&apos;ve got your request.
-            </h2>
-            <p className="font-body text-base text-[var(--brand-warm-brown)] leading-relaxed mb-2">
-              We&apos;ll confirm your slot at{" "}
-              <span className="font-semibold text-[var(--brand-espresso)]">
-                {selectedDate?.toLocaleDateString("en-GB")} — {selectedTime}
-              </span>{" "}
-              by email within a few hours.
-            </p>
-            <p className="font-body text-sm text-[var(--brand-warm-brown)]">
-              Can&apos;t wait? Call us at{" "}
-              <a href="tel:0747202811" className="text-[var(--brand-amber)] font-semibold">
-                0747 202 811
-              </a>
-            </p>
-          </motion.div>
-        ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-            {/* Calendar */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="bg-[var(--brand-surface)] border border-[var(--border)] rounded-2xl p-6 md:p-8"
-            >
-              <p className="font-body text-xs uppercase tracking-widest text-[var(--brand-amber)] mb-5">
-                Pick a date
+            Book a free call.
+          </h1>
+        </div>
+
+        {done ? (
+          /* Confirmation */
+          <div
+            className="max-w-lg"
+            style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
+          >
+            <div className="pt-12">
+              <div
+                className="w-8 h-8 rounded-full flex items-center justify-center mb-8"
+                style={{ border: "1px solid var(--accent)", color: "var(--accent)" }}
+              >
+                <span style={{ fontSize: 16 }}>✓</span>
+              </div>
+              <p className="text-2xl lg:text-3xl font-light mb-4" style={mono}>
+                We&apos;ve got your request.
               </p>
+              <p className="text-sm leading-relaxed mb-2" style={{ ...mono, color: "rgba(255,255,255,0.55)" }}>
+                We&apos;ll confirm your slot at{" "}
+                <span style={{ color: "var(--accent)" }}>
+                  {selectedDate?.toLocaleDateString("en-GB")} — {selectedTime}
+                </span>{" "}
+                by email within a few hours.
+              </p>
+              <p className="text-sm" style={{ ...mono, color: "rgba(255,255,255,0.4)" }}>
+                Can&apos;t wait?{" "}
+                <a href="tel:0747202811" className="hover:opacity-70 transition-opacity" style={{ color: "var(--accent)" }}>
+                  0747 202 811
+                </a>
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div
+            ref={contentRef}
+            className="grid lg:grid-cols-2 gap-16 lg:gap-24"
+            style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
+          >
+            {/* Calendar column */}
+            <div className="pt-10 lg:pt-12">
+              <p
+                className="text-xs uppercase mb-6 opacity-40"
+                style={{ ...mono, letterSpacing: "var(--tracking-sm)" }}
+              >
+                1 — Pick a date
+              </p>
+
+              {/* DayPicker with dark overrides */}
+              <style>{`
+                .rdp-dark {
+                  --rdp-accent-color: var(--accent);
+                  --rdp-accent-background-color: rgba(0,255,135,0.12);
+                  --rdp-background-color: rgba(0,255,135,0.06);
+                  color: rgba(255,255,255,0.85);
+                  font-family: var(--font-dm-mono, 'DM Mono', monospace);
+                  font-size: 12px;
+                }
+                .rdp-dark .rdp-day_button { color: rgba(255,255,255,0.75); }
+                .rdp-dark .rdp-day_button:hover { background: rgba(0,255,135,0.1); color: #fff; }
+                .rdp-dark .rdp-selected .rdp-day_button { background: var(--accent); color: #000; }
+                .rdp-dark .rdp-today .rdp-day_button { color: var(--accent); font-weight: 600; }
+                .rdp-dark .rdp-disabled .rdp-day_button { opacity: 0.2; }
+                .rdp-dark .rdp-chevron { fill: rgba(255,255,255,0.5); }
+                .rdp-dark .rdp-nav button:hover .rdp-chevron { fill: #fff; }
+                .rdp-dark .rdp-weekday { color: rgba(255,255,255,0.3); font-size: 10px; letter-spacing: 0.08em; }
+                .rdp-dark .rdp-caption_label { color: rgba(255,255,255,0.85); font-weight: 400; letter-spacing: 0.08em; font-size: 12px; }
+              `}</style>
+
               <DayPicker
+                className="rdp-dark"
                 mode="single"
                 selected={selectedDate}
-                onSelect={(date) => { setSelectedDate(date); setStep(2); }}
+                onSelect={setSelectedDate}
                 disabled={disabledDays}
-                className="rdp-custom"
-                classNames={{
-                  root: "w-full",
-                  months: "w-full",
-                  month: "w-full",
-                  table: "w-full",
-                  head_cell: "font-body text-xs font-semibold text-[var(--brand-warm-brown)] uppercase pb-2",
-                  cell: "p-0",
-                  day: "w-10 h-10 font-body text-sm rounded-xl hover:bg-[var(--brand-amber)]/10 hover:text-[var(--brand-espresso)] transition-colors mx-auto flex items-center justify-center",
-                  day_selected: "bg-[var(--brand-amber)] text-white hover:bg-[var(--brand-amber)]",
-                  day_disabled: "text-[var(--border)] cursor-not-allowed",
-                  day_today: "font-bold text-[var(--brand-amber)]",
-                  nav_button: "w-8 h-8 rounded-full hover:bg-[var(--brand-surface)] flex items-center justify-center transition-colors",
-                  caption: "flex items-center justify-between mb-4 font-body font-semibold text-[var(--brand-espresso)]",
-                }}
               />
 
               {selectedDate && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-6 pt-6 border-t border-[var(--border)]"
-                >
-                  <p className="font-body text-xs uppercase tracking-widest text-[var(--brand-amber)] mb-3">
-                    Pick a time
+                <div className="mt-8" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+                  <p
+                    className="text-xs uppercase mb-4 mt-6 opacity-40"
+                    style={{ ...mono, letterSpacing: "var(--tracking-sm)" }}
+                  >
+                    2 — Pick a time
                   </p>
                   <div className="grid grid-cols-3 gap-2">
                     {timeSlots.map((time) => (
                       <button
                         key={time}
                         onClick={() => setSelectedTime(time)}
-                        className={`font-body text-sm py-3 rounded-xl border transition-colors min-h-[44px] ${
-                          selectedTime === time
-                            ? "bg-[var(--brand-amber)] text-white border-[var(--brand-amber)]"
-                            : "border-[var(--border)] text-[var(--brand-espresso)] hover:border-[var(--brand-amber)] hover:text-[var(--brand-amber)]"
-                        }`}
+                        className="text-xs py-3 transition-colors duration-200"
+                        style={{
+                          ...mono,
+                          border: selectedTime === time
+                            ? "1px solid var(--accent)"
+                            : "1px solid rgba(255,255,255,0.15)",
+                          color: selectedTime === time ? "var(--accent)" : "rgba(255,255,255,0.6)",
+                          background: selectedTime === time ? "rgba(0,255,135,0.06)" : "transparent",
+                          minHeight: "44px",
+                        }}
                       >
                         {time}
                       </button>
                     ))}
                   </div>
-                </motion.div>
+                </div>
               )}
-            </motion.div>
 
-            {/* Form */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="bg-[var(--brand-surface)] border border-[var(--border)] rounded-2xl p-6 md:p-8"
-            >
-              <p className="font-body text-xs uppercase tracking-widest text-[var(--brand-amber)] mb-5">
-                Your details
+              {/* What to expect */}
+              <div className="mt-10 space-y-3" style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: "2rem" }}>
+                {[
+                  "30 minutes",
+                  "Google Meet or phone",
+                  "Call: 0747 202 811",
+                ].map((item) => (
+                  <p key={item} className="text-xs opacity-40" style={mono}>{item}</p>
+                ))}
+              </div>
+            </div>
+
+            {/* Form column */}
+            <div className="pt-10 lg:pt-12">
+              <p
+                className="text-xs uppercase mb-6 opacity-40"
+                style={{ ...mono, letterSpacing: "var(--tracking-sm)" }}
+              >
+                3 — Your details
               </p>
 
               {selectedDate && selectedTime && (
-                <div className="flex items-center gap-2 bg-[var(--brand-amber)]/10 border border-[var(--brand-amber)]/20 rounded-xl px-4 py-3 mb-5">
-                  <Check size={16} weight="bold" className="text-[var(--brand-amber)] shrink-0" />
-                  <p className="font-body text-sm text-[var(--brand-espresso)]">
-                    {selectedDate.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" })}{" "}
-                    at {selectedTime}
-                  </p>
+                <div
+                  className="mb-8 px-4 py-3 text-xs"
+                  style={{
+                    ...mono,
+                    border: "1px solid var(--accent-border)",
+                    color: "var(--accent)",
+                    background: "var(--accent-dim)",
+                  }}
+                >
+                  {selectedDate.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" })} — {selectedTime}
                 </div>
               )}
 
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                <div>
-                  <label className="font-body text-xs font-semibold text-[var(--brand-espresso)] mb-1.5 block uppercase tracking-wide">
-                    Name *
-                  </label>
-                  <input
-                    {...register("name")}
-                    placeholder="Your name"
-                    className="w-full font-body text-sm bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-4 text-[var(--brand-espresso)] placeholder:text-[var(--brand-warm-brown)]/50 focus:outline-none focus:border-[var(--brand-amber)] transition-colors min-h-[52px]"
-                  />
-                  {errors.name && <p className="font-body text-xs text-red-500 mt-1">{errors.name.message}</p>}
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+                <div className="grid sm:grid-cols-2 gap-8">
+                  <Field label="Name *" error={errors.name?.message}>
+                    <input {...register("name")} placeholder="Your name" className={inputCls} style={mono} autoComplete="name" />
+                  </Field>
+                  <Field label="Email *" error={errors.email?.message}>
+                    <input {...register("email")} type="email" placeholder="your@email.com" className={inputCls} style={mono} autoComplete="email" />
+                  </Field>
                 </div>
 
-                <div>
-                  <label className="font-body text-xs font-semibold text-[var(--brand-espresso)] mb-1.5 block uppercase tracking-wide">
-                    Email *
-                  </label>
-                  <input
-                    {...register("email")}
-                    type="email"
-                    placeholder="your@email.com"
-                    className="w-full font-body text-sm bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-4 text-[var(--brand-espresso)] placeholder:text-[var(--brand-warm-brown)]/50 focus:outline-none focus:border-[var(--brand-amber)] transition-colors min-h-[52px]"
-                  />
-                  {errors.email && <p className="font-body text-xs text-red-500 mt-1">{errors.email.message}</p>}
+                <div className="grid sm:grid-cols-2 gap-8">
+                  <Field label="Phone">
+                    <input {...register("phone")} type="tel" placeholder="Optional" className={inputCls} style={mono} autoComplete="tel" />
+                  </Field>
+                  <Field label="Topic *" error={errors.topic?.message}>
+                    <select
+                      {...register("topic")}
+                      className={inputCls}
+                      style={{ ...mono, appearance: "none", cursor: "pointer", background: "transparent" }}
+                    >
+                      <option value="" style={{ background: "#111" }}>What do you want to talk about?</option>
+                      {topics.map((t) => (
+                        <option key={t} value={t} style={{ background: "#111" }}>{t}</option>
+                      ))}
+                    </select>
+                  </Field>
                 </div>
 
-                <div>
-                  <label className="font-body text-xs font-semibold text-[var(--brand-espresso)] mb-1.5 block uppercase tracking-wide">
-                    Topic *
-                  </label>
-                  <select
-                    {...register("topic")}
-                    className="w-full font-body text-sm bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-4 text-[var(--brand-espresso)] focus:outline-none focus:border-[var(--brand-amber)] transition-colors min-h-[52px] appearance-none"
-                  >
-                    <option value="">What do you want to talk about?</option>
-                    {topics.map((t) => (
-                      <option key={t} value={t}>{t}</option>
-                    ))}
-                  </select>
-                  {errors.topic && <p className="font-body text-xs text-red-500 mt-1">{errors.topic.message}</p>}
-                </div>
-
-                <div>
-                  <label className="font-body text-xs font-semibold text-[var(--brand-espresso)] mb-1.5 block uppercase tracking-wide">
-                    Anything to add? (optional)
-                  </label>
+                <Field label="Anything to add? (optional)">
                   <textarea
                     {...register("notes")}
-                    rows={3}
+                    rows={4}
                     placeholder="Brief context about your business or project..."
-                    className="w-full font-body text-sm bg-[var(--background)] border border-[var(--border)] rounded-xl px-4 py-4 text-[var(--brand-espresso)] placeholder:text-[var(--brand-warm-brown)]/50 focus:outline-none focus:border-[var(--brand-amber)] transition-colors resize-none"
+                    className={inputCls + " resize-none"}
+                    style={mono}
                   />
-                </div>
+                </Field>
 
                 <button
                   type="submit"
                   disabled={submitting || !selectedDate || !selectedTime}
-                  className="w-full inline-flex items-center justify-center gap-2 bg-[var(--brand-espresso)] text-[var(--brand-cream)] font-body font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:bg-[var(--brand-amber)] disabled:opacity-50 disabled:cursor-not-allowed min-h-[52px]"
+                  className="pill-btn pill-btn-accent"
+                  style={{ height: "44px", paddingLeft: "1.5rem", paddingRight: "1.5rem", opacity: (submitting || !selectedDate || !selectedTime) ? 0.4 : 1 }}
                 >
-                  {submitting ? "Sending..." : "Confirm booking request"}
+                  {submitting ? "Sending..." : "Confirm booking →"}
                 </button>
               </form>
-            </motion.div>
+            </div>
           </div>
         )}
       </div>
-    </section>
+    </main>
   );
 }
