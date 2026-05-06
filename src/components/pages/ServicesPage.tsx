@@ -1,129 +1,181 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import gsap from "gsap";
-import { SERVICES } from "@/lib/services";
+const SERVICES = [
+  {
+    num: "— 01",
+    title: <>Web design <em>&amp; build</em></>,
+    desc: "Editorial websites and conversion-tuned landing pages. Custom design, fast static builds, CMS-driven where it matters.",
+    tags: ["Design", "Webflow", "Next.js", "Shopify", "CMS"],
+  },
+  {
+    num: "— 02",
+    title: <>AI <em>automation</em></>,
+    desc: "We replace your spreadsheets, manual handoffs and inbox triage with quiet, reliable AI agents that run in the background.",
+    tags: ["Workflows", "Agents", "CRM", "Inbox", "RAG"],
+  },
+  {
+    num: "— 03",
+    title: <>SEO <em>&amp; visibility</em></>,
+    desc: "Technical, content and local SEO programs. The unsexy, compounding work that gets your business found by the right people.",
+    tags: ["Audits", "Content", "Local", "Linking", "GEO/AI"],
+  },
+  {
+    num: "— 04",
+    title: <>Brand <em>systems</em></>,
+    desc: "Identity, voice, and design systems engineered to scale. Built so your team can ship without us in the room.",
+    tags: ["Identity", "Voice", "Tokens", "Components", "Guidelines"],
+  },
+];
 
-const mono: React.CSSProperties = {
-  fontFamily: "var(--font-dm-mono, 'DM Mono', monospace)",
-};
+const PROCESS = [
+  {
+    step: "— 01 / Discover",
+    title: "Listen.",
+    desc: "A week of interviews, audits, and competitor teardowns. We arrive at a written brief you can argue with.",
+  },
+  {
+    step: "— 02 / Define",
+    title: "Frame.",
+    desc: "One narrative, one positioning, one measurable target. No deliverable ships until those three are agreed.",
+  },
+  {
+    step: "— 03 / Make",
+    title: "Build.",
+    desc: "Design, code, content, automation — assembled in tight loops with weekly Loom walkthroughs.",
+  },
+  {
+    step: "— 04 / Compound",
+    title: "Grow.",
+    desc: "A monthly retainer that keeps SEO, content and automations compounding long after launch.",
+  },
+];
 
 export default function ServicesPage() {
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const rowsRef    = useRef<HTMLDivElement>(null);
-
-  useLayoutEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
-    if (headingRef.current) tl.from(headingRef.current, { y: 40, opacity: 0, duration: 1.2 });
-    if (rowsRef.current) {
-      tl.from(Array.from(rowsRef.current.children), { y: 30, opacity: 0, duration: 0.7, stagger: 0.1 }, "-=0.8");
-    }
-    return () => { tl.kill(); };
-  }, []);
-
   return (
-    <main className="min-h-screen text-white pt-20">
-      <div className="max-w-7xl mx-auto px-4 lg:px-10 py-16 lg:py-24">
-
-        {/* Header */}
-        <div className="mb-16 lg:mb-24">
-          <p className="text-xs opacity-50 mb-4 uppercase" style={{ ...mono, letterSpacing: "var(--tracking-sm)" }}>
-            SERVICES
-          </p>
-          <h1
-            ref={headingRef}
-            className="text-5xl lg:text-7xl font-light leading-none"
-            style={mono}
-          >
-            What we build.
-          </h1>
-        </div>
-
-        {/* Services — always visible */}
-        <div ref={rowsRef} style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-          {SERVICES.map((service, i) => (
-            <div
-              key={service.slug}
-              className="py-12 lg:py-16"
-              style={{ borderBottom: "1px solid rgba(255,255,255,0.1)" }}
+    <main style={{ minHeight: "100vh", paddingTop: "120px" }}>
+      <section className="section services-section">
+        <div>
+          <div className="section-head">
+            <div>
+              <span className="eyebrow" style={{ color: "rgba(10,10,10,.6)" }}>
+                [ 03 — What we do ]
+              </span>
+              <h1
+                className="section-title reveal"
+                style={{ marginTop: "18px" }}
+              >
+                Four practices,{" "}
+                <span className="serif-i">one studio.</span>
+              </h1>
+            </div>
+            <p
+              className="meta reveal"
+              style={{ color: "rgba(10,10,10,.7)" }}
             >
-              <div className="grid lg:grid-cols-[40px_1fr_320px] gap-6 lg:gap-12 items-start">
+              We don&apos;t sell deliverables — we sell outcomes. Pick the
+              practice that fits, or combine them into a retainer.
+            </p>
+          </div>
 
-                {/* Index */}
-                <span
-                  className="text-xs pt-2"
-                  style={{ ...mono, letterSpacing: "var(--tracking-xs)", color: "rgba(255,255,255,0.3)" }}
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-
-                {/* Info */}
+          <div className="service-grid reveal-stagger">
+            {SERVICES.map((s, i) => (
+              <div key={i} className="service" data-cursor="hover">
+                <div className="s-num">{s.num}</div>
                 <div>
-                  <h2 className="text-3xl lg:text-5xl font-light mb-5" style={mono}>
-                    {service.name}
-                  </h2>
-                  <p className="text-sm leading-relaxed mb-6 max-w-lg" style={{ ...mono, color: "rgba(255,255,255,0.6)" }}>
-                    {service.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    {service.areas.map(area => (
-                      <span
-                        key={area}
-                        className="text-xs px-3 py-1.5"
-                        style={{
-                          ...mono,
-                          border: "1px solid rgba(255,255,255,0.2)",
-                          letterSpacing: "var(--tracking-xs)",
-                          color: "rgba(255,255,255,0.7)",
-                        }}
-                      >
-                        {area}
-                      </span>
+                  <h3 className="s-title">{s.title}</h3>
+                  <p className="s-desc">{s.desc}</p>
+                  <ul className="s-list">
+                    {s.tags.map((t) => (
+                      <li key={t}>{t}</li>
                     ))}
-                  </div>
-                  <Link href="/contact" className="pill-btn pill-btn-accent">
-                    Start a project →
-                  </Link>
-                </div>
-
-                {/* Image */}
-                <div
-                  className="relative w-full overflow-hidden"
-                  style={{ aspectRatio: "4/3" }}
-                >
-                  <Image
-                    src={service.image}
-                    alt={service.name}
-                    fill
-                    className="object-cover"
-                    style={{ opacity: 0.55, filter: "grayscale(20%)" }}
-                    sizes="(max-width: 1024px) 100vw, 320px"
-                  />
-                  <div
-                    className="absolute inset-0"
-                    style={{ background: "linear-gradient(135deg, rgba(0,255,135,0.06) 0%, transparent 60%)" }}
-                  />
+                  </ul>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-20 pt-12" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-          <p className="text-xs opacity-40 uppercase mb-4" style={{ ...mono, letterSpacing: "var(--tracking-sm)" }}>
-            CUSTOM PROJECT?
-          </p>
-          <p className="text-2xl lg:text-3xl font-light mb-6 max-w-lg" style={mono}>
-            Every project is different. Tell us what you need.
-          </p>
-          <Link href="/contact" className="pill-btn" style={{ borderColor: "rgba(255,255,255,0.4)" }}>
-            Get in touch →
-          </Link>
+          <div
+            className="section-head"
+            style={{
+              marginTop: "120px",
+              borderColor: "rgba(10,10,10,.15)",
+            }}
+          >
+            <div>
+              <span
+                className="eyebrow"
+                style={{ color: "rgba(10,10,10,.6)" }}
+              >
+                [ Process ]
+              </span>
+              <h2
+                className="section-title reveal"
+                style={{
+                  marginTop: "18px",
+                  fontSize: "clamp(36px,4.5vw,72px)",
+                }}
+              >
+                A four-step rhythm.
+              </h2>
+            </div>
+          </div>
+
+          <div
+            className="process reveal-stagger"
+            style={{
+              borderColor: "rgba(10,10,10,.15)",
+              background: "var(--bone)",
+              color: "var(--ink)",
+            }}
+          >
+            {PROCESS.map((p, i) => (
+              <div
+                key={i}
+                className="step"
+                data-cursor="hover"
+                style={{
+                  borderColor: "rgba(10,10,10,.15)",
+                  ...(i === 3 ? { borderRight: 0 } : {}),
+                }}
+              >
+                <div className="step-n">{p.step}</div>
+                <div>
+                  <h3>{p.title}</h3>
+                  <p style={{ color: "rgba(10,10,10,.7)" }}>{p.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section className="cta-section">
+        <h2 className="reveal">
+          Let&apos;s build something <em>together.</em>
+        </h2>
+        <a
+          href="mailto:hello@rynexlabs.ro"
+          className="cta-btn reveal"
+          data-cursor="hover"
+          data-cursor-label="email"
+        >
+          hello@rynexlabs.ro
+          <span className="arrow" />
+        </a>
+        <div
+          style={{
+            marginTop: "48px",
+            fontFamily:
+              "var(--font-jetbrains, 'JetBrains Mono', monospace)",
+            fontSize: "11px",
+            letterSpacing: "0.16em",
+            textTransform: "uppercase",
+            color: "rgba(10,10,10,.65)",
+          }}
+        >
+          Or book a 30-min intro call · Reply within 24h
+        </div>
+      </section>
     </main>
   );
 }

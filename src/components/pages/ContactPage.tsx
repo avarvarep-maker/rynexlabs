@@ -1,7 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -18,49 +17,15 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const mono: React.CSSProperties = {
-  fontFamily: "var(--font-dm-mono, 'DM Mono', monospace)",
-};
-
-function Field({
-  label, error, children,
-}: { label: string; error?: string; children: React.ReactNode }) {
-  return (
-    <div>
-      <label
-        className="block text-xs uppercase mb-3"
-        style={{ ...mono, letterSpacing: "var(--tracking-sm)", color: "rgba(255,255,255,0.45)" }}
-      >
-        {label}
-      </label>
-      {children}
-      {error && (
-        <p className="mt-1.5 text-xs" style={{ ...mono, color: "var(--accent)" }}>{error}</p>
-      )}
-    </div>
-  );
-}
-
-const inputCls =
-  "w-full bg-transparent text-white text-sm pb-3 focus:outline-none placeholder:text-white/20 border-b border-white/15 focus:border-[var(--accent)] transition-colors duration-200";
-
 export default function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const formRef    = useRef<HTMLFormElement>(null);
-  const infoRef    = useRef<HTMLDivElement>(null);
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>({
-    resolver: zodResolver(schema),
-  });
-
-  useLayoutEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
-    if (headingRef.current) tl.from(headingRef.current, { y: 40, opacity: 0, duration: 1.2 });
-    if (formRef.current)    tl.from(formRef.current,    { y: 20, opacity: 0, duration: 0.8 }, "-=0.8");
-    if (infoRef.current)    tl.from(infoRef.current,    { y: 20, opacity: 0, duration: 0.8 }, "-=0.7");
-    return () => { tl.kill(); };
-  }, []);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = async (data: FormData) => {
     setSubmitting(true);
@@ -81,110 +46,155 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen text-white pt-20">
-      <div className="max-w-7xl mx-auto px-4 lg:px-10 py-16 lg:py-24">
+    <main className="contact-page">
+      <span className="eyebrow" style={{ marginBottom: "32px" }}>
+        [ 04 — Contact ]
+      </span>
+      <h1
+        className="section-title reveal"
+        style={{ marginTop: "16px", marginBottom: "8px" }}
+      >
+        Let&apos;s make you <span className="serif-i">findable.</span>
+      </h1>
+      <p className="reveal" style={{ color: "var(--bone-dim)", fontSize: "16px", maxWidth: "48ch", marginTop: "16px" }}>
+        Tell us what you&apos;re building. We&apos;ll reply within 24 hours.
+      </p>
 
-        {/* Header */}
-        <div className="mb-16 lg:mb-20">
-          <p className="text-xs uppercase mb-4" style={{ ...mono, letterSpacing: "var(--tracking-sm)", color: "rgba(255,255,255,0.45)" }}>
-            CONTACT
-          </p>
-          <h1
-            ref={headingRef}
-            className="text-5xl lg:text-7xl font-light leading-none"
-            style={mono}
+      <div className="contact-form-grid">
+        {/* Form */}
+        <form className="contact-form" onSubmit={handleSubmit(onSubmit)}>
+          <div className="form-field">
+            <label>Name *</label>
+            <input
+              {...register("name")}
+              placeholder="Your name"
+              autoComplete="name"
+            />
+            {errors.name && (
+              <span style={{ color: "var(--orange)", fontSize: "12px", fontFamily: "var(--font-jetbrains, monospace)" }}>
+                {errors.name.message}
+              </span>
+            )}
+          </div>
+
+          <div className="form-field">
+            <label>Email *</label>
+            <input
+              {...register("email")}
+              type="email"
+              placeholder="your@email.com"
+              autoComplete="email"
+            />
+            {errors.email && (
+              <span style={{ color: "var(--orange)", fontSize: "12px", fontFamily: "var(--font-jetbrains, monospace)" }}>
+                {errors.email.message}
+              </span>
+            )}
+          </div>
+
+          <div className="form-field">
+            <label>Phone</label>
+            <input
+              {...register("phone")}
+              type="tel"
+              placeholder="Optional"
+              autoComplete="tel"
+            />
+          </div>
+
+          <div className="form-field">
+            <label>Service *</label>
+            <select {...register("service")}>
+              <option value="">Select a service</option>
+              <option value="web">Web Design &amp; Development</option>
+              <option value="automation">AI Automation</option>
+              <option value="seo">SEO &amp; Growth</option>
+              <option value="brand">Brand Systems</option>
+              <option value="other">Not sure yet</option>
+            </select>
+            {errors.service && (
+              <span style={{ color: "var(--orange)", fontSize: "12px", fontFamily: "var(--font-jetbrains, monospace)" }}>
+                {errors.service.message}
+              </span>
+            )}
+          </div>
+
+          <div className="form-field">
+            <label>Message *</label>
+            <textarea
+              {...register("message")}
+              rows={5}
+              placeholder="Tell us about your project..."
+            />
+            {errors.message && (
+              <span style={{ color: "var(--orange)", fontSize: "12px", fontFamily: "var(--font-jetbrains, monospace)" }}>
+                {errors.message.message}
+              </span>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            disabled={submitting}
+            className="submit-btn"
           >
-            Start a project.
-          </h1>
-        </div>
+            {submitting ? "Sending..." : "Send message →"}
+          </button>
+        </form>
 
-        <div className="grid lg:grid-cols-[1fr_220px] gap-16 lg:gap-24">
-
-          {/* Form */}
-          <form ref={formRef} onSubmit={handleSubmit(onSubmit)} className="space-y-10">
-            <div className="grid sm:grid-cols-2 gap-10">
-              <Field label="Name *" error={errors.name?.message}>
-                <input {...register("name")} placeholder="Your name" className={inputCls} style={mono} autoComplete="name" />
-              </Field>
-              <Field label="Email *" error={errors.email?.message}>
-                <input {...register("email")} type="email" placeholder="your@email.com" className={inputCls} style={mono} autoComplete="email" />
-              </Field>
+        {/* Aside */}
+        <div className="contact-aside">
+          <div className="contact-info-block">
+            <div className="k">Email</div>
+            <div className="v">
+              <a href="mailto:hello@rynexlabs.ro">hello@rynexlabs.ro</a>
             </div>
+          </div>
 
-            <div className="grid sm:grid-cols-2 gap-10">
-              <Field label="Phone">
-                <input {...register("phone")} type="tel" placeholder="Optional" className={inputCls} style={mono} autoComplete="tel" />
-              </Field>
-              <Field label="Service *" error={errors.service?.message}>
-                <select
-                  {...register("service")}
-                  className={inputCls}
-                  style={{ ...mono, appearance: "none", cursor: "pointer", background: "transparent" }}
-                >
-                  <option value=""   style={{ background: "#111" }}>Select a service</option>
-                  <option value="web"       style={{ background: "#111" }}>Web Design & Development</option>
-                  <option value="automation"style={{ background: "#111" }}>AI Automation</option>
-                  <option value="seo"       style={{ background: "#111" }}>SEO & Growth</option>
-                  <option value="strategy"  style={{ background: "#111" }}>Strategy & Consulting</option>
-                  <option value="other"     style={{ background: "#111" }}>Not sure yet</option>
-                </select>
-              </Field>
+          <div className="contact-info-block">
+            <div className="k">Phone</div>
+            <div className="v">
+              <a href="tel:0747202811">0747 202 811</a>
             </div>
+          </div>
 
-            <Field label="Message *" error={errors.message?.message}>
-              <textarea
-                {...register("message")}
-                rows={5}
-                placeholder="Tell us about your project..."
-                className={inputCls + " resize-none"}
-                style={mono}
-              />
-            </Field>
+          <div className="contact-info-block">
+            <div className="k">Location</div>
+            <div className="v">Iași, România</div>
+          </div>
 
-            <button
-              type="submit"
-              disabled={submitting}
-              className="pill-btn pill-btn-accent"
-              style={{ height: "44px", paddingLeft: "1.5rem", paddingRight: "1.5rem", opacity: submitting ? 0.6 : 1 }}
+          <div className="contact-info-block">
+            <div className="k">Hours</div>
+            <div className="v">Mon–Fri, 09:00–18:00 ROM</div>
+          </div>
+
+          <div className="contact-info-block">
+            <div className="k">Instagram</div>
+            <div className="v">
+              <a
+                href="https://www.instagram.com/ionvtpaul/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                @ionvtpaul ↗
+              </a>
+            </div>
+          </div>
+
+          <div style={{ marginTop: "24px", paddingTop: "24px", borderTop: "1px solid var(--line)" }}>
+            <Link
+              href="/services"
+              style={{
+                fontFamily: "var(--font-jetbrains, 'JetBrains Mono', monospace)",
+                fontSize: "11px",
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                color: "var(--bone-dim)",
+                transition: "color 0.2s",
+              }}
             >
-              {submitting ? "Sending..." : "Send message →"}
-            </button>
-          </form>
-
-          {/* Contact info */}
-          <div ref={infoRef} className="space-y-8 pt-2">
-            {[
-              { label: "Email",    value: "avarvarep@gmail.com",           href: "mailto:avarvarep@gmail.com" },
-              { label: "Phone",    value: "0747 202 811",                   href: "tel:0747202811" },
-              { label: "Location", value: "Iași, Romania" },
-              { label: "Hours",    value: "Mon–Sun, 08:00–20:00" },
-              { label: "Instagram",value: "@ionvtpaul",                    href: "https://www.instagram.com/ionvtpaul/", external: true },
-            ].map(({ label, value, href, external }) => (
-              <div key={label}>
-                <p className="text-xs uppercase mb-2" style={{ ...mono, letterSpacing: "var(--tracking-sm)", color: "rgba(255,255,255,0.4)" }}>
-                  {label}
-                </p>
-                {href ? (
-                  <a
-                    href={href}
-                    target={external ? "_blank" : undefined}
-                    rel={external ? "noopener noreferrer" : undefined}
-                    className="text-sm hover:opacity-60 transition-opacity duration-200"
-                    style={{ ...mono, color: "rgba(255,255,255,0.85)" }}
-                  >
-                    {value}
-                  </a>
-                ) : (
-                  <p className="text-sm" style={{ ...mono, color: "rgba(255,255,255,0.85)" }}>{value}</p>
-                )}
-              </div>
-            ))}
-
-            <div className="pt-8" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-              <Link href="/services" className="text-xs hover:opacity-60 transition-opacity" style={{ ...mono, letterSpacing: "var(--tracking-xs)", color: "rgba(255,255,255,0.35)" }}>
-                View our services →
-              </Link>
-            </div>
+              View our services →
+            </Link>
           </div>
         </div>
       </div>

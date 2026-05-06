@@ -1,58 +1,91 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
-const mono: React.CSSProperties = {
-  fontFamily: "var(--font-dm-mono, 'DM Mono', monospace)",
-};
+const SITEMAP = [
+  { label: "Work",     href: "/work" },
+  { label: "Services", href: "/services" },
+  { label: "About",    href: "/#about" },
+  { label: "Contact",  href: "/contact" },
+];
+
+const ELSEWHERE = [
+  { label: "Instagram ↗", href: "https://www.instagram.com/ionvtpaul/", external: true },
+  { label: "LinkedIn ↗",  href: "#" },
+  { label: "GitHub ↗",   href: "#" },
+];
 
 export default function Footer() {
-  const pathname = usePathname();
-  if (pathname === "/") return null;
-
   return (
-    <footer className="bg-black page-layer" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-      <div className="max-w-7xl mx-auto px-4 lg:px-10 py-10">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <Link href="/" className="flex gap-2 items-center hover:opacity-70 transition-opacity duration-300">
-            <span className="text-xs font-black text-white" style={{ ...mono, letterSpacing: "var(--tracking-xs)" }}>RYNEX</span>
-            <span className="text-xs font-medium" style={{ ...mono, letterSpacing: "var(--tracking-xs)", color: "rgba(255,255,255,0.5)" }}>LABS</span>
-          </Link>
+    <footer className="footer">
+      <div className="footer-top reveal">
+        Rynex<em>Labs</em>
+        <span style={{ color: "var(--orange)" }}>®</span>
+      </div>
 
-          <nav className="flex flex-wrap gap-6">
-            {[["Services", "/services"], ["Contact", "/contact"], ["Blog", "/blog"]].map(([label, href]) => (
-              <Link
-                key={href}
-                href={href}
-                className="text-xs transition-colors duration-200 hover:text-white"
-                style={{ ...mono, letterSpacing: "var(--tracking-xs)", color: "rgba(255,255,255,0.5)" }}
-              >
-                {label}
-              </Link>
+      <div className="footer-grid">
+        <div>
+          <h4>The studio</h4>
+          <p>
+            An independent design and engineering studio building websites,
+            automations and search programs that compound.
+          </p>
+          <p style={{ marginTop: "14px" }}>
+            <span className="status-dot" />
+            Available Q2 / Q3 — 2026
+          </p>
+        </div>
+
+        <div>
+          <h4>Sitemap</h4>
+          <ul>
+            {SITEMAP.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} data-cursor="hover">{l.label}</Link>
+              </li>
             ))}
-          </nav>
-
-          <p className="text-xs" style={{ ...mono, letterSpacing: "var(--tracking-xs)", color: "rgba(255,255,255,0.3)" }}>
-            IAȘI, ROMANIA
-          </p>
+          </ul>
         </div>
 
-        <div
-          className="mt-8 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2"
-          style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
-        >
-          <p className="text-xs" style={{ ...mono, letterSpacing: "var(--tracking-xs)", color: "rgba(255,255,255,0.25)" }}>
-            © {new Date().getFullYear()} RYNEX LABS
-          </p>
-          <a
-            href="mailto:avarvarep@gmail.com"
-            className="text-xs transition-colors duration-200 hover:text-white/50"
-            style={{ ...mono, letterSpacing: "var(--tracking-xs)", color: "rgba(255,255,255,0.25)" }}
-          >
-            avarvarep@gmail.com
-          </a>
+        <div>
+          <h4>Elsewhere</h4>
+          <ul>
+            {ELSEWHERE.map((l) => (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  target={l.external ? "_blank" : undefined}
+                  rel={l.external ? "noopener noreferrer" : undefined}
+                  data-cursor="hover"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
+
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>
+              <a href="mailto:hello@rynexlabs.ro" data-cursor="hover">
+                hello@rynexlabs.ro
+              </a>
+            </li>
+            <li>
+              <a href="tel:0747202811" data-cursor="hover">
+                0747 202 811
+              </a>
+            </li>
+            <li>Iași, România</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="footer-bottom">
+        <span>© 2025–2026 Rynex Labs · All rights reserved</span>
+        <span>Made in Iași 🜂</span>
       </div>
     </footer>
   );
