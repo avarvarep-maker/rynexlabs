@@ -8,6 +8,7 @@ import { SplitText } from "gsap/SplitText";
 import { InstagramLogo, MapPin, Phone } from "@phosphor-icons/react";
 import { PILLARS, SERVICES } from "@/lib/services";
 import GeometricShapes from "@/components/GeometricShapes";
+import FluidCanvas from "@/components/FluidCanvas";
 
 gsap.registerPlugin(SplitText);
 
@@ -42,6 +43,8 @@ function GlassScene({ index, active }: { index: number; active: boolean }) {
       </div>
       {/* Gradient overlay — keeps text readable */}
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.28) 50%, rgba(0,0,0,0.68) 100%)" }} />
+      {/* Fluid mouse trail — screen blend over the photo */}
+      <FluidCanvas active={active} />
       {/* Orange glow on top */}
       <div style={{ position: "absolute", width: 700, height: 700, borderRadius: "50%", background: "radial-gradient(circle, rgba(255,107,43,0.11) 0%, transparent 68%)", filter: "blur(90px)", top: "-15%", right: "-10%", animation: "orb-drift-2 26s ease-in-out infinite" }} />
       <div style={{ position: "absolute", width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(255,107,43,0.07) 0%, transparent 70%)", filter: "blur(70px)", bottom: "-10%", left: "-8%", animation: "orb-drift-3 34s ease-in-out infinite" }} />
