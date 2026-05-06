@@ -28,6 +28,10 @@ body {
   overflow-x: hidden;
 }
 
+@media (pointer: fine) {
+  * { cursor: none !important; }
+}
+
 /* ─── Selection ─── */
 ::selection { background: var(--accent); color: #000; }
 

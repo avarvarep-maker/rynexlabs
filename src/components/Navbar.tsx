@@ -22,21 +22,25 @@ export default function Navbar() {
   const [mounted,    setMounted]    = useState(false);
   const pathname = usePathname();
 
-  if (pathname === "/") return null;
+  const isHome = pathname === "/";
 
   useEffect(() => {
+    if (isHome) return;
     setMounted(true);
     const fn = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
-  }, []);
+  }, [isHome]);
 
-  useEffect(() => { setMenuOpen(false); }, [pathname]);
+  useEffect(() => { if (!isHome) setMenuOpen(false); }, [pathname, isHome]);
 
   useEffect(() => {
+    if (isHome) return;
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
-  }, [menuOpen]);
+  }, [menuOpen, isHome]);
+
+  if (isHome) return null;
 
   return (
     <>

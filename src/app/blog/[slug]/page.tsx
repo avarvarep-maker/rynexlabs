@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Clock } from "@phosphor-icons/react/dist/ssr";
-import ContactCTA from "@/components/sections/ContactCTA";
 
 const posts: Record<string, {
   title: string;
@@ -198,6 +197,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     .split("\n\n")
     .filter(Boolean);
 
+  const mono = { fontFamily: "var(--font-dm-mono, 'DM Mono', monospace)" };
+
   return (
     <>
       <script
@@ -206,52 +207,65 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       />
 
       {/* Hero */}
-      <section className="pt-32 pb-10 md:pt-40">
-        <div className="container-tight px-4 md:px-8">
+      <section className="pt-32 pb-10 md:pt-40 text-white">
+        <div className="max-w-4xl mx-auto px-4 lg:px-10">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 font-body text-sm text-[var(--brand-warm-brown)] hover:text-[var(--brand-amber)] transition-colors mb-8 group"
+            className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors mb-8 group"
+            style={mono}
           >
             <ArrowLeft size={16} weight="bold" className="transition-transform group-hover:-translate-x-0.5" />
             All articles
           </Link>
 
-          <div className="flex items-center gap-4 mb-5">
-            <span className="font-body text-xs uppercase tracking-widest text-[var(--brand-amber)] bg-[var(--brand-amber)]/10 px-3 py-1 rounded-full">
+          <div className="flex items-center gap-4 mb-6">
+            <span
+              className="text-xs uppercase px-3 py-1"
+              style={{ ...mono, letterSpacing: "var(--tracking-sm)", color: "var(--accent)", border: "1px solid rgba(0,255,135,0.25)" }}
+            >
               {post.category}
             </span>
-            <span className="flex items-center gap-1 font-body text-xs text-[var(--brand-warm-brown)]">
+            <span className="flex items-center gap-1.5 text-xs text-white/40" style={mono}>
               <Clock size={12} weight="regular" />
               {post.readTime}
             </span>
-            <span className="font-body text-xs text-[var(--brand-warm-brown)]">{post.date}</span>
+            <span className="text-xs text-white/40" style={mono}>{post.date}</span>
           </div>
 
-          <h1 className="font-display text-[clamp(2rem,4vw,3.5rem)] font-bold text-[var(--brand-espresso)] leading-tight mb-8">
+          <h1
+            className="text-4xl lg:text-6xl font-light leading-tight mb-10"
+            style={mono}
+          >
             {post.title}
           </h1>
 
-          <div className="relative aspect-[16/7] rounded-2xl overflow-hidden mb-12">
+          <div className="relative overflow-hidden mb-12" style={{ aspectRatio: "16/7" }}>
             <Image
               src={post.image}
               alt={post.title}
               fill
               className="object-cover"
+              style={{ opacity: 0.7, filter: "grayscale(15%)" }}
               sizes="(max-width: 1024px) 100vw, 900px"
               priority
             />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(0,255,135,0.04) 0%, transparent 60%)" }} />
           </div>
         </div>
       </section>
 
       {/* Content */}
-      <section className="pb-16">
-        <div className="container-tight px-4 md:px-8">
-          <div className="max-w-[68ch] mx-auto">
+      <section className="pb-20 text-white">
+        <div className="max-w-4xl mx-auto px-4 lg:px-10">
+          <div className="max-w-[68ch]">
             {paragraphs.map((para, i) => {
               if (para.startsWith("**") && para.endsWith("**")) {
                 return (
-                  <h2 key={i} className="font-display text-xl md:text-2xl font-bold text-[var(--brand-espresso)] mt-8 mb-4">
+                  <h2
+                    key={i}
+                    className="text-xl lg:text-2xl font-light mt-10 mb-4"
+                    style={{ ...mono, color: "#fff" }}
+                  >
                     {para.replace(/\*\*/g, "")}
                   </h2>
                 );
@@ -260,16 +274,19 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               return (
                 <p
                   key={i}
-                  className="font-body text-base text-[var(--brand-warm-brown)] leading-relaxed mb-5"
+                  className="text-sm leading-relaxed mb-5"
+                  style={{ ...mono, color: "rgba(255,255,255,0.65)" }}
                   dangerouslySetInnerHTML={{ __html: parsed }}
                 />
               );
             })}
           </div>
+
+          <div className="mt-16 pt-10" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+            <Link href="/blog" className="pill-btn">← Back to articles</Link>
+          </div>
         </div>
       </section>
-
-      <ContactCTA />
     </>
   );
 }

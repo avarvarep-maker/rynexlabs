@@ -6,6 +6,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { PILLARS, SERVICES } from "@/lib/services";
+import GeometricShapes from "@/components/GeometricShapes";
 
 gsap.registerPlugin(SplitText);
 
@@ -160,7 +161,7 @@ export default function HomePage() {
   useEffect(() => {
     const el = document.getElementById("home-root");
     if (!el) return;
-    const onWheel = (e: WheelEvent) => { e.preventDefault(); if (e.deltaY > 0) advance(2); };
+    const onWheel = (e: WheelEvent) => { e.preventDefault(); if (e.deltaY > 0) advance(40); };
     el.addEventListener("wheel", onWheel, { passive: false });
     return () => el.removeEventListener("wheel", onWheel);
   }, [advance]);
@@ -238,18 +239,6 @@ export default function HomePage() {
         transition: "background 0.8s, color 0.8s",
       }}
     >
-      {/* ── Custom cursor dot ── */}
-      <div
-        className="hidden lg:block fixed w-16 h-16 rounded-full pointer-events-none z-[9999]"
-        id="cursor-dot"
-        style={{
-          background: isLastPillar ? "rgba(0,0,0,0.12)" : "rgba(255,255,255,0.12)",
-          transform: "translate(-50%, -50%)",
-          willChange: "left, top",
-          mixBlendMode: "difference",
-        }}
-      />
-
       {/* ── Background layer ─────────────────────────────────────── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
         {/* Mouse-tracking glow */}
@@ -361,6 +350,9 @@ export default function HomePage() {
             transition: "border-color 0.8s",
           }}
         />
+
+        {/* Geometric shapes — cursor parallax */}
+        <GeometricShapes isLastPillar={isLastPillar} />
       </div>
 
       {/* ── Header ─────────────────────────────────────────────────── */}
