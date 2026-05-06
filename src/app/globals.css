@@ -100,22 +100,22 @@ img, svg, video { display: block; max-width: 100%; }
 .nav-cta {
   font-family: var(--font-jetbrains, "JetBrains Mono"), monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
   display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px;
-  border: 1px solid var(--line-strong); border-radius: 999px;
-  transition: background .25s, color .25s, border-color .25s;
+  border: 1px solid var(--line-strong); border-radius: 0;
+  transition: border-color .25s, transform .25s, letter-spacing .25s;
 }
-.nav-cta:hover { background: var(--orange); border-color: var(--orange); color: var(--ink); }
+.nav-cta:hover { border-color: var(--bone); transform: translateX(3px); letter-spacing: 0.18em; }
 .nav-cta .dot {
   width: 6px; height: 6px; border-radius: 50%; background: var(--orange);
   box-shadow: 0 0 0 0 rgba(255,91,20,.6); animation: pulse-orange 1.6s infinite;
 }
-.nav-cta:hover .dot { background: var(--ink); animation: none; }
+.nav-cta:hover .dot { animation: none; }
+@media (max-width: 720px) { .nav-cta { display: none; } }
 
-/* ─── Word hover ─── */
-.hero-headline .word-hover {
+/* ─── Word scramble ─── */
+.hero-headline .word-scramble {
   display: inline-block; cursor: none;
-  transition: color 200ms ease, transform 200ms ease;
 }
-.hero-headline .word-hover:hover { color: var(--orange); }
+.hero-headline .word-scramble.scrambling { color: var(--orange); }
 
 /* ─── Hero ─── */
 .hero { position: relative; min-height: 100vh; padding: 140px 32px 48px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }

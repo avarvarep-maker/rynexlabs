@@ -85,35 +85,6 @@ export default function Navbar() {
           ))}
         </div>
 
-        <Link
-          href="/contact"
-          onClick={() => setMenuOpen(false)}
-          style={{
-            marginTop: "40px",
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "8px",
-            padding: "14px 24px",
-            border: "1px solid var(--line-strong)",
-            borderRadius: "999px",
-            fontFamily: "var(--font-jetbrains, 'JetBrains Mono', monospace)",
-            fontSize: "11px",
-            textTransform: "uppercase" as const,
-            letterSpacing: "0.12em",
-            color: "var(--bone)",
-            opacity: menuOpen ? 1 : 0,
-            transform: menuOpen ? "translateY(0)" : "translateY(16px)",
-            transition: "opacity 0.5s 0.38s, transform 0.5s 0.38s",
-          }}
-        >
-          <span
-            style={{
-              width: "6px", height: "6px", borderRadius: "50%",
-              background: "var(--orange)", display: "inline-block",
-            }}
-          />
-          Book a call
-        </Link>
       </div>
     </>
   );

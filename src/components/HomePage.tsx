@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import ScrambleWord from "./ScrambleWord";
 
 function LiveClock() {
   const [time, setTime] = useState("");
@@ -78,9 +79,9 @@ const PROCESS = [
 
 function W({ children }: { children: React.ReactNode }) {
   return (
-    <span className="word-hover" data-cursor="hover" data-cursor-label="coding">
+    <ScrambleWord data-cursor="hover" data-cursor-label="coding">
       {children}
-    </span>
+    </ScrambleWord>
   );
 }
 
@@ -119,7 +120,7 @@ export default function HomePage() {
           </span>
           <span className="line line-reveal d2 indent">
             <span>
-              <W><em className="accent">websites</em></W>, <W>automate</W>
+              <ScrambleWord text="websites" data-cursor="hover" data-cursor-label="coding"><em className="accent">websites</em></ScrambleWord>, <W>automate</W>
             </span>
           </span>
           <span className="line line-reveal d3">
@@ -130,8 +131,8 @@ export default function HomePage() {
           <span className="line line-reveal d4 indent">
             <span>
               <W>brands</W>{" "}
-              <W><span className="strike">invisible</span></W>{" "}
-              <W><em className="accent">found</em></W>.
+              <ScrambleWord text="invisible" data-cursor="hover" data-cursor-label="coding"><span className="strike">invisible</span></ScrambleWord>{" "}
+              <ScrambleWord text="found" data-cursor="hover" data-cursor-label="coding"><em className="accent">found</em></ScrambleWord>.
             </span>
           </span>
         </h1>
