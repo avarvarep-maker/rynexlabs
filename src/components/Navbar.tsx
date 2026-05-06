@@ -19,6 +19,7 @@ export default function Navbar() {
   const [scrolled,   setScrolled]   = useState(false);
   const [menuOpen,   setMenuOpen]   = useState(false);
   const [mounted,    setMounted]    = useState(false);
+  const [hoveredNav, setHoveredNav] = useState<number | null>(null);
   const pathname = usePathname();
 
   const isHome = pathname === "/";
@@ -66,14 +67,21 @@ export default function Navbar() {
         </div>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex flex-1 w-6/12 justify-center">
+        <nav className="hidden lg:flex flex-1 w-6/12 justify-center" onMouseLeave={() => setHoveredNav(null)}>
           <ul className="flex gap-8">
-            {NAV_LINKS.map((l) => (
+            {NAV_LINKS.map((l, i) => (
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className="text-white/60 hover:text-white transition-colors duration-200 text-xs font-medium"
-                  style={{ ...mono, letterSpacing: "var(--tracking-xs)" }}
+                  onMouseEnter={() => setHoveredNav(i)}
+                  className="text-white/60 hover:text-white text-xs font-medium"
+                  style={{
+                    ...mono,
+                    letterSpacing: "var(--tracking-xs)",
+                    opacity: hoveredNav !== null && hoveredNav !== i ? 0.18 : undefined,
+                    filter: hoveredNav !== null && hoveredNav !== i ? "blur(1.5px)" : "none",
+                    transition: "opacity 0.25s, filter 0.25s, color 0.2s",
+                  }}
                 >
                   {l.label}
                 </Link>
@@ -84,7 +92,7 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex flex-1 w-3/12 justify-end">
-          <Link href="/contact" className="pill-btn">
+          <Link href="/contact" className="glass-btn">
             Start a project <span className="opacity-50">→</span>
           </Link>
         </div>
@@ -171,7 +179,7 @@ export default function Navbar() {
             transition: "opacity 0.5s 0.38s, transform 0.5s 0.38s",
           }}
         >
-          <Link href="/contact" className="pill-btn" onClick={() => setMenuOpen(false)}>
+          <Link href="/contact" className="glass-btn" onClick={() => setMenuOpen(false)}>
             Start a project
           </Link>
         </div>

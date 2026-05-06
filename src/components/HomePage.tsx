@@ -34,9 +34,17 @@ function GlassScene({ index, active }: { index: number; active: boolean }) {
 
   if (index === 0) return (
     <div style={{ position: "absolute", inset: 0, opacity, transition, pointerEvents: "none" }}>
-      <div style={{ position: "absolute", width: 700, height: 700, borderRadius: "50%", background: "radial-gradient(circle, rgba(255,107,43,0.16) 0%, transparent 68%)", filter: "blur(90px)", top: "-15%", right: "-10%", animation: "orb-drift-2 26s ease-in-out infinite" }} />
-      <div style={{ position: "absolute", width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(255,107,43,0.10) 0%, transparent 70%)", filter: "blur(70px)", bottom: "-10%", left: "-8%", animation: "orb-drift-3 34s ease-in-out infinite" }} />
-      <div style={{ position: "absolute", width: 350, height: 350, borderRadius: "50%", background: "radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)", filter: "blur(50px)", top: "40%", left: "35%", animation: "orb-drift-1 20s ease-in-out infinite" }} />
+      {/* Hero photo — slow Ken Burns drift */}
+      <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: "-10%", animation: "hero-drift 32s ease-in-out infinite" }}>
+          <Image src="/p1-hero.jpg" alt="" fill className="object-cover" style={{ opacity: 0.52 }} sizes="120vw" priority />
+        </div>
+      </div>
+      {/* Gradient overlay — keeps text readable */}
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.28) 50%, rgba(0,0,0,0.68) 100%)" }} />
+      {/* Orange glow on top */}
+      <div style={{ position: "absolute", width: 700, height: 700, borderRadius: "50%", background: "radial-gradient(circle, rgba(255,107,43,0.11) 0%, transparent 68%)", filter: "blur(90px)", top: "-15%", right: "-10%", animation: "orb-drift-2 26s ease-in-out infinite" }} />
+      <div style={{ position: "absolute", width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(255,107,43,0.07) 0%, transparent 70%)", filter: "blur(70px)", bottom: "-10%", left: "-8%", animation: "orb-drift-3 34s ease-in-out infinite" }} />
     </div>
   );
 
@@ -402,11 +410,7 @@ export default function HomePage() {
 
         <Link
           href="/contact"
-          className="pill-btn hidden lg:inline-flex"
-          style={{
-            borderColor: isLastPillar ? "rgba(0,0,0,0.4)" : "rgba(255,255,255,0.6)",
-            color: isLastPillar ? "#000" : "#fff",
-          }}
+          className={`hidden lg:inline-flex glass-btn ${isLastPillar ? "glass-btn-dark" : ""}`}
         >
           Start a project <span className="opacity-50">→</span>
         </Link>
@@ -463,7 +467,7 @@ export default function HomePage() {
             transition: "opacity 0.6s 0.5s, transform 0.6s 0.5s",
             pointerEvents: pillarIndex === 1 ? "auto" : "none",
           }}>
-            <Link href="/services" className="btn-p2 pill-btn pill-btn-accent" style={{ height: 40, paddingLeft: "1.5rem", paddingRight: "1.5rem", fontSize: 11 }}>
+            <Link href="/services" className="btn-p2 glass-btn glass-btn-accent">
               Press me →
             </Link>
           </div>
@@ -475,7 +479,7 @@ export default function HomePage() {
             transition: "opacity 0.6s 0.5s, transform 0.6s 0.5s",
             pointerEvents: pillarIndex === 2 ? "auto" : "none",
           }}>
-            <Link href="/services" className="btn-p3 pill-btn" style={{ height: 40, paddingLeft: "1.5rem", paddingRight: "1.5rem", fontSize: 11, borderColor: "rgba(255,107,43,0.5)", color: "rgba(255,107,43,0.9)" }}>
+            <Link href="/services" className="btn-p3 glass-btn glass-btn-accent">
               See the work →
             </Link>
           </div>
@@ -487,7 +491,7 @@ export default function HomePage() {
             transition: "opacity 0.6s 0.5s, transform 0.6s 0.5s",
             pointerEvents: pillarIndex === 3 ? "auto" : "none",
           }}>
-            <Link href="/contact" className="btn-p4 pill-btn pill-btn-accent" style={{ height: 40, paddingLeft: "1.5rem", paddingRight: "1.5rem", fontSize: 11 }}>
+            <Link href="/contact" className="btn-p4 glass-btn glass-btn-accent">
               C&apos;mon, talk to us →
             </Link>
           </div>
@@ -503,8 +507,7 @@ export default function HomePage() {
               href="https://maps.google.com/?q=Iași,Romania"
               target="_blank"
               rel="noopener noreferrer"
-              className="pill-btn"
-              style={{ height: 40, paddingLeft: "1.5rem", paddingRight: "1.5rem", fontSize: 11, borderColor: "rgba(0,0,0,0.35)", color: "#000" }}
+              className="glass-btn glass-btn-dark"
             >
               <MapPin size={14} weight="bold" />
               Find us on the map
@@ -545,8 +548,7 @@ export default function HomePage() {
             <button
               ref={overlayBtnRef}
               onClick={overlayOpen ? closeOverlay : openOverlay}
-              className="pill-btn"
-              style={{ borderColor: overlayOpen ? "rgba(255,255,255,0.3)" : undefined }}
+              className="glass-btn"
             >
               {overlayOpen ? "Hide services" : "Our services"}
               <span style={{ display: "inline-block", transform: overlayOpen ? "rotate(180deg)" : "none", transition: "transform 0.3s" }}>↑</span>
@@ -609,11 +611,7 @@ export default function HomePage() {
         <div ref={bottomRightRef} style={{ transform: "translateY(100px)" }} className="pointer-events-auto">
           <Link
             href="/contact"
-            className="pill-btn"
-            style={{
-              borderColor: isLastPillar ? "rgba(0,0,0,0.4)" : "rgba(255,255,255,0.6)",
-              color: isLastPillar ? "#000" : "#fff",
-            }}
+            className={`glass-btn ${isLastPillar ? "glass-btn-dark" : ""}`}
           >
             <span className="hidden lg:block">Start a project</span>
             <span className="lg:hidden text-xs" style={mono}>Contact</span>
@@ -706,8 +704,8 @@ export default function HomePage() {
               </div>
             </div>
             <div className="flex justify-between w-full px-4">
-              <button onClick={closeDetail} className="pill-btn">← Back</button>
-              <Link href="/services" className="pill-btn mr-4">View service</Link>
+              <button onClick={closeDetail} className="glass-btn">← Back</button>
+              <Link href="/services" className="glass-btn mr-4">View service</Link>
             </div>
           </>
         )}
